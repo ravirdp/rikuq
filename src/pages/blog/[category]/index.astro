@@ -1,0 +1,59 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import { PILLARS } from '@/lib/site';
+import { getCollection } from 'astro:content';
+import type { GetStaticPaths } from 'astro';
+
+export const getStaticPaths: GetStaticPaths = () =>
+  Object.values(PILLARS).map((p) => ({ params: { category: p.slug } }));
+
+const { category } = Astro.params;
+const pillar = PILLARS[category as keyof typeof PILLARS];
+
+const posts = (
+  await getCollection('blog', ({ data }) => data.category === category && !data.draft)
+).sort((a, b) => b.data.pubDate.getTime() - a.data.pubDate.getTime());
+---
+
+<BaseLayout
+  title={pillar.title}
+  description={pillar.description}
+>
+  <section class="container">
+    <nav class="crumbs muted">
+      <a href="/">rikuq</a> › <a href="/blog">Blog</a> › <span>{pillar.title}</span>
+    </nav>
+    <h1>{pillar.title}</h1>
+    <p class="lede muted">{pillar.description}</p>
+
+    {posts.length === 0 ? (
+      <p class="empty muted">Posts coming soon.</p>
+    ) : (
+      <ul class="posts">
+        {posts.map((p) => (
+          <li>
+            <a href={`/blog/${p.data.category}/${p.slug}`}>
+              <strong>{p.data.title}</strong>
+              <span class="muted">{p.data.description}</span>
+              <span class="meta">{p.data.pubDate.toLocaleDateString('en-US', { year: 'numeric', month: 'short', day: 'numeric' })}</span>
+            </a>
+          </li>
+        ))}
+      </ul>
+    )}
+  </section>
+</BaseLayout>
+
+<style>
+  .crumbs { font-size: 0.85rem; margin: 1.5rem 0 0.5rem; }
+  .crumbs a { color: var(--fg-muted); text-decoration: none; }
+  .empty { margin-top: 2rem; }
+  .posts { list-style: none; padding: 0; margin: 1rem 0; display: grid; gap: 0.5rem; }
+  .posts a {
+    display: grid; gap: 0.25rem; padding: 1rem;
+    border: 1px solid var(--border); border-radius: 0.5rem;
+    text-decoration: none; color: var(--fg);
+  }
+  .posts a:hover { border-color: var(--accent); }
+  .meta { font-size: 0.8rem; color: var(--fg-muted); }
+</style>

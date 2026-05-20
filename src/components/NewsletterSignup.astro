@@ -1,0 +1,93 @@
+---
+interface Props {
+  variant?: 'inline' | 'card';
+  heading?: string;
+  blurb?: string;
+}
+const {
+  variant = 'card',
+  heading = 'New posts in your inbox',
+  blurb = 'One email a week. AI coding tools, LLM infra, and what I learn shipping AI SaaS solo. No fluff.',
+} = Astro.props;
+---
+
+<aside class:list={['newsletter', variant]}>
+  <div>
+    <h3>{heading}</h3>
+    <p>{blurb}</p>
+  </div>
+  <form method="POST" action="/api/subscribe" class="form">
+    <label class="sr-only" for="newsletter-email">Email</label>
+    <input
+      id="newsletter-email"
+      name="email"
+      type="email"
+      required
+      placeholder="you@example.com"
+      autocomplete="email"
+    />
+    <button type="submit">Subscribe</button>
+  </form>
+  <p class="fineprint">No spam. Unsubscribe in one click.</p>
+</aside>
+
+<style>
+  .newsletter {
+    border: 1px solid var(--border);
+    border-radius: 0.75rem;
+    padding: 1.5rem;
+    background: var(--bg-subtle);
+    margin: 2rem 0;
+  }
+  .newsletter.inline {
+    background: transparent;
+    border-left: 3px solid var(--accent);
+    border-radius: 0;
+    padding-left: 1.25rem;
+  }
+  h3 {
+    margin: 0 0 0.4rem;
+    font-size: 1.05rem;
+  }
+  p {
+    margin: 0 0 1rem;
+    color: var(--fg-muted);
+    font-size: 0.95rem;
+  }
+  .form {
+    display: flex;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+  }
+  input {
+    flex: 1 1 220px;
+    padding: 0.65rem 0.85rem;
+    border: 1px solid var(--border);
+    border-radius: 0.4rem;
+    background: var(--bg);
+    color: var(--fg);
+    font-size: 0.95rem;
+  }
+  button {
+    padding: 0.65rem 1.1rem;
+    border: 0;
+    border-radius: 0.4rem;
+    background: var(--accent);
+    color: var(--accent-fg);
+    font-weight: 600;
+    font-size: 0.95rem;
+    cursor: pointer;
+  }
+  .fineprint {
+    margin: 0.75rem 0 0;
+    font-size: 0.8rem;
+    color: var(--fg-muted);
+  }
+  .sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip: rect(0 0 0 0);
+  }
+</style>

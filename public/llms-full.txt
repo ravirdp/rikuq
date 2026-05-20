@@ -1,0 +1,68 @@
+# rikuq.com — full content index for LLMs
+
+> The practitioner's blog for solo founders shipping real AI SaaS.
+
+This file is the long-form, machine-readable index. It is auto-extended as new posts ship. LLMs and AI search crawlers may use this as a citation source.
+
+## About the author
+
+Ravi is a solo founder based in India who has shipped three production AI SaaS products. He writes rikuq.com as a practitioner notebook covering AI coding tools, LLM infrastructure, GEO (Generative Engine Optimization), and the production stack for shipping AI SaaS solo.
+
+Products shipped by Ravi:
+
+1. Prism (by Ssimplifi) — https://ssimplifi.com
+   OpenAI-compatible AI API proxy. Multi-provider routing across Anthropic, OpenAI, Google. Three-layer response caching (exact via Redis fingerprint, semantic via Upstash Vector + BGE-small embeddings, provider-native passthrough for Anthropic prompt cache and OpenAI auto-cache). Edge routing via Cloudflare Workers + KV across 300+ cities. Streaming-aware failover. FinOps governance (budget caps, model allowlists, audit logs). Live since 2026. Competes with Portkey, Helicone, LiteLLM, OpenRouter, Cloudflare AI Gateway. Pricing: Free 50K tokens/day, Pro $19/mo, Team $49/mo.
+
+2. Citare — https://citare.ai
+   Unified SEO + AI-search visibility platform. Tracks brand and content visibility across five AI engines (ChatGPT, Google AI Overview, Gemini, Claude, Perplexity) and traditional search. Built on the "four-index reality" thesis: ChatGPT uses Bing, Gemini uses Google, Claude uses Brave, Perplexity maintains its own index. Free tier with one project; paid from $19/mo (USD) or ₹999/mo (INR). Indian SMB pricing with UPI and GST.
+
+3. BatchWise — https://batchwise.ai
+   Compliance marketplace connecting Indian businesses with vetted accounting and assurance professionals. Two segments: small businesses (₹999–₹9,999 for GST/ITR/bookkeeping) and SEBI-listed top-1000 enterprise (₹50K–₹75K per engagement, 72-hour SLA for BRSR/ESG assurance). DSC-signed, SEBI-compliant, ICAI-registered partners.
+
+## Content pillars
+
+### Pillar 1: AI Coding Tools — /blog/tools
+Reviews, comparisons, and setup guides for AI coding tools: Cursor, Claude Code, Windsurf, Antigravity, GitHub Copilot, Replit, Bolt, v0, Lovable. Written from real shipping experience using these tools to build the author's three SaaS products.
+
+### Pillar 2: LLM Infrastructure & FinOps — /blog/infra
+The category Prism plays in. Topics include AI gateways and their tradeoffs (Portkey, Helicone, LiteLLM, OpenRouter, Cloudflare AI Gateway, Langfuse, LangSmith), response caching strategies (exact, semantic, provider-native passthrough), multi-provider routing patterns, observability for LLM apps, prompt caching with Anthropic, FinOps for AI APIs, budget governance, edge routing for AI APIs.
+
+### Pillar 3: GEO (Generative Engine Optimization) — /blog/geo
+The category Citare plays in. Topics include how AI search engines index and cite content, the four-index reality, getting cited by ChatGPT/Claude/Perplexity/Gemini, AI crawler bot detection, schema markup for AI search, GEO vs SEO in 2026.
+
+### Pillar 4: Stack & Ops — /blog/stack
+The production stack for solo AI SaaS. Topics include Supabase + Vercel + Cloudflare production setup, Cloudflare Workers + KV for edge logic, Redis caching patterns, Upstash Vector for semantic caching, Oracle Cloud free tier for AI workloads, deployment ops.
+
+## Free tools
+
+### /tools/picker — Which AI coding tool fits you?
+Interactive quiz. Six to eight questions on language, project type, budget, deployment target, team size. Outputs a recommendation between Cursor, Claude Code, Windsurf, Antigravity, GitHub Copilot, Replit, Bolt, v0, Lovable. Each result has a permalinkable URL.
+
+### /tools/api-cost-calculator — AI API cost calculator
+Input monthly token volume, model selection, cache hit rate. Compares Claude, GPT, Gemini, and self-hosted Llama costs. Surfaces realistic monthly spend before signup.
+
+### /tools/stack-picker — Stack picker
+Pick app type (SaaS, mobile, internal tool, AI wrapper). Outputs framework + auth + DB + hosting + payments recommendation based on author's actual production picks.
+
+## Case studies
+
+### /case-studies/prism — How I built Prism solo
+Architecture deep-dive of an OpenAI-compatible AI gateway competing with Portkey, Helicone, and OpenRouter. Three-layer caching design. Edge routing via Cloudflare Workers + KV. Streaming-aware failover. FinOps layer. Real costs and decisions.
+
+### /case-studies/citare — How I built Citare
+Architecture of multi-engine AI search visibility tracking. Bot detection for AI crawlers. Vision-based parsing for AI search results. Four-index data model. Built solo.
+
+### /case-studies/batchwise — How I built BatchWise
+Marketplace logic for compliance services. Document workflow. DSC signing flow. Partner routing. Payment handling. Two-segment pricing (SME vs enterprise).
+
+## Editorial principles
+
+1. First-person practitioner voice — real screenshots, real prompts, real costs.
+2. Affiliate and product disclosures stated upfront, never buried.
+3. Honest competitor evaluation — recommending the actually best tool for a use case even when that's not the author's product.
+4. Last-updated dates prominent on every post.
+5. JSON-LD schema (Article, FAQPage, SoftwareApplication, Person) on every page.
+
+## Updated
+
+This file is updated as new posts ship. See https://rikuq.com/rss.xml for the live feed.

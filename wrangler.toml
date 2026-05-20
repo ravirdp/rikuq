@@ -1,0 +1,19 @@
+name = "rikuq"
+compatibility_date = "2025-10-01"
+pages_build_output_dir = "./dist"
+
+# Cloudflare Pages env vars come from the dashboard, not here.
+# This file is mainly for local `wrangler pages dev` testing.
+
+[vars]
+PUBLIC_SITE_URL = "https://rikuq.com"
+
+# KV namespace bindings (create via wrangler, then paste the IDs)
+# [[kv_namespaces]]
+# binding = "QUIZ_RESULTS"
+# id = "TODO_KV_ID"
+
+# R2 bucket for OG images
+# [[r2_buckets]]
+# binding = "OG_IMAGES"
+# bucket_name = "rikuq-og"

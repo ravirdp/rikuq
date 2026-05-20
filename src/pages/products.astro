@@ -1,0 +1,46 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import { PRODUCTS } from '@/lib/site';
+---
+
+<BaseLayout
+  title="Products"
+  description="The three production AI SaaS I've shipped solo: Prism (Ssimplifi), Citare, and BatchWise."
+>
+  <article class="container prose">
+    <h1>Products</h1>
+    <p class="lede">
+      Three production AI SaaS, all live and serving real customers.
+    </p>
+
+    {PRODUCTS.map((p) => (
+      <section class="product">
+        <h2>
+          <a href={p.url} rel="me">{p.name}{p.by ? ` (by ${p.by})` : ''}</a>
+        </h2>
+        <p class="cat muted">{p.category}</p>
+        <p>{p.tagline}</p>
+      </section>
+    ))}
+
+    <p>
+      For deep architecture teardowns of each, see
+      <a href="/case-studies">case studies</a>.
+    </p>
+  </article>
+</BaseLayout>
+
+<style>
+  .product {
+    margin: 2rem 0;
+    padding-bottom: 1.5rem;
+    border-bottom: 1px solid var(--border);
+  }
+  .product:last-of-type {
+    border-bottom: 0;
+  }
+  .cat {
+    font-size: 0.85rem;
+    margin: -0.5rem 0 0.5rem;
+  }
+</style>

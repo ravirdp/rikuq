@@ -1,0 +1,91 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import { PRODUCTS, SITE } from '@/lib/site';
+
+const personSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'Person',
+  name: SITE.author.name,
+  url: SITE.url,
+  description:
+    'Solo founder shipping production AI SaaS. Builder of Prism (Ssimplifi), Citare, and BatchWise.',
+  sameAs: SITE.author.sameAs,
+  knowsAbout: [
+    'LLM infrastructure',
+    'AI gateways',
+    'Generative engine optimization',
+    'Prompt caching',
+    'AI coding tools',
+    'Cloudflare Workers',
+    'Supabase',
+    'Next.js',
+    'Astro',
+  ],
+  worksFor: PRODUCTS.map((p) => ({ '@type': 'Organization', name: p.name, url: p.url })),
+};
+---
+
+<BaseLayout
+  title="About Ravi"
+  description="Solo founder shipping production AI SaaS. Builder of Prism (Ssimplifi), Citare, and BatchWise. Practitioner notes on AI coding tools, LLM infrastructure, and GEO."
+>
+  <script type="application/ld+json" set:html={JSON.stringify(personSchema)} />
+
+  <article class="container prose">
+    <h1>About</h1>
+    <p class="lede">
+      I'm Ravi — a solo founder shipping AI products from India. This blog is the
+      practitioner's notebook for everything I learn along the way.
+    </p>
+
+    <h2>What I've shipped</h2>
+    <p>
+      Three production AI SaaS, all live and serving real customers:
+    </p>
+    <ul>
+      <li>
+        <strong><a href="https://ssimplifi.com" rel="me">Prism (by Ssimplifi)</a></strong> —
+        an OpenAI-compatible AI gateway that cuts AI bills 30–60% via three-layer
+        response caching, multi-provider routing, and edge replication across
+        300+ Cloudflare cities. Competes with Portkey, Helicone, LiteLLM,
+        OpenRouter, and Cloudflare AI Gateway.
+      </li>
+      <li>
+        <strong><a href="https://citare.ai" rel="me">Citare</a></strong> — a unified SEO +
+        AI-search visibility platform tracking ChatGPT, Google AI Overview,
+        Gemini, Claude, and Perplexity. Built on the insight that AI search uses
+        four distinct indexes and most legacy tools only watch one.
+      </li>
+      <li>
+        <strong><a href="https://batchwise.ai" rel="me">BatchWise</a></strong> — a
+        compliance marketplace connecting Indian SMEs and SEBI-listed enterprise
+        with vetted accounting and assurance professionals. GST, ITR, ESG, BRSR
+        assurance.
+      </li>
+    </ul>
+
+    <h2>What I write about here</h2>
+    <ul>
+      <li><strong>AI coding tools</strong> — Cursor, Claude Code, Windsurf, Antigravity, Copilot. Reviews from someone actually shipping with them daily.</li>
+      <li><strong>LLM infrastructure & FinOps</strong> — gateways, caching, routing, observability, governance. The category Prism plays in.</li>
+      <li><strong>GEO (Generative Engine Optimization)</strong> — how AI search actually indexes and cites content. The category Citare plays in.</li>
+      <li><strong>Stack & ops</strong> — Cloudflare, Supabase, Vercel, Upstash, Redis. The production stack for solo AI SaaS.</li>
+    </ul>
+
+    <h2>How I write</h2>
+    <p>
+      First-person. Real screenshots from real projects. Real prompts in code
+      blocks. Real costs broken down. Clear verdicts, not "it depends" hedging.
+      When I mention my own products in comparison content, I disclose it upfront
+      and try to evaluate competitors honestly. If a competitor is better for
+      your use case, I'll say so.
+    </p>
+
+    <h2>Get in touch</h2>
+    <p>
+      Twitter/X: <a href={SITE.social.twitter} rel="me">{SITE.author.twitter}</a> ·
+      LinkedIn: <a href={SITE.social.linkedin} rel="me">/in/rikuq</a> ·
+      GitHub: <a href={SITE.social.github} rel="me">@rikuq</a>
+    </p>
+  </article>
+</BaseLayout>

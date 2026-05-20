@@ -1,0 +1,51 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import { getCollection } from 'astro:content';
+
+const studies = (
+  await getCollection('case-studies', ({ data }) => !data.draft)
+).sort((a, b) => b.data.pubDate.getTime() - a.data.pubDate.getTime());
+---
+
+<BaseLayout
+  title="Case studies"
+  description="Deep architecture teardowns of Prism, Citare, and BatchWise — three production AI SaaS shipped solo."
+>
+  <section class="container prose">
+    <h1>Case studies</h1>
+    <p class="lede muted">
+      How I actually built each of the three products — architecture, prompts,
+      costs, decisions, and what I'd do differently.
+    </p>
+
+    {studies.length === 0 ? (
+      <p class="muted">Case studies coming soon.</p>
+    ) : (
+      <ul class="posts">
+        {studies.map((s) => (
+          <li>
+            <a href={`/case-studies/${s.slug}`}>
+              <span class="meta">{s.data.product}</span>
+              <strong>{s.data.title}</strong>
+              <span class="muted">{s.data.description}</span>
+            </a>
+          </li>
+        ))}
+      </ul>
+    )}
+  </section>
+</BaseLayout>
+
+<style>
+  .posts { list-style: none; padding: 0; margin: 1.5rem 0; display: grid; gap: 0.5rem; }
+  .posts a {
+    display: grid; gap: 0.25rem; padding: 1rem;
+    border: 1px solid var(--border); border-radius: 0.5rem;
+    text-decoration: none; color: var(--fg);
+  }
+  .posts a:hover { border-color: var(--accent); }
+  .meta {
+    font-size: 0.75rem; color: var(--accent);
+    text-transform: uppercase; letter-spacing: 0.06em;
+  }
+</style>

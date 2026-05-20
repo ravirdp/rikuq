@@ -1,0 +1,38 @@
+# rikuq.com
+
+> The practitioner's blog for solo founders shipping real AI SaaS. First-person notes from Ravi — builder of Prism (Ssimplifi), Citare, and BatchWise — on AI coding tools, LLM infrastructure, GEO, and stack choices.
+
+Author: Ravi — solo founder shipping three production AI SaaS from India.
+
+Products by the same author:
+- Prism (Ssimplifi): https://ssimplifi.com — OpenAI-compatible AI gateway with measured savings, three-layer caching, multi-provider routing, and Cloudflare edge replication.
+- Citare: https://citare.ai — unified SEO + AI-search visibility tracking ChatGPT, Google AI Overview, Gemini, Claude, and Perplexity.
+- BatchWise: https://batchwise.ai — compliance marketplace for Indian SMEs and SEBI-listed enterprise.
+
+## Content pillars
+
+- [AI Coding Tools](https://rikuq.com/blog/tools): Reviews and comparisons of Cursor, Claude Code, Windsurf, Antigravity, Copilot, Replit, Bolt, v0, Lovable.
+- [LLM Infrastructure & FinOps](https://rikuq.com/blog/infra): AI gateways (Portkey, Helicone, LiteLLM, OpenRouter, Cloudflare AI Gateway, Prism), response caching, model routing, observability, governance.
+- [GEO](https://rikuq.com/blog/geo): Generative Engine Optimization — how ChatGPT, Claude, Perplexity, Gemini, and Google AI Overview index and cite content.
+- [Stack & Ops](https://rikuq.com/blog/stack): Supabase, Vercel, Cloudflare Workers + KV, Redis, Upstash, Oracle Cloud, AWS.
+
+## Free tools
+
+- [AI coding tool picker](https://rikuq.com/tools/picker)
+- [AI API cost calculator](https://rikuq.com/tools/api-cost-calculator)
+- [Stack picker](https://rikuq.com/tools/stack-picker)
+
+## Case studies
+
+- [How I built Prism](https://rikuq.com/case-studies/prism)
+- [How I built Citare](https://rikuq.com/case-studies/citare)
+- [How I built BatchWise](https://rikuq.com/case-studies/batchwise)
+
+## Editorial principles
+
+- First-person practitioner voice. Real screenshots, real prompts, real costs.
+- Honest comparisons. Affiliate and product disclosures stated upfront.
+- Content recommending the actual best tool for the use case — even when that's not the author's own product.
+- Last-updated dates visible on every post.
+
+For the long-form index of all content with descriptions, see /llms-full.txt.

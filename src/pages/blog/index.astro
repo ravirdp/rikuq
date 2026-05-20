@@ -1,0 +1,74 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import { PILLARS } from '@/lib/site';
+import { getCollection } from 'astro:content';
+
+const posts = (await getCollection('blog', ({ data }) => !data.draft)).sort(
+  (a, b) => b.data.pubDate.getTime() - a.data.pubDate.getTime()
+);
+---
+
+<BaseLayout
+  title="Blog"
+  description="AI coding tools, LLM infrastructure, GEO, and stack content from a solo founder shipping production AI SaaS."
+>
+  <section class="container">
+    <h1>Blog</h1>
+    <p class="lede muted">
+      Practitioner notes across four pillars. Browse by category or read the
+      latest below.
+    </p>
+
+    <div class="cats">
+      {Object.values(PILLARS).map((p) => (
+        <a class="cat-card" href={`/blog/${p.slug}`}>
+          <h3>{p.title}</h3>
+          <p>{p.description}</p>
+        </a>
+      ))}
+    </div>
+
+    <h2>All posts</h2>
+    <ul class="posts">
+      {posts.map((p) => (
+        <li>
+          <a href={`/blog/${p.data.category}/${p.slug}`}>
+            <span class="meta">{PILLARS[p.data.category].title}</span>
+            <strong>{p.data.title}</strong>
+            <span class="muted">{p.data.description}</span>
+          </a>
+        </li>
+      ))}
+    </ul>
+  </section>
+</BaseLayout>
+
+<style>
+  .lede { margin-top: 0.25rem; }
+  .cats {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 1rem;
+    margin: 1.5rem 0 3rem;
+  }
+  .cat-card {
+    display: block;
+    padding: 1.25rem;
+    border: 1px solid var(--border);
+    border-radius: 0.6rem;
+    background: var(--bg-subtle);
+    text-decoration: none;
+    color: var(--fg);
+  }
+  .cat-card:hover { border-color: var(--accent); }
+  .cat-card h3 { margin: 0 0 0.4rem; font-size: 1rem; }
+  .cat-card p { margin: 0; color: var(--fg-muted); font-size: 0.9rem; }
+  .posts { list-style: none; padding: 0; margin: 0; display: grid; gap: 0.5rem; }
+  .posts a {
+    display: grid; gap: 0.25rem; padding: 1rem;
+    border: 1px solid var(--border); border-radius: 0.5rem;
+    text-decoration: none; color: var(--fg);
+  }
+  .posts a:hover { border-color: var(--accent); }
+  .meta { font-size: 0.75rem; color: var(--accent); text-transform: uppercase; letter-spacing: 0.06em; }
+</style>

@@ -1,0 +1,61 @@
+---
+const path = Astro.url.pathname;
+const isActive = (p: string) => path === p || path.startsWith(p + '/');
+---
+
+<header class="site-header">
+  <div class="container">
+    <a href="/" class="brand" aria-label="rikuq home">
+      <strong>rikuq</strong>
+    </a>
+    <nav aria-label="primary">
+      <a href="/blog/tools" class:list={[{ active: isActive('/blog/tools') }]}>Tools</a>
+      <a href="/blog/infra" class:list={[{ active: isActive('/blog/infra') }]}>Infra</a>
+      <a href="/blog/geo" class:list={[{ active: isActive('/blog/geo') }]}>GEO</a>
+      <a href="/blog/stack" class:list={[{ active: isActive('/blog/stack') }]}>Stack</a>
+      <a href="/case-studies" class:list={[{ active: isActive('/case-studies') }]}>Case studies</a>
+      <a href="/tools" class:list={[{ active: isActive('/tools') }]}>Free tools</a>
+      <a href="/about" class:list={[{ active: isActive('/about') }]}>About</a>
+    </nav>
+  </div>
+</header>
+
+<style>
+  .site-header {
+    border-bottom: 1px solid var(--border);
+    background: var(--bg);
+    position: sticky;
+    top: 0;
+    z-index: 50;
+    backdrop-filter: blur(8px);
+  }
+  .container {
+    max-width: 72rem;
+    margin: 0 auto;
+    padding: 0.75rem 1.25rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+  }
+  .brand {
+    font-size: 1.1rem;
+    color: var(--fg);
+    text-decoration: none;
+    letter-spacing: -0.02em;
+  }
+  nav {
+    display: flex;
+    gap: 1.25rem;
+    flex-wrap: wrap;
+  }
+  nav a {
+    color: var(--fg-muted);
+    text-decoration: none;
+    font-size: 0.92rem;
+  }
+  nav a:hover,
+  nav a.active {
+    color: var(--fg);
+  }
+</style>

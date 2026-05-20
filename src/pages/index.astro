@@ -1,0 +1,178 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import NewsletterSignup from '@/components/NewsletterSignup.astro';
+import { PILLARS, PRODUCTS, SITE } from '@/lib/site';
+import { getCollection } from 'astro:content';
+
+const allPosts = await getCollection('blog', ({ data }) => !data.draft);
+const latest = allPosts
+  .sort((a, b) => b.data.pubDate.getTime() - a.data.pubDate.getTime())
+  .slice(0, 6);
+
+const personSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'Person',
+  name: SITE.author.name,
+  url: SITE.url,
+  sameAs: SITE.author.sameAs,
+  worksFor: PRODUCTS.map((p) => ({ '@type': 'Organization', name: p.name, url: p.url })),
+};
+---
+
+<BaseLayout>
+  <script type="application/ld+json" set:html={JSON.stringify(personSchema)} />
+
+  <section class="hero container">
+    <h1>Solo founder. Three AI&nbsp;SaaS shipped.<br /><span class="accent">Here's how.</span></h1>
+    <p class="lede">
+      I'm Ravi. I ship production AI products solo — an OpenAI-compatible gateway,
+      an AI-search visibility platform, and an Indian compliance marketplace.
+      This blog is what I've learned along the way: tool reviews, infra deep-dives,
+      and case studies from someone actually building, not theorizing.
+    </p>
+    <div class="cta">
+      <a class="btn" href="/blog">Read the blog</a>
+      <a class="btn ghost" href="/case-studies">See the case studies</a>
+    </div>
+  </section>
+
+  <section class="container pillars">
+    <h2>What I write about</h2>
+    <div class="grid">
+      {Object.values(PILLARS).map((p) => (
+        <a class="card" href={`/blog/${p.slug}`}>
+          <h3>{p.title}</h3>
+          <p>{p.description}</p>
+          <span class="more">Read posts →</span>
+        </a>
+      ))}
+    </div>
+  </section>
+
+  {latest.length > 0 && (
+    <section class="container">
+      <h2>Latest posts</h2>
+      <ul class="posts">
+        {latest.map((post) => (
+          <li>
+            <a href={`/blog/${post.data.category}/${post.slug}`}>
+              <span class="cat">{PILLARS[post.data.category].title}</span>
+              <strong>{post.data.title}</strong>
+              <span class="muted">{post.data.description}</span>
+            </a>
+          </li>
+        ))}
+      </ul>
+    </section>
+  )}
+
+  <section class="container products">
+    <h2>Products I ship</h2>
+    <div class="grid">
+      {PRODUCTS.map((p) => (
+        <a class="card" href={p.url} target="_blank" rel="noopener">
+          <h3>{p.name}{p.by ? <span class="muted"> by {p.by}</span> : null}</h3>
+          <p>{p.tagline}</p>
+          <span class="more">{p.category} →</span>
+        </a>
+      ))}
+    </div>
+  </section>
+
+  <section class="container">
+    <NewsletterSignup />
+  </section>
+</BaseLayout>
+
+<style>
+  .hero {
+    padding: 5rem 1.25rem 3rem;
+    text-align: center;
+  }
+  .hero h1 {
+    font-size: clamp(2rem, 5vw, 3.4rem);
+    line-height: 1.1;
+    letter-spacing: -0.02em;
+    margin: 0 auto 1.25rem;
+    max-width: 22ch;
+  }
+  .accent {
+    color: var(--accent);
+  }
+  .lede {
+    font-size: 1.1rem;
+    color: var(--fg-muted);
+    max-width: 38rem;
+    margin: 0 auto 1.5rem;
+  }
+  .cta {
+    display: flex;
+    gap: 0.75rem;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+  .pillars,
+  .products {
+    margin-top: 3rem;
+  }
+  h2 {
+    font-size: 1.4rem;
+    margin: 0 0 1.25rem;
+  }
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 1rem;
+  }
+  .card {
+    display: block;
+    padding: 1.25rem;
+    border: 1px solid var(--border);
+    border-radius: 0.6rem;
+    background: var(--bg-subtle);
+    text-decoration: none;
+    color: var(--fg);
+    transition: border-color 0.15s;
+  }
+  .card:hover {
+    border-color: var(--accent);
+  }
+  .card h3 {
+    margin: 0 0 0.4rem;
+    font-size: 1.05rem;
+  }
+  .card p {
+    margin: 0 0 0.75rem;
+    font-size: 0.92rem;
+    color: var(--fg-muted);
+  }
+  .more {
+    font-size: 0.85rem;
+    color: var(--accent);
+  }
+  .posts {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: grid;
+    gap: 0.5rem;
+  }
+  .posts a {
+    display: grid;
+    gap: 0.25rem;
+    padding: 1rem;
+    border: 1px solid var(--border);
+    border-radius: 0.5rem;
+    text-decoration: none;
+    color: var(--fg);
+  }
+  .posts a:hover {
+    border-color: var(--accent);
+  }
+  .cat {
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: var(--accent);
+  }
+</style>

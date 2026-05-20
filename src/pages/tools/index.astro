@@ -1,0 +1,60 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+
+const tools = [
+  {
+    slug: 'picker',
+    title: 'Which AI coding tool fits you?',
+    description: '6 questions. Personalized recommendation between Cursor, Claude Code, Windsurf, Antigravity, Copilot, Replit, Bolt, v0, and Lovable.',
+    status: 'In development',
+  },
+  {
+    slug: 'api-cost-calculator',
+    title: 'AI API cost calculator',
+    description: 'Model your monthly AI spend across Claude, GPT, Gemini. Factor in caching and request volume. See the savings stack.',
+    status: 'In development',
+  },
+  {
+    slug: 'stack-picker',
+    title: 'Stack picker',
+    description: 'Tell me what you\'re building. I\'ll recommend framework + auth + DB + hosting + payments with real production picks.',
+    status: 'In development',
+  },
+];
+---
+
+<BaseLayout
+  title="Free tools"
+  description="Free interactive tools for solo founders building AI SaaS: tool picker, API cost calculator, stack picker."
+>
+  <section class="container prose">
+    <h1>Free tools</h1>
+    <p class="lede muted">
+      Interactive tools — no signup, no email gate, no upsell. Built because
+      I needed them myself.
+    </p>
+
+    <ul class="tools">
+      {tools.map((t) => (
+        <li>
+          <a href={`/tools/${t.slug}`}>
+            <strong>{t.title}</strong>
+            <span class="muted">{t.description}</span>
+            <span class="status">{t.status}</span>
+          </a>
+        </li>
+      ))}
+    </ul>
+  </section>
+</BaseLayout>
+
+<style>
+  .tools { list-style: none; padding: 0; margin: 1.5rem 0; display: grid; gap: 0.75rem; }
+  .tools a {
+    display: grid; gap: 0.4rem; padding: 1.25rem;
+    border: 1px solid var(--border); border-radius: 0.6rem;
+    text-decoration: none; color: var(--fg);
+  }
+  .tools a:hover { border-color: var(--accent); }
+  .status { font-size: 0.78rem; color: var(--accent); }
+</style>

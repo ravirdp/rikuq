@@ -1,0 +1,109 @@
+---
+import { PRODUCTS } from '@/lib/site';
+const year = new Date().getFullYear();
+---
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="col">
+      <h4>rikuq</h4>
+      <p class="muted">
+        The practitioner's blog for solo founders shipping real AI SaaS.
+      </p>
+    </div>
+
+    <div class="col">
+      <h4>Pillars</h4>
+      <ul>
+        <li><a href="/blog/tools">AI Coding Tools</a></li>
+        <li><a href="/blog/infra">LLM Infrastructure</a></li>
+        <li><a href="/blog/geo">GEO</a></li>
+        <li><a href="/blog/stack">Stack & Ops</a></li>
+      </ul>
+    </div>
+
+    <div class="col">
+      <h4>Free tools</h4>
+      <ul>
+        <li><a href="/tools/picker">AI coding tool picker</a></li>
+        <li><a href="/tools/api-cost-calculator">AI API cost calculator</a></li>
+        <li><a href="/tools/stack-picker">Stack picker</a></li>
+      </ul>
+    </div>
+
+    <div class="col">
+      <h4>Products by Ravi</h4>
+      <ul>
+        {PRODUCTS.map((p) => (
+          <li>
+            <a href={p.url} rel="me">
+              {p.name}{p.by ? ` (by ${p.by})` : ''}
+            </a>
+          </li>
+        ))}
+      </ul>
+    </div>
+  </div>
+
+  <div class="bottom">
+    <div class="container">
+      <span>© {year} Ravi · <a href="/about">About</a> · <a href="/rss.xml">RSS</a></span>
+      <span class="muted">Built with Astro on Cloudflare.</span>
+    </div>
+  </div>
+</footer>
+
+<style>
+  .site-footer {
+    border-top: 1px solid var(--border);
+    background: var(--bg-subtle);
+    margin-top: 4rem;
+    padding-top: 3rem;
+  }
+  .container {
+    max-width: 72rem;
+    margin: 0 auto;
+    padding: 0 1.25rem;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 2rem;
+  }
+  h4 {
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    margin: 0 0 0.75rem;
+    color: var(--fg);
+  }
+  ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+  li {
+    margin-bottom: 0.4rem;
+  }
+  a {
+    color: var(--fg-muted);
+    text-decoration: none;
+    font-size: 0.92rem;
+  }
+  a:hover {
+    color: var(--fg);
+  }
+  .muted {
+    color: var(--fg-muted);
+    font-size: 0.9rem;
+  }
+  .bottom {
+    border-top: 1px solid var(--border);
+    margin-top: 2rem;
+    padding: 1.25rem 0;
+  }
+  .bottom .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 0.85rem;
+  }
+</style>

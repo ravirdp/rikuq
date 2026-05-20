@@ -1,0 +1,31 @@
+{
+  "name": "rikuq",
+  "type": "module",
+  "version": "0.1.0",
+  "private": true,
+  "description": "rikuq.com — the practitioner's blog for solo founders shipping real AI SaaS",
+  "scripts": {
+    "dev": "astro dev",
+    "start": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview",
+    "astro": "astro",
+    "deploy": "astro build && wrangler pages deploy dist"
+  },
+  "dependencies": {
+    "@astrojs/cloudflare": "^11.0.0",
+    "@astrojs/mdx": "^3.0.0",
+    "@astrojs/react": "^3.6.0",
+    "@astrojs/rss": "^4.0.0",
+    "@astrojs/sitemap": "^3.2.0",
+    "astro": "^5.0.0",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "reading-time": "^1.5.0"
+  },
+  "devDependencies": {
+    "@types/react": "^18.3.0",
+    "@types/react-dom": "^18.3.0",
+    "wrangler": "^3.80.0"
+  }
+}

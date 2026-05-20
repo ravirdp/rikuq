@@ -1,0 +1,66 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import ArticleSchema from '@/components/ArticleSchema.astro';
+import NewsletterSignup from '@/components/NewsletterSignup.astro';
+import { getCollection } from 'astro:content';
+import type { GetStaticPaths } from 'astro';
+
+export const getStaticPaths: GetStaticPaths = async () => {
+  const studies = await getCollection('case-studies', ({ data }) => !data.draft);
+  return studies.map((s) => ({ params: { slug: s.slug }, props: { study: s } }));
+};
+
+const { study } = Astro.props;
+const { Content } = await study.render();
+const canonical = new URL(Astro.url.pathname, Astro.site).toString();
+const fmtDate = (d: Date) =>
+  d.toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' });
+---
+
+<BaseLayout
+  title={study.data.title}
+  description={study.data.description}
+  type="article"
+  publishedTime={study.data.pubDate.toISOString()}
+  modifiedTime={study.data.updatedDate?.toISOString()}
+  image={study.data.ogImage ?? study.data.heroImage}
+>
+  <ArticleSchema
+    title={study.data.title}
+    description={study.data.description}
+    pubDate={study.data.pubDate}
+    updatedDate={study.data.updatedDate}
+    url={canonical}
+    image={study.data.ogImage ?? study.data.heroImage}
+  />
+
+  <article class="container prose">
+    <nav class="crumbs muted">
+      <a href="/">rikuq</a> › <a href="/case-studies">Case studies</a> › <span>{study.data.title}</span>
+    </nav>
+
+    <header>
+      <h1>{study.data.title}</h1>
+      <p class="lede">{study.data.description}</p>
+      <div class="meta muted">
+        <span>Product: <a href={study.data.productUrl} rel="me">{study.data.product}</a></span>
+        <span>·</span>
+        <time datetime={study.data.pubDate.toISOString()}>{fmtDate(study.data.pubDate)}</time>
+      </div>
+      {study.data.stack.length > 0 && (
+        <p class="stack muted">Stack: {study.data.stack.join(' · ')}</p>
+      )}
+    </header>
+
+    <Content />
+
+    <NewsletterSignup variant="card" />
+  </article>
+</BaseLayout>
+
+<style>
+  .crumbs { font-size: 0.85rem; margin: 1.5rem 0 0.5rem; }
+  .crumbs a { color: var(--fg-muted); text-decoration: none; }
+  .meta { font-size: 0.88rem; display: flex; gap: 0.4rem; flex-wrap: wrap; }
+  .stack { font-size: 0.85rem; margin-top: 0.5rem; }
+</style>

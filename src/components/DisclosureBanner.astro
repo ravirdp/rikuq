@@ -1,0 +1,37 @@
+---
+interface Props {
+  affiliate?: boolean;
+  prism?: boolean;
+  citare?: boolean;
+  batchwise?: boolean;
+}
+const { affiliate, prism, citare, batchwise } = Astro.props;
+const hasAny = affiliate || prism || citare || batchwise;
+---
+
+{hasAny && (
+  <aside class="disclosure">
+    <strong>Disclosure:</strong>
+    {affiliate && <span> This post contains affiliate links. If you sign up through them, I may earn a commission at no cost to you. My ranking and recommendations are not influenced by payouts — I recommend tools I actually use or have tested.</span>}
+    {prism && <span> Prism (by Ssimplifi) is built by me, the author of this post. I disclose this upfront because it's a competitor of others discussed here. I've tried to evaluate every product on its actual merits.</span>}
+    {citare && <span> Citare is built by me, the author of this post. I disclose this upfront because it's a competitor of others discussed here.</span>}
+    {batchwise && <span> BatchWise is built by me, the author of this post. Disclosing for transparency.</span>}
+  </aside>
+)}
+
+<style>
+  .disclosure {
+    border: 1px solid var(--border);
+    border-left: 3px solid var(--accent);
+    background: var(--bg-subtle);
+    padding: 0.85rem 1rem;
+    border-radius: 0.4rem;
+    margin: 1.5rem 0;
+    font-size: 0.88rem;
+    color: var(--fg-muted);
+    line-height: 1.55;
+  }
+  .disclosure strong {
+    color: var(--fg);
+  }
+</style>
