@@ -44,7 +44,12 @@ A single source of truth for everything from now until launch day. Mark items as
 - [x] This launch checklist
 
 ### Outstanding for you (Ravi)
-- [ ] **Backlinks** — the three Opus prompts you've already sent for BatchWise / Citare / Ssimplifi. Verify they ship.
+- [x] **Backlinks** — shipped on all three properties (2026-05-20):
+  - BatchWise — footer link, Organization JSON-LD with founder Person, editorial-team author block, 1 deferred case-study TODO (`tally-ledger-to-brsr-mapping.mdx`)
+  - Citare — sitewide footer, /about author block, Organization schema founder→Person, blog byline links, 3 GEO TODOs (four-index, ai-bot-crawlers, ai-search-vs-google)
+  - Ssimplifi — sitewide footer, /about founder block, homepage Org JSON-LD, blog post bylines, 3 docs TODOs (caching, policy, edge-routing). Commit `18a2a8f`.
+  - All use `rel="author"`, no nofollow. No mass-linking. `sameAs` reciprocity wires up the moment rikuq.com goes live (already in `src/lib/site.ts` → `SITE.author.sameAs`).
+  - TODO links to uncomment on each property once matching rikuq posts ship — grep `TODO(rikuq-backlink)` to surface them.
 - [ ] `npm install` in `/Users/ravi/code/rikuq` and verify `npm run dev` builds clean
 - [ ] Create GitHub repo (public recommended — small backlink, dev credibility) and push
 - [ ] Wire up Cloudflare Pages: connect GitHub repo, set build = `npm run build`, output = `dist`

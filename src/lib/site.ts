@@ -16,7 +16,7 @@ export const SITE = {
   },
   social: {
     twitter: 'https://twitter.com/rikuq',
-    github: 'https://github.com/rikuq',
+    github: 'https://github.com/rikuq/rikuq', // public repo
     linkedin: 'https://linkedin.com/in/rikuq',
   },
   ogImage: '/og-default.png',
