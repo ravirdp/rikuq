@@ -62,7 +62,7 @@ A single source of truth for everything from now until launch day. Mark items as
 - [ ] `npm install` in `/Users/ravi/code/rikuq` and verify `npm run dev` builds clean
 - [ ] Create GitHub repo (public recommended — small backlink, dev credibility) and push
 - [ ] Wire up Cloudflare Pages: connect GitHub repo, set build = `npm run build`, output = `dist`
-- [ ] Buy/point rikuq.com to Cloudflare Pages
+- [x] Buy/point rikuq.com to Cloudflare Pages — both `rikuq.com` and `www.rikuq.com` Active + SSL enabled, verified 200 (2026-05-20)
 - [ ] Take a real headshot (or commission one)
 - [ ] Decide on logo / wordmark beyond the SVG favicon (optional — type-only is fine)
 - [ ] Sign up for affiliate programs (see `docs/affiliate-programs.md`)
