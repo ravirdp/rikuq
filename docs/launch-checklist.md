@@ -43,6 +43,15 @@ A single source of truth for everything from now until launch day. Mark items as
 - [x] About bio variants (`docs/about-bio.md`)
 - [x] This launch checklist
 
+### Build, deploy, infra (done 2026-05-20)
+- [x] `npm install` clean (Astro 6, no Cloudflare adapter — pure static + Pages Functions)
+- [x] `npm run build` clean — 12 static pages, sitemap, RSS, llms.txt all generated
+- [x] Public GitHub repo: https://github.com/ravirdp/rikuq
+- [x] Cloudflare KV namespace provisioned: `rikuq-quiz-results` (id `547cc227b4fa42bc99968ee25304121d`, bound as `QUIZ_RESULTS`)
+- [x] Cloudflare R2 bucket provisioned: `rikuq-og` (bound as `OG_IMAGES`)
+- [x] Cloudflare Pages project created: `rikuq` (production branch `main`, `nodejs_compat` flag)
+- [x] First deployment live at: https://rikuq.pages.dev (and https://39f27330.rikuq.pages.dev)
+
 ### Outstanding for you (Ravi)
 - [x] **Backlinks** — shipped on all three properties (2026-05-20):
   - BatchWise — footer link, Organization JSON-LD with founder Person, editorial-team author block, 1 deferred case-study TODO (`tally-ledger-to-brsr-mapping.mdx`)
