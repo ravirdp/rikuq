@@ -21,7 +21,7 @@ Companion site to [BatchWise](https://batchwise.ai), [Citare](https://citare.ai)
 - **Hosting:** Cloudflare Pages
 - **Edge logic:** Cloudflare Workers
 - **Storage:** Cloudflare KV (quiz results), R2 (OG images)
-- **Newsletter:** Resend Audiences
+- **Newsletter:** Brevo (double opt-in)
 - **Analytics:** Plausible + Cloudflare Web Analytics + GA4
 - **Search consoles:** GSC + Bing Webmaster Tools + IndexNow
 

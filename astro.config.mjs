@@ -2,15 +2,12 @@ import { defineConfig } from 'astro/config';
 import mdx from '@astrojs/mdx';
 import react from '@astrojs/react';
 import sitemap from '@astrojs/sitemap';
-import cloudflare from '@astrojs/cloudflare';
 
 // https://astro.build/config
+// Pure static build → deploys to Cloudflare Pages.
+// /api/subscribe runs as a Cloudflare Pages Function from /functions/api/subscribe.ts.
 export default defineConfig({
   site: 'https://rikuq.com',
-  output: 'static',
-  adapter: cloudflare({
-    platformProxy: { enabled: true },
-  }),
   integrations: [
     mdx(),
     react(),

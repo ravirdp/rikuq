@@ -1,19 +1,19 @@
 name = "rikuq"
 compatibility_date = "2025-10-01"
+compatibility_flags = ["nodejs_compat"]
 pages_build_output_dir = "./dist"
 
-# Cloudflare Pages env vars come from the dashboard, not here.
-# This file is mainly for local `wrangler pages dev` testing.
-
+# Env vars (non-secret) — secrets like BREVO_API_KEY are set in the
+# Cloudflare Pages dashboard under Settings → Environment Variables.
 [vars]
 PUBLIC_SITE_URL = "https://rikuq.com"
 
-# KV namespace bindings (create via wrangler, then paste the IDs)
-# [[kv_namespaces]]
-# binding = "QUIZ_RESULTS"
-# id = "TODO_KV_ID"
+# KV namespace — used by future /tools/picker quiz result permalinks
+[[kv_namespaces]]
+binding = "QUIZ_RESULTS"
+id = "547cc227b4fa42bc99968ee25304121d"
 
-# R2 bucket for OG images
-# [[r2_buckets]]
-# binding = "OG_IMAGES"
-# bucket_name = "rikuq-og"
+# R2 bucket — used by OG image generation later
+[[r2_buckets]]
+binding = "OG_IMAGES"
+bucket_name = "rikuq-og"

@@ -58,7 +58,7 @@ A single source of truth for everything from now until launch day. Mark items as
 - [ ] Decide on logo / wordmark beyond the SVG favicon (optional — type-only is fine)
 - [ ] Sign up for affiliate programs (see `docs/affiliate-programs.md`)
 - [ ] Create dedicated email (e.g., `hi@rikuq.com`, `affiliates@rikuq.com`) via Cloudflare Email Routing
-- [ ] Sign up for Resend Audiences, get API key + audience ID, add to `.env`
+- [ ] Brevo: create account, create contact list, generate API key + list ID + DOI template ID, add to `.env` (`BREVO_API_KEY`, `BREVO_LIST_ID`, `BREVO_DOI_TEMPLATE_ID`)
 - [ ] Sign up for Plausible (or use Cloudflare Web Analytics — already in BaseHead)
 - [ ] Decide newsletter cadence (recommend Friday weekly)
 
