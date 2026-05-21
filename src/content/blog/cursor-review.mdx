@@ -1,0 +1,149 @@
+---
+title: "Cursor Review 2026 — Honest 'Not For Me' Take From a VSCode User"
+description: "Why I didn't stick with Cursor — and why that's a recommendation, not a complaint. Honest review from a founder who ships 3 SaaS in VSCode + Claude."
+pubDate: 2026-05-21
+updatedDate: 2026-05-21
+category: tools
+tags:
+  - cursor
+  - vscode
+  - ai-coding-tools
+  - tool-review
+author: Ravi
+draft: false
+affiliateDisclosure: true
+faqs:
+  - question: "Is Cursor worth $20 a month in 2026?"
+    answer: "If your dominant workflow is hand-coding with AI tab completion and chat-while-editing, yes — it's the cheapest path to that experience. Note that since June 2025 the $20 Pro plan is credit-pool based ($20 of model credits per month), not truly unlimited. Many heavy users end up on Pro+ at $60/month."
+  - question: "Cursor vs VSCode — what's the actual difference?"
+    answer: "Cursor is built on VSCode, so all the editor behavior is identical. The differences live entirely in the AI layer: faster tab completion, a chat sidebar that knows your file context, Composer mode for multi-file changes, and the .cursorrules convention. If you don't use those AI features, Cursor and VSCode are the same product."
+  - question: "Why didn't you stick with Cursor?"
+    answer: "Not because it's bad. Because I don't do enough tab-completion-driven work for the AI layer to pay off vs my existing setup (VSCode + Claude Code via the Desktop App). I'm an 'AI ships features for me' founder, not an 'AI types alongside me' one. Cursor wins for the second workflow; my workflow is the first."
+  - question: "Should I use Cursor or Claude Code?"
+    answer: "Different jobs. Cursor is the IDE for hand-coding with AI assist — best if you type a lot and want completions and chat right there. Claude Code is an agentic assistant that ships features end-to-end — best if you direct the AI rather than partner with it. Many serious solo founders run both. I run only Claude Code."
+  - question: "Is Cursor the best AI coding IDE?"
+    answer: "It's the most popular and most polished AI-first IDE today. 'Best' depends on your workflow — if you want a tab-completion-heavy AI experience, yes. If you want agentic feature-shipping, no, that's Claude Code's category. For most developers most of the time, Cursor is the safest first AI tool to buy."
+---
+
+import DisclosureBanner from '@/components/DisclosureBanner.astro';
+
+This is a Cursor review from someone who **tried Cursor, didn't keep it, and doesn't think that's a complaint**.
+
+I'm Ravi. I've shipped three production AI SaaS solo — [Prism](https://ssimplifi.com), [Citare](https://citare.ai), and [BatchWise](https://batchwise.ai) — using plain VSCode and Claude Code as my primary stack. I tried Cursor seriously. It didn't fit my workflow. *That's not Cursor's fault — and the explanation of why is the actually-useful part of this review.*
+
+Most Cursor reviews are by people who love it and bought it, or people who reviewed it as a chore. This is the rarer one: someone who tested it fairly, didn't stick, and can explain *who should* stick.
+
+<DisclosureBanner affiliate />
+
+## TL;DR
+
+| Question | Answer |
+|---|---|
+| Is Cursor good? | Yes. It's the most polished AI-first IDE today. |
+| Why didn't you keep it? | It has no marginal use case over VSCode + Claude Code for *my* workflow. |
+| Should you buy it? | Yes if your default work is hand-coding with AI assist. No if your default work is directing AI to ship features (use [Claude Code](/blog/tools/claude-code-review) instead). |
+| Best Cursor pricing strategy in 2026 | Start on Hobby (free) → Pro ($20/mo, credit-pool) → Pro+ ($60/mo) if you blow through credits |
+| Verdict | Genuinely good tool. Not for me. For most people, probably for you. |
+
+## Why I didn't stick — the personality angle
+
+Honest reason first, technical reason second.
+
+**I keep clean machines.** I don't install apps I don't actively need. One app per purpose. If I switch to a new tool that replaces an old one, I uninstall the old one the same day. Apps that sit on my system "just in case" trigger a kind of OCD itch I'd rather not live with. Native OS apps I can't uninstall already bother me; I'm not voluntarily adding to the pile.
+
+So my bar for keeping any tool is: *does this give me something I don't already have?*
+
+Cursor is built on VSCode. The editor behavior is identical. The differentiators live entirely in the AI layer — tab completion, chat sidebar, Composer mode, `.cursorrules` conventions. For someone whose dominant workflow is *hand-coding with AI assist*, these are real differentiators that justify keeping the app installed.
+
+For me, they aren't. My dominant workflow is **directing Claude to ship features end-to-end via the Desktop App + MCP**. I'm not in the editor typing-and-completing for hours; I'm telling Claude what to build, watching it build, reviewing, and shipping. The hours I'd spend in Cursor's AI sweet spot just aren't hours I have.
+
+So Cursor would have sat on my machine doing essentially nothing different from what plain VSCode does for me. Uninstall.
+
+**That's not a Cursor problem.** It's a workflow mismatch. If you're the developer who lives in tab completion and prefers AI as a fast hand-extension, Cursor was *built* for you. I'm just not that developer.
+
+## What Cursor is, properly
+
+For readers who want the actual review:
+
+Cursor is a fork of VSCode with AI features integrated at the IDE level, not as plugins. The team's bet is that the AI experience is materially better when it has first-class access to the editor's internal state — selection, file tree, cursor position, recent edits — than when it's bolted on as an extension.
+
+In practice, they've been right. Cursor's AI experience *is* meaningfully smoother than VSCode-plus-Copilot-plugin, in measurable ways:
+
+1. **Tab completion** — best-in-class. Suggestions feel faster, more context-aware, more often *right* than competitors.
+2. **Chat sidebar** — knows what file you're in, what's selected, what's nearby. The "ask about this code" loop is genuinely tight.
+3. **Composer mode** — multi-file changes from a single prompt. Stumbles on large refactors but handles small-to-medium ones well.
+4. **`.cursorrules`** — a per-repo file where you declare conventions the AI should respect. Underrated and material to output quality.
+
+If your daily work is in the editor with frequent AI nudges, Cursor's AI layer pays for itself fast. If your daily work is *not* in the editor — if you're directing an external AI to do most of the heavy lifting — those features are irrelevant.
+
+## Cursor pricing in 2026
+
+Cursor restructured pricing in 2025. May 2026 reality:
+
+| Plan | Price | Notes |
+|---|---|---|
+| Hobby | Free | Limited completions, no credit card required |
+| Pro | $20/mo ($16/mo annual) | $20 of model credits per month — *not* truly unlimited |
+| Pro+ | $60/mo | 3× the Pro credit pool |
+| Ultra | $200/mo | Heaviest individual plan |
+| Business | $40/seat/mo | Team admin + shared rules |
+
+The Pro plan being credit-pool based (since June 2025) is the part most reviews skip. **Frontier-model usage burns through the $20 of credits faster than you'd expect** — many heavy users end up on Pro+ at $60/month, which puts it roughly on par with Claude Code Max ($100/month for the 5× plan).
+
+If you're going to bet on Cursor seriously, plan for Pro+ ($60/mo) once you ramp up, not Pro ($20/mo). The Pro plan is best understood as "the on-ramp," not the destination.
+
+## Who should buy Cursor
+
+**Yes, buy Cursor if:**
+- Your dominant workflow is hand-coding with AI assist (most developers, including most senior engineers)
+- You think in tab completions — autocomplete is part of how you compose code, not just save keystrokes
+- You're new to AI coding tools and want the safest, most-polished, most-popular pick
+- You're switching from VSCode and want a minimal-friction upgrade with real AI gains
+- You work in teams and benefit from `.cursorrules` standardization across the org
+
+**Maybe skip Cursor if:**
+- You direct AI to ship features rather than typing code alongside it ([Claude Code](/blog/tools/claude-code-review) is your tool)
+- You're an Antigravity / Windsurf user happy with that stack
+- You're locked into JetBrains or Visual Studio (Copilot is still the best in those)
+- You keep minimal apps installed and Cursor doesn't replace something else
+
+## What I'd buy today if I were starting fresh
+
+If I were rebuilding my stack tomorrow and had to choose *one* daily editing setup:
+
+- **If I were typing in the editor most of the day:** Cursor Pro at $20/month, expect to upgrade to Pro+ at $60/month. Then add Claude Code Max ($100/month) for the agentic/complex work. Total: $120-160/month.
+- **If I were directing AI most of the day (my reality):** plain VSCode (free) + Claude Code Max ($100/month → $200/month at full intensity). Total: $100-200/month.
+
+Both are defensible. Pick based on which sentence describes you better.
+
+## vs Claude Code — the comparison that actually matters
+
+The right framing isn't "Cursor vs Claude Code" — they're not substitutes. The right framing is **"do you prefer AI as fast hand-extension, or AI as autonomous feature-shipper?"**
+
+- **AI as fast hand-extension** = Cursor. You're driving; the AI helps you go faster. Tab completion is the primary unit of value.
+- **AI as autonomous feature-shipper** = Claude Code. You're directing; the AI ships. End-to-end task completion is the primary unit of value.
+
+Many serious solo founders run both — Cursor for the editor-heavy parts, Claude Code for the agentic parts. That's a legitimate stack. I run only Claude Code because my editor-heavy hours just aren't there.
+
+Detailed comparison: **[Cursor vs Claude Code — which to buy first](/blog/tools/cursor-vs-claude-code)** *(coming soon)*
+
+## The verdict
+
+**Cursor is genuinely good.** The most polished AI-first IDE today, fairly priced for what it does, with a community and ecosystem (`.cursorrules`, extensions, rules-sharing) that makes it a safe long-term bet.
+
+**Cursor isn't for me.** I direct AI more than I hand-code, and the value-add over plain VSCode + Claude Code wasn't enough to keep an app on my machine.
+
+**For most developers most of the time, Cursor is probably for you.** That's the right and useful conclusion, even from someone who didn't keep it.
+
+If you're a founder still figuring out your workflow, my recommendation order: try Cursor Pro for a month. If you find yourself in the editor a lot and the AI feels essential, stay. If you find yourself directing more than typing, switch to plain VSCode + [Claude Code](/blog/tools/claude-code-review).
+
+## Related reading
+
+- **[Best AI Coding Tools 2026 — Honest Picks From Shipping 3 SaaS Solo](/blog/tools/best-ai-coding-tools-2026)** — full landscape, Cursor ranked in context.
+- **[Claude Code Review 2026 — From Zero Code to 3 Live SaaS](/blog/tools/claude-code-review)** — my actual primary tool, for contrast.
+- **[Antigravity Review (May 2026) — From Daily Driver to Dropped](/blog/tools/antigravity-review)** — the other VSCode-based AI IDE, and what happened to it.
+- **[Cursor vs Claude Code: which to buy first](/blog/tools/cursor-vs-claude-code)** *(coming soon)* — the head-to-head.
+
+---
+
+*Last updated 2026-05-21. Cursor moves quickly — I'll refresh this whenever pricing or features change materially. If you're a happy Cursor user and have a perspective I'm missing, [tell me on Twitter/X](https://twitter.com/rikuq).*
