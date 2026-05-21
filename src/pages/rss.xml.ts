@@ -12,13 +12,13 @@ export async function GET(context: APIContext) {
       title: p.data.title,
       description: p.data.description,
       pubDate: p.data.pubDate,
-      link: `/blog/${p.data.category}/${p.slug}/`,
+      link: `/blog/${p.data.category}/${p.id}/`,
     })),
     ...studies.map((s) => ({
       title: s.data.title,
       description: s.data.description,
       pubDate: s.data.pubDate,
-      link: `/case-studies/${s.slug}/`,
+      link: `/case-studies/${s.id}/`,
     })),
   ].sort((a, b) => b.pubDate.getTime() - a.pubDate.getTime());
 

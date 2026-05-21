@@ -24,7 +24,7 @@ const studies = (
       <ul class="posts">
         {studies.map((s) => (
           <li>
-            <a href={`/case-studies/${s.slug}`}>
+            <a href={`/case-studies/${s.id}`}>
               <span class="meta">{s.data.product}</span>
               <strong>{s.data.title}</strong>
               <span class="muted">{s.data.description}</span>

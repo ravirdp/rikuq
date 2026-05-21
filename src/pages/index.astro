@@ -55,7 +55,7 @@ const personSchema = {
       <ul class="posts">
         {latest.map((post) => (
           <li>
-            <a href={`/blog/${post.data.category}/${post.slug}`}>
+            <a href={`/blog/${post.data.category}/${post.id}`}>
               <span class="cat">{PILLARS[post.data.category].title}</span>
               <strong>{post.data.title}</strong>
               <span class="muted">{post.data.description}</span>

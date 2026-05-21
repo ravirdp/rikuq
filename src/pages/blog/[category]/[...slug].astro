@@ -1,20 +1,21 @@
 ---
 import PostLayout from '@/layouts/PostLayout.astro';
-import { getCollection } from 'astro:content';
+import { getCollection, render } from 'astro:content';
 import readingTime from 'reading-time';
 import type { GetStaticPaths } from 'astro';
 
 export const getStaticPaths: GetStaticPaths = async () => {
   const posts = await getCollection('blog', ({ data }) => !data.draft);
   return posts.map((p) => ({
-    params: { category: p.data.category, slug: p.slug },
+    // glob loader uses `id` (path without extension, relative to base) as the URL slug
+    params: { category: p.data.category, slug: p.id },
     props: { post: p },
   }));
 };
 
 const { post } = Astro.props;
-const { Content } = await post.render();
-const rt = Math.ceil(readingTime(post.body).minutes);
+const { Content } = await render(post);
+const rt = Math.ceil(readingTime(post.body ?? '').minutes);
 ---
 
 <PostLayout

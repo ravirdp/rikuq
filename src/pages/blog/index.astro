@@ -32,7 +32,7 @@ const posts = (await getCollection('blog', ({ data }) => !data.draft)).sort(
     <ul class="posts">
       {posts.map((p) => (
         <li>
-          <a href={`/blog/${p.data.category}/${p.slug}`}>
+          <a href={`/blog/${p.data.category}/${p.id}`}>
             <span class="meta">{PILLARS[p.data.category].title}</span>
             <strong>{p.data.title}</strong>
             <span class="muted">{p.data.description}</span>

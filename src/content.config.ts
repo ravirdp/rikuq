@@ -1,7 +1,8 @@
 import { defineCollection, z } from 'astro:content';
+import { glob } from 'astro/loaders';
 
 const blog = defineCollection({
-  type: 'content',
+  loader: glob({ pattern: '**/[^_]*.{md,mdx}', base: './src/content/blog' }),
   schema: z.object({
     title: z.string().max(70, 'Title should be ≤70 chars for SERP'),
     description: z.string().min(120).max(160, 'Meta desc should be 120–160 chars'),
@@ -25,7 +26,7 @@ const blog = defineCollection({
 });
 
 const caseStudies = defineCollection({
-  type: 'content',
+  loader: glob({ pattern: '**/[^_]*.{md,mdx}', base: './src/content/case-studies' }),
   schema: z.object({
     title: z.string().max(80),
     description: z.string().min(120).max(160),
