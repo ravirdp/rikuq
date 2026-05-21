@@ -26,9 +26,20 @@ jobs:
         run: npm run build
 
       - name: Deploy to Cloudflare Pages
+        id: deploy
         uses: cloudflare/wrangler-action@v3
         with:
           apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
           command: pages deploy dist --project-name=rikuq --branch=main
           gitHubToken: ${{ secrets.GITHUB_TOKEN }}
+
+      # Give Cloudflare a few seconds to propagate the new build before pinging.
+      - name: Wait for edge propagation
+        run: sleep 20
+
+      - name: Ping IndexNow (Bing / Yandex / Naver / Seznam)
+        env:
+          INDEXNOW_KEY: ${{ secrets.INDEXNOW_KEY }}
+        run: ./scripts/indexnow.sh
+        continue-on-error: true
