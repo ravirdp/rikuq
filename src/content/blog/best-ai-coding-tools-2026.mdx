@@ -22,6 +22,8 @@ faqs:
     answer: "For most people, yes. It's the cheapest path to a real AI-augmented IDE with usable tab completion and chat. Note that since June 2025 the $20 Pro plan is credit-pool based ($20 of model credits per month), not truly unlimited — frontier model usage burns through credits faster than you'd expect."
   - question: "Is Claude Code better than Cursor?"
     answer: "For complex, long-context, multi-file refactors and backend logic, yes. For hand-coding inside an IDE with quick edits and tab completion, no — that's Cursor's strength. They are complementary, not substitutes. Most serious solo founders use both, or Claude Code with a non-AI IDE like plain VSCode (which is what I do)."
+  - question: "How much does Claude Code cost per month for a solo founder?"
+    answer: "Two paths. Anthropic's Max plans are flat-fee subscriptions that include Claude Code with generous limits: $100/month for Max (5x) or $200/month for Max (20x). The API pay-per-token path runs $80-250+/month for comparable solo usage. I'm on the $200 Max plan — flat fee removes usage anxiety, which is worth more than the dollar savings of pay-go for most solo founders."
   - question: "What happened to Antigravity in 2026?"
     answer: "Antigravity was, for several months, the fastest tool in the category for routine work — its Gemini-native integration was at least 2x faster than Claude for simple tasks, and it shipped with VSCode-equivalent baseline IDE features. A May 2026 restructuring rewrote enough of the product that I dropped it: the new UX would have cost me too much re-learning time relative to the speed gain. Worth watching if you're greenfield; not worth migrating to mid-project."
   - question: "Should I still use GitHub Copilot in 2026?"
@@ -42,7 +44,7 @@ I'm also going to tell you which tool I dropped two weeks ago and why — becaus
 
 | Your dominant job | Use this | Cost |
 |---|---|---|
-| Complex multi-file work, backend logic, long-context refactors | **Claude Code** | API pay-go (typically $80–200+/mo solo) |
+| Complex multi-file work, backend logic, long-context refactors | **Claude Code** | $100/mo Max → $200/mo Max (or API pay-go) |
 | Daily IDE work, fast edits, tab completion | **Cursor** (or VSCode + Claude Code, which I prefer) | $20/mo (Pro) |
 | Greenfield agentic feature work (until ~May 2026) | **Antigravity** — see the cautionary tale below | Free during preview |
 | Locked into JetBrains / Visual Studio at work | **GitHub Copilot** | $10–19/mo |
@@ -53,7 +55,7 @@ I'm also going to tell you which tool I dropped two weeks ago and why — becaus
 Worth stating upfront so you can calibrate everything below:
 
 - **Editor:** plain VSCode. No Cursor, no Windsurf.
-- **Primary AI:** Claude Code (CLI). It does the heavy lifting.
+- **Primary AI:** Claude Code (CLI) on the **$200/month Anthropic Max plan**. It does the heavy lifting.
 - **Was using:** Antigravity for the last several months. Dropped it ~2 weeks ago after the May 2026 redesign. More on that below.
 - **Provider account fallbacks:** ChatGPT and Gemini, for second opinions and specific tasks.
 
@@ -85,7 +87,14 @@ The CLI workflow matters more than people give it credit for. Being able to run 
 
 **What it does poorly:** raw typing speed. There is no IDE-grade tab completion. If you're banging out a form or a CRUD route, this is overkill and slower than just typing.
 
-**Cost reality:** pay-per-use via the Anthropic API. My monthly spend across all three SaaS averages around {/* TODO: confirm */}$110/month — heavy weeks hit $200, quiet weeks $50. Prompt caching has cut this by ~40% since Anthropic shipped it; I cover [why caching matters and how to set it up](/blog/infra/anthropic-prompt-caching-real-numbers) separately.
+**Cost reality:** two pricing paths.
+
+- **Anthropic API pay-per-token** — variable. For comparable solo-founder usage you'd be looking at $80–$250+/month depending on intensity. [Prompt caching](/blog/infra/anthropic-prompt-caching-real-numbers) trims ~40% off the bill if you're using it.
+- **Claude Max subscription** — a flat monthly plan that includes Claude Code with very generous usage limits. **$100/month** for Max (5×) and **$200/month** for Max (20×).
+
+I'm currently on the **$200/month Max plan**. I started on the $100 plan and upgraded when my Citare velocity work (the 76k-LOC-in-12-days sprint above) made me hit the ceiling repeatedly. For my workload, $200 flat is materially better than the API metering anxiety — I stop thinking about cost per query and just *use* the tool, which itself ships more code per day.
+
+If you're building seriously, my recommendation order is: **$100 Max → upgrade to $200 Max when you hit limits → only fall back to API pay-go if you outgrow even $200**. The mental savings of a flat fee are bigger than the dollar savings of pay-go for most solo founders.
 
 **The verdict:** if you only buy one tool in 2026, this is it for serious solo founders building real backends. **[Read the full Claude Code review →](/blog/tools/claude-code-review)** *(coming soon)*
 
@@ -155,7 +164,7 @@ The Pro plan being credit-pool based (since June 2025) is the part most reviews 
 
 | Tool | Best for | Weakness | Monthly cost (solo) | My rank |
 |---|---|---|---|---|
-| Claude Code | Complex multi-file work, backend logic, long context | No IDE-grade typing UX | $80–200+ (API pay-go) | 1 |
+| Claude Code | Complex multi-file work, backend logic, long context | No IDE-grade typing UX | $100/$200 Max (flat) or API pay-go | 1 |
 | Antigravity (pre-redesign) | Speed for routine work via native Gemini | Mid-2026 redesign disrupted existing users | Free preview | 2 (paused) |
 | Cursor | Daily IDE, fast edits, tab completion | Stumbles on large multi-file tasks; credit-pool surprises | $20–60+ | 3 |
 | Windsurf | Cursor alternative, similar IDE experience | No decisive edge over Cursor | $15–20 | 4 |
@@ -164,7 +173,7 @@ The Pro plan being credit-pool based (since June 2025) is the part most reviews 
 ## Picking your stack — three honest recommendations
 
 **If you're a solo founder building serious products in 2026: Claude Code + your editor of choice.**
-The combination costs ~$80–200/month at realistic volumes. If you're a tab-completion person, the editor is Cursor. If you're more architecture-driven, plain VSCode works (it's my setup). The point is Claude Code is the engine; the editor is the steering wheel — pick whichever steering wheel you like best.
+Start on the **$100/month Anthropic Max plan**, upgrade to **$200/month Max** when you hit the ceiling (I did — it's worth it). If you're a tab-completion person, the editor is Cursor. If you're more architecture-driven, plain VSCode works (it's my setup). The point is Claude Code is the engine; the editor is the steering wheel — pick whichever steering wheel you like best.
 
 **If you're a non-technical founder learning to ship: start with Cursor alone.**
 The IDE experience is the part that teaches you the loop of read-code → understand → edit → run. Adding Claude Code before you've internalized that loop just hides what's happening. Once you're comfortable, add Claude Code for the harder backend stuff.
@@ -178,12 +187,13 @@ Not sure which stack fits you? I'm building [a 6-question picker](/tools/picker)
 
 Most "free trial" pricing makes these look cheap. Reality at solo-founder usage:
 
-- **Claude Code alone:** $80–200+/month depending on intensity. Use [Anthropic's prompt caching](/blog/infra/anthropic-prompt-caching-real-numbers) — I've seen 35–45% cost reductions on real workloads.
+- **Claude Code via Anthropic Max:** $100/month (5×) or $200/month (20×). Flat fee. No usage anxiety. This is what I pay.
+- **Claude Code via API pay-go:** $80–250+/month for equivalent usage. Use [Anthropic's prompt caching](/blog/infra/anthropic-prompt-caching-real-numbers) — 35–45% cost reductions are real.
 - **Cursor Pro:** $20/month, but treat it as $20 of credits and expect heavy users to move to Pro+ at $60/month.
-- **Cursor + Claude Code stack:** $100–250+/month total.
-- **VSCode + Claude Code stack** (my setup): $80–200/month total. Cheaper than Cursor-inclusive setups for equivalent capability, since VSCode itself is free.
+- **Cursor + Claude Code Max stack:** $120–220/month total.
+- **VSCode + Claude Code Max stack** (my setup): $100–200/month total. Cheaper than Cursor-inclusive setups since VSCode itself is free.
 
-For context: my Claude Code spend across building three SaaS averaged {/* TODO: confirm */}~$110/month. I consider this the cheapest engineer I will ever hire.
+For context: I pay **$200/month flat** for Claude Code Max (20×), upgraded from the $100 plan after Citare's 12-day build hit the ceiling repeatedly. I consider this the cheapest engineer I will ever hire — ~107,000 lines of production code across three SaaS, mostly through one CLI tool.
 
 If your AI bill is creeping up, [my AI API cost calculator](/tools/api-cost-calculator) models savings from caching, routing, and model selection.
 
@@ -200,11 +210,11 @@ Four updates from the last 6 months that should shift how you think about these 
 
 If I were starting from scratch tomorrow, I'd subscribe to:
 
-1. **Anthropic API access for Claude Code** — pay-as-you-go. Day one.
+1. **Anthropic Max ($100/month, 5×)** — Claude Code's flat-fee plan. Day one. Upgrade to $200 (20×) when you start hitting limits regularly.
 2. **VSCode** — free, day one. Add Cursor instead if you prefer tab-completion-driven flow.
 3. **Antigravity preview** — only if you're greenfield and not migrating in.
 
-That's the 2026 stack. Total ~$80–200/month at realistic solo-founder volumes.
+That's the 2026 stack. Total **$100–200/month at realistic solo-founder volumes**, flat fee, no surprises.
 
 ## Where to go next
 
