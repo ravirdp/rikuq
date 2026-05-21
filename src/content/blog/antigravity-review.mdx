@@ -1,0 +1,146 @@
+---
+title: "Antigravity Review (May 2026) — From Daily Driver to Dropped"
+description: "I used Antigravity heavily for months, then dropped it after the May 2026 redesign. Honest review of what worked, what broke, and who should still try it."
+pubDate: 2026-05-21
+updatedDate: 2026-05-21
+category: tools
+tags:
+  - antigravity
+  - ai-coding-tools
+  - gemini
+  - claude-code
+  - tool-review
+author: Ravi
+draft: false
+affiliateDisclosure: false
+faqs:
+  - question: "What is Antigravity?"
+    answer: "A VSCode-based AI coding IDE with native Gemini integration as its differentiator. Before the May 2026 redesign, it shipped with all the baseline editor features VSCode users already knew, plus a fast Gemini-powered AI layer that was materially quicker than Claude for routine work — file edits, boilerplate, form scaffolding."
+  - question: "Is Antigravity still worth using in 2026?"
+    answer: "If you're greenfield and have no muscle memory in the pre-May-2026 UX, yes — the Gemini-native speed is still a real differentiator for high-volume routine work. If you're mid-project and would have to re-learn the new UX, probably not — the cost of context-shifting is currently higher than the speed gain. Re-evaluate in 3 months once the redesign stabilizes."
+  - question: "Why did the May 2026 Antigravity redesign cause issues?"
+    answer: "The redesign restructured the UX enough that existing users had to re-learn workflows they already had muscle memory for. For founders mid-project, that re-learning time exceeded the value of the speed gain, which made staying on the old workflow with a different tool (Claude Code, Cursor, plain VSCode + AI) the rational call."
+  - question: "Is Antigravity faster than Claude Code?"
+    answer: "Yes for routine, low-reasoning tasks — pre-redesign Antigravity's Gemini-native integration was at least 2x faster than Claude for simple file edits, boilerplate, and CRUD work. No for complex multi-file refactors or anything requiring long-context reasoning — Claude Code is in a different category there."
+  - question: "Antigravity vs Cursor vs Claude Code — which one wins?"
+    answer: "None wins outright. Claude Code wins on complex reasoning and long-context work. Cursor wins on everyday IDE polish and tab completion. Pre-redesign Antigravity won on raw speed for routine work via Gemini. The honest answer is the right stack combines two of them — most serious solo founders pair Claude Code with either Cursor (popular) or VSCode with an AI assist of choice (my setup, after dropping Antigravity)."
+---
+
+import DisclosureBanner from '@/components/DisclosureBanner.astro';
+
+I used Antigravity as a daily driver for several months. Two weeks ago I dropped it.
+
+This is the honest version of why, what worked before, what changed, and who should still try it. If you came here looking for either "Antigravity is dead" or "Antigravity is the future" — neither is true. The story is more interesting than that.
+
+For context: I'm Ravi. I've shipped three production AI SaaS solo — [Prism](https://ssimplifi.com), [Citare](https://citare.ai), and [BatchWise](https://batchwise.ai). Antigravity was a meaningful part of how I built parts of all three. I'm not a casual tester here.
+
+## TL;DR
+
+| Question | Answer |
+|---|---|
+| Is Antigravity still good? | For greenfield work, yes. For mid-project users coming from the pre-May-2026 UX, currently no. |
+| Should I try it today? | Only if you have no prior muscle memory in the old version. |
+| What made it special before? | VSCode-equivalent baseline editor + native Gemini = at least 2× faster than Claude for routine work. |
+| Why did you drop it? | The May 2026 redesign rewrote the UX enough that re-learning it would have cost me more time than the speed gain was worth. |
+| When to re-evaluate? | ~3 months from now, once the new UX stabilizes and existing users have either adapted or churned. |
+
+## What Antigravity actually was (pre-May 2026)
+
+Antigravity's positioning was simple and, for a while, perfectly executed: take the VSCode foundation everyone already knew, and add a native Gemini integration that made routine AI coding noticeably faster than anything else on the market.
+
+Both halves of that pitch mattered:
+
+**The VSCode foundation.** This is the part most reviews underplay. Switching IDEs has a real cost — keyboard shortcuts you've internalized, extensions you've configured, theme preferences, debugger setups. Antigravity inherited essentially all of it from VSCode. Day one I had every editor behavior I already had. The only thing I had to learn was the AI surface on top.
+
+That meant the *value-to-switching-cost ratio* was excellent. Compare to Cursor, which is also VSCode-based but introduces its own opinions and UI conventions you have to absorb. Antigravity felt like "VSCode plus a really good AI" rather than "a new editor I have to learn."
+
+**The Gemini-native integration.** This was the genuine speed differentiator. For routine tasks — generating form scaffolding, writing boilerplate CRUD routes, banging out repetitive components — Gemini was at least 2× faster than Claude. Not on quality (Claude was usually equal or better for anything that needed reasoning), but on raw response time.
+
+That speed gap mattered more than it sounds. When you're in flow doing 30+ small AI-assisted edits an hour, a 2× speedup compounds into a meaningfully faster work session. The "AI feels instant" mental model lets you stay in flow in a way that "AI takes 4 seconds to respond" doesn't.
+
+## What I actually built with it
+
+Concrete first-party use, not theoretical:
+
+- **[BatchWise](https://batchwise.ai) form ecosystem** — most of the ~10 user-facing forms and the engagement-start wizard were scaffolded in Antigravity. CRUD UI is exactly the kind of work where Gemini's speed advantage paid off.
+- **[Citare](https://citare.ai) early scaffolding** — when I was bootstrapping the marketing site and the dashboard shell (before the engine work moved entirely to Claude Code), Antigravity handled a lot of the routine component generation.
+- **[Prism](https://ssimplifi.com) early scaffolding** — same pattern; the dashboard and admin pages were faster to scaffold in Antigravity than in Claude Code, even though Claude Code did the core gateway logic.
+
+Workflow during those months: Claude Code for the architecture-grade work (multi-file refactors, complex backend logic, anything needing long-context reasoning), Antigravity for the high-volume routine work where speed mattered more than depth. The combination was excellent.
+
+That combination is what the May 2026 redesign disrupted.
+
+## What the May 2026 redesign changed
+
+Around the second week of May 2026, the Antigravity team shipped a major redesign. I'm sure there's a coherent product vision behind it — most redesigns aren't done capriciously — but in practice the new UX is *different enough from the old one* that existing users effectively have to re-learn the tool.
+
+I don't want to over-detail what specifically changed, because (a) the team is still iterating and the specifics will be stale fast, and (b) my point isn't "the new UX is bad." My point is: **for an existing user mid-project, the cost of re-learning a tool I was already productive in exceeded the speed gain that brought me to the tool in the first place.**
+
+That's a rational reason to drop a tool even when it's not "bad."
+
+## Why I dropped it (the decision logic)
+
+When you're shipping production code daily, every minute of friction multiplies. The math I ran in my head:
+
+- **Speed gain from Antigravity over Claude Code for routine work:** ~2× on simple tasks. Saved maybe 30-45 minutes per work session, depending on what I was doing.
+- **Re-learning the new UX:** unclear, but a reasonable estimate would be 5-15 hours of "this isn't where the thing I want is" friction before the new flow becomes natural again.
+- **Alternative:** drop back to VSCode + Claude Code for routine work too. Slower per-task, but zero re-learning. I knew the flow exactly.
+
+The break-even on re-learning was somewhere in the range of 2-3 weeks of saved time. That's *probably* worth it on a long-running project, but in the moment — mid-build, with a feature deadline — the right call was to switch tools, not to invest in re-learning.
+
+So I dropped Antigravity, moved my routine work to a combination of plain VSCode editing and Claude Code for anything substantive. Cost a little speed; saved the re-learning hours. Done.
+
+That decision-logic is the part I think other founders should internalize: **switching costs are real and asymmetric.** Adopting a tool when you have no prior muscle memory is cheap. Re-learning a tool you already had muscle memory in is *not* cheap, even if the tool stays roughly as capable.
+
+## What it still does well (for someone starting fresh)
+
+If I were greenfield-building today and had no prior Antigravity exposure, here's what would still bring me back to consider it:
+
+1. **The VSCode foundation is still there.** You're not learning a new editor; you're learning an AI layer on top of one you already know.
+2. **The Gemini-native speed advantage hasn't gone away.** For high-volume routine work — forms, boilerplate, CRUD — Gemini-via-Antigravity is still demonstrably faster than Claude-via-Claude-Code.
+3. **The agentic capabilities (browser-verification loops, multi-step plans)** are interesting and unique in the category, even if I personally don't use them at the volume that justifies the friction right now.
+
+For a new user without my switching-cost problem, Antigravity could still be the right call. My drop wasn't an indictment; it was a switching-cost decision specific to my situation.
+
+## What it does poorly (right now)
+
+Honest list:
+
+1. **Existing-user disruption.** The redesign created exactly the wrong kind of churn — disruptive to people already on the tool, without a benefit that's immediately felt by those same people.
+2. **Documentation lag.** Some of the workflow patterns I used in the old version don't have clear equivalents in the new version, and the docs haven't caught up. Trial and error.
+3. **Token usage on long agentic tasks.** When the agentic loop misfires, it can burn through tokens fast. Worth instrumenting if you're cost-conscious.
+
+## Antigravity vs the alternatives
+
+Quick honest reads:
+
+- **vs Claude Code:** Claude Code wins on complex reasoning, long-context, multi-file refactors. Antigravity wins on raw speed for routine work. Not substitutes — complements, if you can afford the redesign re-learn cost.
+- **vs Cursor:** Cursor has more polished day-to-day IDE UX and a larger ecosystem (`.cursorrules`, community extensions). Antigravity has the Gemini speed edge. For a new user picking one, Cursor is the safer bet today; Antigravity is the more interesting bet.
+- **vs Windsurf:** Comparable overall. Windsurf hasn't had a disruptive recent redesign, which currently makes it the more stable pick for someone considering "VSCode-based AI IDE that isn't Cursor."
+- **vs plain VSCode + Claude Code CLI** (my current setup): My setup is slower per-edit but has zero re-learning friction. For mid-project users, this is what I'd recommend over re-learning Antigravity right now.
+
+## What I'd want to see before re-adopting
+
+If Antigravity wants me back, three things would do it:
+
+1. **A stabilization window.** Six clean weeks without UX-breaking changes, to know my muscle memory will hold.
+2. **A migration mode.** Even just a "behave like the pre-May UX" toggle for users who can't afford to re-learn right now.
+3. **A clear new differentiator.** The Gemini speed was the original wedge. If the redesign added a new capability that's worth the re-learning cost — agentic verification loops at a quality I can't get elsewhere, for instance — I'd recalculate. I haven't seen that yet, but it's possible I haven't looked hard enough because I'm spending my attention on shipping.
+
+## The verdict
+
+**For new users:** worth trying. Gemini-native speed is real. VSCode foundation makes adoption cheap.
+
+**For existing users mid-project:** drop or pause. The re-learning cost currently exceeds the speed benefit. Switch to your second-best tool and re-evaluate Antigravity in ~3 months.
+
+**For anyone:** treat this as a case study in switching costs being asymmetric. Adopting is cheap; re-learning is expensive. Vendor redesigns that don't account for that are a real product mistake.
+
+## Related reading
+
+- **[Best AI Coding Tools 2026 — Honest Picks From Shipping 3 SaaS Solo](/blog/tools/best-ai-coding-tools-2026)** — the full landscape, with Antigravity ranked in context.
+- **[Cursor vs Claude Code: which to buy first](/blog/tools/cursor-vs-claude-code)** *(coming soon)* — the more conventional alternative if you're not betting on Antigravity.
+- **[How I built Citare in 12 days with Claude Code](/case-studies/citare)** *(coming soon)* — the case study showing why Claude Code carried the heavy work even in months when Antigravity was my speed driver.
+
+---
+
+*Last updated 2026-05-21. I'll revisit Antigravity in roughly 3 months. If you've adapted to the new UX and have a different take, [tell me on Twitter/X](https://twitter.com/rikuq) — I'm curious whether the re-learning friction lifts or stays.*
