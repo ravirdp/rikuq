@@ -32,7 +32,7 @@ import DisclosureBanner from '@/components/DisclosureBanner.astro';
 
 Most "best AI coding tools" posts in 2026 are written by people who don't ship. This one isn't.
 
-I'm Ravi. I've shipped three production AI SaaS solo — [Prism](https://ssimplifi.com) (an OpenAI-compatible AI gateway competing with Portkey and Helicone), [Citare](https://citare.ai) (AI-search visibility tracker across five engines), and [BatchWise](https://batchwise.ai) (an Indian compliance marketplace). All live, all serving real users. The tools below are what I've actually used to ship them, in the order I'd recommend today.
+I'm Ravi. I've shipped three production AI SaaS solo — [Prism](https://ssimplifi.com) (an OpenAI-compatible AI gateway competing with Portkey and Helicone), [Citare](https://citare.ai) (AI-search visibility tracker across five engines), and [BatchWise](https://batchwise.ai) (an Indian compliance marketplace). All live in production. The tools below are what I've actually used to ship them, in the order I'd recommend today.
 
 I'm also going to tell you which tool I dropped two weeks ago and why — because that story is the most useful one in this post, and it's the one no other "best AI coding tools" article will give you.
 
@@ -61,11 +61,13 @@ I'm not the typical "Cursor power user" you read about. I tried Cursor, didn't s
 
 ## My methodology — what I actually tested
 
-I'm not a reviewer; I'm a founder. The "tests" below come from actual production work:
+I'm not a reviewer; I'm a founder. The "tests" below come from actual production work. The numbers are real, pulled directly from each codebase:
 
-- **Prism's API gateway core** — roughly **19,200 lines of TypeScript** across the frontend, dashboard, and Cloudflare edge worker, plus another **~12,000 lines of Python** powering the API gateway itself, caching, routing, observability, and policy/governance. ~93 TS files, 48 days from first commit to live in production with paying customers. Built primarily in Claude Code with VSCode as the editor; Antigravity for some of the early scaffolding.
-- **Citare's AI search engine integration** (vision parsing, bot detection, multi-index sync across ChatGPT/AI Overview/Gemini/Claude/Perplexity) — primarily Claude Code, with Antigravity for some end-to-end feature work in its pre-redesign era.
-- **BatchWise's compliance marketplace logic** (Razorpay payments, document workflows, BRSR assurance flows, 160+ methodology pages) — roughly a dozen user-facing data-entry surfaces and one multi-step engagement wizard, but the real complexity is in the assurance + content pipeline. Mix of Claude Code for the regulatory logic and Antigravity for the form scaffolding.
+- **Citare** (the biggest of the three) — **~76,000 lines of TypeScript across ~600 files**, shipped solo in **12 days** from first commit. 130 pages + 83 API routes, 22 Postgres tables, 37 MCP tools exposed to AI agents + a 5-stage Brand Radar pipeline (KG builder → query drafter → Sonnet dispatcher → Cloudflare Browser renderer → Opus parser). Integrates 5 AI search engines (ChatGPT, Google AI Overview, Gemini, Claude, Perplexity) plus GSC, GA4, Bing Webmaster Tools, DataForSEO, OpenPageRank, SerpAPI. Built almost entirely in Claude Code; Antigravity for some early scaffolding.
+- **Prism** (Ssimplifi) — **~19,200 lines of TypeScript** (frontend, dashboard, Cloudflare edge worker) **plus ~12,000 lines of Python** running the API gateway, three-layer caching, multi-provider routing, observability, and policy/governance. 93 TS files, 227 commits, **48 days** from first commit to live production with Pro/Team paid plans. Same tool mix.
+- **BatchWise** — compliance marketplace with Razorpay payments, document workflows, BRSR assurance pipeline, and 160+ methodology pages. About a dozen user-facing data-entry surfaces and one multi-step engagement wizard — the real complexity sits in the assurance + content layer, not the form count.
+
+Aggregate: roughly **~107,000 lines of source code across three live SaaS, shipped solo**, with Claude Code carrying the heavy majority of the work. That's the dataset behind every recommendation below.
 
 So when I say "Claude Code is the most reliable single tool" I mean it carried 70%+ of the actual code that ended up in production across three SaaS.
 
