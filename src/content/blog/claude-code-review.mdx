@@ -1,0 +1,207 @@
+---
+title: "Claude Code Review 2026 — From Zero Code to 3 Live SaaS"
+description: "Honest Claude Code review from a non-coder who shipped 3 production SaaS with it. My $200/mo Max setup, the killer moment, the failures."
+pubDate: 2026-05-21
+updatedDate: 2026-05-21
+category: tools
+tags:
+  - claude-code
+  - claude
+  - ai-coding-tools
+  - tool-review
+  - mcp
+author: Ravi
+draft: false
+affiliateDisclosure: false
+faqs:
+  - question: "Can you build a SaaS with no coding experience using Claude Code?"
+    answer: "Yes — I'm proof. I have no traditional coding background. I've shipped three production AI SaaS solo using Claude Code as my primary tool. The catch is you still need to think structurally: write clear specs, maintain a CLAUDE.md per project, and learn to spot when the model is heading the wrong direction. The 'no code' marketing is misleading; the 'no traditional coding background needed' part is real."
+  - question: "Is Claude Code worth $200 a month?"
+    answer: "If you're shipping seriously, yes. I started on the $100 Max plan and upgraded to $200 (20x) when my Citare 12-day sprint repeatedly hit the lower plan's ceiling. Flat fee removes usage anxiety, which itself ships more code per day than pay-per-token anxiety lets you do. If you're tinkering, start on $100 — you'll know when it's time to upgrade because you'll feel the throttle."
+  - question: "Claude Code vs Cursor — which is better?"
+    answer: "Different tools for different jobs. Cursor is an IDE with AI baked in — best for tab-completion-driven work where the model is your fast hand. Claude Code is an agentic CLI/assistant — best when you want the model to plan, execute, and verify multi-file work end-to-end. I run Claude Code primarily; many founders run Cursor primarily. The right answer depends on whether your default work is hand-coding with AI assist (Cursor) or directing an AI to ship features (Claude Code)."
+  - question: "What is the best way to use CLAUDE.md?"
+    answer: "Three phases I went through: (1) skip it entirely (slow loop, model has no context), (2) dump the whole project into it (model burns context window on irrelevant stuff), (3) keep CLAUDE.md as a thin project index that points to detailed docs for specialized info. Phase 3 is the win — the model knows where to look without carrying every detail in its working memory. Pair it with a what-i-did.md log file (every action timestamped) so the model can catch up on what's happened since the last session."
+  - question: "How do you save tokens on Claude Code?"
+    answer: "Two patterns that have meaningfully cut my burn. (1) Use Opus to spawn Sonnet subagents for the heavier-but-routine parts of a task — Opus does the planning, Sonnet does the bulk work at a fraction of the cost. (2) Keep CLAUDE.md as an index pointing to detailed docs (see above), not as a full project dump — the model loads what it needs instead of reading everything upfront."
+  - question: "Which MCP servers should I use with Claude Code?"
+    answer: "Wire MCP for everything you'd otherwise context-switch out of Claude to do. My setup includes Vercel, Cloudflare, GitHub, Gmail, Supabase, Oracle Cloud, AWS, and Citare (my own product, which exposes MCP tools). The principle is 'try to do nothing manually' — every minute spent in a different tab is a minute Claude could have handled if you'd wired the integration."
+---
+
+import DisclosureBanner from '@/components/DisclosureBanner.astro';
+
+This is a review of Claude Code from someone with **no traditional coding background**, who shipped three production AI SaaS solo using it as the primary tool.
+
+I say that upfront because most Claude Code reviews are written by senior engineers comparing it to their existing IDE workflow. That's not me. I'm the user who, a year ago, couldn't ship a basic landing page after a week of trying with GPT — and shipped my first live site in five minutes the day I tried Claude. This review is that perspective.
+
+I'm Ravi. I built [Prism](https://ssimplifi.com) (an OpenAI-compatible AI gateway), [Citare](https://citare.ai) (AI-search visibility tracker), and [BatchWise](https://batchwise.ai) (Indian compliance marketplace) — three live SaaS, ~107,000 lines of source code, solo, mostly through one tool. This is what I think of it.
+
+## TL;DR
+
+| Question | Answer |
+|---|---|
+| Is Claude Code worth it for serious solo founders? | Yes. It's the cheapest engineer you will ever hire. |
+| Best for | Anything where the model needs to plan, reason across files, and execute — *especially* if you don't fully know how to code yourself. |
+| Worst for | Speed-dependent routine work where you want instant responses (Gemini-via-Antigravity used to win this) |
+| My setup | Claude Desktop App + ~8 MCP servers wired to my full stack. CLAUDE.md per project as an index. what-i-did.md as a running log. |
+| Cost | $200/month Anthropic Max (20×). Upgraded from $100/month after I hit limits repeatedly during a 12-day sprint. |
+| Verdict | If I could only keep one tool in my stack, this is it. By a margin. |
+
+## The killer moment
+
+I'll just tell the story.
+
+For about a week I was trying to build a simple landing page with a lead-gen form. Using GPT as my AI. I would write a prompt, GPT would write some code, I'd paste it into the editor, run it, something would break, I'd describe what broke, GPT would write more code, I'd paste it in, something else would break. After ~30 hours of this loop spread across the week, I had nothing live.
+
+One evening I tried Claude. Same kind of prompt. **Five minutes later the site was live.**
+
+I want to be specific about *why*, because this is the actual insight: Claude was materially better at *using tools*. GPT would tell me code; Claude would tell me what to run, watch what happened, adjust, run again. The whole "model-in-a-loop-with-tools" thing was already 5x more useful than "model-as-code-generator-you-paste-into-an-editor."
+
+That five-minute experience is the single most consequential moment in my last two years. Without it, I don't ship three SaaS. I don't build [Prism](https://ssimplifi.com) competing with Portkey and Helicone. I don't write this article. The "aha" wasn't *"Claude is smarter than GPT"* — it was *"AI with good tool use is a completely different category of useful from AI as a chat box."*
+
+That's also why "Claude Code" — the agentic, tool-using, can-actually-do-things version of Claude — is what I bet on, not generic chat-with-an-LLM workflows.
+
+## What Claude Code actually is (and what "Claude Code" means in 2026)
+
+Strictly speaking, "Claude Code" started as Anthropic's CLI tool for agentic coding — open a terminal, run `claude`, talk to it about your codebase, watch it edit files, run tests, etc.
+
+In practice, "Claude Code" now refers to a broader set of access patterns to Claude-as-coding-agent:
+
+- **Claude Code CLI** — the original. Lives in your terminal. Great if you're comfortable there.
+- **Claude inside IDEs** — VSCode/JetBrains plugins, third-party integrations.
+- **Claude Desktop App + MCP** — the desktop app with MCP servers wired to external tools. This is what I use now.
+
+The third option is the most underrated and is my current setup. The Desktop App gives you the same Claude reasoning, but the entire surface becomes more conversational and visual than a CLI, and crucially, you can wire MCP servers for every external tool you'd otherwise context-switch out to.
+
+## My setup right now
+
+For the past two weeks (since I [dropped Antigravity](/blog/tools/antigravity-review) after its May 2026 redesign), my workflow is:
+
+- **Claude Desktop App** as the primary interface
+- **MCP servers** wired for Vercel, Cloudflare, GitHub, Gmail, Supabase, Oracle Cloud, AWS, and [Citare](https://citare.ai) itself (which exposes 37 MCP tools — yes, I dogfood)
+- **No persistent IDE open most of the day** — I jump into VSCode only when I need to read or hand-edit something
+- **One CLAUDE.md per project** as a thin index
+- **One what-i-did.md per project** as a running action log
+
+The shorthand for the operating model: **try to do nothing manually**. Every minute I spend clicking around in a different tab is a minute I could have wired into MCP and let Claude handle. Deployments? GitHub MCP + Vercel MCP. Database migrations? Supabase MCP. Reading email? Gmail MCP. The goal isn't to be lazy; it's to keep Claude inside the loop so it actually understands what's happening across my full system.
+
+Before this, I ran Claude Code via the CLI inside a terminal beside VSCode. That worked too. The Desktop App + MCP shift happened because, post-Antigravity, I wanted the most *unified* surface possible, and the Desktop App with deep MCP wiring is closer to a "command center" than the CLI ever felt.
+
+## What I actually built with it
+
+Concrete first-party data, the kind Google's post-May-2026 originality bar rewards:
+
+- **[Citare](https://citare.ai)** — ~76,000 lines of TypeScript, 130 pages + 83 API routes, 37 MCP tools, 5-stage Brand Radar agent pipeline. **Shipped in 12 days.** Built almost entirely with Claude Code.
+- **[Prism](https://ssimplifi.com)** — ~19,200 lines of TypeScript + ~12,000 lines of Python, three-layer caching, multi-provider routing, Cloudflare edge replication. **Shipped in 48 days.**
+- **[BatchWise](https://batchwise.ai)** — compliance marketplace with Razorpay payments, BRSR assurance workflows, 160+ methodology pages.
+
+**Aggregate: ~107,000 lines of source code across three live SaaS, mostly through Claude Code, from someone with no formal coding background.** This is the dataset behind every recommendation below.
+
+## The CLAUDE.md pattern — three phases I went through
+
+I made every mistake. Sharing in case it helps you skip them.
+
+**Phase 1: No CLAUDE.md (the wrong default).**
+For my first few projects I didn't use one. Every session, Claude had to rediscover the project structure, conventions, and choices. Slow, expensive, repetitive. Don't do this.
+
+**Phase 2: Dump everything into CLAUDE.md.**
+Overcorrection. I started logging the full project context into CLAUDE.md — every decision, every endpoint, every schema. The model now had context, but it was burning its working memory on details that weren't relevant to whatever task I was actually doing.
+
+**Phase 3 (where I am now): CLAUDE.md as a thin project index.**
+CLAUDE.md is short — project goals, tech stack, where the important docs live, conventions to respect. For anything detailed (API contracts, business logic specifics, schema), the index *points* to a dedicated doc that the model can load on demand. This way the model has cheap context awareness, and pulls in expensive detail only when needed.
+
+If you're new to Claude Code, start at Phase 3. Don't repeat my CLAUDE.md learning curve.
+
+## The what-i-did.md pattern — my single most useful file
+
+This is the one I'd most want to share with other Claude Code users.
+
+In every project, I keep a `what-i-did.md` file. Every meaningful action — feature shipped, bug fixed, decision made, dependency changed — gets a timestamped one-line entry. The model itself updates it as part of its workflow.
+
+Why this is the highest-leverage file in the project:
+
+1. **Session continuity.** New Claude sessions can read the last few entries and instantly know "what was happening when I was last here." No re-orientation needed.
+2. **Debugging.** When something breaks unexpectedly, the log tells me what changed and when. Better than git log because it has *intent*, not just *diff*.
+3. **Cost compression.** The model can load 50 lines of what-i-did.md and skip loading 5,000 lines of recent code changes for the same context awareness.
+4. **Memory across context resets.** When the conversation gets long and you have to compress, what-i-did.md is the cheapest possible memory transfer.
+
+Try it for a week. You won't go back.
+
+## Sonnet via Opus subagent — the token-saving pattern
+
+When I have a task with planning-grade reasoning *and* heavy routine work, I don't run the whole thing on Opus. I let **Opus plan, then spawn Sonnet subagents to execute the routine portions.**
+
+This is documented in Anthropic's agent docs but underused. Concretely: Opus reads the spec, decomposes into 5 subtasks, hands each to a Sonnet subagent (smaller, faster, cheaper), then aggregates the results.
+
+For a Citare-scale build (76k LOC in 12 days), this pattern materially extends what the $200 Max plan can handle in a day. If I were running everything on Opus, I'd hit limits constantly. Routing the boring-but-bulky work to Sonnet keeps Opus available for the reasoning that actually needs it.
+
+If you're hitting plan limits and considering an upgrade, try this pattern first. It's free.
+
+## The Max $100 → $200 upgrade story
+
+I started on the **$100/month Anthropic Max (5×)** plan when I committed to Claude as my primary AI. For most of the work on Prism and BatchWise, $100 was fine.
+
+Then I started [Citare](https://citare.ai). On the first day of serious building, I hit the rate limit before lunch. On day two, mid-morning. By day three I was actively *throttling my own thinking* to stay under the cap, which is exactly the opposite of what a tool should make you do.
+
+I upgraded to **$200/month Max (20×)** on day three of Citare's build. Hit limits maybe twice in the remaining nine days of that 12-day sprint. The math is straightforward: the upgrade cost me $100/month; it saved me an unknown but clearly positive number of hours by removing throttle-anxiety. For shipping velocity, it was the easiest yes I've ever paid for.
+
+**My recommendation:** start on $100 Max. Upgrade to $200 when you can feel the ceiling. The signal that you should upgrade isn't a particular usage number — it's the moment you start *self-throttling to stay under the cap*. The day you do that is the day the $100 plan is costing you money in lost output.
+
+## What it does poorly
+
+Honest weaknesses, not the polite kind:
+
+**1. It is over-eager.** This is my single biggest complaint. Claude will sometimes start executing — running commands, editing files — before the discussion of *what* to do is even complete. I've lost meaningful tokens (and time) to this pattern: I'm clarifying a constraint, Claude has already started, I have to interrupt, the partial work needs to be unwound or accepted, the model needs to be re-pointed. Annoying when it happens; expensive when it happens on a complex task.
+
+The workaround is to be explicit upfront: *"Let's plan before doing anything. Don't write code or run commands until I confirm."* That works, but I shouldn't have to add it.
+
+**2. Tool-use loops can spiral when models disagree with reality.** Occasionally Claude will keep trying the same approach despite signals that it's not working — because it "knows" the API works a particular way and the error message must be the user's fault somehow. Less common than the over-eager problem, but more expensive when it happens.
+
+**3. There's no IDE-grade tab completion.** This isn't really a Claude Code problem — it's an "operating model" problem. If you want AI as fast hand-extension, use Cursor. If you want AI as fast feature-shipper, use Claude Code. Mixing the two metaphors leads to disappointment.
+
+## The "I miss this" gap (post-Antigravity)
+
+Since I dropped Antigravity, the only thing I actively miss is **Gemini's speed for small routine tasks**. Pre-redesign Antigravity-with-Gemini was at least 2× faster than Claude for trivial edits and boilerplate. That speed isn't a Claude Code weakness — it's a model latency reality — but it's the workflow gap I notice most.
+
+For now I just accept that Claude is slightly slower on trivial stuff, in exchange for being better at everything else. Worth it.
+
+## Comparison vs the alternatives
+
+- **vs Cursor:** Cursor wins as an everyday IDE if your default workflow is "type code with AI assist." Claude Code wins if your default workflow is "direct an AI to ship features." I'm in camp two, so Claude Code. Many founders are in camp one, and Cursor is the right call there. Not substitutes — they describe different operating models. [Full landscape here](/blog/tools/best-ai-coding-tools-2026).
+- **vs Antigravity (pre-redesign):** Antigravity was faster for routine work via native Gemini. Claude Code is broader and deeper. I used both for months; the combination was excellent. [Full Antigravity story here](/blog/tools/antigravity-review).
+- **vs GitHub Copilot:** Copilot is fine if you're locked into JetBrains/Visual Studio. As a standalone agentic tool for solo founders, it's been outclassed. Not close anymore.
+- **vs direct Anthropic API:** If you're writing a programmatic agent system, the API is what you want. If you're shipping features as a human-in-the-loop, Claude Code (CLI or Desktop App) is the right interface. Same model, different ergonomics.
+
+## What I'd actually buy today
+
+If I were starting from scratch tomorrow with no Claude history:
+
+1. **Anthropic Max ($100/month, 5×)** — day one. Bet on flat-fee pricing; don't start with API pay-go.
+2. **Claude Desktop App** — set it up properly with MCP servers for at least your version control, hosting, and database. Five MCP servers wired well is worth more than fifty installed and ignored.
+3. **A CLAUDE.md per project from day one** — phase-3 style (thin index), not phase-2 (full dump).
+4. **A what-i-did.md per project from day one** — same.
+5. **Upgrade to Max $200 (20×)** the first day you feel yourself self-throttling to stay under cap.
+
+That's the 2026 stack for a serious solo founder. Total: $100/month flat to start, $200/month flat at full intensity.
+
+## The verdict
+
+**If I could only keep one tool in my stack, this is it.** Not close.
+
+The case for Claude Code is mostly *not* about the model — every frontier model is impressive in isolation. The case is about the **operating model**: AI as the thing that actually ships features for you, given enough context (CLAUDE.md), enough memory (what-i-did.md), and enough integration (MCP), and the freedom to use tools without you babysitting every command.
+
+If you accept that operating model, Claude Code at $200/month flat is the cheapest engineer you will ever hire. If you don't accept that operating model — if you want AI to be a fast hand-extension while you stay in the driver's seat — Cursor is your tool, not this.
+
+I accepted the operating model. It built three SaaS for me.
+
+## Related reading
+
+- **[Best AI Coding Tools 2026 — Honest Picks From Shipping 3 SaaS Solo](/blog/tools/best-ai-coding-tools-2026)** — the full landscape, with Claude Code ranked in context.
+- **[Antigravity Review (May 2026) — From Daily Driver to Dropped](/blog/tools/antigravity-review)** — the other half of my pre-redesign stack.
+- **[Cursor vs Claude Code: which to buy first](/blog/tools/cursor-vs-claude-code)** *(coming soon)* — the head-to-head for solo founders.
+- **[How I built Citare in 12 days with Claude Code](/case-studies/citare)** *(coming soon)* — the case study proving the velocity claim.
+- **[Anthropic prompt caching: real numbers from production](/blog/infra/anthropic-prompt-caching-real-numbers)** *(coming soon)* — making the $200 plan even more efficient.
+
+---
+
+*Last updated 2026-05-21. I refresh this post whenever Anthropic ships something material — new model, new plan tier, new Claude Code feature. If you spot something stale, [tell me on Twitter/X](https://twitter.com/rikuq).*
