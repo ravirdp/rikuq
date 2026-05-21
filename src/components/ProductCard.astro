@@ -1,0 +1,95 @@
+---
+interface Props {
+  name: string;
+  by?: string;
+  url: string;
+  tagline: string;
+  category: string;
+  logo?: string;
+}
+const { name, by, url, tagline, category, logo } = Astro.props;
+const initial = name.charAt(0).toUpperCase();
+---
+
+<a class="product-card" href={url} target="_blank" rel="noopener me">
+  <div class="logo-wrap">
+    {logo ? (
+      <img src={logo} alt={`${name} logo`} loading="lazy" decoding="async" />
+    ) : (
+      <span class="initial" aria-hidden="true">{initial}</span>
+    )}
+  </div>
+  <div class="info">
+    <h3>{name}{by && <span class="by"> by {by}</span>}</h3>
+    <p>{tagline}</p>
+    <span class="category">{category} →</span>
+  </div>
+</a>
+
+<style>
+  .product-card {
+    display: flex;
+    gap: 1rem;
+    align-items: flex-start;
+    padding: 1.25rem;
+    border: 1px solid var(--border);
+    border-radius: 0.85rem;
+    background: var(--bg-subtle);
+    text-decoration: none;
+    color: var(--fg);
+    transition: border-color 0.15s ease, transform 0.15s ease;
+  }
+  .product-card:hover {
+    border-color: var(--accent);
+    transform: translateY(-2px);
+  }
+  .logo-wrap {
+    flex: 0 0 56px;
+    width: 56px;
+    height: 56px;
+    border-radius: 0.6rem;
+    background: linear-gradient(135deg, var(--accent), #c46c00);
+    display: grid;
+    place-items: center;
+    overflow: hidden;
+  }
+  .logo-wrap img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  .initial {
+    color: var(--accent-fg);
+    font-weight: 800;
+    font-size: 1.6rem;
+    line-height: 1;
+  }
+  .info {
+    flex: 1 1 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 0.3rem;
+    min-width: 0;
+  }
+  h3 {
+    margin: 0;
+    font-size: 1.05rem;
+    letter-spacing: -0.01em;
+  }
+  .by {
+    color: var(--fg-muted);
+    font-weight: 400;
+    font-size: 0.9rem;
+  }
+  p {
+    margin: 0;
+    color: var(--fg-muted);
+    font-size: 0.9rem;
+    line-height: 1.45;
+  }
+  .category {
+    margin-top: 0.3rem;
+    font-size: 0.8rem;
+    color: var(--accent);
+  }
+</style>

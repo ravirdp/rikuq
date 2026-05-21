@@ -57,6 +57,16 @@ const imageURL = new URL(image, Astro.site).toString();
 <meta name="twitter:description" content={description} />
 <meta name="twitter:image" content={imageURL} />
 
+<!-- Fonts: Inter (body) + Instrument Serif (display) -->
+<link rel="preconnect" href="https://rsms.me/" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link rel="stylesheet" href="https://rsms.me/inter/inter.css" />
+<link
+  href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&display=swap"
+  rel="stylesheet"
+/>
+
 <!-- Favicons -->
 <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png" />
