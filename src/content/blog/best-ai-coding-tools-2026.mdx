@@ -1,6 +1,6 @@
 ---
 title: "Best AI Coding Tools 2026 — Honest Picks From Shipping 3 SaaS Solo"
-description: "Cursor vs Claude Code vs Antigravity vs Windsurf vs Copilot — honest picks from a solo founder who shipped 3 production AI SaaS using these tools."
+description: "Claude Code, Cursor, Antigravity, Windsurf, Copilot — honest picks from a solo founder shipping 3 production AI SaaS. What I actually use, what I dropped."
 pubDate: 2026-05-21
 updatedDate: 2026-05-21
 category: tools
@@ -17,48 +17,59 @@ draft: false
 affiliateDisclosure: true
 faqs:
   - question: "What is the best AI coding tool in 2026?"
-    answer: "There isn't one. Claude Code wins for complex backend work where the model needs to reason across many files. Cursor wins as an everyday IDE for hand-on-keyboard work. Antigravity wins when you want the model to plan and execute multi-step changes mostly autonomously. Pick based on your dominant workflow, not the leaderboard."
-  - question: "Is Cursor worth it in 2026?"
-    answer: "Yes for daily IDE work, especially if you context-switch between languages or projects. At $20/month it's the cheapest path to a real AI-augmented IDE. It is not the best choice for long agentic tasks — Claude Code or Antigravity beat it there."
+    answer: "There isn't one. Claude Code wins for complex backend work where the model needs to reason across many files. Cursor wins as an everyday IDE for hand-on-keyboard work. Both are legitimately good for different jobs. Pick based on your dominant workflow, not the leaderboard. I personally run VSCode plus Claude Code as my daily stack."
+  - question: "Is Cursor worth $20 a month in 2026?"
+    answer: "For most people, yes. It's the cheapest path to a real AI-augmented IDE with usable tab completion and chat. Note that since June 2025 the $20 Pro plan is credit-pool based ($20 of model credits per month), not truly unlimited — frontier model usage burns through credits faster than you'd expect."
   - question: "Is Claude Code better than Cursor?"
-    answer: "For complex, long-context, multi-file refactors and backend logic, yes. For hand-coding inside an IDE with quick edits and tab completion, no — that's Cursor's strength. They are complementary, not substitutes. Most serious solo founders use both."
-  - question: "What does Antigravity do that Cursor and Claude Code don't?"
-    answer: "Agentic execution with a built-in browser and verification loop. Antigravity can plan a multi-step task, execute it, verify the result by interacting with a running app, then iterate. Cursor and Claude Code are more code-focused; Antigravity is closer to a teammate that ships features end-to-end."
+    answer: "For complex, long-context, multi-file refactors and backend logic, yes. For hand-coding inside an IDE with quick edits and tab completion, no — that's Cursor's strength. They are complementary, not substitutes. Most serious solo founders use both, or Claude Code with a non-AI IDE like plain VSCode (which is what I do)."
+  - question: "What happened to Antigravity in 2026?"
+    answer: "Antigravity was, for several months, the fastest tool in the category for routine work — its Gemini-native integration was at least 2x faster than Claude for simple tasks, and it shipped with VSCode-equivalent baseline IDE features. A May 2026 restructuring rewrote enough of the product that I dropped it: the new UX would have cost me too much re-learning time relative to the speed gain. Worth watching if you're greenfield; not worth migrating to mid-project."
   - question: "Should I still use GitHub Copilot in 2026?"
-    answer: "Only if your company forces it. As a paid solo product it's been outclassed in raw quality by Cursor and Claude Code, and outclassed in agentic capability by Antigravity. Its one strength is deep IDE integration in JetBrains and Visual Studio for teams locked into those stacks."
+    answer: "Only if your company forces it. As a paid solo product it's been outclassed in raw quality by Cursor and outclassed in agentic capability by Claude Code and Antigravity. Its one strength is deep IDE integration in JetBrains and Visual Studio for teams locked into those stacks."
 ---
 
 import DisclosureBanner from '@/components/DisclosureBanner.astro';
 
 Most "best AI coding tools" posts in 2026 are written by people who don't ship. This one isn't.
 
-I'm Ravi. Over the last 18 months I've shipped three production AI SaaS — [Prism](https://ssimplifi.com) (an OpenAI-compatible AI gateway competing with Portkey and Helicone), [Citare](https://citare.ai) (AI-search visibility tracker across five engines), and [BatchWise](https://batchwise.ai) (an Indian compliance marketplace). All built solo, all live, all using the AI coding tools below as my actual daily drivers. This post is what I'd tell a friend in the same seat.
+I'm Ravi. Over the last 18 months I've shipped three production AI SaaS — [Prism](https://ssimplifi.com) (an OpenAI-compatible AI gateway competing with Portkey and Helicone), [Citare](https://citare.ai) (AI-search visibility tracker across five engines), and [BatchWise](https://batchwise.ai) (an Indian compliance marketplace). All built solo, all live. The tools below are what I've actually used to ship them, in the order I'd recommend today.
+
+I'm also going to tell you which tool I dropped two weeks ago and why — because that story is the most useful one in this post, and it's the one no other "best AI coding tools" article will give you.
+
+<DisclosureBanner affiliate prism />
 
 ## TL;DR — pick by job, not by leaderboard
 
 | Your dominant job | Use this | Cost |
 |---|---|---|
-| Daily IDE work, fast edits, tab completion | **Cursor** | $20/mo |
-| Complex multi-file refactors, backend logic | **Claude Code** | API pay-go (typically $40–150/mo at solo founder use) |
-| Agentic multi-step features end-to-end | **Antigravity** | Free during early access; pricing TBD |
-| You live in JetBrains/Visual Studio at work | **GitHub Copilot** | $10–19/mo |
-| You want one tool that does everything | Pick **Cursor + Claude Code together** | ~$60–170/mo combined |
+| Complex multi-file work, backend logic, long-context refactors | **Claude Code** | API pay-go (typically $80–200+/mo solo) |
+| Daily IDE work, fast edits, tab completion | **Cursor** (or VSCode + Claude Code, which I prefer) | $20/mo (Pro) |
+| Greenfield agentic feature work (until ~May 2026) | **Antigravity** — see the cautionary tale below | Free during preview |
+| Locked into JetBrains / Visual Studio at work | **GitHub Copilot** | $10–19/mo |
+| You want one tool for everything | There isn't one. Combine 2. | varies |
 
-You will likely use two of these in combination. I do.
+## My actual stack right now
+
+Worth stating upfront so you can calibrate everything below:
+
+- **Editor:** plain VSCode. No Cursor, no Windsurf.
+- **Primary AI:** Claude Code (CLI). It does the heavy lifting.
+- **Was using:** Antigravity for the last several months. Dropped it ~2 weeks ago after the May 2026 redesign. More on that below.
+- **Provider account fallbacks:** ChatGPT and Gemini, for second opinions and specific tasks.
+
+I'm not the typical "Cursor power user" you read about. I tried Cursor, didn't stick. The VSCode-plus-Claude-Code combination has been more productive for the kind of work I do — heavier on architecture decisions, lighter on tab completion. Your mileage will vary based on what you're building.
 
 ## My methodology — what I actually tested
 
 I'm not a reviewer; I'm a founder. The "tests" below come from actual production work:
 
-- **Prism's API gateway core** (~22k lines of TypeScript + Workers code) — built primarily in Cursor and Claude Code.
-- **Citare's AI search engine integration** (vision parsing, bot detection, multi-index sync) — primarily Claude Code, with Antigravity for end-to-end feature work.
-- **BatchWise's payment + document workflows** (Razorpay, file storage, RBI compliance) — mix of Cursor for forms/UI and Claude Code for the regulatory logic.
+- **Prism's API gateway core** ({/* TODO: real LOC from Opus count */}~22k lines of TypeScript + Cloudflare Workers code) — built primarily in Claude Code with VSCode as the editor. Antigravity for some of the early scaffolding.
+- **Citare's AI search engine integration** (vision parsing, bot detection, multi-index sync) — primarily Claude Code, with Antigravity for some end-to-end feature work in its pre-redesign era.
+- **BatchWise's payment + document workflows** (Razorpay, file storage, regulatory compliance) — {/* TODO: real form count from Opus count */}~80 forms built with a mix of Claude Code for the regulatory logic and Antigravity for the form scaffolding.
 
-So when I say "Cursor is faster for forms" I mean I built ~80 forms in BatchWise and it was. When I say "Claude Code is better for backend logic" I mean Prism's three-layer caching, semantic vector lookup, and provider failover were all built with it and would have taken 3× longer in Cursor.
+So when I say "Claude Code is the most reliable single tool" I mean it carried 70%+ of the actual code that ended up in production across three SaaS.
 
-I'm also disclosing: I built [Prism](https://ssimplifi.com), an AI gateway. Prism doesn't compete with any of the tools below — it sits *between* your app and the AI providers. But if I link to my own AI cost calculator or LLM infrastructure posts, that's why.
-
-<DisclosureBanner affiliate prism />
+I built [Prism](https://ssimplifi.com), an AI gateway. Prism doesn't compete with any of the tools below — it sits *between* your app and the AI providers. But if I link to my own AI cost calculator or LLM infrastructure posts, that's why.
 
 ## The tools, ranked by my 2026 daily-driver order
 
@@ -66,45 +77,65 @@ I'm also disclosing: I built [Prism](https://ssimplifi.com), an AI gateway. Pris
 
 **Use when:** you need the model to reason across a whole codebase, refactor across files, design a feature that touches multiple modules, or do anything that would require keeping ~50,000+ tokens of context in its head.
 
-**What it does well:** the long-context reasoning is genuinely a different category from any IDE-integrated tool. When I was building Prism's semantic cache layer (BGE embeddings + Upstash Vector + Redis fallback), I gave Claude Code the full schema of all three storage layers, the request/response types, and the existing exact-match cache code, and it produced a working semantic layer with appropriate types and error handling in one shot. That's ~1,200 lines across 6 files. Cursor would have needed me to point at each file individually.
+**What it does well:** the long-context reasoning is genuinely a different category from any IDE-integrated tool. When I was building Prism's semantic cache layer (BGE embeddings + Upstash Vector + Redis fallback), I gave Claude Code the full schema of all three storage layers, the request/response types, and the existing exact-match cache code, and it produced a working semantic layer with appropriate types and error handling in one shot. That's roughly 1,200 lines across 6 files. Cursor would have needed me to point at each file individually.
 
-**What it does poorly:** raw typing speed. There is no IDE-grade tab completion. If you're banging out a form or a CRUD route, this is overkill and slower than just using Cursor.
+The CLI workflow matters more than people give it credit for. Being able to run it in a terminal beside VSCode, hand it a feature spec, and let it work — without it living *inside* my editor — keeps my editor experience clean and my model interaction deliberate. It's a different mental model from "AI as autocomplete."
 
-**Cost reality:** pay-per-use via the Anthropic API. My monthly spend across all three SaaS averages around **$110/month** — heavy use weeks hit $200, quiet weeks $50. Prompt caching has cut this by roughly 40% since Anthropic shipped it; I cover [why caching matters and how to set it up](/blog/infra/anthropic-prompt-caching-real-numbers) separately.
+**What it does poorly:** raw typing speed. There is no IDE-grade tab completion. If you're banging out a form or a CRUD route, this is overkill and slower than just typing.
+
+**Cost reality:** pay-per-use via the Anthropic API. My monthly spend across all three SaaS averages around {/* TODO: confirm */}$110/month — heavy weeks hit $200, quiet weeks $50. Prompt caching has cut this by ~40% since Anthropic shipped it; I cover [why caching matters and how to set it up](/blog/infra/anthropic-prompt-caching-real-numbers) separately.
 
 **The verdict:** if you only buy one tool in 2026, this is it for serious solo founders building real backends. **[Read the full Claude Code review →](/blog/tools/claude-code-review)** *(coming soon)*
 
-### 2. Cursor — best everyday IDE
+### 2. Antigravity — the cautionary tale
 
-**Use when:** you're in flow, hand-on-keyboard, and want the AI to disappear into the editing experience. Forms, components, small refactors, bug fixes, learning a new library, debugging.
+This is the section I came to write this article for.
 
-**What it does well:** tab completion is best-in-class. The chat sidebar is genuinely useful for "ask about this file" — fast, low-friction. Composer mode handles small multi-file changes well. The .cursorrules file is the underrated power feature — I keep one per repo with the project's conventions, and it materially improves output quality.
+**The story.** Antigravity was, for several months, *the* fastest AI coding experience I'd ever used. It was built on a VSCode foundation, so the baseline editor behavior was exactly what I was already comfortable with. On top of that, it shipped with **native Gemini integration**, which was at least 2× faster than Claude for routine tasks — simple file edits, boilerplate, form scaffolding, anything where you don't need deep reasoning but want the model to just *do the thing*.
 
-**What it does poorly:** as soon as the task gets large enough that the model needs to actually plan, Cursor's reasoning starts to fall behind Claude Code. Composer mode is fine for small changes but stumbles on the 800+ line, 6-file changes that Claude Code handles in one shot. Also: the indexing of huge monorepos is still occasionally flaky.
+For about a month, my workflow was: Claude Code for the architecture work, Antigravity-with-Gemini for the speed work. The combination was excellent. I built large parts of [BatchWise's](https://batchwise.ai) form ecosystem this way — the boring high-volume work that Claude Code would have been overpriced and overslow for.
 
-**Cost reality:** $20/month flat for Cursor Pro. Cheapest serious AI coding tool you can buy.
+**What changed.** Roughly two weeks ago (mid-May 2026), the Antigravity team shipped a major redesign that materially restructured the UX. I'm sure there's a coherent vision behind it, but in practice the new product is different enough from the old one that *re-learning the new flow* would cost me more time than the speed gain was worth.
 
-**The verdict:** this is the IDE I open every morning. Even when I do the deep work in Claude Code, the final polishing, the UI tweaks, the test-running happen in Cursor. **[Read the full Cursor review →](/blog/tools/cursor-review)** *(coming soon)*
+So I dropped it. Mid-project. That's a strong signal — when a tool is genuinely good, you don't drop it after a redesign; you absorb the friction. The fact that I dropped Antigravity tells me the value-to-friction ratio crossed a line for me.
 
-### 3. Antigravity — best for agentic, multi-step feature work
+**What it still does well for someone starting fresh:** the Gemini-native speed advantage is real. If you're greenfield-building today and don't have muscle memory in the pre-redesign UX, Antigravity is still worth a serious look — especially for high-volume routine work.
 
-**Use when:** the task isn't just "edit this code" — it's "build this feature, test it in a browser, iterate until it works." Greenfield features, end-to-end flows, anything where the verification step matters as much as the code.
+**What it does poorly:** the recent redesign created exactly the wrong kind of churn — disruptive to existing users with no obvious benefit they could feel quickly.
 
-**What it does well:** the built-in browser + execution loop is the real differentiator. Antigravity can take a spec like "add a checkout flow that integrates with Razorpay test mode, handles webhook callbacks, and shows a success state," then plan the implementation, run it, *open the running app in its embedded browser*, click through the flow, see what fails, and fix it. This is much closer to an actual junior engineer than what Cursor or Claude Code give you. The agentic loop is what makes it feel different.
+**The verdict:** if you're new to it, try it. If you're already mid-flow on a project, don't migrate — the cost of context-shifting is high right now. Worth re-evaluating in 3 months once the redesign stabilizes. **[Read the full Antigravity review (including what I'd want before re-adopting) →](/blog/tools/antigravity-review)** *(coming soon)*
 
-**What it does poorly:** still early. The execution-and-verification loop is slower than just writing the code yourself if the feature is small. Token usage can balloon on long tasks. Some weeks it feels magical; some weeks it's frustrating because it's debugging in circles. The ecosystem of Cursor-style rules and conventions doesn't fully exist yet.
+### 3. Cursor — best everyday IDE, even if it's not my pick
 
-**Cost reality:** Free during early access at time of writing. Once priced, I expect it to be in the $30–50/month range based on what comparable agentic tools charge.
+**Use when:** you want the AI to disappear into the editing experience. Forms, components, small refactors, bug fixes, learning a new library, debugging. Especially good for visual coders who think in tab-completions.
 
-**The verdict:** the most exciting tool in the category right now, and the only one I think will *replace* parts of my Cursor + Claude Code workflow within 12 months. Worth setting up immediately if you're doing greenfield work. **[Read the full Antigravity review →](/blog/tools/antigravity-review)** *(coming soon)*
+**What it does well:** tab completion is best-in-class. The chat sidebar is genuinely useful for "ask about this file" — fast, low-friction. Composer mode handles small multi-file changes well. The `.cursorrules` file is the underrated power feature — you keep one per repo with the project's conventions, and it materially improves output quality.
+
+**Honest disclosure:** I tried Cursor and didn't stick with it. My workflow leans heavier on architecture decisions than on tab-completion-flow, and the VSCode-plus-Claude-Code split mapped better to how I think. That's a *me* thing, not a Cursor problem. Most solo founders I know who do more UI-heavy work *love* Cursor and would not switch.
+
+**What it does poorly:** as soon as the task gets large enough that the model needs to actually plan, Cursor's reasoning starts to fall behind Claude Code. Composer mode is fine for small changes but stumbles on the 800+ line, 6-file changes that Claude Code handles in one shot.
+
+**Cost reality (May 2026):** Cursor restructured pricing in 2025. Current plans:
+
+| Plan | Price | Notes |
+|---|---|---|
+| Hobby | Free | Limited completions, no credit card required |
+| Pro | $20/mo ($16/mo annual) | $20 of model credits per month — *not* unlimited |
+| Pro+ | $60/mo | 3× the Pro credit pool |
+| Ultra | $200/mo | Heaviest individual plan |
+| Business | $40/seat/mo | Team admin + shared rules |
+
+The Pro plan being credit-pool based (since June 2025) is the part most reviews skip. Frontier-model usage burns through the $20 of credits faster than you'd expect — many heavy users end up on Pro+ at $60/mo, which puts it in the same ballpark as Claude Code's API usage.
+
+**The verdict:** the easiest first AI coding tool to buy. The fact that I don't use it doesn't mean you shouldn't — if you're more tab-completion-driven than I am, this is probably your tool. **[Read the full Cursor review →](/blog/tools/cursor-review)** *(coming soon)*
 
 ### 4. Windsurf — Cursor's most credible competitor
 
 **Use when:** you want Cursor's everyday IDE experience but the Cursor team's specific opinions (or pricing trajectory) don't fit you.
 
-**What it does well:** the IDE experience is genuinely close to Cursor. Cascade mode (their composer equivalent) is competitive. For some workflows, particularly Python-heavy or notebook-adjacent work, I've heard people prefer it. Pricing is similar.
+**What it does well:** the IDE experience is genuinely close to Cursor. Cascade mode (their composer equivalent) is competitive. For Python-heavy or notebook-adjacent work, several people I know prefer it. Pricing is similar to Cursor's, though it hasn't restructured into credit pools as aggressively.
 
-**What it does poorly:** for what I do, it doesn't have a clear advantage over Cursor. The .cursorrules ecosystem is more mature on Cursor's side. The momentum is heavier on Cursor's side. If I were starting over I'd still pick Cursor first and only try Windsurf if Cursor stopped working for me.
+**What it does poorly:** for what I do, it doesn't have a clear advantage over Cursor. The `.cursorrules` ecosystem is more mature on Cursor's side. Momentum is heavier on Cursor's side.
 
 **Verdict:** a strong number two in the IDE category. If you don't like Cursor for whatever reason, this is the next call. **[Read the full Windsurf review →](/blog/tools/windsurf-review)** *(coming soon)*
 
@@ -114,63 +145,64 @@ I'm also disclosing: I built [Prism](https://ssimplifi.com), an AI gateway. Pris
 
 **What it does well:** integration depth in non-VSCode editors is genuinely good — JetBrains, Visual Studio, Xcode. The enterprise compliance story is real (which is why every Fortune 500 has it). Tab completion is competent.
 
-**What it does poorly:** in head-to-head daily use as a solo founder, it's been outclassed in raw quality by Cursor and outclassed in agentic capability by Antigravity. The model defaults are weaker than what Cursor exposes. Chat is functional but less useful than Cursor's sidebar.
+**What it does poorly:** in head-to-head daily use as a solo founder, it's been outclassed in raw quality by Cursor and outclassed in agentic capability by Claude Code and (pre-redesign) Antigravity. The model defaults are weaker than what competitors expose.
 
-**Verdict:** I don't pay for it personally anymore. **[Read the full Copilot review →](/blog/tools/github-copilot-review)** *(coming soon)*
+**Verdict:** I don't pay for it personally. **[Read the full Copilot review →](/blog/tools/github-copilot-review)** *(coming soon)*
 
 ## Quick comparison table
 
 | Tool | Best for | Weakness | Monthly cost (solo) | My rank |
 |---|---|---|---|---|
-| Claude Code | Complex multi-file work, backend logic, long context | No IDE-grade typing UX | $40–200 (API pay-go) | 1 |
-| Cursor | Daily IDE, fast edits, tab completion, polish work | Stumbles on large multi-file tasks | $20 | 2 |
-| Antigravity | Agentic feature-building with browser verification | Early; token-heavy; uneven | Free now; ~$30–50 expected | 3 (rising) |
+| Claude Code | Complex multi-file work, backend logic, long context | No IDE-grade typing UX | $80–200+ (API pay-go) | 1 |
+| Antigravity (pre-redesign) | Speed for routine work via native Gemini | Mid-2026 redesign disrupted existing users | Free preview | 2 (paused) |
+| Cursor | Daily IDE, fast edits, tab completion | Stumbles on large multi-file tasks; credit-pool surprises | $20–60+ | 3 |
 | Windsurf | Cursor alternative, similar IDE experience | No decisive edge over Cursor | $15–20 | 4 |
-| GitHub Copilot | JetBrains/Visual Studio integration, enterprise | Behind on quality + agentic capability | $10–19 | 5 |
+| GitHub Copilot | JetBrains / Visual Studio integration | Behind on quality and agentic capability | $10–19 | 5 |
 
 ## Picking your stack — three honest recommendations
 
-**If you're a solo founder building serious products in 2026: Claude Code + Cursor.**
-The combination costs $60–170/month and covers ~95% of what you'll do. Claude Code for the deep work, Cursor for everything else. This is what I run.
+**If you're a solo founder building serious products in 2026: Claude Code + your editor of choice.**
+The combination costs ~$80–200/month at realistic volumes. If you're a tab-completion person, the editor is Cursor. If you're more architecture-driven, plain VSCode works (it's my setup). The point is Claude Code is the engine; the editor is the steering wheel — pick whichever steering wheel you like best.
 
 **If you're a non-technical founder learning to ship: start with Cursor alone.**
 The IDE experience is the part that teaches you the loop of read-code → understand → edit → run. Adding Claude Code before you've internalized that loop just hides what's happening. Once you're comfortable, add Claude Code for the harder backend stuff.
 
-**If you're greenfield-building and want to bet on where the puck is going: Antigravity + Claude Code.**
-Skip the everyday-IDE layer for now. Use Antigravity for end-to-end feature work and Claude Code for anything Antigravity gets stuck on. Higher risk, higher ceiling, more friction. This is where I'm headed personally.
+**If you're greenfield-building today: consider Antigravity for the routine-work speed advantage.**
+If you have no muscle memory in the old UX to disrupt, the Gemini-native speed is still a genuine differentiator. Pair with Claude Code for the deep work. Re-evaluate the Antigravity decision in 3 months once the redesign stabilizes.
 
-Not sure which stack fits you? I built [a 6-question picker](/tools/picker) that recommends one based on your situation.
+Not sure which stack fits you? I'm building [a 6-question picker](/tools/picker) that recommends one based on your situation.
 
 ## Pricing reality — what you'll actually spend in 2026
 
 Most "free trial" pricing makes these look cheap. Reality at solo-founder usage:
 
-- **Claude Code alone**: $40–200/month depending on intensity. Use [Anthropic's prompt caching](/blog/infra/anthropic-prompt-caching-real-numbers) — I've seen 35–45% cost reductions on real workloads.
-- **Cursor alone**: $20/month flat. Easy math.
-- **Cursor + Claude Code stack**: $60–220/month total. This is the realistic baseline.
-- **Add Antigravity** (post-pricing): probably $90–270/month total stack.
+- **Claude Code alone:** $80–200+/month depending on intensity. Use [Anthropic's prompt caching](/blog/infra/anthropic-prompt-caching-real-numbers) — I've seen 35–45% cost reductions on real workloads.
+- **Cursor Pro:** $20/month, but treat it as $20 of credits and expect heavy users to move to Pro+ at $60/month.
+- **Cursor + Claude Code stack:** $100–250+/month total.
+- **VSCode + Claude Code stack** (my setup): $80–200/month total. Cheaper than Cursor-inclusive setups for equivalent capability, since VSCode itself is free.
 
-For context: my Claude Code spend across building three SaaS averaged ~$110/month. I consider this the cheapest engineer I will ever hire.
+For context: my Claude Code spend across building three SaaS averaged {/* TODO: confirm */}~$110/month. I consider this the cheapest engineer I will ever hire.
 
 If your AI bill is creeping up, [my AI API cost calculator](/tools/api-cost-calculator) models savings from caching, routing, and model selection.
 
 ## What changed in 2026 that matters
 
-Three updates from the last 6 months that should shift how you think about these tools:
+Four updates from the last 6 months that should shift how you think about these tools:
 
 1. **Claude 4.6 + 1M-token context** made Claude Code's long-context advantage much sharper. The use case for "give the model your whole codebase" is real now, not theoretical.
-2. **Antigravity's browser-verification loop** is the first genuinely new capability in this category in a year. It changes what "AI coding tool" means.
+2. **Antigravity's May 2026 redesign** — see the cautionary tale above. The category's most exciting product became its most disrupted.
 3. **Anthropic's prompt caching (now stable)** makes Claude Code 30–45% cheaper at heavy use. If you're not on it, you're overpaying.
+4. **Cursor's credit-pool restructuring** (June 2025) means the $20 Pro plan is no longer truly unlimited. Plan accordingly.
 
 ## What I'd actually buy today (May 2026)
 
 If I were starting from scratch tomorrow, I'd subscribe to:
 
-1. **Cursor Pro** — $20/month. Day one.
-2. **Anthropic API access for Claude Code** — pay-as-you-go. Day one.
-3. **Antigravity early access** — free now. Day one. Use it for one feature per week and watch how good it gets.
+1. **Anthropic API access for Claude Code** — pay-as-you-go. Day one.
+2. **VSCode** — free, day one. Add Cursor instead if you prefer tab-completion-driven flow.
+3. **Antigravity preview** — only if you're greenfield and not migrating in.
 
-That's the 2026 stack. Total ~$80–170/month at realistic solo-founder volumes.
+That's the 2026 stack. Total ~$80–200/month at realistic solo-founder volumes.
 
 ## Where to go next
 
