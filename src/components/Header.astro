@@ -6,7 +6,7 @@ const isActive = (p: string) => path === p || path.startsWith(p + '/');
 <header class="site-header">
   <div class="container">
     <a href="/" class="brand" aria-label="rikuq home">
-      <strong>rikuq</strong>
+      <img src="/wordmark.svg" alt="rikuq" width="96" height="26" />
     </a>
     <nav aria-label="primary">
       <a href="/blog/tools" class:list={[{ active: isActive('/blog/tools') }]}>Tools</a>
@@ -39,10 +39,16 @@ const isActive = (p: string) => path === p || path.startsWith(p + '/');
     gap: 1rem;
   }
   .brand {
-    font-size: 1.1rem;
+    display: inline-flex;
+    align-items: center;
     color: var(--fg);
     text-decoration: none;
-    letter-spacing: -0.02em;
+    line-height: 0;
+  }
+  .brand img {
+    height: 26px;
+    width: auto;
+    display: block;
   }
   nav {
     display: flex;

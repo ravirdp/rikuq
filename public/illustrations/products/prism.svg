@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" role="img" aria-label="prism icon">
+  <!-- Dark rounded-square background — works on light AND dark page bgs,
+       and is the standard shape iOS/Android home-screen icons get clipped to. -->
+  <rect width="512" height="512" rx="96" fill="#0A0A0A"/>
+
+  <!-- White light beam entering the prism from the left.
+       Slight taper to imply incoming direction. -->
+  <line x1="40" y1="256" x2="170" y2="256" stroke="#F5F5F4" stroke-width="14" stroke-linecap="round" opacity="0.85"/>
+
+  <!-- Prism: equilateral triangle in brand violet, with subtle inner edge
+       for dimension without being skeuomorphic. -->
+  <path d="M 256 96 L 416 360 L 96 360 Z" fill="#7C3AED"/>
+  <path d="M 256 156 L 376 348 L 136 348 Z" fill="none" stroke="rgba(255,255,255,0.18)" stroke-width="3"/>
+
+  <!-- Spectrum beams emerging right — red/amber/green/blue/violet fan -->
+  <g stroke-width="14" stroke-linecap="round">
+    <line x1="346" y1="320" x2="476" y2="240" stroke="#EF4444"/>
+    <line x1="354" y1="332" x2="484" y2="276" stroke="#F59E0B"/>
+    <line x1="362" y1="344" x2="492" y2="312" stroke="#10B981"/>
+    <line x1="370" y1="356" x2="488" y2="350" stroke="#3B82F6"/>
+    <line x1="378" y1="368" x2="476" y2="384" stroke="#A855F7"/>
+  </g>
+</svg>

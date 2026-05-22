@@ -56,17 +56,20 @@ export const PRODUCTS = [
     url: 'https://ssimplifi.com',
     tagline: 'OpenAI-compatible AI gateway with measured savings + edge routing.',
     category: 'LLM infrastructure',
+    logo: '/illustrations/products/prism.png',
   },
   {
     name: 'Citare',
     url: 'https://citare.ai',
     tagline: 'Unified SEO + AI-search visibility across the four indexes.',
     category: 'SEO / GEO',
+    logo: '/illustrations/products/citare.png',
   },
   {
     name: 'BatchWise',
     url: 'https://batchwise.ai',
     tagline: 'Compliance marketplace for Indian SMEs and SEBI-listed enterprise.',
     category: 'Marketplace / Compliance',
+    logo: '/illustrations/products/batchwise.png',
   },
 ] as const;
