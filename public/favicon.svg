@@ -1,4 +1,1 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
-  <rect width="64" height="64" rx="12" fill="#0c0d10"/>
-  <text x="50%" y="58%" font-family="ui-sans-serif, system-ui" font-size="32" font-weight="700" fill="#f5b942" text-anchor="middle" dominant-baseline="middle">r</text>
-</svg>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" role="img" aria-label="Citare" width="512" height="512"><metadata><rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:dc="http://purl.org/dc/elements/1.1/"><rdf:Description><dc:creator>RealFaviconGenerator</dc:creator><dc:source>https://realfavicongenerator.net</dc:source></rdf:Description></rdf:RDF></metadata><circle cx="256" cy="256" r="184" fill="none" stroke="currentColor" stroke-width="64" stroke-linecap="round" stroke-dasharray="867 290" transform="rotate(45 256 256)"></circle><rect x="324" y="184" width="22" height="64" rx="11" fill="currentColor"></rect><rect x="368" y="184" width="22" height="64" rx="11" fill="currentColor"></rect></svg>
