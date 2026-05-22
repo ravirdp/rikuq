@@ -233,6 +233,12 @@ Every article ships with:
 
 ---
 
+## 8.5. Distribution (ongoing, post-launch)
+
+The site is launched; distribution is the permanent operating layer that sits on top of content. **See [`distribution-playbook.md`](distribution-playbook.md) for the full daily framework, browser-agent prompts for Twitter/Reddit/HN engagement, cross-posting strategy, and weekly tracking.**
+
+When Ravi asks "what should I do today?" the answer is drawn from the distribution playbook's daily checklist, not from this content plan. Content writing is the *backfill* task for days when engagement work is done.
+
 ## 9. Launch Day Mechanics
 
 When all 32 pages + 3 tools are live:

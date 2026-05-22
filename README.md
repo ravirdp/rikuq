@@ -16,6 +16,7 @@ Companion site to [BatchWise](https://batchwise.ai), [Citare](https://citare.ai)
 - [`docs/backlink-tracker.md`](docs/backlink-tracker.md) — Status of inbound backlinks from BatchWise / Citare / Ssimplifi + deferred TODOs to uncomment as posts ship.
 - [`docs/seo-direction-2026.md`](docs/seo-direction-2026.md) — **Living document.** Universal SEO/GEO direction (post-May-2026 Google update). Portable across all properties — hand to any Opus agent doing SEO work. Update when a new algorithm change or AI-search event lands; keep the Changelog at the bottom up to date.
 - [`docs/indexnow-setup.md`](docs/indexnow-setup.md) — **Portable handoff doc.** Step-by-step IndexNow auto-ping setup for any property. Hand to any Opus working on a different property to wire instant Bing/Yandex/Naver/Seznam indexing into its deploy pipeline.
+- [`docs/distribution-playbook.md`](docs/distribution-playbook.md) — **Living document.** Daily distribution operating manual: browser-agent prompts for Twitter / Reddit / HN engagement, cross-posting strategy, automation guidance, weekly tracking framework.
 
 ## Stack
 
