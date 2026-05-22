@@ -23,6 +23,9 @@ jobs:
         run: npm ci
 
       - name: Build
+        env:
+          PUBLIC_SITE_URL: https://rikuq.com
+          PUBLIC_CF_BEACON: 0a002e9d4b924b3a90bc1eafa654701a
         run: npm run build
 
       - name: Deploy to Cloudflare Pages
