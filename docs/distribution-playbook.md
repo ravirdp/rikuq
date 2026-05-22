@@ -247,15 +247,27 @@ When a new article publishes on rikuq, push adapted versions to other platforms 
 | **Hacker Noon** | Skip | Distribution has weakened significantly; not worth it in 2026 | — | — |
 | **Substack** | Skip | We use Brevo for newsletter; no need for a parallel newsletter | — | — |
 
-### Cross-post timing
+### Cross-post timing (LOCKED — 3-day buffer)
 
-- Day 0: publish on rikuq.com
-- Day 1-2: Twitter anchor thread + Reddit post-of-the-article
-- Day 3-5: Dev.to + Hashnode (with canonical URLs)
-- Day 5-7: LinkedIn Article + IndieHackers (commentary framing)
-- Day 7+: Medium import
+The 3-day buffer is the canonical pattern. It exists because Google needs 24-72 hours to crawl + index the original article, and republishing before that completes risks Google picking the republished URL as the canonical even with `rel="canonical"` tags.
 
-This gives rikuq.com a head start on Google indexing before republishing. Without that gap, Google may pick the republished version as the canonical (even with the `rel="canonical"` tag, in some cases).
+| Day | Action | Channel |
+|---|---|---|
+| **Day 0** | Article publishes on rikuq.com | rikuq.com (auto-deploy) |
+| **Day 0-1** | Anchor announcement | Twitter (manual thread, not automated) |
+| **Day 1-2** | Reddit post-of-the-article (only if natural fit) | Selected subreddit |
+| **Day 3** | **Cross-post APIs fire automatically** | Dev.to + Hashnode (via scripts) |
+| **Day 5-7** | LinkedIn Article + IndieHackers commentary | Manual, polished framing |
+| **Day 7+** | Medium import (optional, low priority) | Manual UI import |
+
+The Day 3 cross-post is automated via `scripts/crosspost-devto.mjs` and `scripts/crosspost-hashnode.mjs`. These can be triggered:
+
+- Manually: `npm run crosspost -- <slug>` (when you're ready to push)
+- Automatically via a delayed GitHub Action that fires 3 days after the original push to `main` (see workflow below)
+
+**Why not Day 0?** Because Google sometimes picks the republish as canonical when both versions appear simultaneously, even with `rel="canonical"`. A 3-day head start removes that risk.
+
+**Why not Day 5+?** Because the freshness signal on Dev.to / Hashnode decays fast — a 3-day-old article gets surfaced; a 7-day-old article gets buried. Three days is the optimum.
 
 ---
 
@@ -263,11 +275,12 @@ This gives rikuq.com a head start on Google indexing before republishing. Withou
 
 Honest answer: most cross-post automation produces mediocre republishes that perform worse than manual adaptations. The 80/20 worth automating:
 
-### Worth automating ✅
+### Worth automating ✅ — IMPLEMENTED
 
-- **Dev.to API publish** — they have a clean API, accepts Markdown frontmatter with `canonical_url`. Could be a `scripts/crosspost-devto.mjs` that takes the latest published article and POSTs it. Saves ~10 min/article.
-- **Hashnode API publish** — same. They have a GraphQL API. Worth scripting if we hit > 2 articles/week cadence.
-- **RSS-to-Twitter (anchor announcement only)** — Buffer / Hypefury / Typefully on their free/cheap tiers can auto-tweet "new post: <title> <link>" from rss.xml. Useful for the *announcement*; replies still need to be manual.
+- **Dev.to API publish** — `scripts/crosspost-devto.mjs`. Takes a slug, reads the MDX, transforms to Dev.to markdown, POSTs with canonical URL. Run via `npm run crosspost:devto -- <slug>`.
+- **Hashnode API publish** — `scripts/crosspost-hashnode.mjs`. Same pattern via GraphQL. Run via `npm run crosspost:hashnode -- <slug>`.
+- **Both at once** — `npm run crosspost -- <slug>` fires both.
+- **Scheduled cross-post via CI** — `.github/workflows/crosspost.yml` runs daily, checks if any article on `main` is exactly 3 days old, and auto-crossposts it. Idempotent (won't duplicate).
 
 ### Not worth automating ❌
 

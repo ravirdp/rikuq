@@ -1,0 +1,92 @@
+name: Auto-crosspost 3 days after publish
+
+# Runs once a day at 10:00 IST (04:30 UTC) and cross-posts any article
+# that was added to src/content/blog/ exactly 3 days ago.
+#
+# - Idempotent: only fires on articles aged exactly 3 days (UTC date diff).
+# - Skips drafts (draft: true in frontmatter).
+# - Skips articles where `crossposted: true` is set in frontmatter (manual
+#   opt-out for things we publish on rikuq but don't want elsewhere).
+# - Continues per-platform if one fails (so a Hashnode outage doesn't block
+#   the Dev.to push).
+#
+# Manual trigger also available via workflow_dispatch with a slug input.
+
+on:
+  schedule:
+    - cron: '30 4 * * *'   # 04:30 UTC = 10:00 IST daily
+  workflow_dispatch:
+    inputs:
+      slug:
+        description: 'Article slug to crosspost immediately (overrides date check)'
+        required: false
+        type: string
+
+jobs:
+  crosspost:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0   # full history so we can read git log for article ages
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Find article to crosspost
+        id: pick
+        run: |
+          set -euo pipefail
+
+          if [ -n "${{ github.event.inputs.slug }}" ]; then
+            # Manual trigger with explicit slug
+            slug="${{ github.event.inputs.slug }}"
+            echo "Manual trigger for slug: $slug"
+            echo "slug=$slug" >> "$GITHUB_OUTPUT"
+            exit 0
+          fi
+
+          # Scheduled run: find articles added to git exactly 3 days ago
+          target_date=$(date -u -d '3 days ago' +%Y-%m-%d)
+          echo "Looking for articles first-committed on: $target_date"
+
+          slug=""
+          for f in src/content/blog/*.mdx; do
+            # Skip the template
+            base=$(basename "$f" .mdx)
+            [ "$base" = "_template" ] && continue
+
+            # Skip drafts
+            if grep -q '^draft:\s*true' "$f"; then continue; fi
+
+            # Skip explicit opt-outs
+            if grep -q '^crossposted:\s*true' "$f"; then continue; fi
+
+            # First commit date for this file
+            first_commit=$(git log --diff-filter=A --follow --format=%cs -- "$f" | tail -1)
+            if [ "$first_commit" = "$target_date" ]; then
+              slug="$base"
+              echo "Match: $base (first committed $first_commit)"
+              break
+            fi
+          done
+
+          if [ -z "$slug" ]; then
+            echo "No article aged exactly 3 days to crosspost. Exiting cleanly."
+            echo "slug=" >> "$GITHUB_OUTPUT"
+          else
+            echo "slug=$slug" >> "$GITHUB_OUTPUT"
+          fi
+
+      - name: Crosspost to Dev.to + Hashnode
+        if: steps.pick.outputs.slug != ''
+        env:
+          DEVTO_API_KEY: ${{ secrets.DEVTO_API_KEY }}
+          HASHNODE_PAT: ${{ secrets.HASHNODE_PAT }}
+          HASHNODE_PUBLICATION_ID: ${{ secrets.HASHNODE_PUBLICATION_ID }}
+        run: npm run crosspost -- "${{ steps.pick.outputs.slug }}"

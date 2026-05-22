@@ -10,7 +10,10 @@
     "build": "astro build",
     "preview": "astro preview",
     "astro": "astro",
-    "deploy": "astro build && wrangler pages deploy dist"
+    "deploy": "astro build && wrangler pages deploy dist",
+    "crosspost": "node scripts/crosspost-all.mjs",
+    "crosspost:devto": "node scripts/crosspost-devto.mjs",
+    "crosspost:hashnode": "node scripts/crosspost-hashnode.mjs"
   },
   "dependencies": {
     "@astrojs/mdx": "^5.0.6",
