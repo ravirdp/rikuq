@@ -1,26 +1,28 @@
-# Affiliate Programs — corrected reality (2026-05-21)
+# Affiliate Programs — corrected reality (2026-05-21, updated 21:30 IST)
 
-Last updated after verifying actual program availability. Most "obvious" affiliate programs for the AI/dev tooling space don't pay content creators in 2026 — see "No public affiliate" tier below.
+Last updated after live signup attempts. Most "obvious" affiliate programs for the AI/dev tooling space don't pay content creators in 2026 — see "No public affiliate" tier below.
 
-Use a dedicated email (`affiliates@rikuq.com` once set up) so payout notifications don't get lost.
+Use `affiliates@rikuq.com` once set up so payout notifications don't get lost.
 
 ## Status legend
 
-- ✅ **Live** — program exists, accepting applications, pays cash
+- ✅ **Live** — approved, ID in `.env`, links wired
 - ⏳ **Pending** — applied, awaiting approval
+- 🔁 **Retry** — signup failed; try again later
 - ❌ **No public affiliate** — recommend organically; can't monetize
 - 🤝 **B2B partner only** — agency/reseller programs, not for content creators
 
 ## Tier 1 — sign up first (real revenue)
 
-| Program | URL | Status | Commission | Notes |
+| Program | URL | Status | Commission (typical) | Notes |
 |---|---|---|---|---|
-| **Brevo** | brevo.com/affiliate | ⏳ pending review | Per paid signup + rev share | Applied; we actively use Brevo for rikuq newsletter |
+| **Brevo** | brevo.com/affiliate | ⏳ pending review | Per paid signup + rev share | We use Brevo for rikuq newsletter |
 | **Resend** | resend.com/insiders | ⏳ pending (Insiders application) | TBD on approval | Application has open-text fields; copy in this repo's notes |
-| **Clerk** | clerk.com → footer / direct outreach | ✅ to apply | Per paid signup | Apply via direct contact; they've done content partnerships |
-| **OpenRouter** | openrouter.ai dashboard → referral | ✅ to apply | Credits, not cash | Useful for AI infra content; lower revenue priority |
-| **Razorpay Partners** | razorpay.com/partners | ✅ to apply | Per merchant onboarded | India angle; BatchWise-adjacent content |
-| **DataForSEO** | dataforseo.com (partner) | ✅ to apply | Rev share | Citare-adjacent content |
+| **CustomGPT.ai** | customgpt.ai | ✅ enrolled | TBD | Newer addition; useful for chatbot / RAG content angle |
+| **DataForSEO** | dataforseo.com (partner) | ✅ enrolled | Rev share | Citare-adjacent content; we already use it inside Citare |
+| **Razorpay Partners** | razorpay.com/partners | 🔁 retry afternoon | Per merchant onboarded | India angle; BatchWise-adjacent content |
+| **Clerk** | clerk.com | ❌ no public affiliate | — | Confirmed — no public program in 2026 |
+| **OpenRouter** | openrouter.ai | ❌ no public affiliate | — | Confirmed — no public program in 2026 |
 
 ## Tier 2 — apply when relevant content is queued
 
@@ -42,6 +44,8 @@ These products are in our content but don't pay content creators. Mention them h
 - **Windsurf** — no public program
 - **GitHub Copilot** — no consumer affiliate
 - **Google / Gemini** — no content-creator affiliate
+- **Clerk** — no public affiliate (was rumored to have one, confirmed they don't)
+- **OpenRouter** — no public affiliate
 
 ## 🤝 B2B partner only (NOT for content creators)
 
@@ -71,16 +75,16 @@ export const affiliateUrl = (program: string, path?: string) => {
   const ids: Record<string, string> = {
     brevo: import.meta.env.AFFID_BREVO ?? '',
     resend: import.meta.env.AFFID_RESEND ?? '',
-    clerk: import.meta.env.AFFID_CLERK ?? '',
-    openrouter: import.meta.env.AFFID_OPENROUTER ?? '',
+    customgpt: import.meta.env.AFFID_CUSTOMGPT ?? '',
+    dataforseo: import.meta.env.AFFID_DATAFORSEO ?? '',
     razorpay: import.meta.env.AFFID_RAZORPAY ?? '',
   };
   const id = ids[program];
   const bases: Record<string, string> = {
     brevo: 'https://www.brevo.com',
     resend: 'https://resend.com',
-    clerk: 'https://clerk.com',
-    openrouter: 'https://openrouter.ai',
+    customgpt: 'https://customgpt.ai',
+    dataforseo: 'https://dataforseo.com',
     razorpay: 'https://razorpay.com',
   };
   const base = bases[program];

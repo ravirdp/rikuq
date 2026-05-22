@@ -15,6 +15,10 @@ export default defineConfig({
       changefreq: 'weekly',
       priority: 0.7,
       lastmod: new Date(),
+      // Exclude noindex'd / utility pages that have no search value.
+      filter: (page) =>
+        !page.includes('/newsletter/confirmed') &&
+        !page.includes('/404'),
     }),
   ],
   markdown: {
