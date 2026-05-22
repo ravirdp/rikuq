@@ -236,6 +236,13 @@ Return at most 5. Quality only.
 
 When a new article publishes on rikuq, push adapted versions to other platforms within 7 days. Always set the canonical URL back to rikuq.com.
 
+### Live mirror destinations
+
+| Platform | Publication URL | Notes |
+|---|---|---|
+| **Dev.to** | `https://dev.to/ravi_patel_99/` | Auto-crosspost via API on day 3 (DEVTO_API_KEY secret set) |
+| **Hashnode** | `https://rikuq.hashnode.dev/` | Manual republish (API requires Pro $7/mo; deferred). First post live: `/hello-from-rikuq-a-practitioner-blog-for-solo-ai-saas-founders` |
+
 | Channel | Priority | Why | Format adjustment | Canonical respected? |
 |---|---|---|---|---|
 | **Dev.to** | High | Active dev community, strong organic reach for AI/coding | Add platform-native intro, use their Markdown flavor | ✅ yes (set `canonical_url` in frontmatter) |
