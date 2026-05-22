@@ -26,6 +26,7 @@ jobs:
         env:
           PUBLIC_SITE_URL: https://rikuq.com
           PUBLIC_CF_BEACON: 0a002e9d4b924b3a90bc1eafa654701a
+          PUBLIC_GA4_MEASUREMENT_ID: G-DV2MSGVH6G
         run: npm run build
 
       - name: Deploy to Cloudflare Pages

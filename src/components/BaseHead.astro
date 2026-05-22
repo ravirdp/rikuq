@@ -80,7 +80,7 @@ const imageURL = new URL(image, Astro.site).toString();
 <!-- Sitemap -->
 <link rel="sitemap" href="/sitemap-index.xml" />
 
-<!-- Analytics: Plausible (loaded on prod only) -->
+<!-- Analytics: Plausible (loaded on prod only — script no-ops without an account) -->
 {import.meta.env.PROD && (
   <script
     is:inline
@@ -98,4 +98,27 @@ const imageURL = new URL(image, Astro.site).toString();
     src="https://static.cloudflareinsights.com/beacon.min.js"
     data-cf-beacon={`{"token": "${import.meta.env.PUBLIC_CF_BEACON}"}`}
   />
+)}
+
+<!-- Google Analytics 4 (loaded on prod only when measurement ID is configured) -->
+{import.meta.env.PROD && import.meta.env.PUBLIC_GA4_MEASUREMENT_ID && (
+  <>
+    <script
+      is:inline
+      async
+      src={`https://www.googletagmanager.com/gtag/js?id=${import.meta.env.PUBLIC_GA4_MEASUREMENT_ID}`}
+    />
+    <script
+      is:inline
+      set:html={`
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', '${import.meta.env.PUBLIC_GA4_MEASUREMENT_ID}', {
+          anonymize_ip: true,
+          transport_type: 'beacon'
+        });
+      `}
+    />
+  </>
 )}
