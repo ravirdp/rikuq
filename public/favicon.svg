@@ -1,1 +1,13 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" role="img" aria-label="Citare" width="512" height="512"><metadata><rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:dc="http://purl.org/dc/elements/1.1/"><rdf:Description><dc:creator>RealFaviconGenerator</dc:creator><dc:source>https://realfavicongenerator.net</dc:source></rdf:Description></rdf:RDF></metadata><circle cx="256" cy="256" r="184" fill="none" stroke="currentColor" stroke-width="64" stroke-linecap="round" stroke-dasharray="867 290" transform="rotate(45 256 256)"></circle><rect x="324" y="184" width="22" height="64" rx="11" fill="currentColor"></rect><rect x="368" y="184" width="22" height="64" rx="11" fill="currentColor"></rect></svg>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" role="img" aria-label="rikuq">
+  <rect width="512" height="512" rx="96" fill="#0a0b0e"/>
+  <text x="256" y="386"
+        text-anchor="middle"
+        font-family="Inter, Helvetica, Arial, sans-serif"
+        font-weight="800"
+        font-size="400"
+        letter-spacing="-20"
+        fill="#f5b942">r</text>
+  <!-- Cream accent dot above the 'r' — matches the wordmark's amber/cream
+       interplay. Sized to read even at favicon scale. -->
+  <circle cx="278" cy="118" r="36" fill="#ececec"/>
+</svg>
