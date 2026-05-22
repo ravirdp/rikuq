@@ -47,6 +47,12 @@ export const PILLARS = {
     description:
       'Supabase, Vercel, Cloudflare, Redis, Upstash — the production stack for shipping AI SaaS solo.',
   },
+  essays: {
+    slug: 'essays',
+    title: 'Essays',
+    description:
+      'Personal notes, manifestos, lessons learned. Meta-content about the work itself.',
+  },
 } as const;
 
 export const PRODUCTS = [

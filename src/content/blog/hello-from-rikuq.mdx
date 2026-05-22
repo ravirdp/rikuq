@@ -1,0 +1,141 @@
+---
+title: "Hello from rikuq — a practitioner blog for solo AI SaaS founders"
+description: "I'm a non-coder who shipped 3 production AI SaaS solo. rikuq is the practitioner blog of everything I've learned. Here's the intro."
+pubDate: 2026-05-22
+updatedDate: 2026-05-22
+category: essays
+tags:
+  - manifesto
+  - rikuq
+  - solo-founder
+  - vibe-coding
+author: Ravi
+heroImage: /og-default.png
+ogImage: /og-default.png
+draft: false
+faqs:
+  - question: "What is rikuq?"
+    answer: "rikuq is a practitioner blog by Ravi — a solo founder shipping production AI SaaS from India. The site publishes honest reviews of AI coding tools, deep-dives on LLM infrastructure and GEO, and case studies from real shipped products (Prism, Citare, BatchWise). The bar: decisive verdicts and first-party data, written from inside the work."
+  - question: "Who writes rikuq?"
+    answer: "Ravi. Solo founder, non-traditional coding background, building from India. Shipped three production AI SaaS in the last year — Prism (an OpenAI-compatible AI gateway), Citare (AI-search visibility platform), and BatchWise (Indian compliance marketplace). rikuq is the blog version of what I learned along the way."
+  - question: "How often do you publish?"
+    answer: "Aiming for 2-3 substantive posts per week, with occasional shorter essays or notes. I'd rather ship fewer high-quality, first-party pieces than a constant stream of regurgitated takes. Every post is written from inside the actual work."
+  - question: "Where else can I find rikuq's content?"
+    answer: "Originals always live on rikuq.com. Hashnode and Dev.to mirror published posts with canonical URLs pointing back here. Newsletter readers get a weekly digest of new pieces via Brevo. For real-time, follow me on Twitter/X."
+---
+
+I'm Ravi. I'm a solo founder building from India.
+
+I have **no formal coding background.** Two years ago I was trying to ship a basic landing page with a lead-gen form and spent a week failing at it with GPT. Then I tried Claude, and the same site went live in **five minutes**. That moment is, no exaggeration, the most consequential five minutes of my last two years.
+
+Since then I've shipped three production AI SaaS solo, all live, all serving real users:
+
+- **[Prism (Ssimplifi)](https://ssimplifi.com)** — an OpenAI-compatible AI gateway competing with Portkey, Helicone, LiteLLM, and OpenRouter. Three-layer response caching (exact + semantic + provider-native), multi-provider routing, Cloudflare edge replication in 300+ cities, FinOps governance.
+- **[Citare](https://citare.ai)** — a unified SEO + AI-search visibility platform tracking ChatGPT, Google AI Overview, Gemini, Claude, and Perplexity. 37 MCP tools exposed to AI agents, a 5-stage Brand Radar pipeline, vision-based AIO screenshot capture.
+- **[BatchWise](https://batchwise.ai)** — a compliance marketplace connecting Indian SMEs and SEBI-listed enterprise with vetted accounting and assurance professionals. GST, ITR, ESG, BRSR assurance.
+
+Aggregate so far: **roughly 107,000 lines of source code across three live SaaS, shipped solo**, mostly through one CLI tool ([Claude Code](/blog/tools/claude-code-review) on the $200/month Anthropic Max plan). I have no team. No co-founder. No prior CS degree. Just a couple of years of figuring it out by doing.
+
+**rikuq is the blog of what I've learned along the way.** This first post lays out what it's for, what you'll find here, and the principles I try to write under.
+
+## Why this blog exists
+
+Three reasons. They map almost exactly to the failure modes I see in most blogs that cover the same space.
+
+**1. Most "AI coding tool" content is written by people who don't ship.**
+
+The category is flooded with reviews from content marketers, journalists, and VC commentators. They evaluate features. They compare on paper. They miss what actually breaks when you're 6 hours into a build and the model burns 8,000 tokens before doing the wrong thing.
+
+I write reviews from inside live, shipping projects. When I say [Claude Code is over-eager](/blog/tools/claude-code-review), I mean *I just lost tokens to it five minutes ago and here's the fix*. When I say [Antigravity was great until it wasn't](/blog/tools/antigravity-review), I mean *I dropped it mid-project and here's the switching-cost math I ran*. When I say [Cursor isn't for me](/blog/tools/cursor-review), I mean *I tried it, didn't keep it, here's who should*.
+
+That perspective is rare. It's the whole reason this blog has a reason to exist.
+
+**2. The non-coder building production software is an underrepresented voice.**
+
+Most technical blogs assume the reader already speaks the language. Most "no-code" blogs are about Webflow and Zapier. There's a thin middle band: *people without formal coding backgrounds, shipping real production software with AI as the engine*. That's where I live. The middle band's voices are underrepresented because the senior engineers don't know what it's like to start from zero, and the people starting from zero are usually still struggling.
+
+I'm shipping production code at scale without that background. The patterns I've developed (CLAUDE.md as a thin index, [what-i-did.md as the most useful file in any project](/blog/tools/claude-code-review), Opus-as-orchestrator-spawning-Sonnet-subagents) aren't in any textbook. They're hard-won. I'd rather share them than hoard them.
+
+**3. The intersection of LLM infrastructure and Generative Engine Optimization is underwritten.**
+
+Two of my three products live in these spaces. Prism in LLM infra. Citare in GEO. The serious content on either topic is mostly behind paywalls or scattered across product marketing. The honest, first-party, "here's what's actually happening in this category" content is missing.
+
+I'm writing it here.
+
+## What I write about
+
+Four technical pillars plus this fifth one for everything that doesn't fit:
+
+| Pillar | What goes here |
+|---|---|
+| **[AI coding tools](/blog/tools)** | Honest reviews and comparisons of Cursor, Claude Code, Antigravity, Windsurf, GitHub Copilot. Written from inside actual shipping work, with decisive per-use-case verdicts. |
+| **[LLM infrastructure](/blog/infra)** | AI gateways, response caching (exact + semantic + native passthrough), multi-provider routing, FinOps. Crosses over with Prism's category. |
+| **[GEO (AI search)](/blog/geo)** | How ChatGPT, Claude, Perplexity, and Google AI Overviews actually index and cite content. Crosses over with Citare's category. |
+| **[Stack & Ops](/blog/stack)** | The production stack for shipping AI SaaS solo — Cloudflare, Supabase, Brevo, Resend, Razorpay, the patterns that hold it together. |
+| **Essays** (this one) | Personal notes, manifestos, lessons. Meta-content about the work itself. |
+
+There's also a [case-studies section](/case-studies) for full teardowns of the products I've shipped — long-form architecture-and-decisions pieces.
+
+## The principles I write under
+
+These map to what's earned trust in the writing I've found valuable. They're the bar I hold my own posts to.
+
+**Originality. Always first-party data or first-party experience.**
+
+If a competitor could write the same post from publicly available sources, I haven't done my job. Every post should contain at least one number, screenshot, decision, or experience nobody else has. The bar I keep is: if the post doesn't show you something only I could have known, it doesn't ship.
+
+**Decisive verdicts. No hedging.**
+
+"It depends" is the writer's get-out-of-jail-free card. I try to never use it. When the answer genuinely is "it depends," I name the variable it depends on and tell you which way I'd lean given specific situations. "It depends" without specifics is laziness disguised as nuance.
+
+**Honesty doctrine in comparisons.**
+
+When I review a category Prism competes in, I disclose it upfront. When I rank a tool below my own, the reason has to hold up to scrutiny. When I rank a competitor above mine for a specific use case, I say so. The credibility of the whole blog depends on this, and a single dishonest comparison destroys it permanently.
+
+**Originals don't fragment. Mirrors don't compete.**
+
+Everything publishes on rikuq.com first as the canonical source. Hashnode and Dev.to mirror with `canonical_url` pointing back here. The republished versions are additive — they reach readers who discover via those platforms — without diluting search authority for the original.
+
+**Personal voice. First-person. No "we."**
+
+This isn't a brand. It's me. The byline, the photo, the entity graph, all point to a real person who built real things. Anonymous "we" content underperforms on every metric that matters in 2026.
+
+## What you'll find on rikuq in week one
+
+Five articles are already live as I write this:
+
+1. **[Best AI Coding Tools 2026 — Honest Picks From Shipping 3 SaaS Solo](/blog/tools/best-ai-coding-tools-2026)** — the cornerstone comparison
+2. **[Claude Code Review 2026 — From Zero Code to 3 Live SaaS](/blog/tools/claude-code-review)** — my primary tool, reviewed honestly
+3. **[Cursor Review 2026 — Honest "Not For Me" Take From a VSCode User](/blog/tools/cursor-review)** — why I tried it, why I didn't keep it
+4. **[Antigravity Review (May 2026) — From Daily Driver to Dropped](/blog/tools/antigravity-review)** — the cautionary tale
+5. **[Cursor vs Claude Code — Which to Buy First](/blog/tools/cursor-vs-claude-code)** — the comparison that reframes the question
+
+Coming next:
+
+- **Production stack post** — exactly which stack I run, what I'd buy again, and what I'd skip
+- **How I built Citare in 12 days with Claude Code** — the case study showing the 76,000-LOC sprint behind the scenes
+- **Anthropic prompt caching: real numbers from production** — first deep infra-pillar post
+- **Windsurf and GitHub Copilot reviews** — rounding out the AI coding tools cluster
+
+The aim is 2–3 substantive posts per week, with occasional shorter pieces in this Essays pillar.
+
+## How to follow
+
+Pick whichever surface fits how you actually consume content:
+
+- **[RSS](/rss.xml)** — old reliable, every new post the moment it ships
+- **Newsletter** — weekly digest, signup form at the bottom of every page (it goes through Brevo with double opt-in, so check your inbox after signup)
+- **[Twitter/X (@rikuq)](https://twitter.com/rikuq)** — real-time, with threads on bigger pieces
+- **[Hashnode mirror](https://ravi.hashnode.dev)** — every post mirrored 3 days after rikuq.com publish, canonical URL preserved
+- **[Dev.to mirror](https://dev.to/ravi_patel_99)** — same pattern, different audience
+
+## Why I'm telling you this upfront
+
+Because I'm asking for your attention, and you deserve to know what kind of writing you're being asked to give it to. Not a content farm. Not a personal brand performance. Not affiliate-bait disguised as advice. A practitioner blog by someone who's currently in the trenches shipping the kind of software the content is about.
+
+If that's what you came here for, welcome.
+
+If you'd rather start with the most-shared piece instead of this manifesto, read **[Claude Code Review 2026 — From Zero Code to 3 Live SaaS](/blog/tools/claude-code-review)** next. It's the most concrete representation of what this whole blog is trying to be.
+
+— Ravi
+*rikuq.com · [@rikuq](https://twitter.com/rikuq) · [github.com/ravirdp](https://github.com/ravirdp)*

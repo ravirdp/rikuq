@@ -8,7 +8,7 @@ const blog = defineCollection({
     description: z.string().min(120).max(160, 'Meta desc should be 120–160 chars'),
     pubDate: z.coerce.date(),
     updatedDate: z.coerce.date().optional(),
-    category: z.enum(['tools', 'infra', 'geo', 'stack']),
+    category: z.enum(['tools', 'infra', 'geo', 'stack', 'essays']),
     tags: z.array(z.string()).default([]),
     author: z.string().default('Ravi'),
     heroImage: z.string().optional(),
