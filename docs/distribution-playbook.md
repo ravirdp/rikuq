@@ -277,10 +277,11 @@ Honest answer: most cross-post automation produces mediocre republishes that per
 
 ### Worth automating ✅ — IMPLEMENTED
 
-- **Dev.to API publish** — `scripts/crosspost-devto.mjs`. Takes a slug, reads the MDX, transforms to Dev.to markdown, POSTs with canonical URL. Run via `npm run crosspost:devto -- <slug>`.
+- **Dev.to API publish** — `scripts/crosspost-devto.mjs`. Takes a slug, reads the MDX, transforms to Dev.to markdown, POSTs with canonical URL. Run via `npm run crosspost:devto -- <slug>`. Free API.
 - **Hashnode API publish** — `scripts/crosspost-hashnode.mjs`. Same pattern via GraphQL. Run via `npm run crosspost:hashnode -- <slug>`.
-- **Both at once** — `npm run crosspost -- <slug>` fires both.
-- **Scheduled cross-post via CI** — `.github/workflows/crosspost.yml` runs daily, checks if any article on `main` is exactly 3 days old, and auto-crossposts it. Idempotent (won't duplicate).
+  - **Caveat (as of May 2026):** Hashnode now requires the publication to be on the **Pro plan ($7/mo)** for ANY API access. Free publications get 401. Until rikuq's content has data showing Hashnode referrers, **leave the env vars unset** and the cross-poster will gracefully skip Hashnode. Re-evaluate after 60 days.
+- **Both at once** — `npm run crosspost -- <slug>` fires every platform whose env vars are present, skips the rest, treats per-platform failures as warnings.
+- **Scheduled cross-post via CI** — `.github/workflows/crosspost.yml` runs daily, checks if any article on `main` is exactly 3 days old, and auto-crossposts it. Idempotent (won't duplicate). Skips any platform with missing env vars.
 
 ### Not worth automating ❌
 
