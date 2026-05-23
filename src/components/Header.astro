@@ -11,6 +11,7 @@ const isActive = (p: string) => path === p || path.startsWith(p + '/');
     <nav aria-label="primary">
       <a href="/blog/tools" class:list={[{ active: isActive('/blog/tools') }]}>Tools</a>
       <a href="/blog/infra" class:list={[{ active: isActive('/blog/infra') }]}>Infra</a>
+      <a href="/blog/finops" class:list={[{ active: isActive('/blog/finops') }]}>FinOps</a>
       <a href="/blog/geo" class:list={[{ active: isActive('/blog/geo') }]}>GEO</a>
       <a href="/blog/stack" class:list={[{ active: isActive('/blog/stack') }]}>Stack</a>
       <a href="/blog/essays" class:list={[{ active: isActive('/blog/essays') }]}>Essays</a>

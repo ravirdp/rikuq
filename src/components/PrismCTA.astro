@@ -1,0 +1,142 @@
+---
+// Lead-gen module for Prism (Ssimplifi) — auto-rendered by PostLayout on
+// every infra-pillar post. Pillar = product CTA: infra readers are the
+// audience that buys/tries an AI gateway, so Prism is the natural ask.
+//
+// Different shape from FinOpsCTA — Prism is a developer product with
+// freemium signup, not an advisory engagement. Tone is engineer-direct.
+
+interface Props {
+  variant?: 'inline' | 'card';
+}
+const { variant = 'card' } = Astro.props;
+
+const ctaUrl = 'https://ssimplifi.com?utm_source=rikuq&utm_medium=blog-cta&utm_campaign=infra-pillar';
+---
+
+<aside class:list={['prism-cta', variant]} aria-label="Try Prism">
+  <div class="header">
+    <span class="kicker">By the same builder</span>
+    <h3>Prism — OpenAI-compatible AI gateway</h3>
+  </div>
+
+  <p class="lede">
+    Drop-in replacement for the OpenAI API. Three-layer response caching
+    (exact + semantic + provider-native passthrough), multi-provider
+    routing, Cloudflare edge replication in 300+ cities, FinOps governance
+    baked in. The proxy that prints your savings on the invoice.
+  </p>
+
+  <ul class="bullets">
+    <li><strong>Drop-in:</strong> change one base URL, your OpenAI SDK code keeps working</li>
+    <li><strong>Measured savings:</strong> every response carries <code>X-Prism-Cache-Saved-Cents</code> headers so you can audit cost decisions in real time</li>
+    <li><strong>Three quality modes:</strong> Eco / Balanced / Sport — change cost/quality per request, not per integration</li>
+    <li><strong>Free to start:</strong> 50,000 input tokens/day, no credit card</li>
+  </ul>
+
+  <div class="actions">
+    <a class="btn" href={ctaUrl} rel="me">Try Prism free →</a>
+    <span class="actions-note">Free tier: 50K tokens/day. Pro $19/mo. Team $49/mo (5 seats).</span>
+  </div>
+</aside>
+
+<style>
+  .prism-cta {
+    border: 1px solid var(--border);
+    border-radius: 0.75rem;
+    padding: 1.75rem 1.75rem 1.5rem;
+    background: var(--bg-subtle);
+    margin: 2.5rem 0;
+    position: relative;
+    overflow: hidden;
+  }
+  .prism-cta::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 220px;
+    height: 220px;
+    background: radial-gradient(circle at 0% 0%, rgba(142, 197, 255, 0.10), transparent 60%);
+    pointer-events: none;
+  }
+  .prism-cta.inline {
+    background: transparent;
+    border-left: 3px solid var(--link);
+    border-radius: 0;
+    padding-left: 1.25rem;
+  }
+  .header { margin-bottom: 0.6rem; }
+  .kicker {
+    display: block;
+    font-size: 0.78rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--link);
+    font-weight: 600;
+    margin-bottom: 0.35rem;
+  }
+  h3 {
+    margin: 0;
+    font-size: 1.25rem;
+    line-height: 1.2;
+    letter-spacing: -0.01em;
+    color: var(--fg);
+  }
+  .lede {
+    margin: 0 0 1rem;
+    color: var(--fg-muted);
+    font-size: 0.96rem;
+    line-height: 1.55;
+  }
+  .bullets {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 1.25rem;
+    display: grid;
+    gap: 0.45rem;
+  }
+  .bullets li {
+    font-size: 0.9rem;
+    color: var(--fg-muted);
+    line-height: 1.5;
+    padding-left: 1.1rem;
+    position: relative;
+  }
+  .bullets li::before {
+    content: '·';
+    position: absolute;
+    left: 0;
+    color: var(--link);
+    font-weight: 700;
+    font-size: 1.4rem;
+    line-height: 1;
+    top: 0;
+  }
+  .bullets li strong { color: var(--fg); font-weight: 600; }
+  .bullets code {
+    background: var(--code-bg);
+    color: #d6d8dc;
+    padding: 0.05em 0.3em;
+    border-radius: 0.2em;
+    font-size: 0.82rem;
+  }
+  .actions {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0.85rem;
+  }
+  .btn {
+    display: inline-block;
+    padding: 0.7rem 1.2rem;
+    border: 0;
+    border-radius: 0.45rem;
+    background: var(--link);
+    color: var(--bg);
+    font-weight: 600;
+    font-size: 0.92rem;
+    text-decoration: none;
+  }
+  .actions-note { color: var(--fg-muted); font-size: 0.78rem; }
+</style>

@@ -3,7 +3,9 @@ import BaseLayout from './BaseLayout.astro';
 import ArticleSchema from '@/components/ArticleSchema.astro';
 import DisclosureBanner from '@/components/DisclosureBanner.astro';
 import NewsletterSignup from '@/components/NewsletterSignup.astro';
-import AdvisoryCTA from '@/components/AdvisoryCTA.astro';
+import PrismCTA from '@/components/PrismCTA.astro';
+import FinOpsCTA from '@/components/FinOpsCTA.astro';
+import CitareCTA from '@/components/CitareCTA.astro';
 import { SITE, PILLARS } from '@/lib/site';
 
 interface Props {
@@ -19,7 +21,6 @@ interface Props {
   prismDisclosure?: boolean;
   citareDisclosure?: boolean;
   batchwiseDisclosure?: boolean;
-  advisoryCta?: boolean;
   faqs?: Array<{ question: string; answer: string }>;
   readingTime?: number;
 }
@@ -37,7 +38,6 @@ const {
   prismDisclosure,
   citareDisclosure,
   batchwiseDisclosure,
-  advisoryCta,
   faqs,
   readingTime,
 } = Astro.props;
@@ -117,7 +117,11 @@ const fmtDate = (d: Date) =>
       <slot />
     </div>
 
-    {advisoryCta && <AdvisoryCTA variant="card" />}
+    {/* Pillar-driven CTA: infra → Prism, finops → Batchwise advisory, geo → Citare.
+        Other categories (tools, stack, essays) get only the newsletter signup. */}
+    {category === 'infra' && <PrismCTA variant="card" />}
+    {category === 'finops' && <FinOpsCTA variant="card" />}
+    {category === 'geo' && <CitareCTA variant="card" />}
 
     <NewsletterSignup variant="card" />
   </article>

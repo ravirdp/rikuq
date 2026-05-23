@@ -31,9 +31,15 @@ export const PILLARS = {
   },
   infra: {
     slug: 'infra',
-    title: 'LLM Infrastructure & FinOps',
+    title: 'LLM Infrastructure',
     description:
-      'AI gateways, caching, model routing, observability, and cost optimization. Practitioner deep-dives from building Prism.',
+      'AI gateways, caching, model routing, observability, edge replication. Practitioner deep-dives from building Prism.',
+  },
+  finops: {
+    slug: 'finops',
+    title: 'LLM FinOps',
+    description:
+      'AI spend management as a discipline. Cost attribution, governance, optimization patterns, Indian tax structure on AI spend.',
   },
   geo: {
     slug: 'geo',

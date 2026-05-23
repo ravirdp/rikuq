@@ -1,0 +1,8 @@
+# Permanent redirects for posts that have moved between categories.
+# Format: from-path  to-path  status-code
+# Cloudflare Pages supports this _redirects file natively.
+
+# 2026-05-23: FinOps cornerstone moved from /blog/infra to /blog/finops
+# when the finops pillar was split out from infra.
+/blog/infra/what-is-llm-finops  /blog/finops/what-is-llm-finops  301
+/blog/infra/what-is-llm-finops/  /blog/finops/what-is-llm-finops/  301
