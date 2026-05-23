@@ -1,0 +1,239 @@
+---
+title: "How I Run 3 Production AI SaaS on $5/Month of Hosting"
+description: "My complete 2026 stack — Cloudflare, Supabase, Paddle, Razorpay, Claude — and why hosting costs nothing while AI does. Honest picks from shipping."
+pubDate: 2026-05-23
+updatedDate: 2026-05-23
+category: stack
+tags:
+  - production-stack
+  - cloudflare
+  - supabase
+  - solo-founder
+  - vibe-coding
+  - infrastructure
+author: Ravi
+heroImage: /illustrations/covers/production-stack-2026.jpg
+ogImage: /illustrations/covers/production-stack-2026.jpg
+draft: false
+affiliateDisclosure: true
+prismDisclosure: true
+faqs:
+  - question: "What's the cheapest production stack for a solo AI SaaS founder?"
+    answer: "Cloudflare Workers ($5/mo paid tier) + Supabase (free tier) + Upstash Vector and Redis (free tiers) + Resend for transactional email (free tier) + Brevo for marketing email (free tier) + Paddle / Razorpay for payments (no fixed cost, only transaction fees). Total fixed infrastructure: $5/month. AI usage adds on top — currently around $250/month for me across one paid product (Prism) plus Claude Code on the $200 Max plan. Realistically a solo founder can ship three SaaS for under $260/month all-in."
+  - question: "Cloudflare Workers or Vercel — which should I use for a solo project?"
+    answer: "Start on Cloudflare Workers. The free tier is generous; the paid tier is $5/month. Vercel is easier to use (better UX, smoother deploys) but materially more expensive once you outgrow its free tier. I started on Vercel, migrated to Cloudflare mid-project for cost reasons, and would recommend any new solo founder skip the migration and start on Cloudflare. If $15-25/month is genuinely not a concern for you, Vercel's developer experience is worth it."
+  - question: "Why Supabase over Postgres + custom auth?"
+    answer: "Three reasons. First, Supabase's free tier is genuinely generous — 500MB database, 50K monthly active users on auth, 1GB file storage. Second, their auth is built-in and battle-tested; rolling your own magic-link auth wastes a week. Third, their MCP server is one of the best out there — I set it up once and Claude Code talks to my database through it without me ever opening the Supabase dashboard. For a solo founder, this is the cheapest, fastest, most reliable backend."
+  - question: "What's the best way to take payments from both Indian and international customers?"
+    answer: "Paddle for international (USD), Razorpay for India (INR). Detect the user's country on the pricing page and route them to the appropriate processor. The reason I don't use Stripe-everywhere is that Stripe India is still invite-only as of 2026 — if Stripe India were generally available, I'd use it for both regions. Razorpay handles Indian payments well (UPI, cards, net banking) but lacks the global merchant-of-record convenience Paddle provides for selling into Europe and other tax-complex regions."
+  - question: "Should you use Vercel or Cloudflare for a new AI SaaS?"
+    answer: "Cloudflare if cost matters — and for a bootstrapped solo founder, cost should matter. Cloudflare Workers + Pages costs $5/month for production scale. Vercel for the same scale typically runs $15-50/month. Vercel's developer experience is genuinely smoother but the cost differential compounds. The exception is if you're funded with runway — in which case Vercel's productivity win is worth the spend."
+---
+
+I run three production AI SaaS — [Prism](https://ssimplifi.com), [Citare](https://citare.ai), [BatchWise](https://batchwise.ai). My total fixed infrastructure cost across all three is **$5 per month.**
+
+The variable AI cost adds on top (currently around $250/month including Claude Code on the $200 Max plan + ~$50 in raw model API calls for Prism's testing). But the hosting, database, auth, cache, vector store, email, and analytics tier? Five dollars.
+
+This post is what that stack actually looks like, why I picked each piece, what I'd swap if I were rebuilding tomorrow, and where the India-specific decisions diverge from the US default.
+
+I'm Ravi. I'm a solo founder building from India. I have no formal coding background; I built the three products above using AI as the engine. Every recommendation below is a tool I'm actively running in production, not a paid placement. Where I have affiliate access I disclose it upfront.
+
+## TL;DR — the full monthly cost
+
+| Layer | Service | Cost |
+|---|---|---|
+| Hosting + edge | Cloudflare Workers + Pages | $5 / month (paid tier) |
+| Database + Auth | Supabase | Free tier |
+| Vector store | Upstash Vector | Free tier |
+| Cache + KV | Upstash Redis + Cloudflare KV | Free tier |
+| Transactional email | Resend | Free tier |
+| Marketing email | Brevo | Free tier |
+| International payments | Paddle | Transaction fees only |
+| Indian payments | Razorpay | Transaction fees only |
+| File storage | Cloudflare R2 | Free tier |
+| Analytics | Cloudflare Web Analytics + GA4 | Free |
+| SEO data (Citare) | [DataForSEO](https://dataforseo.com/?aff=275223&utm_source=rikuq) | Pay-per-call |
+| Docs + planning | Notion | Free tier |
+| Source control | GitHub | Free |
+| **Total fixed infra** | | **$5/month** |
+| AI dev tool | Claude Code (Anthropic Max 20×) | $200 / month |
+| AI runtime spend (Prism) | Anthropic + OpenAI + Gemini | ~$50 / month currently |
+| **All-in total** | | **~$255/month** |
+
+For context: I support three live SaaS, all with public signup, on this stack. None are hitting paid-tier limits yet because none have scaled past launch traffic. When they do, the costs scale gracefully — Supabase Pro is $25/month when you outgrow free, Cloudflare Workers stays $5/month base regardless of volume.
+
+This is the bootstrapped operator's reality. Most "production stack" posts assume Series A budgets. This one doesn't.
+
+## Hosting + edge: Cloudflare (and why I stopped using Vercel)
+
+I started on Vercel. The DX is genuinely the best in the industry — push to main, deploy in 30 seconds, zero configuration. For the first month of building Prism it was perfect.
+
+Then I checked my projected cost at 100K monthly visitors. Vercel's free tier caps at 100GB bandwidth and 100K function invocations; past that it's $20/month minimum and scales fast. Cloudflare Workers handles the same workload for $5/month flat with a far higher invocation cap (10 million requests/month).
+
+I migrated. The migration was annoying — about a day of work — but the cost saving is permanent. If I'd known on day one what I know now, I'd have started on Cloudflare and avoided the migration entirely.
+
+**My recommendation:** if you're bootstrapped and cost matters, start on [Cloudflare](https://www.cloudflare.com/). If $15-25/month genuinely doesn't affect your runway, start on [Vercel](https://vercel.com/) for the DX. The break-even is not where the marketing makes it sound — it's much earlier than you'd guess.
+
+What I run on Cloudflare:
+
+- **Cloudflare Pages** — static hosting for rikuq.com itself, Citare's marketing site, BatchWise's marketing site
+- **Cloudflare Workers** — Prism's edge layer (auth, classify, cache lookup happens at the edge before any origin request), API endpoints, the rikuq.com `/api/subscribe` Pages Function
+- **Cloudflare KV** — Prism's globally-replicated cache for exact-match lookups; rikuq.com's quiz result storage
+- **Cloudflare R2** — file storage for BatchWise document uploads
+- **Cloudflare Browser Rendering** — Citare's AIO screenshot capture engine (one of the only services that does this cleanly)
+- **Cloudflare Web Analytics** — privacy-first, no cookies, free
+- **Cloudflare Email Routing** — `affiliates@rikuq.com` and similar address forwarding, free
+
+The whole thing fits in the $5/month paid plan because of Cloudflare's volume pricing model — they bill on a base subscription, not per-request scaling like Vercel.
+
+## Database + Auth: Supabase, with a strong recommend
+
+Supabase is the single recommendation I'd most strongly defend in this entire stack.
+
+What it gives a solo founder:
+
+1. **Postgres database** with a generous free tier (500MB, then $25/month for Pro)
+2. **Built-in auth** with magic links, OAuth, SSO — battle-tested, ready to wire in 10 minutes
+3. **Real-time subscriptions** out of the box
+4. **Row-level security** that actually works without 40 lines of middleware
+5. **Edge functions** if you need them (I rarely do — Cloudflare Workers handles my edge logic)
+6. **One of the best MCP servers in the industry** — Claude Code talks to my database through Supabase's MCP without me ever opening the Supabase dashboard. After one-time setup, I haven't touched the dashboard in months.
+
+The MCP server is a quiet superpower. When I'm building a new feature, I can prompt Claude Code with *"add a `team_members` table with these fields, RLS so users only see their own team's rows"* and the migration runs end-to-end through Supabase MCP. No copy-paste, no SQL editor, no schema migration friction.
+
+For solo founders, Supabase eliminates an entire category of infrastructure work. Going with anything else — raw Postgres + custom auth, Auth0, Clerk, Firebase — adds setup time and ongoing cost without adding capability for this scale.
+
+**Verdict:** start with [Supabase](https://supabase.com/) on day one. Free tier carries you through launch. Upgrade to Pro when you legitimately outgrow it.
+
+## Payments: Paddle (international) + Razorpay (India)
+
+Two payment processors, country-routed.
+
+**[Paddle](https://www.paddle.com/) for international (USD).** Acts as merchant-of-record, which means they handle tax compliance for every country (EU VAT, US sales tax, etc.) so I don't have to register in 30+ jurisdictions. Higher fees than Stripe (~5% vs 2.9%+30¢) but the merchant-of-record value is worth it for a solo founder selling to a global audience.
+
+**[Razorpay](https://razorpay.com/) for India (INR).** The default Indian payment processor. Handles UPI, cards, net banking, NEFT, the works. Standard 2% fees. Compliant with RBI's requirements out of the box.
+
+**Why not Stripe everywhere?** Because Stripe India is still invite-only as of 2026. If Stripe India were generally available, I'd consolidate on Stripe Atlas + Stripe India for both regions — one API, one dashboard, one reconciliation. Until that opens, the dual-processor setup is the pragmatic choice.
+
+Country detection is a simple browser-locale check on the pricing page, routing to the appropriate Pay Now button. No magic, no third-party country API.
+
+## AI layer: Claude Code primary, multi-provider for product
+
+**Dev work:** Claude Code on the $200/month Anthropic Max (20×) plan. Covered in depth in the [Claude Code review](/blog/tools/claude-code-review). The short version: cheapest engineer I'll ever hire.
+
+**Runtime for products:** Prism (my own product) is an OpenAI-compatible AI gateway, so I dogfood it. Apps point at `api.ssimplifi.com/v1` instead of OpenAI's URL; requests get routed to Anthropic, OpenAI, or Gemini depending on the request shape and cost profile. The three-layer cache (exact match → semantic via Upstash Vector + BGE embeddings → provider-native passthrough) cuts the bill 30-60% depending on workload.
+
+For solo founders who don't run their own gateway: use [Claude](https://www.anthropic.com/) direct for highest quality, [OpenAI](https://openai.com/) for proven reliability, or wire up multi-provider routing via something like Prism (or build your own — see [Prism's architecture](/case-studies/prism) once it's published).
+
+If you don't want to think about it, just use Anthropic direct. Claude is the highest-quality model for production code today; the day Gemini closes the long-context gap I'll switch, but it hasn't.
+
+<DisclosureBanner prism />
+
+## Email: Brevo for marketing, Resend for transactional
+
+The pattern works because their strengths are complementary:
+
+**[Brevo](https://www.brevo.com/) for marketing email** — newsletter, drip sequences, broadcast announcements. Their free tier covers 9000 emails/month which is plenty for a small list. Marketing-focused features (segmentation, automation, transactional + SMTP + SMS in one platform) make it the right pick for the broadcast use case.
+
+**[Resend](https://resend.com/) for transactional email** — password resets, signup confirmations, receipts, Stripe/Paddle webhooks. Their free tier is 3000 emails/month. Developer-focused, clean API, beautiful dashboard. Designed for the kind of email your app fires programmatically.
+
+I use both. Could you use one for everything? Yes. Brevo can handle transactional and Resend can handle marketing. But each is *meaningfully* better at its primary use case, so splitting them costs nothing (both free tiers) and ships higher-quality email.
+
+## Cache + Vector: Upstash + Cloudflare KV
+
+**[Upstash Vector](https://upstash.com/)** — semantic cache layer for Prism. Stores BGE-small embeddings of past requests; queries return similar past responses when present. Pay-per-use, free tier covers tens of thousands of queries.
+
+**[Upstash Redis](https://upstash.com/)** — exact-match request fingerprinting, rate limit counters, session storage, provider health tracking. Same pay-per-use model.
+
+**Cloudflare KV** — globally-replicated key-value for cache hits served at the edge. Reads at 50-180ms from any of Cloudflare's 300+ cities versus ~700ms to origin from anywhere outside Mumbai. The latency win matters for AI gateways specifically — Prism's edge layer reads KV before deciding whether to hit origin.
+
+Three different storage primitives because they solve three different problems. Don't try to make one cover all three; you'll lose either cost (KV doesn't index vectors well) or latency (Upstash isn't globally replicated like CF KV).
+
+## Planning + docs: Notion (strong recommend)
+
+This is the one tool in the stack that has nothing to do with infrastructure but every solo founder should use it.
+
+[Notion](https://www.notion.so/) is where I plan what Claude Code builds. Specs, decision logs, scratch notes, project trackers, my [what-i-did.md equivalents](/blog/tools/claude-code-review) for high-level planning. The killer feature for solo work isn't any specific Notion capability — it's that *one tool* holds your spec, your roadmap, your meeting notes, your reference docs, and your decision archive without making you switch between five apps.
+
+If you're using a mix of Linear + Apple Notes + Google Docs + Trello + somewhere else, consolidate to Notion. The cognitive overhead saving is the real win.
+
+## SEO data: DataForSEO (used inside Citare)
+
+Citare needs ranking data, keyword data, backlink data, SERP data across many countries and engines. I use [DataForSEO](https://dataforseo.com/?aff=275223&utm_source=rikuq) for all of it — they aggregate the major data sources via a unified API at sub-Ahrefs-level pricing. Pay-per-call, no fixed monthly fee.
+
+The platform dashboard is at [app.dataforseo.com](https://app.dataforseo.com/?aff=275223&utm_source=rikuq) if you want to evaluate the API surface before committing.
+
+If you're building any SEO/GEO-adjacent product, DataForSEO is the cheapest serious data source on the market. Worth knowing about even if you don't currently need it.
+
+## What I'd swap if rebuilding tomorrow
+
+Honest list — every solo founder should expect to make some of these themselves:
+
+| What I'd change | Why |
+|---|---|
+| Start on Cloudflare from day one | Skip the Vercel-to-Cloudflare migration I had to do mid-project |
+| Spec out the auth + DB choice on day one | Even though I landed on Supabase, I spent a few hours evaluating Clerk + raw Postgres first. Wasted time — Supabase is the obvious answer for this scale. |
+| Set up Brevo + Resend on day one of each product | I added them in retrospect after needing email. Should be in the day-one scaffold. |
+| Default to Anthropic Max from day one | I tried API pay-go first. Flat-fee removes anxiety. |
+
+I wouldn't change the AI choice (Claude), the payment choice (Paddle + Razorpay given Stripe India invite-only), or the email split (Brevo + Resend).
+
+## India-specific notes
+
+A few things that diverge from US-default stacks if you're operating from India:
+
+- **Payments:** Razorpay over Stripe (Stripe India invite-only). Paddle for international stays the same.
+- **AI access:** Anthropic accepts Indian credit cards directly — no workarounds needed. Same for OpenAI and Gemini.
+- **Vercel / Cloudflare:** Both work fine for Indian operators. Cloudflare's Mumbai edge POP is genuinely fast for South Asian users.
+- **Supabase:** Their Mumbai/Singapore regions both work; pick whichever is closer to your primary user base.
+- **Bank transfers from foreign affiliates / payment processors:** Use Wise multi-currency for cleanest USD-to-INR conversion. Payoneer as backup for programs that require it.
+- **GST:** Razorpay handles GST invoicing for Indian customers. For Paddle (international), they're merchant-of-record so no Indian GST registration needed unless you're selling to Indian customers via Paddle (which you wouldn't — that's why you have Razorpay).
+
+## What I deliberately don't use
+
+These are common in larger stacks but overkill for solo founders shipping fast:
+
+- **AWS / GCP / Azure** for new projects. Cloudflare + Supabase replace 95% of their use cases at a fraction of the operational complexity. (I do use Oracle Cloud Free Tier for Citare's Brand Radar dispatcher because Oracle's free tier is genuinely best-in-class for compute, but that's an exception.)
+- **Kubernetes.** If you need K8s for a solo project, you've over-architected. Cloudflare Workers + Supabase serverless covers everything.
+- **Microservices.** Same argument. Monolith on a serverless platform, broken into services only when scale forces it.
+- **A dedicated logging service** (Datadog, etc.). Cloudflare Workers logs + Sentry free tier + manual SQL queries on Supabase covers solo-scale observability.
+- **A custom CI/CD pipeline.** GitHub Actions handles deploys to Cloudflare Pages in 40 seconds for free. No Jenkins, no GitLab CI, no CircleCI.
+- **Auth providers other than Supabase Auth.** Clerk and Auth0 are great products at team scale. For solo, Supabase Auth is free and sufficient.
+
+## The tier list
+
+Subjective but I'll commit to it:
+
+| Tier | Service | Why |
+|---|---|---|
+| S | Anthropic / Claude Code | Cheapest engineer ever; primary daily driver |
+| S | Supabase | Best free DB + auth; MCP is killer |
+| S | Cloudflare Workers + Pages | $5/month of edge magic |
+| S | Notion | Planning home for everything |
+| A | Paddle | Best international payments for solo founders |
+| A | Razorpay | India default; reliable; clean GST handling |
+| A | Resend | Cleanest transactional email API |
+| A | Brevo | Best marketing email free tier |
+| A | Upstash | Vector + Redis on pay-per-use, no idle cost |
+| B | Vercel | Best DX; worth it if cost isn't tight |
+| B | OpenAI / Gemini | Useful as fallbacks via Prism |
+| B | DataForSEO | Serious SEO data at sane prices |
+
+## The bottom line
+
+**A solo founder shipping AI SaaS in 2026 can run a production-grade stack for $5/month of fixed infrastructure cost.** Add AI usage on top (~$200/month if you go big on Claude Code, $20-100/month if you stay lean), and you have a complete dev + production stack for under $300/month total.
+
+That's not "minimum viable." That's three live SaaS, three custom domains, real database, real auth, real payments, real email, real analytics, real CDN, real observability. All shipped, all serving real users, all on a stack that scales linearly with revenue rather than burning capital while you find PMF.
+
+If you're bootstrapped and waiting until you "have funding" to ship — you don't need funding. You need this stack.
+
+## Related reading
+
+- **[Claude Code Review 2026 — From Zero Code to 3 Live SaaS](/blog/tools/claude-code-review)** — the AI dev tool that costs $200/month and saves more than it costs
+- **[Best AI Coding Tools 2026](/blog/tools/best-ai-coding-tools-2026)** — full landscape if you're evaluating dev tools
+- **[Anthropic prompt caching: real numbers from production](/blog/infra/anthropic-prompt-caching-real-numbers)** *(coming soon)* — how to cut Claude bills 35-45%
+- **[How I built Citare in 12 days with Claude Code](/case-studies/citare)** *(coming soon)* — the case study showing this stack in action at velocity
+
+---
+
+*Last updated 2026-05-23. The stack moves fast — I refresh this whenever a material price/tier change happens. If you spot something stale, [tell me on Twitter/X](https://twitter.com/rikuq).*
