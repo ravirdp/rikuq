@@ -40,7 +40,7 @@ I'm Ravi. I built [Prism](https://ssimplifi.com) — an OpenAI-compatible AI gat
 
 | Cache layer | Hit rate | Cost savings on workload | Worth setting up? |
 |---|---|---|---|
-| Exact (Redis fingerprint) | <5% | 1-3% | Idempotency only — not savings |
+| Exact (Redis fingerprint) | &lt;5% | 1-3% | Idempotency only — not savings |
 | Semantic (Upstash Vector + BGE) | ~12% (parse-step only) | ~5% | Below 10K calls/month: no. Above: marginal. |
 | **Anthropic native prompt cache** | **85-90%** | **25-35%** | **Yes. Day one. No engineering effort.** |
 
@@ -60,7 +60,7 @@ I'm flagging that upfront because cache savings are extremely workload-dependent
 
 ## What each layer actually does and why the numbers differ so sharply
 
-### Exact caching (Redis fingerprint) — <5% hit rate, 1-3% savings
+### Exact caching (Redis fingerprint) — under 5% hit rate, 1-3% savings
 
 Hash the full request payload (system prompt + user prompt + parameters) → look up in Redis → return the prior response if present.
 
@@ -125,7 +125,7 @@ Three patterns where I'd skip caching investment:
 
 1. **Open-ended generation.** Long-form writing, code generation, creative brainstorming — output dominates. Caching the 500-token system prompt does nothing for the 4000-token response.
 2. **One-shot pipelines with no reuse.** A workflow where each prompt is genuinely unique and the system prompt doesn't repeat — the 25% write penalty isn't amortized. You'll pay *more* with caching enabled.
-3. **Low-volume workloads (<10K calls/month).** The engineering cost of setting up semantic/exact caching layers exceeds the savings. Use Anthropic native caching only (zero engineering cost) and skip the rest.
+3. **Low-volume workloads (under 10K calls/month).** The engineering cost of setting up semantic/exact caching layers exceeds the savings. Use Anthropic native caching only (zero engineering cost) and skip the rest.
 
 ## The $20-in-an-afternoon trap that has nothing to do with caching
 
