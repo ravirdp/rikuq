@@ -17,6 +17,7 @@ interface Props {
   affiliateDisclosure?: boolean;
   prismDisclosure?: boolean;
   citareDisclosure?: boolean;
+  batchwiseDisclosure?: boolean;
   faqs?: Array<{ question: string; answer: string }>;
   readingTime?: number;
 }
@@ -33,6 +34,7 @@ const {
   affiliateDisclosure,
   prismDisclosure,
   citareDisclosure,
+  batchwiseDisclosure,
   faqs,
   readingTime,
 } = Astro.props;
@@ -105,6 +107,7 @@ const fmtDate = (d: Date) =>
       affiliate={affiliateDisclosure}
       prism={prismDisclosure}
       citare={citareDisclosure}
+      batchwise={batchwiseDisclosure}
     />
 
     <div class="content">

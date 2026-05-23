@@ -18,6 +18,7 @@ const blog = defineCollection({
     affiliateDisclosure: z.boolean().default(false),
     prismDisclosure: z.boolean().default(false),
     citareDisclosure: z.boolean().default(false),
+    batchwiseDisclosure: z.boolean().default(false),
     relatedPosts: z.array(z.string()).default([]),
     faqs: z
       .array(z.object({ question: z.string(), answer: z.string() }))
