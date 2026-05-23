@@ -1,0 +1,167 @@
+---
+// Lead-gen module for the LLM FinOps / AI Spend advisory practice at
+// batchwise.ai/ai. Auto-rendered by PostLayout when frontmatter has
+// `advisoryCta: true` (set this on posts where it's editorially natural —
+// the FinOps cornerstone, the prompt caching deep-dive, future gateway
+// comparisons, etc).
+//
+// Design intent:
+// - Different visual treatment from NewsletterSignup so the two don't blur
+// - Honest framing ("free 30-min discovery") not pushy
+// - Clear ICP statement (₹2+ crore AI spend) so casual readers self-select out
+// - Single primary CTA pointing to batchwise.ai/ai with UTM for attribution
+
+interface Props {
+  variant?: 'inline' | 'card';
+}
+const { variant = 'card' } = Astro.props;
+
+const utmUrl = 'https://batchwise.ai/ai?utm_source=rikuq&utm_medium=blog-cta&utm_campaign=llm-finops';
+---
+
+<aside class:list={['advisory-cta', variant]} aria-label="Advisory engagement">
+  <div class="header">
+    <span class="kicker">Need this done at scale?</span>
+    <h3>LLM FinOps + AI Spend advisory</h3>
+  </div>
+
+  <p class="lede">
+    I run an advisory practice for mid-market Indian companies with material
+    AI spend who need both the technical optimization and the financial
+    structure done well.
+  </p>
+
+  <ul class="bullets">
+    <li><strong>ICP:</strong> Indian-headquartered, ₹50-2,000 crore revenue, ₹2+ crore annual AI/cloud spend</li>
+    <li><strong>Deliverables:</strong> 40-80 page diagnostic + executive deck + spend roadmap + tax recovery + governance framework</li>
+    <li><strong>Engagement:</strong> 4-8 weeks, founder-delivered, written scope before commitment</li>
+    <li><strong>Capacity:</strong> 8-15 engagements/year, intentionally constrained</li>
+  </ul>
+
+  <p class="fineprint">
+    Below this scale, the DIY playbook in this post is usually sufficient.
+    Above it, professional optimization typically pays for the engagement
+    several times over in year one.
+  </p>
+
+  <div class="actions">
+    <a class="btn" href={utmUrl} rel="me">Schedule 30-min discovery →</a>
+    <span class="actions-note">Free. Written scope proposal before any commitment.</span>
+  </div>
+</aside>
+
+<style>
+  .advisory-cta {
+    border: 1px solid var(--border);
+    border-radius: 0.75rem;
+    padding: 1.75rem 1.75rem 1.5rem;
+    background: var(--bg-subtle);
+    margin: 2.5rem 0;
+    position: relative;
+    overflow: hidden;
+  }
+  .advisory-cta::before {
+    /* subtle warm amber gradient hint in the corner so it visually differs
+       from the newsletter signup */
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 200px;
+    height: 200px;
+    background: radial-gradient(circle at 100% 0%, rgba(245, 185, 66, 0.10), transparent 60%);
+    pointer-events: none;
+  }
+  .advisory-cta.inline {
+    background: transparent;
+    border-left: 3px solid var(--accent);
+    border-radius: 0;
+    padding-left: 1.25rem;
+  }
+
+  .header {
+    margin-bottom: 0.6rem;
+  }
+  .kicker {
+    display: block;
+    font-size: 0.78rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--accent);
+    font-weight: 600;
+    margin-bottom: 0.35rem;
+  }
+  h3 {
+    margin: 0;
+    font-size: 1.25rem;
+    line-height: 1.2;
+    letter-spacing: -0.01em;
+    color: var(--fg);
+  }
+
+  .lede {
+    margin: 0 0 1rem;
+    color: var(--fg-muted);
+    font-size: 0.96rem;
+    line-height: 1.55;
+  }
+
+  .bullets {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 1rem;
+    display: grid;
+    gap: 0.45rem;
+  }
+  .bullets li {
+    font-size: 0.9rem;
+    color: var(--fg-muted);
+    line-height: 1.5;
+    padding-left: 1.1rem;
+    position: relative;
+  }
+  .bullets li::before {
+    content: '·';
+    position: absolute;
+    left: 0;
+    color: var(--accent);
+    font-weight: 700;
+    font-size: 1.4rem;
+    line-height: 1;
+    top: 0;
+  }
+  .bullets li strong {
+    color: var(--fg);
+    font-weight: 600;
+  }
+
+  .fineprint {
+    margin: 0 0 1.25rem;
+    font-size: 0.82rem;
+    color: var(--fg-muted);
+    line-height: 1.5;
+    font-style: italic;
+  }
+
+  .actions {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0.85rem;
+  }
+  .btn {
+    display: inline-block;
+    padding: 0.7rem 1.2rem;
+    border: 0;
+    border-radius: 0.45rem;
+    background: var(--accent);
+    color: var(--accent-fg);
+    font-weight: 600;
+    font-size: 0.92rem;
+    text-decoration: none;
+  }
+  .actions-note {
+    color: var(--fg-muted);
+    font-size: 0.78rem;
+  }
+</style>

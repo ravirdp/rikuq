@@ -3,6 +3,7 @@ import BaseLayout from './BaseLayout.astro';
 import ArticleSchema from '@/components/ArticleSchema.astro';
 import DisclosureBanner from '@/components/DisclosureBanner.astro';
 import NewsletterSignup from '@/components/NewsletterSignup.astro';
+import AdvisoryCTA from '@/components/AdvisoryCTA.astro';
 import { SITE, PILLARS } from '@/lib/site';
 
 interface Props {
@@ -18,6 +19,7 @@ interface Props {
   prismDisclosure?: boolean;
   citareDisclosure?: boolean;
   batchwiseDisclosure?: boolean;
+  advisoryCta?: boolean;
   faqs?: Array<{ question: string; answer: string }>;
   readingTime?: number;
 }
@@ -35,6 +37,7 @@ const {
   prismDisclosure,
   citareDisclosure,
   batchwiseDisclosure,
+  advisoryCta,
   faqs,
   readingTime,
 } = Astro.props;
@@ -113,6 +116,8 @@ const fmtDate = (d: Date) =>
     <div class="content">
       <slot />
     </div>
+
+    {advisoryCta && <AdvisoryCTA variant="card" />}
 
     <NewsletterSignup variant="card" />
   </article>

@@ -19,6 +19,7 @@ const blog = defineCollection({
     prismDisclosure: z.boolean().default(false),
     citareDisclosure: z.boolean().default(false),
     batchwiseDisclosure: z.boolean().default(false),
+    advisoryCta: z.boolean().default(false),
     relatedPosts: z.array(z.string()).default([]),
     faqs: z
       .array(z.object({ question: z.string(), answer: z.string() }))
