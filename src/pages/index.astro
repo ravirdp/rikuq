@@ -20,10 +20,12 @@ const pillarMeta: Record<
   string,
   { icon?: string; emoji: string }
 > = {
-  tools: { icon: '/illustrations/pillars/tools.png', emoji: '⌘' },
-  infra: { icon: '/illustrations/pillars/infra.png', emoji: '◉' },
-  geo: { icon: '/illustrations/pillars/geo.png', emoji: '◐' },
-  stack: { icon: '/illustrations/pillars/stack.png', emoji: '▦' },
+  tools:  { icon: '/illustrations/pillars/tools.png',  emoji: '⌘' },
+  infra:  { icon: '/illustrations/pillars/infra.png',  emoji: '◉' },
+  finops: { icon: '/illustrations/pillars/finops.png', emoji: '₿' },
+  geo:    { icon: '/illustrations/pillars/geo.png',    emoji: '◐' },
+  stack:  { icon: '/illustrations/pillars/stack.png',  emoji: '▦' },
+  essays: { icon: '/illustrations/pillars/essays.png', emoji: '✎' },
 };
 
 const personSchema = {
@@ -209,15 +211,20 @@ const personSchema = {
     margin-top: 4rem;
   }
 
-  /* PILLAR GRID — 4 across desktop, 2 mobile */
+  /* PILLAR GRID — 3 across desktop (× 2 rows = 6 pillars), 2 mobile */
   .pillar-grid {
     display: grid;
-    grid-template-columns: repeat(4, minmax(0, 1fr));
+    grid-template-columns: repeat(3, minmax(0, 1fr));
     gap: 1rem;
   }
-  @media (max-width: 760px) {
+  @media (max-width: 880px) {
     .pillar-grid {
       grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+  }
+  @media (max-width: 480px) {
+    .pillar-grid {
+      grid-template-columns: 1fr;
     }
   }
 
