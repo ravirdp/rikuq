@@ -1,0 +1,196 @@
+---
+title: "Anthropic Prompt Caching: Real Numbers From 330 Production Calls"
+description: "Real first-party data: Anthropic prompt caching cut Citare's AI bill 25-35% on parsing-heavy workloads. What works, what doesn't, what burned me $20."
+pubDate: 2026-05-23
+updatedDate: 2026-05-23
+category: infra
+tags:
+  - anthropic
+  - prompt-caching
+  - llm-infrastructure
+  - finops
+  - claude
+  - prism
+author: Ravi
+heroImage: /illustrations/covers/anthropic-prompt-caching-real-numbers.jpg
+ogImage: /illustrations/covers/anthropic-prompt-caching-real-numbers.jpg
+draft: false
+affiliateDisclosure: false
+prismDisclosure: true
+faqs:
+  - question: "Does Anthropic prompt caching actually save money in production?"
+    answer: "Yes, dramatically — but only on the right workloads. On our measured production traffic (330 LLM calls across Citare's audit pipeline), Anthropic's native prompt cache hit 85-90% on the cached prefix and delivered 25-35% reduction on total workload cost. The savings come almost entirely from one pattern: long stable system prompts plus short variable user inputs (parsing, classification, structured extraction). On open-ended generation where output dominates the token mix, caching barely moves the needle because you can't cache outputs."
+  - question: "When does prompt caching make sense?"
+    answer: "Parsing, classification, structured extraction, and any workload where the system prompt is long (1024+ tokens) and stable across calls while the user input is short and variable. The caching write penalty (~25% cost premium on the first write) gets amortized fast when the cached block is read many times. Below roughly 5 reads per write, caching costs more than it saves. Above 10 reads per write, savings compound rapidly."
+  - question: "When should you NOT use prompt caching?"
+    answer: "Open-ended generation where output tokens dominate (creative writing, code generation, long-form content). The output is uncacheable; caching the small input portion barely affects the bill. Also: any workload with constantly changing system prompts (caching has 5-minute ephemeral TTL), or workloads with too few cache hits per write to amortize the 25% write penalty."
+  - question: "Should I build three-layer caching like Prism does?"
+    answer: "Only if you serve enough volume to amortize the engineering work. From our Citare data: exact caching paid back below 5% on overall cost (mostly useful for idempotency guarantees, not savings). Semantic caching paid back ~5% and turns ROI-negative below ~10,000 calls per month. Anthropic-native prompt caching paid back 25-35% on the right workloads with zero engineering effort beyond the API parameter. Start with Anthropic native caching alone; layer the others only when volume justifies it."
+  - question: "What's the biggest LLM cost trap that isn't caching?"
+    answer: "Failure-retry loops. Burned $20 in one afternoon on Citare's pipeline when a downstream call had an insufficient response token budget, the call failed, the retry logic re-issued the same prompt, the response was again truncated and failed, and the cycle repeated. Caching can't fix this — only proper edge-case provisioning can. Provision response token budgets generously, set hard retry caps, and never let a retry loop run unattended on a prepaid AI key."
+---
+
+I measured Anthropic's prompt caching on Citare's real production traffic over 330 LLM calls. Here are the numbers and what they mean for anyone running serious LLM workloads in 2026.
+
+This post is for two audiences: (a) anyone wondering whether prompt caching is worth setting up, and (b) anyone running multi-layer caching and wondering which layer actually pays off. The answer differs sharply by workload type, and most blog posts on this topic don't have real production numbers to show. I do.
+
+I'm Ravi. I built [Prism](https://ssimplifi.com) — an OpenAI-compatible AI gateway that implements three-layer response caching (exact match + semantic + Anthropic-native passthrough). I dogfood it inside [Citare](https://citare.ai), which makes a lot of automated LLM calls to monitor AI-search visibility across five engines. The numbers below come directly from Citare's logs running through Prism.
+
+## TL;DR — the headline numbers
+
+| Cache layer | Hit rate | Cost savings on workload | Worth setting up? |
+|---|---|---|---|
+| Exact (Redis fingerprint) | <5% | 1-3% | Idempotency only — not savings |
+| Semantic (Upstash Vector + BGE) | ~12% (parse-step only) | ~5% | Below 10K calls/month: no. Above: marginal. |
+| **Anthropic native prompt cache** | **85-90%** | **25-35%** | **Yes. Day one. No engineering effort.** |
+
+The headline finding: **Anthropic's built-in prompt caching is, by an order of magnitude, the highest-ROI cache layer for production LLM workloads.** Custom application-layer caching is interesting engineering and useful in specific situations, but for raw cost-per-call reduction, the win lives at the provider boundary.
+
+## The workload that produced these numbers
+
+The data is from Citare's audit pipeline — 330 Claude calls across:
+
+- 10 cold-prospect brand audits (full pipeline: keyword extraction → SERP analysis → AI engine queries → response parsing → scoring)
+- 1 publishable famous-name audit (deeper pipeline with verification steps)
+- 1 Round-2 delta comparison (re-running prior audits and surfacing changes)
+
+The pipeline is heavily parse-and-classify weighted — most calls take a long structured system prompt (the audit framework, response schemas, scoring rubrics) and a short variable user input (the SERP fragment or AI response being analyzed). This is the *sweet spot* for prompt caching. The numbers would be much worse on a creative writing workload.
+
+I'm flagging that upfront because cache savings are extremely workload-dependent. *Your numbers will not match mine unless your workload shape matches.*
+
+## What each layer actually does and why the numbers differ so sharply
+
+### Exact caching (Redis fingerprint) — <5% hit rate, 1-3% savings
+
+Hash the full request payload (system prompt + user prompt + parameters) → look up in Redis → return the prior response if present.
+
+**Why the hit rate is so low:** In production, requests are almost never byte-identical. Even when the system prompt is stable, the user input varies. The 5% hits we see come from genuine duplicates — retries of the same request, the same prompt being audited twice, idempotent operations.
+
+**What it's actually good for:** **idempotency guarantees**, not cost savings. If a network blip causes a duplicate request, exact cache returns the prior response and prevents double-charging the user (or running the same expensive analysis twice). That's a *correctness* feature, not a *cost* one.
+
+**Verdict:** Build it for correctness. Don't expect it to save money.
+
+### Semantic caching (Upstash Vector + BGE-small embeddings) — ~12% hit rate, ~5% savings
+
+Embed the request via BGE-small → cosine-search Upstash Vector → if a prior request scores above a similarity threshold, return its response.
+
+**Why the hit rate is higher than exact but still modest:** Semantic similarity catches paraphrases and lexical variations of the same intent. In Citare, this hits ~12% in the parse step (different SERP fragments often ask the model to do roughly the same parsing) and almost zero in the audit-generation step (each prospect's audit is genuinely unique).
+
+**The ROI cliff:** Semantic caching has real fixed costs — Upstash Vector queries, BGE embedding compute, similarity threshold tuning. Below ~10,000 calls/month, the infrastructure cost exceeds the savings. We're above that line on Prism workloads, so it pencils. For a smaller operator, it doesn't.
+
+**Verdict:** Build it only if you're at scale AND your workload has high semantic redundancy AND you can afford the engineering cost of tuning the similarity threshold. Otherwise skip it.
+
+### Anthropic-native prompt cache — 85-90% hit rate, 25-35% workload savings
+
+Mark a portion of your prompt (typically the system prompt or a long context block) with `cache_control: { type: "ephemeral" }` in the Anthropic API request. Anthropic caches the cumulative prefix at their inference layer; subsequent calls with the same prefix pay 10% of the normal input cost for those tokens (instead of 100%).
+
+**Why the hit rate is so dramatically higher:** Because the cache key is *the prefix*, not the full prompt. A long stable system prompt + varying user inputs hits the same prefix every time. As long as you make calls within the 5-minute ephemeral TTL window, you keep paying 10% on the cached portion.
+
+**The 90% / 25-35% math:** Anthropic's pricing makes cached prefix tokens cost 10% of normal (a 90% reduction on the cached portion). But your *total* workload cost includes uncached input tokens AND output tokens. So a 90% reduction on the cached input translates to 25-35% reduction on total workload cost, depending on the input/output token ratio.
+
+**The write penalty caveat:** First-time writes to the cache cost **125%** of normal input pricing (a 25% premium). If your prefix is rarely reused (≤5 reads per write), prompt caching *costs more* than not caching. Above ~10 reads per write, savings compound rapidly. Most production workloads sit comfortably above that breakeven.
+
+**Verdict:** Turn it on. Day one. Zero engineering effort beyond the one `cache_control` parameter. The savings are real and immediate on the right workloads.
+
+## The crucial insight most posts miss: output tokens are the real cost ceiling
+
+Here's the part that took me a while to internalize, and it changes how you should think about LLM cost optimization:
+
+**You cannot cache outputs.** Every call's response tokens are generated fresh and charged at full output pricing.
+
+This means: for workloads where output dominates the token mix (creative writing, code generation, long-form analysis), even perfect input caching barely moves the bill. You can cache the entire 8K-token input down to 10% of cost — but if the response is 6K tokens of generated content at $15/M tokens, the input savings are noise.
+
+Inversely: for workloads where input dominates (parsing, classification, structured extraction with short JSON outputs), input caching is transformational. A 90% reduction on the dominant cost component is a near-90% reduction on the whole bill.
+
+**The practical rule:** before deciding whether to invest in caching infrastructure, look at your output:input token ratio in real traffic. If output is < 20% of total tokens, caching is high-leverage. If output is > 60%, caching is mostly cosmetic — optimize elsewhere (smaller models, better prompting, output schema constraints).
+
+## The sweet spot pattern: long stable system prompt + short variable user input
+
+If you're designing an LLM workflow from scratch with cost in mind, structure it like this:
+
+1. **System prompt: long, stable, cached.** Put your role definition, output schema, examples, scoring rubrics, classification taxonomy — anything that doesn't change between calls — into the system prompt with `cache_control: { type: "ephemeral" }`.
+2. **User prompt: short, variable.** Pass only the input that actually varies (the data to be analyzed, the question to answer).
+3. **Output schema: tight.** Constrain output format (JSON schema, max length, structured response) to keep output tokens minimal.
+
+This pattern compounds three wins:
+- Anthropic native cache hits the long prefix at 10% cost
+- Output tokens stay small so they don't dominate the bill
+- The system prompt being stable means cache TTL refreshes naturally as calls continue
+
+This is exactly the pattern Citare's audit pipeline uses, and it's why our cache hit rate is so high.
+
+## Workloads where caching doesn't pay off
+
+Three patterns where I'd skip caching investment:
+
+1. **Open-ended generation.** Long-form writing, code generation, creative brainstorming — output dominates. Caching the 500-token system prompt does nothing for the 4000-token response.
+2. **One-shot pipelines with no reuse.** A workflow where each prompt is genuinely unique and the system prompt doesn't repeat — the 25% write penalty isn't amortized. You'll pay *more* with caching enabled.
+3. **Low-volume workloads (<10K calls/month).** The engineering cost of setting up semantic/exact caching layers exceeds the savings. Use Anthropic native caching only (zero engineering cost) and skip the rest.
+
+## The $20-in-an-afternoon trap that has nothing to do with caching
+
+I want to end with a war story because it points at the bigger lesson.
+
+I lost $20 in a single afternoon on Citare during early Prism integration. Not to caching costs or runaway tokens — to **a retry loop that no one noticed.**
+
+The setup: a downstream Anthropic call had a `max_tokens` budget that was too small for the response the model wanted to generate. The response would get truncated, the JSON parse would fail, the retry handler would re-issue the same prompt with the same (insufficient) token budget, the response would truncate again, parse would fail, retry would fire again. Loop until exhaustion or until I noticed the bill.
+
+Each loop iteration cost a few cents. The loop ran for several hours unsupervised before I caught it. $20 burned.
+
+**Anthropic's prompt cache cannot save you from this.** No caching layer can. The fix is *correct edge-case provisioning*:
+
+- **Generous response token budgets.** When in doubt, set `max_tokens` 2× what you think you'll need. The cost of overprovisioning is small; the cost of truncation-into-retry loops is enormous.
+- **Hard retry caps.** Never let retry logic run unbounded. Maximum 3 attempts, exponential backoff, then surface the failure to the calling code.
+- **Cost alerts on prepaid API keys.** Anthropic, OpenAI, and Google all support spending alerts. Set them. The first warning should fire at 2× your normal daily spend.
+- **Watch your logs.** A retry loop announces itself loudly in request logs — same prompt, same timestamps, same parse failure, every few seconds. Surface this pattern.
+
+**The bigger thesis here is LLM FinOps** — treating AI API spend with the same discipline you'd treat cloud infrastructure spend. Caching is part of it. Failure-mode discipline is the other part. I'm writing that post next.
+
+## How to actually set up Anthropic prompt caching (the 30-second version)
+
+For anyone who hasn't enabled this yet, here's the minimal change. In your Anthropic SDK call, add `cache_control` to the system prompt block:
+
+```python
+response = client.messages.create(
+    model="claude-sonnet-4-6",
+    system=[
+        {
+            "type": "text",
+            "text": "<your long stable system prompt here>",
+            "cache_control": {"type": "ephemeral"}
+        }
+    ],
+    messages=[
+        {"role": "user", "content": "<your variable user input>"}
+    ],
+    max_tokens=4096
+)
+```
+
+That's the entire integration. No new infrastructure. No engineering effort beyond the parameter. Your next call with the same system prompt hits cache and costs 10% on the cached portion.
+
+Requirements to be aware of:
+- Cached blocks must be ≥1024 tokens (Sonnet) or ≥2048 tokens (Opus) — smaller blocks aren't cacheable
+- Ephemeral TTL is 5 minutes — calls within the window keep the cache warm; longer gaps re-pay the write penalty
+- Cache key includes model and parameters — switching models invalidates the cache
+
+## Bottom line
+
+For most production LLM workloads in 2026, here's the priority order:
+
+1. **Enable Anthropic native prompt caching.** Day one. Single parameter. 25-35% savings on the right workloads.
+2. **Structure your prompts to fit the sweet spot.** Long stable system prompt + short variable user input + tight output schema.
+3. **Skip exact / semantic caching layers** until you're above 10K calls/month and your workload has actual semantic redundancy.
+4. **Provision response token budgets generously.** Set retry caps. Set cost alerts. Never trust an unattended retry loop.
+5. **Read the LLM FinOps post coming next** for the broader framework.
+
+## Related reading
+
+- **[Claude Code Review 2026 — From Zero Code to 3 Live SaaS](/blog/tools/claude-code-review)** — where the 35-45% cost claim was first cited
+- **[How I Run 3 Production AI SaaS on $5/Month of Hosting](/blog/stack/production-stack-2026)** — the full bootstrapped stack
+- **[What is LLM FinOps?](/blog/infra/what-is-llm-finops)** *(coming next)* — the broader framework
+- **[How I built Citare in 12 days with Claude Code](/case-studies/citare)** *(coming soon)* — the case study showing the audit pipeline these numbers came from
+
+---
+
+*Last updated 2026-05-23. Anthropic's caching pricing and TTL behavior change occasionally — I refresh this post when material updates ship. If your production numbers look different from mine, [tell me on Twitter/X](https://twitter.com/rikuq) — I'm collecting workload comparisons for a future deep-dive.*
