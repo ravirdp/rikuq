@@ -1,0 +1,157 @@
+---
+title: "How I Built Citare V2 in 12 Days After Throwing V1 Away"
+description: "I underestimated Citare badly. V1 shipped in a weekend, satisfied no one, got scrapped. V2 took 12 days, 76k LOC, and is still iterating."
+pubDate: 2026-05-24
+updatedDate: 2026-05-24
+category: geo
+tags:
+  - citare
+  - case-study
+  - claude-code
+  - solo-founder
+  - ai-search
+  - mcp
+author: Ravi
+heroImage: /illustrations/covers/citare-12-day-rebuild-story.jpg
+ogImage: /illustrations/covers/citare-12-day-rebuild-story.jpg
+draft: false
+affiliateDisclosure: false
+prismDisclosure: true
+citareDisclosure: true
+faqs:
+  - question: "What is Citare?"
+    answer: "Citare is a unified SEO + AI-search visibility platform that tracks how a brand appears across ChatGPT, Google AI Overview, Gemini, Claude, and Perplexity — the five distinct AI search surfaces that have largely fragmented the SEO landscape. It's built around the four-index reality: each AI engine uses a different underlying index (ChatGPT uses Bing, Gemini uses Google, Claude uses Brave, Perplexity uses its own), and most legacy SEO tools only watch one. Citare watches all of them in one dashboard."
+  - question: "How long did Citare actually take to build?"
+    answer: "Depends on which version. V1 — the 'lazy product' — shipped in a weekend. It was 20 queries plus a report, and once it was done I realized it wasn't satisfying anyone, including me. V2 — the proper rebuild from scratch — took 12 days and shipped at ~76,000 lines of TypeScript across 130 pages and 83 API routes. V2 is what's live at citare.ai today. Total project elapsed time including V1, the scrap, V2, and ongoing iteration: roughly 2 months and still active."
+  - question: "What's the hardest part of shipping a solo AI SaaS?"
+    answer: "For me, it wasn't a technical crisis. It was the moment I realized my V1 product assumptions were wrong — that the quick win I'd assumed would happen, didn't. Emotionally, throwing away working code because the product idea behind it was wrong is much harder than fixing a bug. The technical work in V2 was straightforward because Claude Code carries most of it. The hard part is figuring out what you should actually be building, and only the shipped V1 told me what I had wrong."
+  - question: "What's unique about Claude Code vs Gemini or GPT for building this?"
+    answer: "Two things. First, Claude proactively recommends services and patterns I didn't know existed — like the time I described needing browser-rendered AI engine queries with location simulation and Claude said 'we can use Cloudflare Browser Rendering for that.' I didn't know it existed. That kind of helpful surprise happens often with Claude and rarely with Gemini or GPT. Second, Claude pushes back. When I describe an approach, Claude plays contrarian to sharpen the idea — Gemini and GPT will offer alternatives if asked, but only Claude does it unprompted as part of the design conversation."
+  - question: "What's V2 actually built with under the hood?"
+    answer: "Next.js 16 frontend (marketing + dashboard, ~28,000 lines), TypeScript modules for the engine and business logic (~27,000 lines), Cloudflare Workers for the edge layer (~921 lines), Supabase Postgres for data (22 tables), Cloudflare Browser Rendering for AIO screenshot capture, Anthropic + OpenAI APIs for the LLM calls, plus DataForSEO and several other classical-SEO data sources. 37 MCP tools exposed for AI agents. A 5-stage Brand Radar pipeline: KG builder → query drafter → Sonnet dispatcher → Cloudflare Browser renderer → Opus parser."
+---
+
+I thought Citare would take a weekend. Two months later I'm still on it. This is the honest version of the build story — because the version where I shipped 76,000 lines in 12 days isn't quite true, and the true version is more useful.
+
+I'm Ravi. I build production AI SaaS solo, no formal coding background, [using Claude Code as my primary tool](/blog/tools/claude-code-review). [Citare](https://citare.ai) is my latest — an AI-search visibility platform that tracks brand presence across ChatGPT, Google AI Overview, Gemini, Claude, and Perplexity. It's live. It works. And it took twice as long as I expected for reasons that have nothing to do with the code.
+
+Here's how that actually went.
+
+## The lazy V1 (one weekend) — and why I threw it away
+
+I had a clean mental model going in. AI search is fragmenting; brands need to track visibility across the five major AI engines (each using a different underlying index — Bing for ChatGPT, Google for Gemini, Brave for Claude, Perplexity's own); existing SEO tools only watch one. Build a thing that runs 20 representative queries across all five engines, parses the responses, scores brand visibility, ships a report. Done. Weekend project, ship Monday.
+
+I built it that weekend. ~20 queries, results in a table, scoring rubric I made up on the spot. It worked — the code did what I'd asked Claude Code to build. And then I looked at the output and felt nothing.
+
+**It wasn't satisfying. Not to me, and obviously not to anyone who'd pay for it.**
+
+The thing I'd built measured *whether your brand appeared in these specific 20 queries*, not *whether your brand has visibility in AI search broadly*. A user would look at it, get a single snapshot, and have no idea what to do with it. No competitive context, no historical trend, no recommended actions, no understanding of *why* the brand appeared (or didn't) in each result. It was a demo dressed up as a product.
+
+I sat with this for an evening and made the call I most didn't want to make: throw it all away and rebuild.
+
+This is the part of solo-founder work nobody romanticizes. When the code works but the *product* doesn't, the right call is to delete the code. Sunk-cost reasoning is the enemy. I deleted V1 and started V2 from a fresh repo on day one of what I thought would be a 5-day rebuild.
+
+V2 took 12 days. And it's still iterating two months in.
+
+## What V2 actually became — the headline numbers
+
+The proper rebuild ran 12 days from first commit to a working live system. By the end:
+
+| Component | Scale |
+|---|---|
+| TypeScript / TSX source | ~76,000 lines across ~600 files |
+| Pages | 130 (marketing site + dashboard app) |
+| API routes | 83 |
+| Postgres tables | 22 (16 migrations) |
+| MCP tools exposed | 37 (wrapping 59 REST operations) |
+| Cloudflare Workers (edge) | 921 lines |
+| Commits | 199 |
+| Contributors | 1 (me) |
+| Days from first commit to live | 12 |
+
+The big architectural piece V2 added that V1 didn't have: **the Brand Radar pipeline**. Five stages, each handing off to the next:
+
+1. **KG builder** — constructs a knowledge graph of the brand, its category, its competitors, the canonical questions buyers ask in that space
+2. **Query Guide drafter** — turns the KG into a comprehensive query set that covers the brand's real visibility surface (not just 20 queries I picked)
+3. **Sonnet dispatcher** — routes each query to the right AI engine via the right method (some go through APIs, some need browser rendering, some need both)
+4. **Cloudflare Browser renderer** — actually loads the AI engine's web UI in a real browser, captures the response, screenshots the AI Overview if present
+5. **Opus parser** — parses the rendered response, extracts brand mentions, scores visibility, attributes citations to source pages
+
+This is what V1 didn't have. V1 was step 3 only, with a fixed query list. V2 is the full pipeline that makes the whole thing actually useful.
+
+## The Cloudflare Browser Rendering moment
+
+The single most memorable Claude Code interaction in those 12 days was when I described needing to query AI engines the way a real user would — meaning *in a browser, with proper location signals, with the rendered AI Overview captured*. Because here's the catch: AI engine responses via API are not the same as responses you get through the browser. The browser version is what users actually see. Citare has to measure the browser reality, not the API reality.
+
+I described this to Claude Code. *"We need to simulate browser queries to AI engines with location signals, capture the rendered AI Overview, parse it programmatically."*
+
+Claude responded with: *"Cloudflare Browser Rendering does exactly this. It's a Cloudflare Workers product — you can render a real Chromium instance from a worker, control location, capture screenshots and DOM."*
+
+I had never heard of Cloudflare Browser Rendering. It's been a Cloudflare product for months, sitting in their developer docs, and I had no awareness of it. Claude knew. *Of course it knew.*
+
+This happens constantly with Claude Code, and it's the most underrated feature of using it. The model has comprehensive recent knowledge of what services exist and what they do. When I describe a problem, Claude often surfaces *infrastructure I didn't know about* that solves it natively, rather than helping me build a worse version from scratch. **I save weeks of work simply by asking, "what would you use to build this?" before coding anything.**
+
+Gemini and GPT don't do this as well. They're good at telling you about services if you name them. They're less proactive about surfacing services you've never heard of when you describe a problem.
+
+## What Claude does that other models don't (the contrarian thing)
+
+The other Claude-specific pattern that shaped V2: **Claude pushes back.**
+
+When I describe an approach, Claude will reflexively offer the counter-view to sharpen the design. *"You're proposing X. Have you considered Y? Here's why Y might be better given [specific constraint]."* It does this unprompted, as a natural part of the design conversation.
+
+Gemini and GPT will offer alternatives when asked. But Claude does it *as a default behavior*. The result is that working with Claude feels like working with a thoughtful senior engineer who genuinely cares about whether your design is right. Working with Gemini or GPT more often feels like working with a fast-typing intern who'll happily build whatever you describe.
+
+For Citare specifically, this contrarian instinct caught two architectural mistakes early:
+
+1. **I was going to query AI engines sequentially.** Claude pointed out that engines have wildly different latencies and a parallel fan-out with timeout-per-engine would give 5× better wall-clock time. Right call. Saved me from a refactor later.
+2. **I was going to store everything in Postgres.** Claude pointed out that the rendered screenshots and bot-fingerprint logs would balloon the DB unnecessarily, and that R2 + KV would handle the volume better at fraction of cost. Right call again.
+
+Neither of these was a magic insight. They were *the obvious questions a thoughtful engineer would ask before letting you commit to the wrong architecture*. Claude asks them without being prompted.
+
+## The hardest part: the rebuild emotional moment
+
+The technical part of those 12 days was, honestly, mechanical. With Claude Code on the Anthropic Max $200 plan and a clear architecture, 76,000 lines of solid TypeScript was achievable. Not effortless — there were debugging sessions, refactors, an MCP tool wiring that took three attempts to get right — but the work itself was tractable.
+
+What wasn't mechanical was the emotional moment between V1 and V2.
+
+**Throwing away working code because the product behind it is wrong** is the hardest single moment in solo founder work. Not because the code took time (Claude built it fast; rebuilding wasn't a huge cost). Because admitting that *the thing I'd just shipped wasn't the thing worth shipping* meant I'd been wrong about what users wanted. The quick win I'd assumed was happening — wasn't.
+
+This is the part of building solo that the heroic content skips. You don't get a second person to tell you "it's fine, we'll iterate." You sit with the realization that you had the wrong mental model, and you decide whether to:
+
+(a) ship V1 anyway, hope users tolerate it
+(b) iterate on V1, patching toward the right thing
+(c) throw it all away and start from the correct foundation
+
+Option (c) is correct more often than founders admit. It was correct for Citare. I made the call, deleted V1, opened a new directory, and started typing into Claude Code: *"Let's start over. Here's what V1 got wrong. Here's what V2 needs to be."*
+
+Twelve days later V2 was live. Two months later I'm still iterating — adding tools, refining the parser, fixing edge cases in the browser renderer, expanding the engine integrations. Citare isn't *done*. It's *shipping and improving*. That's a better state than V1 ever could have reached.
+
+## What this proves about solo AI SaaS in 2026
+
+The lesson isn't "Claude Code lets you ship 76k LOC in 12 days." The lesson is more useful:
+
+**AI lets you iterate fast enough that throwing away the wrong version becomes affordable.** Pre-Claude-Code, deleting V1 would have meant deleting weeks of work and starting over from scratch with weeks more ahead. The math would have pushed me toward patching V1 instead. With Claude Code, deleting V1 cost me the weekend I'd put in and bought me 12 days to rebuild. The economics favor *correcting course* rather than *defending sunk cost*.
+
+This is the actual productivity unlock. Not "more code per hour" (which is what most AI coding content focuses on). The real shift is *cheaper resets when you discover you're building the wrong thing*. Solo founders historically optimized to not have to do resets because they were so expensive. AI coding makes resets cheap enough that they become the correct move more often than they used to be.
+
+If you're building a solo AI SaaS and your gut is telling you V1 isn't satisfying you — listen. The rebuild is now achievable. The hard part isn't the code. It's the decision.
+
+## Where Citare is now
+
+V2 is live at [citare.ai](https://citare.ai). 130 pages, 83 API routes, 37 MCP tools exposed for AI agents, the full 5-stage Brand Radar pipeline, dashboard for tracking visibility across all five AI engines + classical SEO data, 19 free tools in the marketing surface.
+
+Pricing: free tier (1 project, 20 free tools), or $19/mo (USD) / ₹999/mo (INR) with UPI + GST native for Indian customers.
+
+The iteration continues — I'm currently working on better historical trend visualization, more granular competitor comparison, and a public-facing API for embedding visibility scores. But the V2 architecture is the foundation, and that part settled in 12 days because the rebuild was honest about what the product needed to be.
+
+## Related reading
+
+- **[Claude Code Review 2026 — From Zero Code to 3 Live SaaS](/blog/tools/claude-code-review)** — the tool that made the 12 days possible
+- **[Best AI Coding Tools 2026](/blog/tools/best-ai-coding-tools-2026)** — full landscape if you're evaluating
+- **[How I Run 3 Production AI SaaS on $5/Month of Hosting](/blog/stack/production-stack-2026)** — the production stack Citare V2 runs on
+- **[Anthropic Prompt Caching: Real Numbers From 330 Production Calls](/blog/infra/anthropic-prompt-caching-real-numbers)** — the numbers come from Citare's audit pipeline
+- **[What is LLM FinOps?](/blog/finops/what-is-llm-finops)** — the discipline behind keeping Citare's API spend bounded
+
+---
+
+*Last updated 2026-05-24. The "still iterating" status is real — I refresh this as Citare evolves. If you're working on something where you suspect V1 is wrong and you're debating the rebuild, [tell me on Twitter/X](https://twitter.com/rikuq). The answer is almost always to rebuild.*
