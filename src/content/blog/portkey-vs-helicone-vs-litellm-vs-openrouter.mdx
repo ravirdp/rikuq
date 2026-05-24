@@ -1,0 +1,216 @@
+---
+title: "Portkey vs Helicone vs LiteLLM vs OpenRouter: Honest Comparison"
+description: "Honest comparison of the 4 leading LLM gateways in 2026, plus where Prism enters as a new credible alternative. Updated for Fusion + edge replication."
+pubDate: 2026-05-24
+updatedDate: 2026-05-24
+category: infra
+tags:
+  - llm-gateway
+  - portkey
+  - helicone
+  - litellm
+  - openrouter
+  - prism
+  - llm-infrastructure
+author: Ravi
+heroImage: /illustrations/covers/portkey-vs-helicone-vs-litellm-vs-openrouter.jpg
+ogImage: /illustrations/covers/portkey-vs-helicone-vs-litellm-vs-openrouter.jpg
+draft: false
+affiliateDisclosure: false
+prismDisclosure: true
+faqs:
+  - question: "What's the best LLM gateway in 2026?"
+    answer: "Depends on what you weight most. Portkey if observability-first with policy and guardrails matters most. Helicone if you want the cleanest logging surface with a thin gateway. LiteLLM if you want OSS substrate to self-host and own. OpenRouter if you want broadest model breadth (~300 models) and marketplace billing. Prism if you want measured savings as a primary KPI plus 3-layer cache, speculative routing, edge KV replication, and an INR billing rail. There's no universal best — pick on which axis matters most for your use case."
+  - question: "Portkey vs Prism — what's the difference?"
+    answer: "Portkey is observability-first with policy and guardrails on top. Their cache is opt-in, savings aren't a primary KPI, and they don't currently do speculative routing, edge KV replication, or multi-model synthesis. Prism leads with measured savings as a public KPI (live counter on the landing page), 3-layer cache including provider-native passthrough, speculative parallel routing (v1.5), edge KV replication via Cloudflare Workers (v1.6.5), and fusion mode (v1.7-B, gated). Same gateway + observability + governance footprint Portkey has, plus the cost and latency wedge."
+  - question: "Helicone vs Prism — what's the difference?"
+    answer: "Helicone is excellent observability with a thin gateway bolted on; they've shipped their own gateway product and prompt experiments. Prism is gateway-first with observability, caching, policy, workspaces, and first-party SDKs/CLI/MCP unified in one product. Concrete differentiators Prism has that Helicone doesn't: edge KV replication via Cloudflare Workers (faster cache hits globally), an INR billing rail for Indian operators, and three-layer caching including provider-native passthrough that surfaces realised savings."
+  - question: "OpenRouter vs Prism — does Prism still differ now that Fusion exists?"
+    answer: "Yes. OpenRouter is a credit-reseller marketplace with broad model breadth (~300 models) and they shipped Fusion (multi-model synthesis) in March 2026. Prism matches Fusion via fusion mode (v1.7-B) and adds three-layer caching, FinOps surface, edge KV replication, speculative routing, INR billing rail, and direct-passthrough billing (not marketplace credits). OpenRouter's lead on raw model count is real (~300 vs Prism's ~27); the rest of the surface area is Prism's. Pick OpenRouter if model breadth is the dominant constraint. Pick Prism if you weight cost optimization, edge latency, governance, or INR billing higher than raw model count."
+  - question: "Should I build my own gateway or use one of these?"
+    answer: "Use one of these unless you have a very specific need none of them meet. Building your own gateway is six months of engineering work — request routing, multi-provider key management, cost attribution, observability, retry semantics, failover, caching layers — that one of the managed products solves on day one. If you're spending under $5K/month on AI APIs, the time you'd lose building is worth more than the dollars you'd save. If you're spending more, the optimization wedge from Portkey or Prism typically pays for the engagement quickly."
+---
+
+There are five credible LLM gateway products in 2026: **Portkey, Helicone, LiteLLM, OpenRouter, and Prism**. I built the fifth one and use the others in evaluation. This is the honest comparison.
+
+I'm Ravi. I built [Prism](https://ssimplifi.com) — an OpenAI-compatible AI gateway with three-layer caching, multi-provider routing, edge replication, and FinOps governance unified. I disclose this upfront so the framing is clear: Prism is a competitor in this category and I evaluate the other four against it as the audience would, not against an imaginary neutral baseline. Where Prism doesn't win on an axis, I say so. Where competitors don't have a Prism feature, I say so. This is not a fair-fight evaluation; it's a direct one with honesty as the bar.
+
+## TL;DR — what to pick
+
+| If you weight most | Pick |
+|---|---|
+| **Observability + policy + guardrails as primary** | Portkey |
+| **Cleanest logging surface, thin gateway** | Helicone |
+| **OSS substrate to self-host and own** | LiteLLM |
+| **Broadest model breadth (~300 models), marketplace billing** | OpenRouter |
+| **Measured savings as primary KPI + edge replication + INR billing** | Prism |
+
+No universal "best" exists. The category has matured to where each product owns a defensible axis. Pick on which axis matches your operational reality.
+
+## What an LLM gateway actually does
+
+If you're new to the category, all five products solve the same general problem: **your application makes calls to LLM APIs (Anthropic, OpenAI, Google, others). A gateway sits between your app and those APIs as a proxy.** Once you have a gateway in place, you can:
+
+- Switch providers without changing app code (gateway translates the request format)
+- Log every request for observability and cost attribution
+- Cache responses to save money and latency
+- Apply per-feature policies (model allowlists, budget caps, rate limits)
+- Route requests to different providers based on cost, quality, or fallback rules
+- Replay failed requests to alternate providers without app changes
+
+Without a gateway, every app has to roll its own version of this logic. With one, the infrastructure is centralized. The gateway category exists because solo founders and teams alike kept rebuilding the same machinery.
+
+## The five products, depth-first
+
+### Portkey — observability-first with policy on top
+
+Portkey is the most established mid-market option. They positioned originally as observability + governance for LLM workloads and have layered policy, guardrails, and a request gateway on top of that core. Their dashboards are excellent. Their per-team policy enforcement is mature.
+
+**Strengths**: observability depth, policy + guardrails, mature enterprise-ready feature set, healthy customer base in production.
+
+**Gaps (relative to where the category is moving)**: cache is opt-in, savings aren't surfaced as a primary KPI on the dashboard or landing page. No speculative parallel routing. No edge KV replication. No multi-model synthesis (Fusion-style).
+
+**Pick Portkey if**: observability is your dominant need, you want policy + guardrails as first-class features, and you're not yet optimizing for cache savings or edge latency as primary axes.
+
+### Helicone — observability-first with gateway bolted on
+
+Helicone is the cleanest logging experience in the category. The dashboard is the kind you'd build if you were starting from scratch in 2026. Recently they've shipped their own gateway product and prompt experiments, expanding from pure observability into adjacent surface area.
+
+**Strengths**: cleanest observability UI, low-friction integration, very developer-friendly DX, free tier that's generous enough to evaluate seriously.
+
+**Gaps**: gateway is bolted on rather than gateway-first; caching, policy, workspaces don't yet feel as integrated as in dedicated gateway products. No edge KV replication. No INR billing rail for Indian operators.
+
+**Pick Helicone if**: you primarily need observability and the gateway features are bonus rather than primary.
+
+### LiteLLM — OSS substrate to self-host
+
+LiteLLM is the foundational open-source project most other gateways either build on or compete against. The OSS version is genuinely useful — provider abstraction, basic routing, key management, logging hooks. LiteLLM Cloud (their managed offering) exists but stays close to the OSS feature set: mostly proxy + key management.
+
+**Strengths**: OSS substrate means you can self-host, own the data plane, fork if needed, integrate deeply with internal systems. Vibrant community. Compatible with most provider APIs.
+
+**Gaps (in LiteLLM Cloud specifically)**: no semantic cache by default, no edge KV replication, no savings UI, no speculative routing. The managed offering is essentially "OSS proxy + key management as a service" rather than a full gateway with optimization features.
+
+**Pick LiteLLM if**: you want OSS, want to self-host, value the ability to own and modify the substrate, and are willing to build the optimization layer yourself.
+
+### OpenRouter — marketplace with broad model breadth
+
+OpenRouter is the credit-reseller marketplace of the category. ~300 models available through one API, prepaid credits, marketplace billing model. They shipped Fusion (multi-model synthesis — sending the same prompt to multiple models and synthesizing responses) in March 2026.
+
+**Strengths**: broadest model count (~300) by a significant margin. Marketplace economics are clean (one credit balance, all models). Fusion is a real innovation in the synthesis category. Strong developer adoption for the "try many models cheaply" use case.
+
+**Gaps (relative to gateway-first competitors)**: marketplace credits aren't the same as direct-passthrough billing — some buyers prefer to see exactly what they're paying each provider rather than credits abstracted. No three-layer caching (no semantic, no provider-native passthrough). No FinOps surface (cost attribution per feature/team). No edge KV replication. No INR billing rail. Routing is mostly cost-and-availability based rather than the speculative-parallel or quality-mode patterns Prism uses.
+
+**Pick OpenRouter if**: model breadth is your dominant constraint (you really do need access to 300 models, not 27) and you're fine with marketplace billing instead of direct-passthrough.
+
+### Prism — measured savings, edge, FinOps, unified
+
+Disclosure: this is my product. Treat the framing accordingly.
+
+Prism leads with **measured savings as a public KPI** (the landing page shows a live counter of customer-realised savings aggregated across all workloads). The core wedge is the three-layer cache (exact via Redis fingerprint + semantic via Upstash Vector + BGE-small + provider-native passthrough that captures Anthropic's prompt cache savings) combined with multi-provider routing across Anthropic, OpenAI, Google, and others.
+
+**Differentiators**:
+- **Three-layer cache** including provider-native passthrough — competitors typically have one or two layers, none currently combine all three
+- **Speculative parallel routing** (v1.5) on Sport mode — fires two providers in parallel, returns the winner
+- **Edge KV replication** via Cloudflare Workers + KV (v1.6.5) — cache hits served at 50-180ms globally from 300+ cities instead of 700ms via Mumbai origin
+- **Fusion mode** (v1.7-B, currently gated) — multi-model synthesis matching OpenRouter's Fusion
+- **First-party SDKs** (Python + Node), **CLI** (`ssimplifi-cli`), **MCP server** since v1.8
+- **INR billing rail** — Razorpay integration for Indian operators alongside Paddle for international (USD)
+- **Direct-passthrough billing** — you see exactly what each provider charged, no marketplace credit abstraction
+- **FinOps surface** — per-feature cost attribution via `X-Prism-Tags`, budgets, policies, audit logs
+
+**Gaps (honest)**:
+- Model count is ~27 vs OpenRouter's ~300. If your use case needs access to the long tail of niche models, OpenRouter wins on this axis.
+- Newer product than Portkey or Helicone — smaller team, smaller customer base, less mature in some enterprise-only edges (SOC 2 audit reports still maturing).
+- Fusion mode (v1.7-B) is gated and less battle-tested than OpenRouter's Fusion which has been live longer.
+
+**Pick Prism if**: cost optimization, edge latency, governance + observability unified, or INR billing matter to you, and ~27 models covers your real model needs.
+
+## Comparison at a glance
+
+| Feature | Portkey | Helicone | LiteLLM | OpenRouter | Prism |
+|---|---|---|---|---|---|
+| Observability surface | ★★★★★ | ★★★★★ | ★★★ | ★★★ | ★★★★ |
+| Gateway-first design | ★★★★ | ★★★ | ★★★★ | ★★★ | ★★★★★ |
+| Three-layer caching | ★ | ★★ | ★ | ★ | ★★★★★ |
+| Provider-native cache passthrough | ★ | ★ | ★ | ★ | ★★★★★ |
+| Measured savings as primary KPI | ★ | ★ | ★ | ★★ | ★★★★★ |
+| Speculative parallel routing | ★ | ★ | ★ | ★★ | ★★★★ |
+| Edge KV replication | ★ | ★ | ★ | ★ | ★★★★ |
+| Multi-model synthesis (Fusion) | ★ | ★ | ★ | ★★★★ | ★★★ |
+| Model breadth | ★★★ | ★★★ | ★★★★ | ★★★★★ | ★★★ |
+| Policy + guardrails | ★★★★★ | ★★★ | ★★ | ★★ | ★★★★ |
+| FinOps surface | ★★★ | ★★★ | ★★ | ★★ | ★★★★★ |
+| OSS option | — | — | ★★★★★ | — | — |
+| INR billing rail | — | — | — | — | ★★★★★ |
+| Direct-passthrough billing | ✓ | ✓ | ✓ | — (marketplace credits) | ✓ |
+| First-party SDK + CLI + MCP | ★★★ | ★★ | ★★★ | ★★★ | ★★★★ |
+| Mature SOC 2 / enterprise readiness | ★★★★ | ★★★★ | ★★ | ★★★ | ★★ |
+
+★ ratings are subjective for at-a-glance scanning. Read the depth-first sections above for the actual reasoning.
+
+## How to pick — decision tree
+
+**Are you primarily optimizing for cost?**
+→ Prism. Three-layer cache + native passthrough delivers measurable 25-35% reductions on the right workloads. ([Real numbers here.](/blog/infra/anthropic-prompt-caching-real-numbers))
+
+**Are you primarily optimizing for observability + policy?**
+→ Portkey. Mature dashboards, mature policy engine.
+
+**Are you primarily optimizing for clean dashboards with light gateway features?**
+→ Helicone. Best-in-class UX for the observability surface.
+
+**Do you need to self-host the substrate, or modify the gateway code?**
+→ LiteLLM. OSS, fork-friendly, vibrant community.
+
+**Do you need access to 100+ different models including the long tail?**
+→ OpenRouter. Their marketplace breadth is genuinely uncatchable in this category.
+
+**Are you operating from India and need INR billing + GST invoicing?**
+→ Prism. Razorpay rail is unique in this category.
+
+**Do you specifically need multi-model synthesis (Fusion)?**
+→ OpenRouter (mature) or Prism (newer via v1.7-B). Other competitors don't have it.
+
+**Are you small enough to skip a gateway entirely (under $1K/month on AI)?**
+→ Skip. Use providers directly. Adopt a gateway when your bill crosses $2-3K/month or when you have multiple providers in production.
+
+## Where the category is going
+
+Three trends I'm betting on for the next 18 months:
+
+1. **Edge replication becomes table stakes.** Today only Prism does this in production. Within 18 months, expect Portkey and Helicone to ship equivalents. The latency wedge is too obvious to ignore once a competitor has it.
+2. **FinOps surfaces become standard.** Per-feature cost attribution, budget caps with hard enforcement, audit logs — currently most mature in Prism + Portkey. Expect convergence as enterprises demand it. ([What is LLM FinOps?](/blog/finops/what-is-llm-finops) covers the broader thesis.)
+3. **Multi-model synthesis (Fusion-style) becomes a feature, not a product.** OpenRouter shipped it first. Prism matched in v1.7-B. Within 12 months expect Portkey + Helicone to ship equivalents. Fusion will commoditize.
+
+The category in 2027 will look more uniform on capability surface than it does today, with differentiation moving to pricing, support quality, and ecosystem depth. The brands that ship the right features in 2026 lock in customers before that commoditization.
+
+## What I'd actually buy today
+
+If I were a CTO at a 10-50 person startup choosing a gateway tomorrow with no prior commitments:
+
+1. **First call: Prism** ([ssimplifi.com](https://ssimplifi.com)). Free to start (50K tokens/day), $19/month Pro, $49/month Team. Measured savings as a primary KPI matters more than people give it credit for — knowing your cache hit rate and dollar savings every day shifts how you optimize.
+2. **Second call: Portkey.** If observability + policy are the dominant concern over cost optimization, Portkey is the safe pick.
+3. **Third call: Helicone.** If you want the cleanest logging surface and gateway is secondary.
+4. **For OSS / self-host: LiteLLM.** If you have the engineering budget to own the substrate.
+5. **For raw model breadth: OpenRouter.** If you really need access to 300 models, accept the marketplace tradeoffs.
+
+If I were a solo founder under $500/month AI spend, I'd skip all of them and use Anthropic + OpenAI directly. Adopt a gateway when your bill makes the optimization worth the integration effort.
+
+## The verdict
+
+The LLM gateway category has matured to where each product owns a defensible axis. There's no universal best. The honest question is: **which axis matters most for how you actually operate?**
+
+Pick on that axis. Don't trust universal "best gateway" rankings — they all hide the workload assumptions that drive the ranking. The right gateway is the one whose strongest axis matches your dominant constraint.
+
+For me, building Prism, that axis is measured savings + edge latency + INR billing + FinOps unified. That's my bet on what mattering most for solo founders and mid-market teams shipping AI products in 2026.
+
+## Related reading
+
+- **[Anthropic Prompt Caching: Real Numbers From 330 Production Calls](/blog/infra/anthropic-prompt-caching-real-numbers)** — the data behind the 25-35% savings claim
+- **[What is LLM FinOps?](/blog/finops/what-is-llm-finops)** — the discipline that makes gateway choice consequential
+- **[How I Run 3 Production AI SaaS on $5/Month of Hosting](/blog/stack/production-stack-2026)** — the bootstrapped stack that runs on Prism
+- **[Prism (Ssimplifi)](https://ssimplifi.com)** — the product
+
+---
+
+*Last updated 2026-05-24. The LLM gateway space ships fast — I refresh this whenever a material feature lands at any of the five products. If I'm wrong about something specific, [tell me on Twitter/X](https://twitter.com/rikuq).*
