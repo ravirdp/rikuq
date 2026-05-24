@@ -38,6 +38,9 @@ const imageURL = new URL(image, Astro.site).toString();
 <link rel="canonical" href={canonicalURL} />
 {noindex && <meta name="robots" content="noindex,nofollow" />}
 
+<!-- Affiliate network site verification -->
+<meta name="impact-site-verification" content="dec87b90-81d8-4ed0-a318-f6683e0dd751" />
+
 <!-- Open Graph -->
 <meta property="og:type" content={type} />
 <meta property="og:url" content={canonicalURL} />
