@@ -4,28 +4,40 @@
 // All articles should construct links via `affiliateUrl(...)`, never hardcoding
 // affiliate IDs in MDX or components.
 //
-// Usage:
-//   affiliateUrl('customgpt')                  → https://customgpt.ai/?fpr=ravi52&utm_source=rikuq
-//   affiliateUrl('dataforseo')                 → https://dataforseo.com/?aff=275223&utm_source=rikuq
-//   affiliateUrl('dataforseo', '/pricing')     → https://dataforseo.com/pricing?aff=275223&utm_source=rikuq
-//   affiliateUrl('dataforseo-connector')       → https://dataforseo.com/google-sheets-connector?connector_aff=275223&utm_source=rikuq
-//   affiliateUrl('brevo')                      → https://www.brevo.com/?<param>=<id>&utm_source=rikuq (once ID lands)
+// Two patterns supported:
+//
+// 1) Query-param referrals (most programs): base URL + ?param=id
+//    affiliateUrl('customgpt') → https://customgpt.ai/?fpr=ravi52&utm_source=rikuq
+//    affiliateUrl('dataforseo', '/pricing') → https://dataforseo.com/pricing?aff=275223&utm_source=rikuq
+//
+// 2) Full-URL referrals (Cal.com, Tally, others on Cello/similar): the entire
+//    referral URL is provided by the program. We just append UTM tracking.
+//    affiliateUrl('cal') → https://refer.cal.com/ravi-patel-rips6a-311w?utm_source=rikuq
+//    affiliateUrl('tally') → https://tally.cello.so/mV8i3HuZnbP?utm_source=rikuq
 
 interface ProgramConfig {
-  /** Base URL of the program — the host. */
-  base: string;
+  /**
+   * Full referral URL for programs that issue an entire dedicated link
+   * (Cal.com, Tally via Cello, FirstPromoter-style programs).
+   * When present, takes precedence over the base/param/id pattern.
+   */
+  refUrl?: string;
+  /** Base URL of the program — the host. Required when refUrl is not set. */
+  base?: string;
   /** Affiliate ID query param name (varies per program). */
-  param: string;
-  /** Hardcoded affiliate ID. Some programs let us publish IDs in source (Impact-style); for those that don't, leave undefined and source from env. */
+  param?: string;
+  /** Hardcoded affiliate ID. */
   id?: string;
   /** Env var name to read the affiliate ID from if not hardcoded. */
   envVar?: string;
   /** Default path if caller doesn't override. */
   defaultPath?: string;
+  /** Optional human note for ourselves about the program. */
+  note?: string;
 }
 
 const PROGRAMS: Record<string, ProgramConfig> = {
-  // ✅ Live
+  // ✅ Live — query-param pattern
   customgpt: {
     base: 'https://customgpt.ai',
     param: 'fpr',
@@ -48,10 +60,20 @@ const PROGRAMS: Record<string, ProgramConfig> = {
     defaultPath: '/google-sheets-connector',
   },
 
+  // ✅ Live — full-URL pattern
+  cal: {
+    refUrl: 'https://refer.cal.com/ravi-patel-rips6a-311w',
+    note: 'Cal.com — open-source scheduling. Referred users get a Cal benefit; we get recurring commission.',
+  },
+  tally: {
+    refUrl: 'https://tally.cello.so/mV8i3HuZnbP',
+    note: 'Tally — form builder. Referred users get a discount; we get recurring commission. Cello-hosted referral.',
+  },
+
   // ⏳ Pending (ID will be hydrated from env once approved)
   brevo: {
     base: 'https://www.brevo.com',
-    param: 'tap_a', // Tapfiliate-style param; confirm on approval
+    param: 'tap_a',
     envVar: 'AFFID_BREVO',
   },
   resend: {
@@ -74,6 +96,10 @@ const PROGRAMS: Record<string, ProgramConfig> = {
  * If the affiliate ID is not yet known (program pending), returns the bare
  * base URL with UTM only — so the link still works editorially, just without
  * commission attribution.
+ *
+ * For full-URL programs (Cal, Tally, etc.), the path and extraParams args
+ * are appended as URL params on top of the refUrl. Useful for programs that
+ * support deep-linking with extra query state.
  */
 export function affiliateUrl(
   program: string,
@@ -86,7 +112,25 @@ export function affiliateUrl(
     return '#';
   }
 
-  // Resolve the affiliate ID: hardcoded > env > none.
+  // Full-URL pattern (Cal, Tally, etc.) — return the refUrl with UTM appended.
+  // Ignores path arg since the refUrl is a complete referral destination.
+  if (cfg.refUrl) {
+    const url = new URL(cfg.refUrl);
+    url.searchParams.set('utm_source', 'rikuq');
+    if (extraParams) {
+      for (const [k, v] of Object.entries(extraParams)) {
+        url.searchParams.set(k, v);
+      }
+    }
+    return url.toString();
+  }
+
+  // Query-param pattern — build from base + path + ref param + UTM.
+  if (!cfg.base || !cfg.param) {
+    console.warn(`[affiliate] Program ${program} has neither refUrl nor base+param`);
+    return '#';
+  }
+
   const id =
     cfg.id ??
     (cfg.envVar ? (import.meta.env[cfg.envVar] as string | undefined) : undefined);
@@ -105,10 +149,11 @@ export function affiliateUrl(
   return url.toString();
 }
 
-/** True if the program has a live affiliate ID right now. Useful for conditionally rendering badges. */
+/** True if the program has a live referral target right now. */
 export function hasAffiliateId(program: string): boolean {
   const cfg = PROGRAMS[program];
   if (!cfg) return false;
+  if (cfg.refUrl) return true;
   if (cfg.id) return true;
   if (cfg.envVar && import.meta.env[cfg.envVar]) return true;
   return false;

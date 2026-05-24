@@ -20,6 +20,8 @@ Use `affiliates@rikuq.com` once set up so payout notifications don't get lost.
 | **Resend** | resend.com/insiders | ⏳ pending (Insiders application) | TBD on approval | Application has open-text fields; copy in this repo's notes |
 | **CustomGPT.ai** | customgpt.ai | ✅ enrolled | TBD | Newer addition; useful for chatbot / RAG content angle |
 | **DataForSEO** | dataforseo.com (partner) | ✅ enrolled | Rev share | Citare-adjacent content; we already use it inside Citare |
+| **Cal.com** | refer.cal.com | ✅ enrolled | Recurring | Open-source scheduling. Fits founder-ops / Stack content. |
+| **Tally** | tally.cello.so | ✅ enrolled | Recurring + reader discount | Form builder. Referred users get a discount, we get commission. Fits Stack content. |
 | **Razorpay Partners** | razorpay.com/partners | 🔁 retry afternoon | Per merchant onboarded | India angle; BatchWise-adjacent content |
 | **Clerk** | clerk.com | ❌ no public affiliate | — | Confirmed — no public program in 2026 |
 | **OpenRouter** | openrouter.ai | ❌ no public affiliate | — | Confirmed — no public program in 2026 |
