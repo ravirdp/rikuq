@@ -13,8 +13,14 @@ name: Auto-crosspost 3 days after publish
 # Manual trigger also available via workflow_dispatch with a slug input.
 
 on:
-  schedule:
-    - cron: '30 4 * * *'   # 04:30 UTC = 10:00 IST daily
+  # Schedule paused 2026-05-24 until rikuq.com is fully indexed by Google.
+  # While the domain is new (less than 2 weeks old), crossposting before
+  # Google has indexed the original risks Google picking the Dev.to /
+  # Hashnode URL as canonical despite the canonical tag pointing back here.
+  # Re-enable by uncommenting the schedule line below once indexing is
+  # consistent (verify via GSC URL inspection on multiple URLs).
+  # schedule:
+  #   - cron: '30 4 * * *'   # 04:30 UTC = 10:00 IST daily
   workflow_dispatch:
     inputs:
       slug:
