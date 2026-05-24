@@ -1,0 +1,141 @@
+---
+title: "The Four-Index Reality: Why AI Search Isn't One Thing"
+description: "ChatGPT uses Bing. Gemini uses Google. Claude uses Brave. Perplexity uses its own. Tracking AI visibility means tracking four indexes, not one."
+pubDate: 2026-05-24
+updatedDate: 2026-05-24
+category: geo
+tags:
+  - geo
+  - ai-search
+  - four-index
+  - citare
+  - chatgpt
+  - claude
+  - perplexity
+  - gemini
+author: Ravi
+heroImage: /illustrations/covers/four-index-reality.jpg
+ogImage: /illustrations/covers/four-index-reality.jpg
+draft: false
+affiliateDisclosure: false
+citareDisclosure: true
+faqs:
+  - question: "What is the four-index reality?"
+    answer: "The five major AI search surfaces (ChatGPT, Google AI Overview, Gemini, Claude, Perplexity) draw from four fundamentally different underlying indexes. ChatGPT queries Bing. Gemini and Google AI Overview both query Google. Claude uses a combination of Brave Search and Anthropic's own crawl. Perplexity maintains its own index. This means your visibility in AI search is not one ranking — it is four parallel rankings, and a single SEO tool can only watch one of them at a time. Citare was built around this observation."
+  - question: "Why don't all AI engines just use Google?"
+    answer: "Three reasons. Cost — Google's search API access is expensive at scale, and AI engines run search queries on every user prompt that needs current information. Independence — Microsoft (OpenAI's largest investor) owns Bing, so ChatGPT defaulting to Bing is structural. Differentiation — Perplexity and Anthropic both built their own crawl to differentiate on freshness, citation quality, and source selection rather than ride on Google's signal. The fragmentation is deliberate, not accidental, and will persist."
+  - question: "Does Google AI Overview count as a separate index?"
+    answer: "No. As of Google's May 2026 guidance, AI Overviews use Google's main index — same crawl, same ranking signals, same E-E-A-T factors as regular Google search. Optimizing for AI Overviews is the same discipline as optimizing for regular Google SEO. So although AI search has five visible surfaces, only four distinct indexes underpin them. Citare tracks all five surfaces because each presents citations differently even when the underlying index is the same — but you only have to win the underlying ranking once per index."
+  - question: "How do I rank in all four indexes simultaneously?"
+    answer: "You don't, not directly. Each index has different crawl behavior, ranking signals, and citation preferences. Strong fundamentals work everywhere — clear writing, structured data, real authorial identity, first-party data — but the specifics diverge. Bing rewards backlinks more than Google does today. Brave weights freshness and independent sources higher. Perplexity favors content with citable inline facts. You optimize for the fundamentals once, then track per-index to identify which need targeted attention."
+  - question: "Which AI engine drives the most referral traffic in 2026?"
+    answer: "ChatGPT by a significant margin, because the user base is largest and the search-grounded responses link out more often than Gemini or Claude do. Perplexity drives the highest per-user click rate because its UI surfaces citations prominently. Google AI Overview drives the least direct referral traffic because Google answers in-place without users needing to click. The mix matters for content strategy: if you depend on referral traffic, optimize for ChatGPT + Perplexity. If you depend on brand visibility (not clicks), optimize for AI Overview presence."
+---
+
+The most consequential SEO observation of 2026 is also the simplest: **AI search is not one thing.**
+
+When you ask ChatGPT a question, it queries Bing. When you ask Gemini the same question, it queries Google. When you ask Claude, it uses Brave Search and Anthropic's own crawl. When you ask Perplexity, it queries an index Perplexity built and maintains itself.
+
+Five visible AI search surfaces. Four genuinely different underlying indexes. Each behaves differently. Each cites differently. Each rewards different optimization. And most SEO tools in 2026 still treat AI search as a single rank.
+
+This is the **four-index reality**, and it's the entire premise of how serious content visibility tracking has to work going forward. [Citare](https://citare.ai) — the AI-search visibility platform I built — is constructed entirely around it. This post is the why.
+
+I'm Ravi. I run [Citare](https://citare.ai), which monitors brand visibility across the five major AI engines using the four-index understanding below. If this post lands, the platform is what it operationalizes.
+
+## The five surfaces and their four indexes
+
+| AI surface | Underlying index | Why |
+|---|---|---|
+| **ChatGPT** | Microsoft Bing | OpenAI's largest investor is Microsoft, and Microsoft owns Bing. The integration is structural. |
+| **Google AI Overview** | Google (main index) | Per Google's May 2026 guidance, AI Overviews use the same crawl + ranking as regular Google search. |
+| **Gemini** | Google (main index) | Same Google crawl as the rest of Google's search products. |
+| **Claude** | Brave Search + Anthropic's own crawl | Anthropic chose independence — partnership with Brave for the open-web layer, supplemented by their own targeted crawl. |
+| **Perplexity** | Perplexity's own index | Built and maintained independently. Crawls the open web on its own schedule and ranking algorithm. |
+
+Five surfaces. Four indexes (Google appears twice because Gemini and AI Overview share it). The fragmentation is permanent — it's not a transition state that will consolidate. Each AI engine has structural reasons (cost, ownership, differentiation) to maintain its current index source.
+
+## Why this matters more than people think
+
+Most SEO tools you've used (Ahrefs, Semrush, Moz, traditional rank trackers) were built when "ranking" meant *Google ranking*. Maybe Bing as an afterthought. Yandex/Baidu/Naver as regional adapters.
+
+That model assumed: optimize once for the dominant search engine, win everywhere that matters.
+
+That assumption is broken in 2026. **Your brand might rank #1 on Google AI Overview, be invisible on ChatGPT, get cited heavily on Perplexity, and absent from Claude — all at the same time, for the same query.**
+
+Concrete example from real Citare audits: a SaaS brand that ranks page-one on Google for "best AI gateway" appears as a top citation in ChatGPT (Bing surfaced their site), is mentioned twice in Perplexity (Perplexity's index picked them up), is completely absent from Claude (Brave's index hadn't crawled their recent updates), and shows up in Gemini only as a tertiary mention (Google's AI Overview cited a competitor higher despite the same SERP ranking).
+
+Same brand. Same query. Four different visibility outcomes. One unified tool that tracks all of them is what Citare is. The point of this post is the observation that makes that necessary.
+
+## How each index behaves (the brief version)
+
+**Bing (ChatGPT)** — rewards backlinks more heavily than Google does today, indexes new content faster than Google for most domains, and has fewer ranking factors so optimization is more direct. The classical SEO playbook from 2018-2022 still works on Bing better than on Google.
+
+**Google (Gemini + AI Overview)** — the most mature ranking algorithm with the most signals. E-E-A-T matters here more than anywhere. Per the May 2026 Google guidance, AI Overviews use the same ranking as regular Google search — meaning the optimization is the same discipline, not a separate one. Bonus: AI Overviews specifically reward FAQ schema and clear structured data because they extract from it heavily.
+
+**Brave (Claude)** — newer, smaller index, but improving fast. Weights freshness and independent (non-mainstream) sources higher than Google does. Less impacted by domain authority hierarchies. Strong sites that aren't massive can rank above big-domain alternatives if the specific page is the best answer.
+
+**Perplexity (own index)** — favors content with citable inline facts. Prefers structured prose with numbers, dates, and specific claims over fluff. Citations in Perplexity tend to go to articles that *make a specific claim* rather than articles that broadly discuss a topic. Perplexity also rewards recency more aggressively than any other index — a 6-month-old article often loses to a 2-week-old one with similar quality.
+
+## What you optimize for in each
+
+The fundamentals work everywhere:
+
+- Clear, decisive writing (no hedging)
+- First-party data and original numbers
+- Real authorial identity (name, photo, bio, entity graph)
+- Structured data (Article, FAQPage, BreadcrumbList, Person)
+- Reasonable site speed and Core Web Vitals
+- Internal linking with descriptive anchors
+
+But the per-index specifics matter:
+
+- **For Bing** (ChatGPT) — *invest in backlinks*. Bing weights link signals heavier than Google does today, and backlinks remain the cheapest way to move Bing ranking.
+- **For Google** (Gemini + AI Overview) — *invest in E-E-A-T*. Real author bylines, demonstrated expertise, originality from first-party data. The May 2026 guidance was unambiguous about this.
+- **For Brave** (Claude) — *invest in freshness and citability*. Update existing top pages quarterly. Mark "Last updated" prominently. Make claims that are easy to extract as quotes.
+- **For Perplexity** — *invest in inline citable facts*. Specific numbers, dates, named comparisons. Avoid vague claims; Perplexity citations skip articles that don't make extractable statements.
+
+Once you've covered the fundamentals, the per-index investments are where serious GEO work happens.
+
+## The bad news (and the good news)
+
+**The bad news**: there is no "rank #1 in AI search" anymore. There are four rankings to track, four optimization profiles to maintain, and a brand can win in some indexes while losing in others for years.
+
+**The good news**: this is the same situation classical SEO was in during the 2000s when Yahoo, Bing, and Google all behaved differently and you had to optimize for each. The discipline of multi-index optimization is well-understood; it's just a more sophisticated version of what you already do.
+
+The other good news: most competitors haven't woken up to this yet. The brands that build the multi-index discipline in 2026 will compound a structural advantage over brands still thinking of AI search as "one ranking." If you start now, you're early.
+
+## How to actually start tracking the four-index reality
+
+**Free tier:** pick one query that matters to your brand. Manually query it in all five surfaces (ChatGPT, Google search for AI Overview, Gemini, Claude, Perplexity). Note where you appear, where competitors appear, what citation language is used. Repeat monthly for the same query. You'll see the divergence within weeks.
+
+**Lightweight automation:** use a tool that tracks all five surfaces in one dashboard so you don't have to manually query 5 places per tracked keyword. Citare exists for exactly this; alternatives include ad-hoc scripts hitting each engine's API (where available) plus browser automation for the surfaces that don't expose APIs (most of them, currently).
+
+**Serious tracking:** dedicated visibility platform with browser-rendered AI Overview capture, bot fingerprint analytics on your own site (to see which AI engines are crawling you and how often), and competitor comparison across all four indexes. This is what Citare does and what serious brand teams now need.
+
+## The implication for content strategy
+
+Your content strategy in 2026 should treat AI search visibility as a portfolio, not a single bet. Specifically:
+
+1. **Stop optimizing only for Google.** It's still the largest search source by far, but the share of AI-mediated discovery is rising fast. Treating Google as the entire game is increasingly costly.
+2. **Audit your visibility in all four indexes quarterly.** Not just "what's my Google ranking" — what's my actual presence in ChatGPT, Claude, Perplexity, Gemini, and AI Overview? Your real visibility is the union of all five, not any single one.
+3. **Identify which indexes drive your business.** ChatGPT for referral traffic. Perplexity for engaged citation traffic. AI Overview for brand visibility (low click-through but high impression). Claude for technical/research audiences. Pick the indexes that match your audience and invest disproportionately.
+4. **Build first-party data.** This is the universal lever — every index rewards content with original data, decisive verdicts, and real authorship. The May 2026 Google guidance specifically called this out, but every other index has been quietly rewarding it for longer.
+
+## The summary
+
+AI search isn't one thing. It's four parallel rankings on four indexes (Bing, Google, Brave, Perplexity), surfaced through five visible engines (ChatGPT, Google AI Overview, Gemini, Claude, Perplexity). Each behaves differently. Each rewards different optimization. Each can give you a wildly different verdict on your brand's visibility for the same query.
+
+Tools that show you one ranking are showing you one-quarter of your real visibility. The brands that win the next five years of search will be the ones that recognized this in 2026 and built the discipline to track and optimize across all four indexes.
+
+If you're doing classical SEO and ignoring AI search, you're losing visibility you used to have. If you're tracking AI search as if it were one ranking, you're seeing 25% of the picture. Multi-index awareness is the new baseline.
+
+## Related reading
+
+- **[GEO vs SEO in 2026](/blog/geo/geo-vs-seo-2026)** *(coming next)* — after Google's May guidance, what the actual difference is
+- **[How to get cited by ChatGPT, Claude, Perplexity](/blog/geo/how-to-get-cited-ai-search)** *(coming soon)* — the practical playbook per surface
+- **[Post-May-2026 SEO/GEO Direction](https://github.com/ravirdp/rikuq/blob/main/docs/seo-direction-2026.md)** — universal direction doc; living reference
+- **[Citare](https://citare.ai)** — the platform built around the four-index thesis
+
+---
+
+*Last updated 2026-05-24. AI search indexing relationships change — I update this whenever a major engine switches index source. If you're tracking visibility differently and have a perspective I'm missing, [tell me on Twitter/X](https://twitter.com/rikuq).*
