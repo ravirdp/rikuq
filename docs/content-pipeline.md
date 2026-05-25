@@ -1,72 +1,100 @@
-# Content pipeline — next 6 publishes
+# Content pipeline — next 5 publishes
 
-Last planned: 2026-05-25 (Sun). Auto-derived from `data/content-ops.db` briefs
-table. Re-plan by editing this doc + the `notes` field on each brief row.
+Last planned: 2026-05-25 (Sun). Cadence: **2 posts per day** across 3 days
+(Mon-Wed). 2/day is the sweet spot for a new domain: daily looks like a content
+farm, weekly looks slow, 2/day reads as a working solo operator.
+
+Auto-derived from `data/content-ops.db` briefs table. Re-plan by editing this
+doc + the `notes` field on each brief row.
 
 ## Schedule
 
-Pillar mix is interleaved (tools → geo → stack → finops → geo → stack) so the
-homepage feed stays diverse and the two MCP-adjacent posts (#18 and #19) sit
-3 days apart to avoid cannibalisation.
+Pillar mix interleaved within each day so the homepage feed stays diverse.
+The 2 MCP-adjacent posts (#18 and #19) sit 2 days apart to avoid cannibalisation.
 
-| Day | Date | Brief | Slug | Pillar | Source signal |
+| Date | Slot | Brief | Slug | Pillar | Author can ship without you? |
 |---|---|---|---|---|---|
-| Mon | 2026-05-26 | **#20** Claude Code Hooks vs Skills: When to Use Which (With Real Examples) | `claude-code-hooks-vs-skills-when-to-use` | tools | Ahrefs Free — both terms >1K vol, fresh Anthropic features, explainer demand high |
-| Tue | 2026-05-27 | **#21** AI Search Visibility Tools: Honest Comparison From a Builder | `ai-search-visibility-tools-honest-comparison` | geo | Ahrefs Free — root term Medium KD with multiple supporting kws, direct Citare driver |
-| Wed | 2026-05-28 | **#19** Best MCP Servers for Claude Code in 2026 (Honest Picks) | `best-mcp-servers-claude-code-2026` | stack | Ahrefs Free — claude code mcp Medium KD, >1K vol, listicle commercial intent |
-| Thu | 2026-05-29 | **#17** Cloudflare Workers AI vs OpenAI: Real Cost Across 1M Tokens | `cloudflare-workers-ai-vs-openai-cost` | finops | Pillar-gap fill (finops has only 1 page); cost comparison posts get high LLM-citation pickup |
-| Fri | 2026-05-30 | **#16** GEO vs AEO vs AIO vs SGE: A Plain-English Glossary for 2026 | `geo-aeo-aio-sge-glossary-2026` | geo | Reactive-PR signal (r/AskMarketing score-5 thread asking for exactly this) |
-| Sat | 2026-05-31 | **#18** 37 MCP Tools for Citare: What Worked, What I Would Cut | `37-mcp-tools-citare-lessons` | stack | HN ask_hn thread on code intelligence MCP; unique experiential angle nobody else has |
+| Mon 5-26 | AM | **#21** AI Search Visibility Tools: Honest Comparison From a Builder | `ai-search-visibility-tools-honest-comparison` | geo | ✅ Mostly — public research on competitors |
+| Mon 5-26 | PM | **#19** Best MCP Servers for Claude Code in 2026 (Honest Picks) | `best-mcp-servers-claude-code-2026` | stack | ✅ Yes — public MCP ecosystem is researchable |
+| Tue 5-27 | AM | **#16** GEO vs AEO vs AIO vs SGE: A Plain-English Glossary for 2026 | `geo-aeo-aio-sge-glossary-2026` | geo | ✅ Yes — pure explainer |
+| Tue 5-27 | PM | **#17** Cloudflare Workers AI vs OpenAI: Real Cost Across 1M Tokens | `cloudflare-workers-ai-vs-openai-cost` | finops | ⚠️ **Needs your Prism cost data** |
+| Wed 5-28 | AM | **#18** 37 MCP Tools for Citare: What Worked, What I Would Cut | `37-mcp-tools-citare-lessons` | stack | ⚠️ **Needs your actual Citare MCP tool list** |
 
-## Why this order
+Already shipped: **#20** Claude Code Hooks vs Skills (Mon 5-26 originally; we
+shipped it Sun 5-25 to validate the pipeline). Live at
+https://rikuq.com/blog/tools/claude-code-hooks-vs-skills-when-to-use.
 
-1. **#20 first** — time-sensitive. Hooks + Skills are fresh Anthropic releases;
-   explainer-seekers are searching now, not in 3 weeks.
-2. **#21 second** — Citare commercial driver. Tuesday traffic is highest of the
-   week for B2B tooling; comparison posts perform especially well.
-3. **#19 third** — closes the Claude-Code thematic cluster cleanly (Hooks/Skills →
-   MCP). Internal-linking opportunity to #20.
-4. **#17 fourth** — pillar gap. FinOps has only 1 page; second one starts to
-   establish topical authority for Google + LLM citation engines.
-5. **#16 fifth** — evergreen explainer. Fits the GEO pillar narrative and
-   internal-links to #21 (the practical "which tools" follow-on).
-6. **#18 sixth** — unique experiential. Closes the stack pillar with the most
-   personal-authority post; saves the strongest "only Ravi could write this"
-   angle for the end of the run when the cluster is warmest.
+## What you need to bring to tomorrow's session
+
+For **#17** (Workers AI vs OpenAI cost) to ship Tue PM authentically:
+
+- One month of Prism's actual Workers AI usage — even a screenshot from the
+  Cloudflare dashboard. Doesn't need to be precise; even "we processed X
+  requests, $Y total" is enough.
+- Ditto for OpenAI side — any single month's bill, even a fragment.
+- 1-2 sentences on which workloads route to which (the "decision tree" angle).
+
+For **#18** (37 MCP Tools for Citare) to ship Wed AM authentically:
+
+- Either: paste your `mcp` folder structure or the names of your 37 tools
+- Or: 10-15 minutes of "tell me about the tools" while I take notes
+- The "what I would cut" angle needs you to actually have an opinion on which
+  ones turned out to be overhead vs. keepers — 30-second take per tool is fine
+
+If you can't get to either, we ship #17 as a "public-data benchmark" framing
+(weaker but publishable) and either delay #18 or recast it as a methodology
+post that doesn't require enumerating tools.
 
 ## Per-post production checklist
 
-For each brief, the publish workflow (manual until automated):
+Same as v1, refined slightly after shipping #20:
 
-- [ ] Read brief: `sqlite3 data/content-ops.db "SELECT * FROM briefs WHERE id=<id>"`
-- [ ] Re-read `docs/context/voice.md` before drafting
+- [ ] Read brief in DB: `sqlite3 data/content-ops.db "SELECT * FROM briefs WHERE id=<id>" -line`
+- [ ] Re-read `docs/brand-voice.md` (until `docs/context/voice.md` is filled in)
+- [ ] Sample 1-2 existing posts in the same pillar for style match
 - [ ] Write MDX in `src/content/blog/<slug>.mdx` following `_template.mdx`
-- [ ] Generate hero image into `public/illustrations/covers/<slug>.jpg`
-- [ ] Voice pass — scan for AI-tells, em dashes in commit message, banned words
-- [ ] CTA wiring per `content-ops.config.mjs` ctaMap (category → component)
-- [ ] FAQ schema if intent is informational
-- [ ] `git checkout -b content/<slug> && commit && push`
-- [ ] `gh pr create`, wait CI green, merge
-- [ ] `./scripts/indexnow.sh` (auto-pings Bing/Yandex/Naver/Seznam)
-- [ ] Day-3 crosspost cron handles Dev.to + Hashnode automatically
-- [ ] Update DB: `INSERT INTO pages (...)`, `UPDATE briefs SET status='published'`
+- [ ] Voice scan — banned phrases, AI-tells, em dashes in code blocks ok / in commit message NOT ok
+- [ ] FAQ array if intent is informational (4-6 Q/A)
+- [ ] CTA wiring per `content-ops.config.mjs` ctaMap (auto-rendered by PostLayout based on category)
+- [ ] `node scripts/generate-cover.mjs <slug> "<title>" <pillar>` (or `--all-approved` for batch)
+- [ ] Local `npm run build` to catch schema errors
+- [ ] `git checkout -b content/<slug>` (off main)
+- [ ] Commit (ASCII-only message), push, `gh pr create`
+- [ ] Merge with `gh pr merge --squash --delete-branch`
+- [ ] If git diverged (binary conflicts likely): `git pull --rebase origin main`, `git checkout --ours` on binary files
+- [ ] Post-publish DB update: insert into pages, update brief.status, log run
 - [ ] `npx content-ops views` to regenerate trackers
+- [ ] Run `INDEXNOW_KEY=<key> ./scripts/indexnow.sh` (only when env var is set; otherwise Bingbot picks up via sitemap within ~24h)
 
-## Distribution add-ons (per post)
+## Distribution per post (lazy mode, OK to skip first week)
 
 - Twitter thread (anchor pattern from `docs/twitter-anchor-thread.md`)
-- LinkedIn personal post (founder voice, 800–1200 chars)
+- LinkedIn personal post (founder voice, 800-1200 chars)
 - Add to next reactive-PR digest as a citation-able asset
-- If post mentions a third-party product favourably, send the link to their
-  team (low effort, sometimes lands a quote-tweet or backlink)
 
-## After the 6-post run
+## Lessons from the #20 shipping session
 
-Run a fresh research cycle on the next 3 seeds (from
-`docs/content-ops-system.md` per-project notes — finops + infra + BatchWise
-need coverage). Expected cadence: 1 weekly research pass, 1 weekly approval
-review, 2-3 posts/week (sustainable solo rate after launch backlog clears).
+1. **Binary file conflicts during rebase** wasted ~5 min. Fix: add
+   `data/content-ops.db merge=ours` and `public/illustrations/covers/*.jpg merge=ours`
+   to `.gitattributes` so future rebases auto-pick our version. Sub-tasks for v0.4.0.
+2. **Voice-pass was manual** — would benefit from a `npx content-ops lint` command
+   that scans an MDX for banned phrases from `docs/context/voice.md`. v0.4.0.
+3. **`indexnow.sh` needs the env var** to function. If you set
+   `INDEXNOW_KEY` in your shell profile (or in `.env.local` if rikuq loads it),
+   it just works.
+4. **Title length check** caught the 70-char limit late (after cover generation).
+   Add a Zod re-validation step earlier in the publish workflow.
 
-This file is regenerated manually for now. v0.4.0 of `@ravirdp/content-ops`
-will add a `target_publish_date` column + `npx content-ops plan` command that
-generates this doc from the DB directly.
+## After Wed 5-28
+
+The 6-post launch backlog clears Wednesday. Move to sustainable cadence:
+
+- **1 weekly research pass** — Fri or Sat, ~30 min: hop 2-3 free SEO tools,
+  import CSVs, run `content-research`, approve 2-4 briefs
+- **2-3 posts/week** — Mon AM, Wed AM, optionally Fri AM
+- **Weekly verify cron** — Sunday, automated, writes decay digest
+
+Sustainable rate over a quarter: ~30 new posts + the 21 by Wed 5-28 = ~50
+pages by end of Aug. By that point we should have meaningful GSC data, real
+GEO citation tracking from Citare, and decision-making power on what wedges
+to deepen.
