@@ -1,0 +1,204 @@
+---
+title: "Claude Code Hooks vs Skills: When to Use Which"
+description: "Hooks and Skills are different abstractions for different jobs, not interchangeable. Plain-English decision guide with real examples from a production setup."
+pubDate: 2026-05-26
+updatedDate: 2026-05-26
+category: tools
+tags:
+  - claude-code
+  - hooks
+  - skills
+  - ai-coding-tools
+  - anthropic
+author: Ravi
+heroImage: /illustrations/covers/claude-code-hooks-vs-skills-when-to-use.jpg
+ogImage: /illustrations/covers/claude-code-hooks-vs-skills-when-to-use.jpg
+draft: false
+affiliateDisclosure: false
+faqs:
+  - question: "What's the difference between Claude Code Hooks and Skills?"
+    answer: "Hooks are shell commands the harness runs automatically on lifecycle events (pre-commit, post-tool-use, prompt-submit, session-stop). Skills are markdown files that bundle instructions plus optional scripts that Claude loads on demand when a user request matches the skill's trigger description. Hooks are about deterministic behavior at fixed event points; Skills are about giving Claude reusable, on-demand expertise."
+  - question: "When should I use a Hook vs a Skill?"
+    answer: "Use a Hook when something must happen every time at a specific event regardless of user intent (auto-format on commit, log every expensive API call, block accidental writes to main). Use a Skill when you want Claude to invoke a procedure intelligently based on the conversation (publish a blog post, run an SEO audit, do a deploy-readiness check). Hooks run unconditionally; Skills run when Claude decides they fit."
+  - question: "Can a Hook and a Skill do the same thing?"
+    answer: "Sometimes, but you'll pick the wrong one. Example: stripping em dashes from commit messages. A Hook does it deterministically on every commit. A Skill would require Claude to remember and invoke it — fragile. Conversely, 'write a publish-ready blog post from a brief' as a Hook is wrong — there's no lifecycle event that means 'write a blog now.' It's a Skill."
+  - question: "Do Hooks need to be written in a specific language?"
+    answer: "No. A Hook is just a shell command the harness executes. It can be a one-liner sed call, a Node script, a Python script, a Rust binary, anything that exits with status 0 on success and non-zero on failure. The harness passes context as environment variables; the hook reads what it needs and acts."
+  - question: "Where do Skills live?"
+    answer: "Skills live as markdown files (typically SKILL.md) inside a directory the plugin loader can discover. The plugin manifest points to each skill directory. Claude reads the skill description at session start to know what's available, then loads the full body only when a request matches. Storing skills outside the conversation means they survive across sessions and can be version-controlled."
+  - question: "Can I use both together?"
+    answer: "Yes, and you should. A typical production setup uses Hooks for guardrails and telemetry (the stuff that must always happen) and Skills for high-leverage procedures Claude invokes when the conversation needs them. Hooks protect the harness; Skills extend what Claude can confidently do without a long prompt."
+relatedPosts:
+  - claude-code-review
+  - best-ai-coding-tools-2026
+  - production-stack-2026
+---
+
+Claude Code shipped Hooks and Skills near each other in 2026, and they get conflated. They solve different problems and the wrong choice burns context, breaks reliability, or both.
+
+The 30-second answer: **Hooks run on lifecycle events whether you want them to or not. Skills run when Claude decides they're relevant.** That single distinction tells you which one to pick almost every time.
+
+## TL;DR
+
+| | Hooks | Skills |
+|---|---|---|
+| **What** | Shell commands the harness runs on lifecycle events | Markdown bundles Claude loads on demand |
+| **Trigger** | Fixed event points (`pre-commit`, `post-tool-use`, `prompt-submit`, `session-stop`, ...) | Claude matches a user request to a skill's description |
+| **Determinism** | Deterministic — runs every time the event fires | Probabilistic — runs when Claude judges it relevant |
+| **Best for** | Guardrails, telemetry, auto-format, blocking unsafe actions | Reusable procedures, multi-step workflows, codified expertise |
+| **Failure mode** | Can block the action that fired it | Claude might forget to invoke it |
+| **Lives in** | `settings.json` (project-local or user-global) | A directory with a `SKILL.md`, registered via a plugin manifest |
+| **Costs** | Negligible — runs out-of-band | Eats some context per session for the skill descriptions |
+
+## What Hooks actually are
+
+A Hook is a shell command registered against a lifecycle event in `settings.json`. When the event fires, the harness runs your command with relevant context as environment variables. Your command does its thing and exits — exit 0 means continue, non-zero means stop.
+
+The event surface in 2026 (the ones I actually use):
+
+- `prompt-submit` — fires when you hit enter on a prompt
+- `pre-tool-use` / `post-tool-use` — fires around every tool invocation
+- `pre-commit` — fires before git commit (when Claude is committing)
+- `session-stop` — fires when a session ends
+
+That's most of what you need. The full list is in the docs; these five cover 90% of real setups.
+
+### Real example #1: strip em dashes from commit messages (pre-commit)
+
+Cloudflare Pages and a bunch of MTAs reject UTF-8 em dashes in commit messages with cryptic "invalid commit message" errors. I lost an afternoon to this exact problem on rikuq. Now it's a one-line hook:
+
+```json
+{
+  "hooks": {
+    "pre-commit": [
+      "sed -i '' 's/—/--/g; s/–/-/g' $CLAUDE_COMMIT_MSG_FILE"
+    ]
+  }
+}
+```
+
+Runs every commit. Never costs context. Never fails because Claude "forgot."
+
+### Real example #2: log expensive tool calls (post-tool-use)
+
+For FinOps tracking on Claude Max, I want a running ledger of which sessions hit which expensive tools (anything that calls an external API or runs a long process). Hook fires after every tool:
+
+```json
+{
+  "hooks": {
+    "post-tool-use": [
+      "node ~/.claude/hooks/log-tool.mjs"
+    ]
+  }
+}
+```
+
+The script appends one JSON line per tool call to `~/.claude/tool-log.jsonl` with tool name, duration, exit code. Weekly I `jq` over it to see where Claude's spending time. This is the kind of telemetry you want collected automatically — making it a skill would mean Claude has to remember to log, which is a worst-of-both-worlds outcome.
+
+### Real example #3: refuse writes outside the project (pre-tool-use)
+
+A loose Claude session can occasionally try to write to a sibling project's directory by mistake (especially when juggling multiple worktrees). One pre-tool-use hook closes that:
+
+```bash
+#!/usr/bin/env bash
+# ~/.claude/hooks/no-cross-project.sh
+if [[ "$CLAUDE_TOOL_NAME" == "Write" || "$CLAUDE_TOOL_NAME" == "Edit" ]]; then
+  case "$CLAUDE_TOOL_PATH" in
+    "$PWD"/*) exit 0 ;;
+    *) echo "blocked: write outside project root ($PWD)"; exit 1 ;;
+  esac
+fi
+```
+
+Exit 1 blocks the write. Claude sees the error and asks me what I want to do. This is the use case Hooks exist for — deterministic enforcement of a constraint that should never bend.
+
+## What Skills actually are
+
+A Skill is a directory containing a `SKILL.md` markdown file plus any optional helper scripts. The markdown opens with a description Claude uses to decide whether the skill is relevant to the current request. When Claude decides yes, it reads the full skill body and follows the instructions.
+
+The trigger model is the key thing to internalize. Skills don't fire on events. They fire when Claude matches your description to a user message. So the description's specificity matters more than the body — a vague description means Claude won't reliably invoke the skill; an overly specific description means it'll be skipped when it would have been useful.
+
+### Real example #1: the content-publish skill
+
+I have a `content-publish` skill that lives in a shared npm package (`@ravirdp/content-ops`). Its description starts: *"Publish an approved brief end-to-end inside the current project's repo. Reads brief from project's SQLite DB, writes MDX..."*. When I say "publish brief 20," Claude matches that to the skill and follows its body — which is a 200-line procedure: load config, verify the brief is approved, write the MDX, generate the hero image, commit, push, open PR, merge, run post-publish hooks, update trackers.
+
+If that were a Hook, there'd be no event for "the user wants a blog post written." Skills are right when the work is procedural but its invocation depends on intent.
+
+### Real example #2: an SEO audit skill
+
+A `seo-audit` skill I use across projects. Description: *"Run a full SEO audit on a project — GSC ranks, on-page issues, internal-link gaps, GEO citation status. Use when the user asks to audit a site or check why traffic dropped."* Body walks through the data pulls and writes a markdown report.
+
+I invoke it once a week per project. A Hook would be wrong — there's no lifecycle event that means "Friday afternoon, do an SEO audit." Skills are right when the cadence is human-driven.
+
+### Real example #3: deploy-readiness check
+
+A `deploy-readiness` skill. Description: *"Pre-deployment checklist: run tests, scan for hardcoded secrets, verify env vars are set, confirm migrations apply cleanly. Use before deploying to production."* When I say "I'm about to deploy, check we're good," Claude invokes it.
+
+Could be a Hook on `pre-tool-use` for the deploy command? Maybe. But deploys come from many surfaces (Cloudflare dashboard, `wrangler deploy`, GitHub Action) and the checklist evolves frequently. A Skill that Claude can update over time beats a brittle Hook trying to intercept every deploy path.
+
+## Decision tree: which one for what
+
+```
+Is the work tied to a specific lifecycle event
+(commit, tool use, session end, etc.)?
+│
+├── Yes ──> Should it run every time, regardless of intent?
+│           │
+│           ├── Yes ──> HOOK
+│           │
+│           └── No  ──> Skill (and trigger via conversation)
+│
+└── No  ──> Should Claude decide when it's relevant?
+            │
+            ├── Yes ──> SKILL
+            │
+            └── No  ──> Neither — just a regular script you run by hand
+```
+
+If you find yourself answering "Yes" to both branches, the work probably wants both: a Hook for the deterministic part (telemetry, guardrails) and a Skill for the procedural part (the actual workflow Claude executes).
+
+## The 3 anti-patterns I see most
+
+**1. The "Hook that requires intelligence."** Trying to use a Hook to do something that needs to look at the surrounding context — like a `pre-commit` hook that decides whether to bump the version number based on the commit's content. Hooks run shell commands; they don't get Claude's reasoning. If logic is needed, expose the logic as a Skill and let Claude trigger it.
+
+**2. The "Skill that should fire automatically."** Defining a Skill for "auto-format the file after every edit." That's a Hook (on `post-tool-use` filtered to `Edit`). Skills run when Claude decides; you don't want format-on-save to depend on whether Claude noticed.
+
+**3. The "Skill description that's too vague to match."** Writing `description: "Helps with content"`. Claude has no way to know when this is relevant. Descriptions need to be specific about what the skill does AND when to use it. Look at how Anthropic ships their first-party skills — every description has the shape "do X. Use when the user asks Y."
+
+## What I have configured today
+
+The shape of my project-local `settings.json` for rikuq, with the hooks removed for brevity:
+
+```json
+{
+  "hooks": {
+    "pre-commit": ["sed -i '' 's/—/--/g; s/–/-/g' $CLAUDE_COMMIT_MSG_FILE"],
+    "post-tool-use": ["node ~/.claude/hooks/log-tool.mjs"],
+    "pre-tool-use": ["bash ~/.claude/hooks/no-cross-project.sh"]
+  }
+}
+```
+
+Three hooks. All deterministic, all about guardrails or telemetry.
+
+For skills, I install one plugin globally — `@ravirdp/content-ops` — which provides:
+
+- `content-research` — surface keyword opportunities, write briefs as pending
+- `content-publish` — ship an approved brief end-to-end
+
+Plus a `seo-audit` and a `deploy-readiness` skill I maintain in a personal plugin.
+
+That's it. Five hooks, four skills. The temptation is to add more — every new piece of Claude friction looks like a hook or skill opportunity. Most of the time, it isn't. Most friction is solved by writing a better prompt or adding a sentence to the project's `CLAUDE.md`. Hooks and skills are reserved for the small set of things that genuinely need to be codified.
+
+## Who should pick which
+
+- **You're hitting the same friction every commit / every tool call / every session** — Hook. Deterministic. Cheap. Out of context.
+- **You're describing the same multi-step workflow to Claude every time** — Skill. Write it once, let Claude invoke it.
+- **You want to enforce something Claude shouldn't be able to override** — Hook. Skills can be skipped; Hooks block.
+- **You want Claude to surface a procedure when relevant but skip it when not** — Skill. The probabilistic invocation is the feature, not the bug.
+
+## What's next
+
+If you're standing up a Claude Code setup from scratch in 2026, my unbiased starting recommendations are in [Claude Code Review 2026 — From Zero Code to 3 Live SaaS](/blog/tools/claude-code-review). If you're comparing Claude Code against Cursor, the right framing is in [Cursor vs Claude Code 2026](/blog/tools/cursor-vs-claude-code). And if you want to see what a real production stack looks like behind one of these solo-founder operations, [How I Run 3 Production AI SaaS on $5/Month of Hosting](/blog/stack/production-stack-2026) is the operational counterpart to this post.
+
+The pattern across all of them is the same: pick the simplest abstraction that does the job. Hooks for the deterministic things. Skills for the procedural things. Everything else is a prompt.

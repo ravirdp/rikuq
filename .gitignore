@@ -26,3 +26,7 @@ pnpm-debug.log*
 # os
 .DS_Store
 Thumbs.db
+
+# SQLite WAL sidecars (the .db file itself IS committed — see data/content-ops.db)
+*.db-wal
+*.db-shm

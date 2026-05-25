@@ -27,6 +27,7 @@
   },
   "devDependencies": {
     "@cloudflare/workers-types": "^4.20251015.0",
+    "@ravirdp/content-ops": "file:../content-ops",
     "@types/react": "^19.0.0",
     "@types/react-dom": "^19.0.0",
     "wrangler": "^4.0.0"
