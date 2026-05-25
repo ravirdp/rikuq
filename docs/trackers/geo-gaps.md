@@ -6,6 +6,7 @@ Empty until Citare connector lands (v0.3.0).
 
 | Slug | Primary KW | Cited / Checked (14d) |
 |---|---|---|
+| `claude-code-hooks-vs-skills-when-to-use` | claude-code-hooks | 0 / 0 |
 | `citare-12-day-rebuild-story` | citare | 0 / 0 |
 | `four-index-reality` | geo | 0 / 0 |
 | `geo-vs-seo-2026` | geo | 0 / 0 |

@@ -25,8 +25,8 @@ Total tracked: 58
 | 27 | claude code vs cursor | 1000 | - | - | new | ahrefs-free-claude-code-us |
 | 28 | everything claude code | 1000 | - | - | new | ahrefs-free-claude-code-us |
 | 29 | is claude code free | 1000 | - | - | new | ahrefs-free-claude-code-us |
-| 30 | claude code hooks | 1000 | - | - | brief_created | ahrefs-free-claude-code-us |
-| 31 | claude code skills | 1000 | - | - | brief_created | ahrefs-free-claude-code-us |
+| 30 | claude code hooks | 1000 | - | - | published | ahrefs-free-claude-code-us |
+| 31 | claude code skills | 1000 | - | - | published | ahrefs-free-claude-code-us |
 | 32 | claude code cost | 1000 | - | - | new | ahrefs-free-claude-code-us |
 | 33 | ai search visibility tool | 1000 | 40 | - | brief_created | ahrefs-free-aisearchvis-us |
 | 34 | ai search visibility metrics kpis | 1000 | - | - | new | ahrefs-free-aisearchvis-us |

@@ -2,10 +2,11 @@
 
 # Pages (live content)
 
-Total: 15
+Total: 16
 
 | ID | Slug | Title | Category | Words | Primary KW | Published | Last refresh |
 |---|---|---|---|---|---|---|---|
+| 16 | `claude-code-hooks-vs-skills-when-to-use` | Claude Code Hooks vs Skills: When to Use Which | tools | 1800 | claude-code-hooks | 2026-05-25 | - |
 | 4 | `citare-12-day-rebuild-story` | How I Built Citare V2 in 12 Days After Throwing V1 Away | geo | 1976 | citare | 2026-05-24 | - |
 | 8 | `four-index-reality` | The Four-Index Reality: Why AI Search Isn't One Thing | geo | 1645 | geo | 2026-05-24 | - |
 | 9 | `geo-vs-seo-2026` | GEO vs SEO in 2026 — What Google's May Guidance Changed | geo | 1610 | geo | 2026-05-24 | - |

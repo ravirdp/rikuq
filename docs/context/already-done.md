@@ -5,7 +5,7 @@
 Topics already published or in the pipeline. The research skill MUST
 check this list and skip anything close to a topic here.
 
-## Published pages (15)
+## Published pages (16)
 
 ### essays
 - **Hello from rikuq — a practitioner blog for solo AI SaaS founders** — `hello-from-rikuq` _(kw: manifesto)_
@@ -26,6 +26,7 @@ check this list and skip anything close to a topic here.
 - **How I Run 3 Production AI SaaS on $5/Month of Hosting** — `production-stack-2026` _(kw: production-stack)_
 
 ### tools
+- **Claude Code Hooks vs Skills: When to Use Which** — `claude-code-hooks-vs-skills-when-to-use` _(kw: claude-code-hooks)_
 - **GitHub Copilot Review 2026 — Built For Enterprise, Not Solo Founders** — `github-copilot-review` _(kw: github-copilot)_
 - **Windsurf Review 2026 — Not For Solo Founders, Great For Small Teams** — `windsurf-review` _(kw: windsurf)_
 - **Antigravity Review (May 2026) — From Daily Driver to Dropped** — `antigravity-review` _(kw: antigravity)_
@@ -34,10 +35,9 @@ check this list and skip anything close to a topic here.
 - **Cursor Review 2026 — Honest 'Not For Me' Take From a VSCode User** — `cursor-review` _(kw: cursor)_
 - **Cursor vs Claude Code 2026 — You're Probably Asking the Wrong Question** — `cursor-vs-claude-code` _(kw: cursor)_
 
-## In pipeline (6)
+## In pipeline (5)
 
 - **Best MCP Servers for Claude Code in 2026 (Honest Picks)** — `best-mcp-servers-claude-code-2026`
-- **Claude Code Hooks vs Skills: When to Use Which (With Real Examples)** — `claude-code-hooks-vs-skills-when-to-use`
 - **AI Search Visibility Tools: Honest Comparison From a Builder** — `ai-search-visibility-tools-honest-comparison`
 - **GEO vs AEO vs AIO vs SGE: A Plain-English Glossary for 2026** — `geo-aeo-aio-sge-glossary-2026`
 - **Cloudflare Workers AI vs OpenAI: Real Cost Across 1M Tokens** — `cloudflare-workers-ai-vs-openai-cost`
