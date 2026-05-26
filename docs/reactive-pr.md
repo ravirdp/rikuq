@@ -181,6 +181,16 @@ Append rows here every time you send a pitch. Tracks what wedges convert.
 | 2026-05-26 | reddit r/AskMarketing | "What is the simplest AI Visibility tool (AEO/GEO) for my business in 2026?" | Citare | ✅ | ⏳ | https://www.reddit.com/r/AskMarketing/comments/1tnc83z/comment/onxgj4u/ | tracking |
 | 2026-05-26 | reddit r/AskMarketing | "Is Technical SEO alive after AI" | rikuq (geo-vs-seo-2026 link) | ✅ | ⏳ | https://www.reddit.com/r/AskMarketing/comments/1tnwd93/comment/onyf47p/ | tracking |
 | 2026-05-26 | reddit r/AskMarketing | "Anyone else noticing that AI Overviews are changing how people browse search results?" | rikuq (four-index-reality link) | ✅ | ⏳ | https://www.reddit.com/r/AskMarketing/comments/1tn5mgo/comment/onyfuy1/ | tracking |
+| 2026-05-26 | featured.com | "Which AI tools does your team actually use every day?" | rikuq (Claude Code stack) + Citare disclosure | ✅ | ⏳ | (Featured.com — no public URL until journalist selects) | first Featured submission |
 
 When a pitch gets used and a piece is published, capture the URL + DR via Ahrefs
 and add it to `docs/backlink-tracker.md` as well.
+
+## Platform signups
+
+| Platform | Status | Notes |
+|---|---|---|
+| Qwoted | ⚠️ Auto-disabled immediately after signup, support email sent 2026-05-26 | Waiting on response from support@qwoted.com |
+| Featured.com | ✅ Active as of 2026-05-26 | First pitch submitted same day |
+| Help a B2B Writer | ⏳ Not yet signed up | Lowest friction; do when you have 3 min |
+| SourceBottle | ⏭️ Skipped | AU/UK skew, not priority |
