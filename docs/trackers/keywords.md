@@ -34,7 +34,7 @@ Total tracked: 58
 | 10 | cloudflare workers ai pricing | 880 | 14 | - | new | ahrefs-free |
 | 6 | llm cost calculator | 720 | 15 | commercial | new | manual:test-kws.csv |
 | 7 | generative engine optimization | 580 | 22 | informational | new | manual:test-kws.csv |
-| 12 | claude code mcp | 520 | 11 | - | brief_created | ahrefs-free |
+| 12 | claude code mcp | 520 | 11 | - | published | ahrefs-free |
 | 8 | prompt caching anthropic | 490 | 8 | informational | new | manual:test-kws.csv |
 | 9 | ai search visibility | 320 | 25 | informational | new | manual:test-kws.csv |
 | 13 | agentic seo | 210 | 18 | informational | new | manual:cli |

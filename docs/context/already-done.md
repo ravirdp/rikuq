@@ -5,7 +5,7 @@
 Topics already published or in the pipeline. The research skill MUST
 check this list and skip anything close to a topic here.
 
-## Published pages (17)
+## Published pages (18)
 
 ### essays
 - **Hello from rikuq — a practitioner blog for solo AI SaaS founders** — `hello-from-rikuq` _(kw: manifesto)_
@@ -24,6 +24,7 @@ check this list and skip anything close to a topic here.
 - **Anthropic Prompt Caching: Real Numbers From 330 Production Calls** — `anthropic-prompt-caching-real-numbers` _(kw: anthropic)_
 
 ### stack
+- **Best MCP Servers for Claude Code in 2026 (Honest Picks)** — `best-mcp-servers-claude-code-2026` _(kw: claude-code-mcp)_
 - **How I Run 3 Production AI SaaS on $5/Month of Hosting** — `production-stack-2026` _(kw: production-stack)_
 
 ### tools
@@ -36,9 +37,8 @@ check this list and skip anything close to a topic here.
 - **Cursor Review 2026 — Honest 'Not For Me' Take From a VSCode User** — `cursor-review` _(kw: cursor)_
 - **Cursor vs Claude Code 2026 — You're Probably Asking the Wrong Question** — `cursor-vs-claude-code` _(kw: cursor)_
 
-## In pipeline (4)
+## In pipeline (3)
 
-- **Best MCP Servers for Claude Code in 2026 (Honest Picks)** — `best-mcp-servers-claude-code-2026`
 - **GEO vs AEO vs AIO vs SGE: A Plain-English Glossary for 2026** — `geo-aeo-aio-sge-glossary-2026`
 - **Cloudflare Workers AI vs OpenAI: Real Cost Across 1M Tokens** — `cloudflare-workers-ai-vs-openai-cost`
 - **37 MCP Tools for Citare: What Worked, What I Would Cut** — `37-mcp-tools-citare-lessons`

@@ -7,6 +7,7 @@ Empty until the verify cron starts capturing rankings (v0.3.0).
 
 | Slug | Primary KW | Recent pos | Prior pos | Delta |
 |---|---|---|---|---|
+| `best-mcp-servers-claude-code-2026` | claude-code-mcp | - | - | - |
 | `ai-search-visibility-tools-honest-comparison` | ai-search-visibility-tool | - | - | - |
 | `claude-code-hooks-vs-skills-when-to-use` | claude-code-hooks | - | - | - |
 | `citare-12-day-rebuild-story` | citare | - | - | - |

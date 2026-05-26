@@ -6,6 +6,7 @@ Empty until Citare connector lands (v0.3.0).
 
 | Slug | Primary KW | Cited / Checked (14d) |
 |---|---|---|
+| `best-mcp-servers-claude-code-2026` | claude-code-mcp | 0 / 0 |
 | `ai-search-visibility-tools-honest-comparison` | ai-search-visibility-tool | 0 / 0 |
 | `claude-code-hooks-vs-skills-when-to-use` | claude-code-hooks | 0 / 0 |
 | `citare-12-day-rebuild-story` | citare | 0 / 0 |
