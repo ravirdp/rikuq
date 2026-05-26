@@ -26,7 +26,7 @@ HARO died Dec 2024 (Cision shut Connectively). The successor landscape:
 | **Connectively / HARO** | ❌ shut down Dec 2024 | — | — | Dead |
 | **ProfNet** | ✅ active | Paid only | ❌ | Not worth it for solo founder |
 
-**Subscribe with `affiliates@rikuq.com`** to Qwoted, Featured.com, Help a B2B Writer
+**Subscribe with `ravi@rikuq.com`** to Qwoted, Featured.com, Help a B2B Writer
 so the digests don't pollute personal inbox. Triage email digests manually 2× / week.
 
 ## The script
@@ -174,10 +174,13 @@ rikuq.com · linkedin.com/in/ravirdp
 
 Append rows here every time you send a pitch. Tracks what wedges convert.
 
-| Date | Source | Query (1-line) | Property pitched | Sent? | Used? | Backlink URL | DR |
+| Date | Source | Query (1-line) | Property pitched | Sent? | Used? | Comment URL | Engagement |
 |---|---|---|---|---|---|---|---|
-| 2026-05-25 | reddit r/AskMarketing | "Marketing veterans break down GEO/AEO/AIO/SGE terms" | Citare | ⏳ | — | https://reddit.com/r/AskMarketing/comments/1tlhlfi/ | — |
-| 2026-05-25 | HN ask_hn | "Is there a good code intelligence MCP server yet?" | rikuq (voice) | ⏳ | — | https://news.ycombinator.com/item?id=48198129 | — |
+| 2026-05-25 | reddit r/AskMarketing | "Marketing veterans break down GEO/AEO/AIO/SGE terms" | Citare | ✅ | ⏳ | _URL not captured at post time — thread: https://reddit.com/r/AskMarketing/comments/1tlhlfi/_ | reported engagement |
+| 2026-05-25 | HN ask_hn | "Is there a good code intelligence MCP server yet?" | rikuq (voice) | ✅ | ⏳ | _URL not captured at post time — thread: https://news.ycombinator.com/item?id=48198129_ | reported engagement |
+| 2026-05-26 | reddit r/AskMarketing | "What is the simplest AI Visibility tool (AEO/GEO) for my business in 2026?" | Citare | ✅ | ⏳ | https://www.reddit.com/r/AskMarketing/comments/1tnc83z/comment/onxgj4u/ | tracking |
+| 2026-05-26 | reddit r/AskMarketing | "Is Technical SEO alive after AI" | rikuq (geo-vs-seo-2026 link) | ✅ | ⏳ | https://www.reddit.com/r/AskMarketing/comments/1tnwd93/comment/onyf47p/ | tracking |
+| 2026-05-26 | reddit r/AskMarketing | "Anyone else noticing that AI Overviews are changing how people browse search results?" | rikuq (four-index-reality link) | ✅ | ⏳ | https://www.reddit.com/r/AskMarketing/comments/1tn5mgo/comment/onyfuy1/ | tracking |
 
 When a pitch gets used and a piece is published, capture the URL + DR via Ahrefs
 and add it to `docs/backlink-tracker.md` as well.

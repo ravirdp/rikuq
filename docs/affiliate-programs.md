@@ -2,7 +2,7 @@
 
 Last updated after live signup attempts. Most "obvious" affiliate programs for the AI/dev tooling space don't pay content creators in 2026 — see "No public affiliate" tier below.
 
-Use `affiliates@rikuq.com` once set up so payout notifications don't get lost.
+Use `ravi@rikuq.com` once set up so payout notifications don't get lost.
 
 ## Status legend
 
@@ -64,7 +64,7 @@ These have partner programs that look like affiliate programs but are actually a
 - [ ] Payoneer — backup for programs that prefer it
 - [ ] W-8BEN form filled (single signed PDF, reused everywhere — US programs require it for non-US affiliates)
 - [ ] PAN card scan ready (Indian tax)
-- [ ] Dedicated email (`affiliates@rikuq.com` via Cloudflare Email Routing → forwards to `ravirdp@gmail.com`)
+- [ ] Dedicated email (`ravi@rikuq.com` via Cloudflare Email Routing → forwards to `ravirdp@gmail.com`)
 - [ ] Tracking spreadsheet: program name, login URL, affiliate ID, commission %, payment threshold, payout method, last payout date
 
 ## Affiliate link conventions
