@@ -2,10 +2,11 @@
 
 # Pages (live content)
 
-Total: 16
+Total: 17
 
 | ID | Slug | Title | Category | Words | Primary KW | Published | Last refresh |
 |---|---|---|---|---|---|---|---|
+| 17 | `ai-search-visibility-tools-honest-comparison` | AI Search Visibility Tools: Honest Comparison From a Builder | geo | 1900 | ai-search-visibility-tool | 2026-05-26 | - |
 | 16 | `claude-code-hooks-vs-skills-when-to-use` | Claude Code Hooks vs Skills: When to Use Which | tools | 1800 | claude-code-hooks | 2026-05-25 | - |
 | 4 | `citare-12-day-rebuild-story` | How I Built Citare V2 in 12 Days After Throwing V1 Away | geo | 1976 | citare | 2026-05-24 | - |
 | 8 | `four-index-reality` | The Four-Index Reality: Why AI Search Isn't One Thing | geo | 1645 | geo | 2026-05-24 | - |

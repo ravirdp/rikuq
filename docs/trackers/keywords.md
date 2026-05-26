@@ -28,9 +28,9 @@ Total tracked: 58
 | 30 | claude code hooks | 1000 | - | - | published | ahrefs-free-claude-code-us |
 | 31 | claude code skills | 1000 | - | - | published | ahrefs-free-claude-code-us |
 | 32 | claude code cost | 1000 | - | - | new | ahrefs-free-claude-code-us |
-| 33 | ai search visibility tool | 1000 | 40 | - | brief_created | ahrefs-free-aisearchvis-us |
+| 33 | ai search visibility tool | 1000 | 40 | - | published | ahrefs-free-aisearchvis-us |
 | 34 | ai search visibility metrics kpis | 1000 | - | - | new | ahrefs-free-aisearchvis-us |
-| 35 | ai search visibility tools | 1000 | - | - | brief_created | ahrefs-free-aisearchvis-us |
+| 35 | ai search visibility tools | 1000 | - | - | published | ahrefs-free-aisearchvis-us |
 | 10 | cloudflare workers ai pricing | 880 | 14 | - | new | ahrefs-free |
 | 6 | llm cost calculator | 720 | 15 | commercial | new | manual:test-kws.csv |
 | 7 | generative engine optimization | 580 | 22 | informational | new | manual:test-kws.csv |
@@ -40,14 +40,14 @@ Total tracked: 58
 | 13 | agentic seo | 210 | 18 | informational | new | manual:cli |
 | 36 | best ai search visibility tools | 100 | - | - | new | ahrefs-free-aisearchvis-us |
 | 37 | ai search visibility tracking tools | 100 | - | - | new | ahrefs-free-aisearchvis-us |
-| 38 | ai search visibility checker | 100 | - | - | brief_created | ahrefs-free-aisearchvis-us |
+| 38 | ai search visibility checker | 100 | - | - | published | ahrefs-free-aisearchvis-us |
 | 39 | ai search visibility tracker | 100 | - | - | new | ahrefs-free-aisearchvis-us |
-| 40 | ai search visibility platform | 100 | 40 | - | brief_created | ahrefs-free-aisearchvis-us |
+| 40 | ai search visibility platform | 100 | 40 | - | published | ahrefs-free-aisearchvis-us |
 | 41 | ai search visibility optimization tools | 100 | - | - | new | ahrefs-free-aisearchvis-us |
 | 42 | best ai search visibility tracking tools | 100 | - | - | new | ahrefs-free-aisearchvis-us |
 | 43 | best ai search visibility software | 100 | - | - | new | ahrefs-free-aisearchvis-us |
 | 44 | best tools for ai search visibility | 100 | - | - | new | ahrefs-free-aisearchvis-us |
-| 45 | ai search visibility tools comparison | 100 | - | - | brief_created | ahrefs-free-aisearchvis-us |
+| 45 | ai search visibility tools comparison | 100 | - | - | published | ahrefs-free-aisearchvis-us |
 | 46 | geo ai search visibility | 100 | - | - | new | ahrefs-free-aisearchvis-in |
 | 47 | ai search visibility checker tool | 100 | - | - | new | ahrefs-free-aisearchvis-in |
 | 48 | ai search visibility services | 100 | - | - | new | ahrefs-free-aisearchvis-in |

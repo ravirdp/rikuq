@@ -8,7 +8,7 @@ Total: 21
 |---|---|---|---|---|---|
 | 19 | approved | new | Best MCP Servers for Claude Code in 2026 (Honest Picks) | `best-mcp-servers-claude-code-2026` | 2026-05-25 |
 | 20 | published | new | Claude Code Hooks vs Skills: When to Use Which | `claude-code-hooks-vs-skills-when-to-use` | 2026-05-25 |
-| 21 | approved | new | AI Search Visibility Tools: Honest Comparison From a Builder | `ai-search-visibility-tools-honest-comparison` | 2026-05-25 |
+| 21 | published | new | AI Search Visibility Tools: Honest Comparison From a Builder | `ai-search-visibility-tools-honest-comparison` | 2026-05-25 |
 | 16 | approved | new | GEO vs AEO vs AIO vs SGE: A Plain-English Glossary for 2026 | `geo-aeo-aio-sge-glossary-2026` | 2026-05-25 |
 | 17 | approved | new | Cloudflare Workers AI vs OpenAI: Real Cost Across 1M Tokens | `cloudflare-workers-ai-vs-openai-cost` | 2026-05-25 |
 | 18 | approved | new | 37 MCP Tools for Citare: What Worked, What I Would Cut | `37-mcp-tools-citare-lessons` | 2026-05-25 |
