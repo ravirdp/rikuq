@@ -1,17 +1,83 @@
-# Research Pipeline — Slow-Release Plan for Citare Audit Data
+# Research Pipeline — 3-Tier Content Multiplication From Audit Corpus
 
-5 publishable research artifacts derived from Citare's existing client-audit
-data. Slow-released over ~5 months (May 2026 → Oct 2026), one major
-publication every 4-5 weeks.
+**One data collection → 17 publications over 7 months.**
 
-**Sample constraint**: under 50 brands across structured rows.
-**Strategy**: depth + comparison-across-verticals + named brands. Not breadth.
-**Vehicle**: each report = PDF on `citare.ai/reports/` + full-version article
-on `rikuq.com/blog/geo/` + LinkedIn carousel + Twitter thread + press push.
+The Citare audit corpus (25 brands, 500 cells, 777 citations, May 24-26 2026)
+gets unpacked across three tiers of content, each compounding on the previous:
+
+```
+TIER 1 — The Main Report (debut, ship Sat May 30)
+  └─ Anchor asset. Cross-vertical. ~5000 words. PDF + landing page.
+
+TIER 2 — Weekly Spinoff Blogs (1/week × ~10 weeks, Jun-Aug)
+  └─ Each = ONE finding from the main report, gone deep. ~1500-2500 words.
+     Native rikuq blog posts that link back to the main report for full data.
+
+TIER 3 — Per-Vertical Deep Dives (1/month × 6 months, Jul-Dec)
+  └─ Each = vertical-specific mini-report. 2000-3000 words + per-vertical
+     PDF + per-vertical landing page + per-vertical press push (fintech
+     press for fintech, beauty press for beauty, etc.)
+```
+
+**Sample**: ~55 brands across 16 verticals. Heavy India tilt. **All brands
+named in publications** (per Ravi's direction, May 26 decision).
+
+**Vehicles per tier**:
+- Tier 1: rikuq long-form blog + Citare PDF + Citare landing page + LinkedIn carousel + Twitter thread + 25 brand outreach + 15 press pitches
+- Tier 2: rikuq blog + LinkedIn post + Twitter thread + IH post
+- Tier 3: same as Tier 1 but with vertical-specific press list
 
 ---
 
-## The 5 angles (release order)
+## Tier 2 — Weekly spinoff blogs (Jun-Aug 2026)
+
+Each = ONE finding from the main report, gone deep. Anchor links to the main
+report PDF for "full data download." Cadence: 1/week starting Jun 4.
+
+| Week | Date | Title | Anchor finding |
+|---|---|---|---|
+| 1 | 2026-06-04 | Why Instagram Reels Are the Most-Cited Domain for Indian Buyer Queries on AI Search | Finding #1 (top domains) |
+| 2 | 2026-06-11 | The 40-Point Gap Between Branded and Unbranded Queries on AI Search (And Why It Matters) | Finding #2 (branded gap) |
+| 3 | 2026-06-18 | AIO vs ChatGPT: A Per-Brand Asymmetry Study Across 25 Indian Brands | Finding #3 (platform asymmetry) |
+| 4 | 2026-06-25 | How Snitch (Series B) Out-Performs Larger Apparel Brands on AI Search | Finding #4 (newer-funded) |
+| 5 | 2026-07-02 | The jimmyluxury.in Story: How One Blog Owns an Entire Category's AI Citations | Finding #5 (single listicle) |
+| 6 | 2026-07-09 | Newer-Funded vs Established Brands: Who Actually Wins on AI Search | Finding #4 deeper |
+| 7 | 2026-07-16 | The Aggregator Citation Monopoly: Practo, Justdial, MagicBricks in Indian AI Search | Finding #1 deeper |
+| 8 | 2026-07-23 | What Indian D2C Brands Need to Change About Their SEO Strategy Now | Action-oriented synthesis |
+| 9 | 2026-07-30 | ChatGPT vs Gemini Brand Recognition for Indian Brands: Real Data | Cross-cut from corpus |
+| 10 | 2026-08-06 | Citation Graph as the New Domain Authority | Methodology / forward-look |
+
+Each blog: ~1500-2500 words. Same voice as rikuq's existing posts. Ends with
+download CTA for the full Main Report PDF (which feeds the Brevo email list).
+
+**Production**: each takes ~3-4h (the data work is done; this is writing +
+chart re-cropping from main report). Pre-write all 10 in 2-3 batches across
+June so weekly publishing runs hands-off.
+
+---
+
+## Tier 3 — Per-vertical deep-dive reports (Jul-Dec 2026)
+
+Each = a per-vertical mini-report with its own PDF, landing page, press push.
+Specific to one vertical's audience.
+
+| Month | Date | Vertical | Brands in cohort | Press targets |
+|---|---|---|---|---|
+| Jul | 2026-07-18 | **Indian Fintech** | Acko, Slice, Jar, Stable Money, IndMoney + competitor set (HDFC, Jupiter, Groww, Paisabazaar) | Inc42, Entrackr fintech, Moneycontrol startups, The Ken fintech |
+| Aug | 2026-08-15 | **Indian D2C Beauty** | Sugar Cosmetics, Forest Essentials, Pilgrim, Foxtale + comp (Kama Ayurveda, Mamaearth, Minimalist) | afaqs!, exchange4media, The Voice of Fashion, Mint Lounge |
+| Sep | 2026-09-12 | **Indian Healthcare** | Pristyn Care, Allo Health, VSH, Truemeds + comp (Apollo, Manipal, Practo) | YourStory healthcare, Inc42 health, Mint healthcare |
+| Oct | 2026-10-10 | **Indian Real Estate** | Square Yards, Adarsh + comp (Brigade, NoBroker, MagicBricks, 99acres) | MoneyControl real estate, ET Realty, Mint Money |
+| Nov | 2026-11-07 | **Indian Hospitality / Travel** | Treebo, EaseMyTrip + comp (MakeMyTrip, FabHotels, OYO) | TravelDailyNews India, Hospitality World, The Ken travel |
+| Dec | 2026-12-05 | **Indian D2C Apparel** | Snitch, Souled Store + comp (Bewakoof, Myntra, Ajio) | The Voice of Fashion, BizzBuzz, BW Marketing World |
+
+Each vertical report: re-use the corpus data, do additional audits if the cohort
+is too small, package per-vertical, publish on rikuq + Citare + verticals press.
+
+Effort per vertical report: ~12-18h (data prep + writing + design + outreach).
+
+---
+
+## Tier 1 — The Main Report (release order = master pipeline)
 
 ### 1. **THE DEBUT — "The Indian AI Search Audit: 500 Queries, 25 Brands, 777 Citations"**
 
