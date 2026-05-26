@@ -13,16 +13,43 @@ on `rikuq.com/blog/geo/` + LinkedIn carousel + Twitter thread + press push.
 
 ## The 5 angles (release order)
 
-### 1. "The API vs Browser Test Divergence" — methodology / thesis backup
+### 1. **THE DEBUT — "The Indian AI Search Audit: 500 Queries, 25 Brands, 777 Citations"**
 
-**Thesis (one line):** API-based AI search visibility tools measure something
-fundamentally different from what real users see; the divergence is large and
-consistent across brands.
+**Status:** locked in as brief #22, ship target Sat May 30.
 
-**Why this first:** we just shipped the "AI Search Visibility Tools" comparison
-post (May 26) where the API-vs-browser thesis was asserted. This report is the
-data that proves it. Strongest credibility move = follow assertion with data
-within 4 weeks.
+**Thesis (one line):** Indian buyers using AI search are being served citations
+from Instagram, YouTube, Reddit, aggregators, and listicle blogs — almost
+none from the brand websites Indian marketing teams optimize for.
+
+**Why this first:** the Citare audit corpus (25 brands, 500 cells, 777
+citations from May 24-26 2026) is already publishable. First published research
+of its kind on this geography. The data is sharper than any of the originally-
+planned debut angles. Replaces the API-vs-browser methodology piece as Report
+#1 — that angle now becomes Report #5 or gets folded into the methodology
+section of this report.
+
+**The headline numbers** (from `~/code/citare_client_study/marketing/article-data/`):
+- Top-cited domain across 500 cells: **Instagram (21 citations)**
+- First brand-owned website in top-cited list: **position 12** (sugarcosmetics.com, 7)
+- Brand-named query surface rate: **73.3%** (66/90)
+- Unbranded "best X" query surface rate: **33.5%** (106/316) — a 40-point gap
+- Biggest per-brand asymmetry: Pristyn Care AIO 80% / ChatGPT 30%; inverse Clickpost AIO 40% / ChatGPT 90%
+- Single listicle dominating a category: **jimmyluxury.in (14 citations)**
+
+**Sample:** 25 prospects across 16 verticals (insurance, beauty, healthcare,
+real estate, fintech, D2C apparel, hospitality, jewellery, coaching, SaaS,
+travel, logistics, wealthtech). Three cohorts: wipeout (10), funded-not-leader
+(10), newer-funded (5).
+
+**Article structure:** see brief #22 in DB (`sqlite3 data/content-ops.db "SELECT * FROM briefs WHERE id=22" -line`)
+
+**Distribution path:**
+- rikuq.com/blog/geo/indian-ai-search-audit-may-2026 (full article, free)
+- citare.ai/reports/indian-ai-search-audit-may-2026 (PDF + landing page, email-gated)
+- LinkedIn carousel (10 slides)
+- Twitter thread (12-15 tweets)
+- Personalized previews to all 25 brand marketing leads
+- Press: Entrackr, Inc42, YourStory, The Ken, Moneycontrol, afaqs!, exchange4media, Marketing Brew, MarTech Today, plus brand-specific quotes
 
 **Sample needed:** 10-20 brands across all 5 LLM platforms (ChatGPT, AIO,
 Gemini, Claude, Perplexity), each queried via both API and via browser for
@@ -220,11 +247,12 @@ choosing agencies, marketing press.
 
 | Release | Date | Angle | Distribution focus |
 |---|---|---|---|
-| #1 | 2026-06-23 | API vs Browser methodology | SEO press + vendor responses |
-| #2 | 2026-07-21 | 30 B2B SaaS brands | Each named brand's PR team |
-| #3 | 2026-08-18 | India SaaS first-data | India tech press + BatchWise distro |
-| #4 | 2026-09-15 | AI coding tools meta-piece | HN front page push |
-| #5 | 2026-10-13 | Marketing agency dogfood | Marketing press + LinkedIn |
+| **#1** | **2026-05-30** | **Indian AI Search Audit (THE DEBUT, replaces original #1)** | India tech press + 25 named brand PR teams + Marketing Brew |
+| #2 | 2026-06-27 | 30 B2B SaaS brands | Each named brand's PR team |
+| #3 | 2026-07-25 | India deep-dive — sub-vertical from #1 (likely fintech or beauty) | India press + BatchWise distro |
+| #4 | 2026-08-22 | AI coding tools meta-piece ("what does Claude say about Cursor") | HN front page push |
+| #5 | 2026-09-19 | API vs Browser methodology — the original Report #1, now standalone | SEO press + vendor responses |
+| #6 | 2026-10-17 | Marketing agency dogfood audit | Marketing press + LinkedIn |
 
 Roughly 4-5 weeks between releases. Allows time for each report to compound
 backlinks + organic conversation before the next one drops. Also realistic

@@ -2,7 +2,7 @@
 
 # Keywords (top 200 by volume)
 
-Total tracked: 58
+Total tracked: 59
 
 | ID | Keyword | Volume | KD | Intent | Status | Source |
 |---|---|---|---|---|---|---|
@@ -64,3 +64,4 @@ Total tracked: 58
 | 1 | geo vs aeo vs aio | - | - | informational | brief_created | manual |
 | 2 | cloudflare workers ai cost | - | - | commercial | brief_created | manual |
 | 3 | 37 mcp tools | - | - | informational | brief_created | manual |
+| 59 | indian ai search audit | - | - | commercial | brief_created | manual:research-debut |

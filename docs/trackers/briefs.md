@@ -2,10 +2,11 @@
 
 # Briefs
 
-Total: 21
+Total: 22
 
 | ID | Status | Kind | Title | Slug | Created |
 |---|---|---|---|---|---|
+| 22 | approved | new | The Indian AI Search Audit: 500 Queries, 25 Brands, 777 Citations | `indian-ai-search-audit-may-2026` | 2026-05-26 |
 | 19 | published | new | Best MCP Servers for Claude Code in 2026 (Honest Picks) | `best-mcp-servers-claude-code-2026` | 2026-05-25 |
 | 20 | published | new | Claude Code Hooks vs Skills: When to Use Which | `claude-code-hooks-vs-skills-when-to-use` | 2026-05-25 |
 | 21 | published | new | AI Search Visibility Tools: Honest Comparison From a Builder | `ai-search-visibility-tools-honest-comparison` | 2026-05-25 |

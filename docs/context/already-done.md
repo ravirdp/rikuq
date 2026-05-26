@@ -37,8 +37,9 @@ check this list and skip anything close to a topic here.
 - **Cursor Review 2026 — Honest 'Not For Me' Take From a VSCode User** — `cursor-review` _(kw: cursor)_
 - **Cursor vs Claude Code 2026 — You're Probably Asking the Wrong Question** — `cursor-vs-claude-code` _(kw: cursor)_
 
-## In pipeline (3)
+## In pipeline (4)
 
+- **The Indian AI Search Audit: 500 Queries, 25 Brands, 777 Citations** — `indian-ai-search-audit-may-2026`
 - **GEO vs AEO vs AIO vs SGE: A Plain-English Glossary for 2026** — `geo-aeo-aio-sge-glossary-2026`
 - **Cloudflare Workers AI vs OpenAI: Real Cost Across 1M Tokens** — `cloudflare-workers-ai-vs-openai-cost`
 - **37 MCP Tools for Citare: What Worked, What I Would Cut** — `37-mcp-tools-citare-lessons`

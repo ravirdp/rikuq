@@ -31,29 +31,69 @@ sites bigger than yours.** Everything below maps to one of those three.
 - [x] Qwoted support email sent (account auto-disabled)
 - [x] Fix crosspost cron — Hashnode dropped, 15 articles flagged, multi-match loop
 - [x] GSC analysis — 3 indexed, others in queue
+- [x] Master marketing plan + research pipeline docs shipped
+- [x] Audit data corpus analyzed — debut article angle locked (brief #22)
 
 ---
 
-## Tomorrow's queue — 2026-05-27 (Wed) — pull from this
+## This week's revised priority — debut article takes precedence
 
-Pick 3-5 based on energy. Don't try to do all.
+**The audit corpus is publishable as-is and time-sensitive.** Ship the debut by
+Sat May 31. Push briefs #16 / #17 / #18 to next week to clear the runway.
 
-### Must-do (content)
-- [ ] Ship brief #16 (GEO/AEO/AIO/SGE glossary) — no input needed, ~30 min
-- [ ] Ship brief #17 (Workers AI vs OpenAI cost) — **blocked on Prism cost data from you**
-- [ ] Daily reactive-PR monitor pull (`node scripts/reactive-pr.mjs --since=24h`)
-- [ ] Post 1-2 strongest pitches from new digest
+### Wed May 27 — Day 1 of debut
 
-### Growth (pick 2)
-- [ ] Write 5 LinkedIn posts pulled from this week's articles, schedule via LinkedIn
-- [ ] Begin "State of AI Search Visibility Q2 2026" report outline (pick the 100 brands)
-- [ ] Build podcast target list — 20 podcasts with hosts named (I can draft)
-- [ ] Add inline newsletter form to top 3 highest-traffic posts (`what-is-llm-finops`, `geo-vs-seo-2026`, `claude-code-review`)
+- [ ] Draft article shell + frontmatter (skeleton in `src/content/blog/indian-ai-search-audit-may-2026.mdx`)
+- [ ] Write Lede + TL;DR + Methodology sections (~600 words)
+- [ ] Write Finding #1 (top-cited domains) + Finding #2 (branded vs unbranded gap)
+- [ ] Quick data-pull scripts for any aggregate cuts still needed
+- [ ] Daily reactive-PR monitor pull
+- [ ] Check Qwoted support reply
 
-### Maintenance (one of)
-- [ ] Check Qwoted support reply, retry if reinstated
-- [ ] Resubmit GSC sitemap (4 priority URLs via URL Inspection → Request Indexing)
-- [ ] GSC review (any new "errors")
+### Thu May 28 — Day 2 of debut
+
+- [ ] Write Findings #3, #4, #5 + "what this means" + methodology limits
+- [ ] Generate 4-5 chart images (or commission)
+- [ ] Generate or commission hero image for the article
+- [ ] Draft Citare landing page copy
+- [ ] Draft per-brand outreach email template (25 brands, personalized section)
+- [ ] Daily reactive-PR monitor pull
+
+### Fri May 29 — Day 3 of debut
+
+- [ ] Finalize article — voice pass, internal links, FAQ section, schema
+- [ ] Build Citare PDF (Canva or Figma — your call)
+- [ ] Build Citare landing page (`citare.ai/reports/indian-ai-search-audit-may-2026`)
+- [ ] Draft LinkedIn carousel (10 slides)
+- [ ] Draft Twitter thread (12-15 tweets)
+- [ ] Press pitch template + target list of 15 publications
+
+### Sat May 30 — Ship day
+
+- [ ] Publish rikuq article
+- [ ] Publish Citare landing page + PDF
+- [ ] Post LinkedIn carousel
+- [ ] Post Twitter thread
+- [ ] Send personalized previews to all 25 brand marketing leads
+- [ ] Send press pitches to 10 publications
+- [ ] Indie Hackers post
+- [ ] Update tracker docs
+
+### Sun May 31 + Mon June 1 — amplify
+
+- [ ] Reply to LinkedIn / Twitter / IH engagement
+- [ ] Resubmit GSC sitemap for the new URL + request indexing
+- [ ] Track backlinks landing in `docs/backlink-tracker.md`
+- [ ] Send "thanks for sharing" notes to amplifiers
+- [ ] Update done log + research-pipeline.md with actual outcomes
+
+### Pushed to next week (June 2-7)
+
+- [ ] Ship brief #16 (GEO/AEO/AIO/SGE glossary)
+- [ ] Ship brief #17 (Workers AI vs OpenAI cost) — still needs Prism data
+- [ ] Ship brief #18 (37 MCP Tools for Citare) — still needs Citare MCP tool list
+- [ ] LinkedIn daily posting cadence (start)
+- [ ] Podcast pitches first batch (10)
 
 ---
 
