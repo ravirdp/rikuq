@@ -20,6 +20,9 @@ const blog = defineCollection({
     citareDisclosure: z.boolean().default(false),
     batchwiseDisclosure: z.boolean().default(false),
     relatedPosts: z.array(z.string()).default([]),
+    // Set true to opt OUT of the Day-3 auto-crosspost cron. Used for articles
+    // that were manually backfilled to Dev.to/Hashnode before the cron existed.
+    crossposted: z.boolean().default(false),
     faqs: z
       .array(z.object({ question: z.string(), answer: z.string() }))
       .optional(),

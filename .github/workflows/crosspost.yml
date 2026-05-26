@@ -55,42 +55,52 @@ jobs:
             exit 0
           fi
 
-          # Scheduled run: find articles added to git exactly 3 days ago
+          # Scheduled run: find ALL articles first-committed exactly 3 days ago
+          # (we ship up to 2/day now, so a single-match loop drops the second one)
           target_date=$(date -u -d '3 days ago' +%Y-%m-%d)
           echo "Looking for articles first-committed on: $target_date"
 
-          slug=""
+          slugs=""
           for f in src/content/blog/*.mdx; do
-            # Skip the template
             base=$(basename "$f" .mdx)
             [ "$base" = "_template" ] && continue
 
-            # Skip drafts
             if grep -q '^draft:\s*true' "$f"; then continue; fi
-
-            # Skip explicit opt-outs
             if grep -q '^crossposted:\s*true' "$f"; then continue; fi
 
-            # First commit date for this file
             first_commit=$(git log --diff-filter=A --follow --format=%cs -- "$f" | tail -1)
             if [ "$first_commit" = "$target_date" ]; then
-              slug="$base"
+              slugs="$slugs $base"
               echo "Match: $base (first committed $first_commit)"
-              break
             fi
           done
 
-          if [ -z "$slug" ]; then
-            echo "No article aged exactly 3 days to crosspost. Exiting cleanly."
-            echo "slug=" >> "$GITHUB_OUTPUT"
-          else
-            echo "slug=$slug" >> "$GITHUB_OUTPUT"
+          slugs=$(echo "$slugs" | xargs)  # trim leading whitespace
+          if [ -z "$slugs" ]; then
+            echo "No articles aged exactly 3 days to crosspost. Exiting cleanly."
           fi
+          echo "slugs=$slugs" >> "$GITHUB_OUTPUT"
 
       - name: Crosspost to Dev.to + Hashnode
-        if: steps.pick.outputs.slug != ''
+        if: steps.pick.outputs.slugs != ''
         env:
           DEVTO_API_KEY: ${{ secrets.DEVTO_API_KEY }}
           HASHNODE_PAT: ${{ secrets.HASHNODE_PAT }}
           HASHNODE_PUBLICATION_ID: ${{ secrets.HASHNODE_PUBLICATION_ID }}
-        run: npm run crosspost -- "${{ steps.pick.outputs.slug }}"
+        run: |
+          # Loop all matched slugs. 40s sleep between them — Dev.to rate-limits aggressively.
+          # `|| true` per-slug so one failure (e.g. canonical-already-exists 422)
+          # doesn't abort the whole batch.
+          failed=0
+          for slug in ${{ steps.pick.outputs.slugs }}; do
+            echo "::group::Crossposting $slug"
+            if ! npm run crosspost -- "$slug"; then
+              echo "::warning::Crosspost failed for $slug — continuing batch"
+              failed=$((failed + 1))
+            fi
+            echo "::endgroup::"
+            sleep 40
+          done
+          if [ "$failed" -gt 0 ]; then
+            echo "::warning::$failed slug(s) failed; review logs."
+          fi
