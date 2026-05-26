@@ -241,12 +241,12 @@ When a new article publishes on rikuq, push adapted versions to other platforms 
 | Platform | Publication URL | Notes |
 |---|---|---|
 | **Dev.to** | `https://dev.to/ravi_patel_99/` | Auto-crosspost via API on day 3 (DEVTO_API_KEY secret set) |
-| **Hashnode** | `https://rikuq.hashnode.dev/` | Manual republish (API requires Pro $7/mo; deferred). First post live: `/hello-from-rikuq-a-practitioner-blog-for-solo-ai-saas-founders` |
+| **Hashnode** | `https://rikuq.hashnode.dev/` | **Manual only.** API moved to paid tier (Pro $7/mo) in 2026; we're not paying. Republish by copy-paste when you feel like it; skip otherwise. |
 
 | Channel | Priority | Why | Format adjustment | Canonical respected? |
 |---|---|---|---|---|
 | **Dev.to** | High | Active dev community, strong organic reach for AI/coding | Add platform-native intro, use their Markdown flavor | ✅ yes (set `canonical_url` in frontmatter) |
-| **Hashnode** | High | Same as Dev.to + has its own SEO juice | Same | ✅ yes |
+| **Hashnode** | Medium | Has its own SEO juice but referral data hasn't justified the manual effort | Manual copy-paste; set canonical in editor | ✅ yes |
 | **Medium** | Medium | Reach is good but algorithm has weakened post-2024 | Use Medium's import-from-URL tool (respects canonical automatically) | ✅ yes (via import) |
 | **IndieHackers** | High | Founder audience matches rikuq's reader | Write as a "lessons" post, not a copy-paste | n/a — usually frame as commentary linking to rikuq |
 | **LinkedIn Articles** | Medium | Longer-form rewards on LinkedIn vs short posts | Rewrite intro for professional tone | ✅ yes (set canonical in publishing UI) |
@@ -263,18 +263,20 @@ The 3-day buffer is the canonical pattern. It exists because Google needs 24-72 
 | **Day 0** | Article publishes on rikuq.com | rikuq.com (auto-deploy) |
 | **Day 0-1** | Anchor announcement | Twitter (manual thread, not automated) |
 | **Day 1-2** | Reddit post-of-the-article (only if natural fit) | Selected subreddit |
-| **Day 3** | **Cross-post APIs fire automatically** | Dev.to + Hashnode (via scripts) |
+| **Day 3** | **Dev.to cross-post fires automatically** | Dev.to only (Hashnode is manual now — paid API tier; copy-paste when you feel like it) |
 | **Day 5-7** | LinkedIn Article + IndieHackers commentary | Manual, polished framing |
 | **Day 7+** | Medium import (optional, low priority) | Manual UI import |
 
-The Day 3 cross-post is automated via `scripts/crosspost-devto.mjs` and `scripts/crosspost-hashnode.mjs`. These can be triggered:
+The Day 3 cross-post is automated via `scripts/crosspost-devto.mjs` only. `scripts/crosspost-hashnode.mjs` still exists for manual one-off use (e.g. if Ravi decides a specific post is worth a Hashnode republish) but is no longer in the automated platform list since Hashnode's API moved behind a Pro paywall ($7/mo) and our referral data hasn't justified it.
 
-- Manually: `npm run crosspost -- <slug>` (when you're ready to push)
-- Automatically via a delayed GitHub Action that fires 3 days after the original push to `main` (see workflow below)
+Triggers:
+- Manually for Dev.to: `npm run crosspost -- <slug>`
+- Automatically for Dev.to via GitHub Action 3 days after publish (`.github/workflows/crosspost.yml`)
+- Hashnode: copy-paste in the Hashnode editor, set canonical URL manually
 
 **Why not Day 0?** Because Google sometimes picks the republish as canonical when both versions appear simultaneously, even with `rel="canonical"`. A 3-day head start removes that risk.
 
-**Why not Day 5+?** Because the freshness signal on Dev.to / Hashnode decays fast — a 3-day-old article gets surfaced; a 7-day-old article gets buried. Three days is the optimum.
+**Why not Day 5+?** Because the freshness signal on Dev.to decays fast — a 3-day-old article gets surfaced; a 7-day-old article gets buried. Three days is the optimum.
 
 ---
 
@@ -285,12 +287,13 @@ Honest answer: most cross-post automation produces mediocre republishes that per
 ### Worth automating ✅ — IMPLEMENTED
 
 - **Dev.to API publish** — `scripts/crosspost-devto.mjs`. Takes a slug, reads the MDX, transforms to Dev.to markdown, POSTs with canonical URL. Run via `npm run crosspost:devto -- <slug>`. Free API.
-- **Hashnode API publish** — `scripts/crosspost-hashnode.mjs`. Same pattern via GraphQL. Run via `npm run crosspost:hashnode -- <slug>`.
-  - **Caveat (as of May 2026):** Hashnode now requires the publication to be on the **Pro plan ($7/mo)** for ANY API access. Free publications get 401. Until rikuq's content has data showing Hashnode referrers, **leave the env vars unset** and the cross-poster will gracefully skip Hashnode. Re-evaluate after 60 days.
-- **Both at once** — `npm run crosspost -- <slug>` fires every platform whose env vars are present, skips the rest, treats per-platform failures as warnings.
-- **Scheduled cross-post via CI** — `.github/workflows/crosspost.yml` runs daily, checks if any article on `main` is exactly 3 days old, and auto-crossposts it. Idempotent (won't duplicate). Skips any platform with missing env vars.
+- **Scheduled cross-post via CI** — `.github/workflows/crosspost.yml` runs daily, checks if any article on `main` is exactly 3 days old, and auto-crossposts it to Dev.to. Idempotent (won't duplicate). Skips articles flagged `crossposted: true` in frontmatter (used for the 15 backfilled before the cron existed). Handles multiple matches per day (the 2/day cadence).
 
 ### Not worth automating ❌
+
+- **Hashnode** — `scripts/crosspost-hashnode.mjs` still exists for manual use, but the API moved to the Pro plan ($7/mo) in 2026 and we're not paying. If a specific post seems worth a Hashnode republish, copy-paste it manually in the Hashnode editor and set the canonical URL there. Re-add to the auto-platforms list if we ever subscribe.
+
+### Other channels — not worth automating ❌
 
 - Medium — their UI import tool already does the heavy lifting; scripting the API is more work than 5 min of manual paste
 - LinkedIn — the canonical UI workflow is the only path; LinkedIn's API is restricted
@@ -310,7 +313,7 @@ If we end up shipping 2+ articles a week, build `scripts/crosspost-devto.mjs` fi
 4. Article published with canonical_url back to rikuq.com
 ```
 
-Until then: manual cross-post takes ~15 min per article per platform, do it for Dev.to and Hashnode after each publish, skip the rest unless they make sense for that specific article.
+Until then: Dev.to is automated. Hashnode is manual copy-paste when the article seems worth the 5 minutes. Skip the rest unless they make sense for that specific article.
 
 ---
 

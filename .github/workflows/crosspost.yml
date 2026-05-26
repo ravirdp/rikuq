@@ -7,8 +7,9 @@ name: Auto-crosspost 3 days after publish
 # - Skips drafts (draft: true in frontmatter).
 # - Skips articles where `crossposted: true` is set in frontmatter (manual
 #   opt-out for things we publish on rikuq but don't want elsewhere).
-# - Continues per-platform if one fails (so a Hashnode outage doesn't block
-#   the Dev.to push).
+# - Continues per-platform if one fails (so a Dev.to rate-limit doesn't kill
+#   the whole batch). Hashnode was removed from the auto-platforms list in
+#   May 2026 — paid API only, we publish to Hashnode manually if at all.
 #
 # Manual trigger also available via workflow_dispatch with a slug input.
 
@@ -81,12 +82,10 @@ jobs:
           fi
           echo "slugs=$slugs" >> "$GITHUB_OUTPUT"
 
-      - name: Crosspost to Dev.to + Hashnode
+      - name: Crosspost to Dev.to
         if: steps.pick.outputs.slugs != ''
         env:
           DEVTO_API_KEY: ${{ secrets.DEVTO_API_KEY }}
-          HASHNODE_PAT: ${{ secrets.HASHNODE_PAT }}
-          HASHNODE_PUBLICATION_ID: ${{ secrets.HASHNODE_PUBLICATION_ID }}
         run: |
           # Loop all matched slugs. 40s sleep between them — Dev.to rate-limits aggressively.
           # `|| true` per-slug so one failure (e.g. canonical-already-exists 422)

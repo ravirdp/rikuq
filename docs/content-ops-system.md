@@ -154,7 +154,7 @@ export default {
   // Crosspost behavior (Day-3 cron is per-project)
   crosspost: {
     enabled: true,
-    platforms: ['devto', 'hashnode'],
+    platforms: ['devto'],   // Hashnode moved to paid API in 2026; manual only
   },
 
   // GEO target queries — Citare pulls citations for these per page
@@ -514,7 +514,7 @@ Open PR. Wait for CI green. Merge.
 
 ## Step 6 — Post-publish
 - Run scripts/indexnow.sh (pings Bing/Yandex/etc.)
-- Enqueue crosspost (Day-3 cron handles Dev.to + Hashnode)
+- Enqueue crosspost (Day-3 cron handles Dev.to; Hashnode is manual since the API moved to paid in 2026)
 - INSERT into `pages` table with url, slug, primary_keyword, word_count
 - UPDATE brief status to 'published'
 - Regenerate docs/context/already-done.md from pages table

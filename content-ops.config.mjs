@@ -38,9 +38,10 @@ export default {
   ],
 
   // --- Crosspost behavior (Day-3 cron is .github/workflows/crosspost.yml) ---
+  // Hashnode dropped May 2026 — paid API only, we publish manually if at all.
   crosspost: {
     enabled: true,
-    platforms: ['devto', 'hashnode'],
+    platforms: ['devto'],
   },
 
   // --- GEO target queries (Citare connector lands v0.3.0) ---

@@ -9,9 +9,15 @@
 //
 // Platforms wired today:
 //   Dev.to    — requires DEVTO_API_KEY
-//   Hashnode  — requires HASHNODE_PAT + HASHNODE_PUBLICATION_ID
-//               (Hashnode API now requires Pro plan on the publication;
-//                free publications get 401 — leave env vars unset to skip.)
+//
+// Deprecated / manual only:
+//   Hashnode  — script still exists (scripts/crosspost-hashnode.mjs) for
+//               manual one-off use. NOT in this platforms list anymore.
+//               As of May 2026 the Hashnode publish API requires the Pro
+//               plan ($7/mo) on the publication. We're not paying for it;
+//               Hashnode crossposts are done manually via copy-paste when
+//               we feel like it. Re-add to this list if you ever subscribe
+//               and have HASHNODE_PAT + HASHNODE_PUBLICATION_ID set.
 
 import { spawn } from 'node:child_process';
 
@@ -27,11 +33,7 @@ const platforms = [
     script: 'scripts/crosspost-devto.mjs',
     requiredEnv: ['DEVTO_API_KEY'],
   },
-  {
-    name: 'Hashnode',
-    script: 'scripts/crosspost-hashnode.mjs',
-    requiredEnv: ['HASHNODE_PAT', 'HASHNODE_PUBLICATION_ID'],
-  },
+  // Hashnode removed from auto-list — paid API only. See header comment.
 ];
 
 function runScript(platform) {
