@@ -87,19 +87,28 @@ Honest expectation: at day 90 you have ~50 posts live, 1-3K newsletter subscribe
 
 ## Tier 1 — Highest leverage (do these in next 30 days)
 
-### 1. Quarterly "State of AI Search" report ⭐⭐⭐⭐⭐
+### 1. Monthly research-release pipeline ⭐⭐⭐⭐⭐
 
 **The single highest-leverage thing on this list.**
 
-You run 10-20 Citare audits/day. That's proprietary data nobody else has at your price point. Package quarterly:
+You already have <50 brands of structured Citare audit data covering B2B
+SaaS, India SaaS, dev tools, and marketing tech. Slow-release as **5 separate
+reports over 5 months** instead of one big quarterly. Each one targets a
+different angle + audience for maximum compounding.
 
-- **"State of AI Search Visibility for Top 100 SaaS, Q2 2026"** — 25-page PDF + interactive web version on `citare.ai/reports/q2-2026`
-- Sections: surface rates per platform, biggest movers QoQ, brand-to-brand variance, AIO vs ChatGPT divergence, vertical-specific findings (fintech vs HR-tech vs marketing-tech)
-- **Every brand mentioned = potential backlink** (PR teams share)
-- **Press angle**: pitch TechCrunch, The Information, Stratechery, Marketing Brew, MarTech Today, SaaStr
-- **SEO**: report-style content from a known source gets cited heavily
+**See `docs/research-pipeline.md` for the full 5-report plan with release
+calendar, per-report production playbook, and target dates.**
 
-Effort: ~20h over a week. Return: 10-30 high-DR backlinks per report, compounding quarterly. This is how Ahrefs + Buffer bootstrapped.
+Summary release schedule:
+- **Jun 23** — API vs Browser methodology (backs up our May 26 comparison post)
+- **Jul 21** — 30 B2B SaaS brands leaderboard (broadest backlink magnet)
+- **Aug 18** — India SaaS first-published data (unique geography)
+- **Sep 15** — AI coding tools meta-piece (HN front-page candidate)
+- **Oct 13** — Marketing agency dogfood audit (highest viral potential)
+
+Effort per report: ~12-25h front-loaded over 2-3 weeks. Return: 10-30
+backlinks per report, monthly compounding instead of once-a-quarter. This is
+how Ahrefs + Buffer bootstrapped — except with monthly cadence.
 
 ### 2. Newsletter conversion + lead magnets ⭐⭐⭐⭐
 
@@ -330,6 +339,7 @@ At month 3 expected:
 | Doc | Purpose |
 |---|---|
 | `marketing-plan.md` (this) | Master plan + daily queue |
+| `research-pipeline.md` | 5-report slow-release plan from Citare audit data |
 | `content-pipeline.md` | Immediate publishing schedule |
 | `seo-content-plan.md` | Long-form content strategy |
 | `seo-direction-2026.md` | Strategic direction memo |
