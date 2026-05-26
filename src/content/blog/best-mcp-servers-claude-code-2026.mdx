@@ -1,0 +1,192 @@
+---
+title: "Best MCP Servers for Claude Code in 2026 (Honest Picks)"
+description: "Tried 20+ MCP servers, kept 12, cut 8, found a gap. Honest picks for daily Claude Code use with config snippets, by someone who wrote 37 MCPs for their own product."
+pubDate: 2026-05-26
+updatedDate: 2026-05-26
+category: stack
+tags:
+  - claude-code
+  - mcp
+  - model-context-protocol
+  - ai-coding-tools
+  - anthropic
+author: Ravi
+heroImage: /illustrations/covers/best-mcp-servers-claude-code-2026.jpg
+ogImage: /illustrations/covers/best-mcp-servers-claude-code-2026.jpg
+draft: false
+affiliateDisclosure: false
+faqs:
+  - question: "What are MCP servers in Claude Code?"
+    answer: "MCP (Model Context Protocol) servers are external processes Claude Code can talk to in order to read or do things outside its own context — read files, query a database, browse the web, look up docs, talk to GitHub, etc. Each MCP server exposes a set of tools that Claude can invoke during a conversation. You install them by adding entries to the mcpServers section of your Claude config."
+  - question: "How many MCP servers should I install?"
+    answer: "Fewer than you think. Each installed MCP eats tokens at session start because Claude has to read its tool descriptions to know what's available. I run 8-12 actively per project. More than 15 and you're paying context tax for tools you rarely invoke. Strip aggressively; reinstall when you actually need them."
+  - question: "What's the difference between MCP servers and Claude Code Skills?"
+    answer: "MCP servers are external processes that expose tools — they do things. Skills are markdown bundles that Claude loads on demand — they instruct Claude how to do procedures. Use MCPs when you need to read/write to an external system (database, browser, API). Use Skills when you need Claude to follow a multi-step workflow. They compose well: a Skill might invoke MCP tools as part of its procedure."
+  - question: "Are MCP servers built by Anthropic or third parties?"
+    answer: "Both. Anthropic ships about a dozen first-party reference servers (filesystem, github, postgres, sqlite, puppeteer, fetch, memory, etc.). The community has built hundreds more. Quality varies wildly. The first-party ones are stable; community MCPs range from production-ready (serena, context7, firecrawl) to unmaintained experiments."
+  - question: "What's the biggest mistake people make with MCP servers?"
+    answer: "Installing too many. Every MCP costs context at session start. People treat MCPs like browser extensions — install everything that sounds useful, leave them all on. Result: the first 30% of every session's context is consumed by tool descriptions for things Claude will never use. Audit your installed MCPs every few weeks; cut the dead ones."
+  - question: "Are there gaps in the MCP ecosystem?"
+    answer: "Yes — the biggest is code intelligence beyond LSP. Symbol lookup and jump-to-def are covered by serena. Call graphs, impact analysis (what tests cover this function?), refactoring with rollback, schema-migration conflict detection — those are not well-served yet. Vendor-locked solutions (Sourcegraph Cody, Augment) own this lane in the IDE world; the open MCP ecosystem hasn't caught up."
+relatedPosts:
+  - claude-code-hooks-vs-skills-when-to-use
+  - claude-code-review
+  - production-stack-2026
+---
+
+I wrote about 37 MCP servers myself for one of my products this year, which means I've been on both sides of the MCP economy — author and consumer. As a consumer, I've installed close to 30 different public MCP servers over the last six months. Most don't survive a month on my machine.
+
+This is the honest cut: 12 I keep installed across every project, 8 that sound great in their READMEs but bleed context for what they give back, and one category-shaped gap nobody's filled yet.
+
+## The grain problem (why most MCPs feel slow)
+
+Before the list, the thing that's worth internalizing: MCP servers cost context tokens at session start. Claude reads every installed server's tool descriptions to know what's available. With 15+ MCPs installed, the first 30-40% of your session window is gone before you've typed anything.
+
+This is the grain mismatch. Most MCPs were designed by people thinking about features, not context. They expose 8-12 tools each, with verbose descriptions. Multiply by 10 servers and you've spent the equivalent of a long article worth of context just on "here are things you could potentially do." A good MCP exposes 2-4 tools with terse descriptions and gets out of the way. Few do.
+
+When you read the list below, mentally weight each entry by "does this earn its context cost?"
+
+## The 12 keepers
+
+The set I install on essentially every project.
+
+### 1. filesystem (Anthropic, first-party)
+
+The single most-used MCP for me. Lets Claude read/write/list files in a directory you whitelist. Built into Claude Code by default now, but still worth understanding because you can scope it project-specifically.
+
+```json
+{
+  "filesystem": {
+    "command": "npx",
+    "args": ["-y", "@modelcontextprotocol/server-filesystem", "/Users/you/code/project"]
+  }
+}
+```
+
+### 2. github (Anthropic, first-party)
+
+When the work involves real issues, PRs, or code review. Read commit history, search code across repos, manipulate issues. The catch is rate limits — heavy use across many repos will hit GitHub's per-hour cap. Use a personal access token with the minimum scopes you need.
+
+### 3. postgres / sqlite (Anthropic, first-party)
+
+For any project with a database. Lets Claude run read queries directly. I use the sqlite one constantly for my own `content-ops` tracker DB. The read-only mode is the right default — write operations should go through your app code or migrations, not ad-hoc through Claude.
+
+### 4. playwright (community / Microsoft-maintained)
+
+When the work involves browser automation, testing, or scraping. The Playwright MCP is more reliable than the older puppeteer one and has better screenshot support. Heavy: this MCP spawns a real browser, which is slow on cold start. Worth it when you need it; uninstall when you don't.
+
+### 5. serena (community)
+
+The closest thing to real code intelligence in MCP form. Wraps Language Server Protocol (LSP) servers per language and exposes symbol lookup, find-references, jump-to-def, type info. Works, but as I covered in the [Hooks vs Skills post](/blog/tools/claude-code-hooks-vs-skills-when-to-use), the abstraction is leaky — LSP was designed for an editor showing one symbol at a time, not for an LLM that wants 20 symbols of structure in one tool call. You'll burn tokens on round-trips that a real IDE would cache. Still: keep it. Nothing else in this category works as well.
+
+### 6. context7 (community, upstash)
+
+Fresh documentation lookup for popular libraries. When Claude needs "what does the React 19 useFormStatus hook do" or "current Astro 6 content collection API," context7 returns up-to-date docs rather than whatever was in training data. Essential for any project on a framework that moves fast.
+
+### 7. fetch (Anthropic, first-party)
+
+Just an HTTP request. Sounds trivial; ends up being the most-invoked tool I have after filesystem. Webhooks, API calls, scraping a single page — fetch does it.
+
+### 8. firecrawl OR tavily (community)
+
+For real web research. Brave search (Anthropic's reference) returns shallow result lists; firecrawl actually crawls and extracts clean content. Tavily is the alternative — similar shape, different vibe. Pick one. Free tiers on both are generous enough for solo founder volumes.
+
+### 9. exa (community)
+
+Semantic web search. Differs from firecrawl/tavily: exa is optimized for "find me 5 articles similar to this one in argument" rather than keyword matching. When you're researching a topic and want quality over recall, exa wins.
+
+### 10. supabase / project-specific DB MCP (community)
+
+If your project's data lives in Supabase, the Supabase MCP is much better than going through generic postgres because it knows about RLS, edge functions, and storage. The pattern applies generally: when a stack has a first-party MCP, prefer it over the generic equivalent.
+
+### 11. cloudflare (community / Cloudflare-maintained)
+
+For anyone running Workers, Pages, R2, KV, D1. Tail logs, inspect bindings, deploy from the conversation. The Cloudflare team has invested in this MCP and it shows. If you don't run on Cloudflare, skip.
+
+### 12. memory (Anthropic, first-party) — conditional keeper
+
+A persistent key/value store Claude can write to across sessions. Powerful when used deliberately ("remember that this project uses Bun, not Node") and dangerous when used carelessly ("Claude wrote 200 random observations to memory across the last week and now they're polluting every session"). Keep it; audit what's stored weekly with a quick `cat ~/.claude/memory.json`.
+
+## The 8 I'd cut (or never install)
+
+Each of these sounds great in its README. None has earned its context cost for me over months of use.
+
+### 1. brave-search (Anthropic, first-party)
+
+The default web search. Returns shallow result lists with snippets that often aren't useful. Firecrawl or tavily or exa are all better at producing usable content. Brave is a fine baseline; in 2026 you can do better.
+
+### 2. google-maps (Anthropic, first-party)
+
+I've fired this twice in six months. If you build location-aware products, install it. Otherwise the context cost is wasted.
+
+### 3. everart / image-generation MCPs (community)
+
+Generating images through MCP feels like a worst-of-both-worlds path. You can't iterate visually inside the chat, the output ends up in a file you have to open separately, and the round-trip is slow. Open DALL-E or Midjourney directly; paste the URL back when you have a result.
+
+### 4. time / timezone MCPs (community)
+
+Claude can do date math. You don't need a tool call to know it's currently May 2026.
+
+### 5. slack (Anthropic, first-party)
+
+This one is genuinely good engineering and I still cut it. Reason: Slack content is high-context, low-density. Claude reads whole conversations and then doesn't have room to do the real work. If you need Slack interaction, prefer a webhook + a hook that posts a single message on demand. Don't give Claude a firehose.
+
+### 6. gmail / calendar MCPs (community)
+
+Same problem as Slack. Email and calendar reads pull in massive amounts of low-density context. If you really need email automation, build a hook that runs a specific script (e.g., "summarize today's unread emails") rather than handing Claude the full inbox.
+
+### 7. spotify / lifestyle MCPs (community)
+
+You don't need Claude to control your music. These are demos, not tools.
+
+### 8. "any-API" generic MCPs
+
+There are several community MCPs that claim to wrap "any REST API" generically. In practice they expose vague tools like "callApi(endpoint, params)" that Claude has to figure out how to use from scratch each time. Specific MCPs for the APIs you actually use beat generic wrappers every time.
+
+## The category gap (nobody owns this yet)
+
+The biggest gap in the open MCP ecosystem in May 2026: **code intelligence beyond LSP**. Specifically:
+
+- **Call graphs.** "What functions does changing this one touch?" Crucial for understanding blast radius before a refactor. Vendor solutions exist (Sourcegraph, Augment) but they're tied to their respective products.
+- **Test-coverage-aware editing.** "Which tests cover this function?" should be one tool call. Today it's grep + reasoning.
+- **Schema-migration conflict detection.** When two devs both rename the same column. Belongs in an MCP, currently lives in PRs.
+- **Multi-file refactoring with rollback.** Atomic refactors that either succeed across N files or revert cleanly. The lack of this is why people are scared to let Claude do large refactors.
+
+If you're an MCP author looking for a meaningful build, this is it. Serena partially covers (1) but optimized for LSP grain, not LLM grain.
+
+## How to pick per project
+
+For a typical web app project, my install kit is:
+
+```json
+{
+  "mcpServers": {
+    "filesystem": { "command": "npx", "args": ["-y", "@modelcontextprotocol/server-filesystem", "."] },
+    "github":     { "command": "npx", "args": ["-y", "@modelcontextprotocol/server-github"], "env": { "GITHUB_TOKEN": "..." } },
+    "postgres":   { "command": "npx", "args": ["-y", "@modelcontextprotocol/server-postgres", "DATABASE_URL"] },
+    "context7":   { "command": "npx", "args": ["-y", "@upstash/context7-mcp"] },
+    "fetch":      { "command": "npx", "args": ["-y", "@modelcontextprotocol/server-fetch"] },
+    "firecrawl":  { "command": "npx", "args": ["-y", "@firecrawl/mcp"], "env": { "FIRECRAWL_API_KEY": "..." } },
+    "serena":     { "command": "uvx", "args": ["serena"] },
+    "cloudflare": { "command": "npx", "args": ["-y", "@cloudflare/mcp"] }
+  }
+}
+```
+
+Eight MCPs. The other 4 keepers (sqlite, playwright, exa, memory) get installed per-project based on whether the project actually uses them.
+
+For a research-heavy project (writing, analysis, content ops), I swap out the database MCPs for exa + memory + a project-specific tracker MCP. For a deep code-refactoring sprint, I add serena and trim everything not directly used.
+
+The rule: **the MCPs you install should match the work you're doing this week, not the work you might theoretically do someday.** Reinstalling is one config file edit. Context tax is paid every session.
+
+## Who shouldn't bother
+
+If you use Claude Code casually (a few times a week, simple file edits), most of this doesn't matter. The defaults are fine. The optimization story only matters when you're spending hours per day in Claude Code and context is your bottleneck.
+
+## What's next
+
+- The structural twin to this post: [Claude Code Hooks vs Skills: When to Use Which](/blog/tools/claude-code-hooks-vs-skills-when-to-use) — how to think about the other two extension surfaces Claude Code exposes.
+- The honest review of Claude Code itself: [Claude Code Review 2026 — From Zero Code to 3 Live SaaS](/blog/tools/claude-code-review) — for anyone deciding whether to commit to it as a daily driver.
+- What a real production stack built on Claude Code looks like: [How I Run 3 Production AI SaaS on $5/Month of Hosting](/blog/stack/production-stack-2026).
+
+The MCP ecosystem will look different in six months. Expect consolidation (the 30+ random community MCPs collapsing into 5-10 popular ones), category fills (someone will build the code-intelligence MCP), and quality bars rising on what counts as production-ready. Pick today based on what's available; expect to re-cut your install list quarterly.
