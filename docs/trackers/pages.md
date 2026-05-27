@@ -2,10 +2,11 @@
 
 # Pages (live content)
 
-Total: 18
+Total: 19
 
 | ID | Slug | Title | Category | Words | Primary KW | Published | Last refresh |
 |---|---|---|---|---|---|---|---|
+| 19 | `geo-aeo-aio-sge-glossary-2026` | GEO vs AEO vs AIO vs SGE: A Plain-English Glossary for 2026 | geo | 1906 | geo aeo aio sge | 2026-05-27 | - |
 | 18 | `best-mcp-servers-claude-code-2026` | Best MCP Servers for Claude Code in 2026 (Honest Picks) | stack | 2000 | claude-code-mcp | 2026-05-26 | - |
 | 17 | `ai-search-visibility-tools-honest-comparison` | AI Search Visibility Tools: Honest Comparison From a Builder | geo | 1900 | ai-search-visibility-tool | 2026-05-26 | - |
 | 16 | `claude-code-hooks-vs-skills-when-to-use` | Claude Code Hooks vs Skills: When to Use Which | tools | 1800 | claude-code-hooks | 2026-05-25 | - |

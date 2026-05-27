@@ -5,7 +5,7 @@
 Topics already published or in the pipeline. The research skill MUST
 check this list and skip anything close to a topic here.
 
-## Published pages (18)
+## Published pages (19)
 
 ### essays
 - **Hello from rikuq — a practitioner blog for solo AI SaaS founders** — `hello-from-rikuq` _(kw: manifesto)_
@@ -14,6 +14,7 @@ check this list and skip anything close to a topic here.
 - **What is LLM FinOps? The Missing Discipline for AI-Era Companies** — `what-is-llm-finops` _(kw: llm-finops)_
 
 ### geo
+- **GEO vs AEO vs AIO vs SGE: A Plain-English Glossary for 2026** — `geo-aeo-aio-sge-glossary-2026` _(kw: geo aeo aio sge)_
 - **AI Search Visibility Tools: Honest Comparison From a Builder** — `ai-search-visibility-tools-honest-comparison` _(kw: ai-search-visibility-tool)_
 - **How I Built Citare V2 in 12 Days After Throwing V1 Away** — `citare-12-day-rebuild-story` _(kw: citare)_
 - **The Four-Index Reality: Why AI Search Isn't One Thing** — `four-index-reality` _(kw: geo)_
@@ -37,7 +38,7 @@ check this list and skip anything close to a topic here.
 - **Cursor Review 2026 — Honest 'Not For Me' Take From a VSCode User** — `cursor-review` _(kw: cursor)_
 - **Cursor vs Claude Code 2026 — You're Probably Asking the Wrong Question** — `cursor-vs-claude-code` _(kw: cursor)_
 
-## In pipeline (17)
+## In pipeline (16)
 
 - **Consumer AI Subscription Economics: Who is Actually Winning** — `consumer-ai-subscription-economics-2026`
 - **AI Startup Burn-Rate Disclosures: Who Runs Out of Money First** — `ai-startup-burn-rate-disclosures-2026`
@@ -53,6 +54,5 @@ check this list and skip anything close to a topic here.
 - **The Stock-Market-Implied AI Value Index: Did Wall Street Reward AI Investment?** — `ai-stock-market-implied-value-index-2026`
 - **The Sector AI Spend Heatmap: Where the Money Actually Goes by Industry** — `sector-ai-spend-heatmap-2026`
 - **The Indian AI Search Audit: 500 Queries, 25 Brands, 777 Citations** — `indian-ai-search-audit-may-2026`
-- **GEO vs AEO vs AIO vs SGE: A Plain-English Glossary for 2026** — `geo-aeo-aio-sge-glossary-2026`
 - **Cloudflare Workers AI vs OpenAI: Real Cost Across 1M Tokens** — `cloudflare-workers-ai-vs-openai-cost`
 - **37 MCP Tools for Citare: What Worked, What I Would Cut** — `37-mcp-tools-citare-lessons`
