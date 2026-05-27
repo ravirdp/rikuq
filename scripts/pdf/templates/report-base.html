@@ -1,0 +1,424 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>{{REPORT_TITLE}}</title>
+<!--
+  RIKUQ REPORT TEMPLATE — V1 (long-form research report)
+  Extended from Citare teaser template (battle-tested 2-page format).
+  Long-form variant for 25-30 page A4 research reports.
+
+  Design system: Playfair Display (headings) + Inter (body) + JetBrains Mono (tags)
+  Brand palette: amber #f5b942 accent · obsidian #0a0b0e for dark surfaces
+  Output: A4 PDF via Chrome headless print.
+
+  Token format: {{UPPERCASE_UNDERSCORE}}
+  Page-break controls: each .page div has page-break-after: always
+
+  REQUIRED TOKEN GROUPS
+  ─────────────────────
+  · COVER: REPORT_TITLE, REPORT_SUBTITLE, MONTH_YEAR, AUTHOR_LINE
+  · TLDR: TLDR_FINDING_1..5, TLDR_NUMBER_1..5
+  · METHODOLOGY: SAMPLE_DESC, COHORT_DESC, QUERY_DESC, PLATFORM_DESC, DATE_RANGE
+  · FINDING_N (1-5): TITLE, HEADLINE_STAT, STAT_LABEL, BODY_PARA_1, BODY_PARA_2, CHART_PLACEHOLDER
+  · ACTIONS: ACTION_1..5 (each with TITLE + BODY)
+  · LIMITATIONS: LIMITATION_1..3
+  · CTA: CTA_HEADLINE, CTA_BODY, CTA_BUTTON_TEXT, CTA_URL
+  · FOOTER: FOOTER_BRAND, FOOTER_TAGLINE, FOOTER_URL
+-->
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,500&family=JetBrains+Mono:wght@400;500;700&display=swap');
+  @page { size: A4; margin: 0; }
+  * { box-sizing: border-box; margin: 0; padding: 0; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+  html, body { font-family: 'Inter', -apple-system, "SF Pro Display", "Helvetica Neue", Arial, sans-serif; font-size: 10pt; line-height: 1.55; color: #1F2937; background: white; -webkit-font-smoothing: antialiased; text-rendering: optimizeLegibility; }
+  .page { page-break-after: always; width: 210mm; height: 297mm; padding: 14mm 16mm 12mm 16mm; position: relative; background: #FAFAF9; display: flex; flex-direction: column; }
+  .page:last-child { page-break-after: auto; }
+
+  /* brand strip */
+  .brand-strip { display: flex; justify-content: space-between; align-items: center; padding-bottom: 9px; margin-bottom: 14px; border-bottom: 1px solid #E5E7EB; }
+  .brand-mark { display: flex; align-items: center; gap: 8px; }
+  .brand-icon { width: 22px; height: 22px; background: #f5b942; border-radius: 5px; display: flex; align-items: center; justify-content: center; color: #0a0b0e; font-family: 'Playfair Display', serif; font-weight: 700; font-size: 13pt; }
+  .brand-text { font-weight: 700; font-size: 11pt; letter-spacing: -0.01em; color: #111827; }
+  .header-meta { font-family: 'JetBrains Mono', monospace; font-size: 7.5pt; color: #6B7280; text-transform: uppercase; letter-spacing: 0.08em; }
+  .meta-pill { display: inline-block; background: #FEF3C7; color: #92400E; padding: 3px 9px; border-radius: 999px; font-weight: 700; font-size: 7.5pt; letter-spacing: 0.05em; margin-right: 8px; }
+
+  /* COVER PAGE */
+  .cover { background: #0a0b0e; color: #ececec; padding: 38mm 22mm; justify-content: space-between; }
+  .cover .brand-strip { border-bottom: 1px solid #2a2b30; padding-bottom: 14px; margin-bottom: 0; }
+  .cover .brand-text { color: #ececec; }
+  .cover-meta { font-family: 'JetBrains Mono', monospace; font-size: 8pt; color: #9aa0a8; letter-spacing: 0.12em; }
+  .cover-eyebrow { font-family: 'JetBrains Mono', monospace; font-size: 10pt; color: #f5b942; letter-spacing: 0.2em; text-transform: uppercase; margin-bottom: 18px; }
+  .cover-title { font-family: 'Playfair Display', serif; font-size: 44pt; font-weight: 600; line-height: 1.06; letter-spacing: -0.025em; margin-bottom: 18px; }
+  .cover-title em { color: #f5b942; font-style: italic; font-weight: 500; }
+  .cover-subtitle { font-size: 14pt; color: #c8c8d0; line-height: 1.45; max-width: 95%; font-weight: 400; }
+  .cover-footer { font-family: 'JetBrains Mono', monospace; font-size: 8.5pt; color: #9aa0a8; letter-spacing: 0.06em; line-height: 1.7; }
+  .cover-footer strong { color: #ececec; font-weight: 700; }
+  .cover-footer .accent { color: #f5b942; font-weight: 700; }
+
+  /* hero (non-cover pages) */
+  .hero-eyebrow { font-size: 8.5pt; font-weight: 700; color: #b45309; text-transform: uppercase; letter-spacing: 0.18em; margin-bottom: 8px; }
+  .hero-title { font-family: 'Playfair Display', serif; font-size: 22pt; font-weight: 600; line-height: 1.14; color: #0F172A; letter-spacing: -0.02em; margin-bottom: 9px; }
+  .hero-title em { color: #b45309; font-style: italic; font-weight: 500; }
+  .hero-sub { font-size: 10pt; color: #4B5563; line-height: 1.6; max-width: 98%; margin-bottom: 14px; }
+  .hero-sub em { background: #FEF3C7; color: #92400E; padding: 1px 4px; border-radius: 3px; font-style: normal; font-weight: 600; }
+
+  /* headline stat */
+  .stat-block { background: linear-gradient(135deg, #0a0b0e 0%, #2a1f08 50%, #5c4310 100%); color: white; padding: 14px 20px; border-radius: 12px; margin-bottom: 14px; display: flex; align-items: center; gap: 22px; }
+  .stat-number { font-family: 'Playfair Display', serif; font-size: 42pt; font-weight: 600; line-height: 1; letter-spacing: -0.04em; color: #f5b942; }
+  .stat-content { flex: 1; }
+  .stat-label { font-size: 7.5pt; text-transform: uppercase; letter-spacing: 0.16em; font-weight: 700; opacity: 0.75; margin-bottom: 4px; }
+  .stat-headline { font-family: 'Playfair Display', serif; font-size: 12pt; font-weight: 500; line-height: 1.3; margin-bottom: 5px; letter-spacing: -0.01em; }
+  .stat-detail { font-size: 8.5pt; opacity: 0.92; line-height: 1.5; }
+
+  /* section header */
+  .section-h { display: flex; align-items: center; gap: 10px; margin-bottom: 14px; padding-top: 4px; }
+  .section-h-num { font-family: 'JetBrains Mono', monospace; font-size: 7.5pt; color: #6B7280; background: #F3F4F6; padding: 3px 8px; border-radius: 4px; font-weight: 700; letter-spacing: 0.08em; }
+  .section-h-text { font-size: 11pt; font-weight: 700; color: #0F172A; letter-spacing: -0.01em; }
+
+  /* body prose */
+  .prose p { font-size: 10pt; color: #1F2937; line-height: 1.65; margin-bottom: 11px; }
+  .prose p:last-child { margin-bottom: 0; }
+  .prose strong { color: #0F172A; font-weight: 700; }
+  .prose em { background: #FEF3C7; color: #92400E; padding: 1px 4px; border-radius: 3px; font-style: normal; font-weight: 600; }
+  .prose .num-callout { font-family: 'Playfair Display', serif; font-size: 14pt; color: #b45309; font-weight: 600; font-style: italic; }
+
+  /* tldr table */
+  .tldr-table { width: 100%; border-collapse: collapse; font-size: 9pt; margin-bottom: 12px; }
+  .tldr-table th { background: #0a0b0e; color: #f5b942; padding: 9px 12px; text-align: left; font-family: 'JetBrains Mono', monospace; font-size: 7.5pt; text-transform: uppercase; letter-spacing: 0.1em; font-weight: 700; }
+  .tldr-table th:first-child { width: 40px; }
+  .tldr-table th:last-child { width: 180px; }
+  .tldr-table td { padding: 10px 12px; border-bottom: 1px solid #E5E7EB; vertical-align: top; }
+  .tldr-table tr:last-child td { border-bottom: none; }
+  .tldr-table tr:nth-child(even) td { background: #F9FAFB; }
+  .tldr-table .num { font-family: 'Playfair Display', serif; font-weight: 700; color: #b45309; font-size: 13pt; line-height: 1; }
+  .tldr-table .stat { font-family: 'JetBrains Mono', monospace; font-weight: 700; color: #0F172A; font-size: 10pt; }
+
+  /* methodology grid */
+  .method-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 14px; }
+  .method-card { background: white; border: 1px solid #E5E7EB; border-radius: 11px; padding: 13px 16px 12px 16px; box-shadow: 0 1px 3px rgba(0,0,0,0.04); }
+  .method-eyebrow { font-family: 'JetBrains Mono', monospace; font-size: 7pt; font-weight: 700; color: #b45309; background: #FEF3C7; padding: 3px 8px; border-radius: 4px; letter-spacing: 0.12em; display: inline-block; margin-bottom: 8px; }
+  .method-card-text { font-size: 9pt; color: #4B5563; line-height: 1.55; }
+  .method-card-text strong { color: #0F172A; }
+
+  /* chart placeholder */
+  .chart-placeholder { background: #F3F4F6; border: 2px dashed #D1D5DB; border-radius: 12px; padding: 40px 20px; text-align: center; color: #6B7280; font-size: 9pt; margin-bottom: 14px; font-family: 'JetBrains Mono', monospace; letter-spacing: 0.08em; }
+
+  /* per-action card */
+  .action-card { background: white; border: 1px solid #E5E7EB; border-radius: 11px; padding: 14px 18px; box-shadow: 0 1px 3px rgba(0,0,0,0.04); margin-bottom: 10px; display: flex; gap: 16px; align-items: flex-start; }
+  .action-num { font-family: 'Playfair Display', serif; font-size: 26pt; font-weight: 600; color: #f5b942; line-height: 1; letter-spacing: -0.02em; width: 38px; flex-shrink: 0; padding-top: 3px; }
+  .action-content { flex: 1; }
+  .action-title { font-size: 11pt; font-weight: 700; color: #0F172A; line-height: 1.25; margin-bottom: 6px; letter-spacing: -0.01em; }
+  .action-body { font-size: 9pt; color: #4B5563; line-height: 1.6; }
+  .action-body em { background: #FEF3C7; color: #92400E; padding: 1px 4px; border-radius: 3px; font-style: normal; font-weight: 600; }
+
+  /* CTA */
+  .cta-box { background: #0a0b0e; color: white; padding: 18px 24px; border-radius: 12px; margin-bottom: 12px; display: flex; align-items: center; gap: 16px; page-break-before: always; break-before: page; page-break-inside: avoid; }
+  .cta-text { flex: 1; }
+  .cta-eyebrow { font-family: 'JetBrains Mono', monospace; font-size: 8pt; text-transform: uppercase; letter-spacing: 0.18em; color: #f5b942; font-weight: 700; margin-bottom: 6px; }
+  .cta-headline { font-family: 'Playfair Display', serif; font-size: 16pt; font-weight: 600; line-height: 1.2; margin-bottom: 6px; letter-spacing: -0.015em; }
+  .cta-headline em { font-style: italic; color: #f5b942; }
+  .cta-body { font-size: 9pt; line-height: 1.55; color: #CBD5E1; }
+  .cta-button { background: #f5b942; color: #0a0b0e; padding: 12px 20px; border-radius: 8px; font-size: 10pt; font-weight: 700; white-space: nowrap; text-decoration: none; }
+
+  /* footer */
+  .footer { margin-top: auto; padding-top: 11px; border-top: 1px solid #E5E7EB; display: flex; justify-content: space-between; align-items: center; font-family: 'JetBrains Mono', monospace; font-size: 7.5pt; color: #6B7280; letter-spacing: 0.04em; }
+  .footer .left strong { color: #1F2937; font-weight: 700; }
+  .footer .page-ref { color: #b45309; font-weight: 700; }
+</style>
+</head>
+<body>
+
+<!-- ─── COVER ─────────────────────────────────────────── -->
+<div class="page cover">
+  <div>
+    <div class="brand-strip">
+      <div class="brand-mark"><div class="brand-icon">C</div><div class="brand-text" style="color:#ececec">Citare<span style="color:#f5b942">.</span></div></div>
+      <div class="cover-meta">REPORT · {{MONTH_YEAR}}</div>
+    </div>
+  </div>
+  <div>
+    <div class="cover-eyebrow">{{REPORT_EYEBROW}}</div>
+    <div class="cover-title">{{REPORT_TITLE}}</div>
+    <div class="cover-subtitle">{{REPORT_SUBTITLE}}</div>
+  </div>
+  <div class="cover-footer">
+    <strong>{{AUTHOR_LINE}}</strong><br>
+    <span class="accent">citare.ai/reports</span> · methodology + per-brand data inside
+  </div>
+</div>
+
+<!-- ─── TL;DR ─────────────────────────────────────────── -->
+<div class="page">
+  <div class="brand-strip">
+    <div class="brand-mark"><div class="brand-icon">C</div><div class="brand-text">Citare<span style="color:#f5b942">.</span></div></div>
+    <div class="header-meta"><span class="meta-pill">EXECUTIVE SUMMARY</span>{{MONTH_YEAR}}</div>
+  </div>
+
+  <div class="hero-eyebrow">TL;DR — Five Findings</div>
+  <div class="hero-title">{{TLDR_HEADLINE}}</div>
+  <div class="hero-sub">{{TLDR_SUBHEAD}}</div>
+
+  <table class="tldr-table">
+    <thead><tr><th>#</th><th>Finding</th><th>The number</th></tr></thead>
+    <tbody>
+      <tr><td class="num">1</td><td>{{TLDR_FINDING_1}}</td><td class="stat">{{TLDR_NUMBER_1}}</td></tr>
+      <tr><td class="num">2</td><td>{{TLDR_FINDING_2}}</td><td class="stat">{{TLDR_NUMBER_2}}</td></tr>
+      <tr><td class="num">3</td><td>{{TLDR_FINDING_3}}</td><td class="stat">{{TLDR_NUMBER_3}}</td></tr>
+      <tr><td class="num">4</td><td>{{TLDR_FINDING_4}}</td><td class="stat">{{TLDR_NUMBER_4}}</td></tr>
+      <tr><td class="num">5</td><td>{{TLDR_FINDING_5}}</td><td class="stat">{{TLDR_NUMBER_5}}</td></tr>
+    </tbody>
+  </table>
+
+  <div class="footer">
+    <div class="left"><strong>Citare</strong> · {{FOOTER_TAGLINE}}</div>
+    <div>Page 2 · <span class="page-ref">Executive Summary</span></div>
+  </div>
+</div>
+
+<!-- ─── METHODOLOGY ─────────────────────────────────────────── -->
+<div class="page">
+  <div class="brand-strip">
+    <div class="brand-mark"><div class="brand-icon">C</div><div class="brand-text">Citare<span style="color:#f5b942">.</span></div></div>
+    <div class="header-meta"><span class="meta-pill">METHODOLOGY</span>{{MONTH_YEAR}}</div>
+  </div>
+
+  <div class="section-h"><div class="section-h-num">01</div><div class="section-h-text">How the audit was conducted</div></div>
+
+  <div class="method-grid">
+    <div class="method-card">
+      <div class="method-eyebrow">SAMPLE</div>
+      <div class="method-card-text">{{METHOD_SAMPLE}}</div>
+    </div>
+    <div class="method-card">
+      <div class="method-eyebrow">COHORTS</div>
+      <div class="method-card-text">{{METHOD_COHORTS}}</div>
+    </div>
+    <div class="method-card">
+      <div class="method-eyebrow">QUERIES</div>
+      <div class="method-card-text">{{METHOD_QUERIES}}</div>
+    </div>
+    <div class="method-card">
+      <div class="method-eyebrow">PLATFORMS</div>
+      <div class="method-card-text">{{METHOD_PLATFORMS}}</div>
+    </div>
+  </div>
+
+  <div class="hero-eyebrow">Critical note: Real browser, not API</div>
+  <div class="prose">
+    <p>{{METHOD_BROWSER_NOTE}}</p>
+  </div>
+
+  <div class="footer">
+    <div class="left"><strong>Citare</strong> · {{FOOTER_TAGLINE}}</div>
+    <div>Page 3 · <span class="page-ref">Methodology</span></div>
+  </div>
+</div>
+
+<!-- ─── FINDINGS 1-5 (one section per page) ─────────────── -->
+
+<div class="page">
+  <div class="brand-strip">
+    <div class="brand-mark"><div class="brand-icon">C</div><div class="brand-text">Citare<span style="color:#f5b942">.</span></div></div>
+    <div class="header-meta"><span class="meta-pill">FINDING 01 / 05</span>{{MONTH_YEAR}}</div>
+  </div>
+
+  <div class="hero-eyebrow">Finding 1</div>
+  <div class="hero-title">{{FINDING_1_TITLE}}</div>
+
+  <div class="stat-block">
+    <div class="stat-number">{{FINDING_1_STAT}}</div>
+    <div class="stat-content">
+      <div class="stat-label">{{FINDING_1_STAT_LABEL}}</div>
+      <div class="stat-headline">{{FINDING_1_HEADLINE}}</div>
+      <div class="stat-detail">{{FINDING_1_DETAIL}}</div>
+    </div>
+  </div>
+
+  <div class="chart-placeholder">[ CHART 1 — top-20 cited domains bar chart · render via Opus or Sharp ]</div>
+
+  <div class="prose">
+    <p>{{FINDING_1_BODY_1}}</p>
+    <p>{{FINDING_1_BODY_2}}</p>
+  </div>
+
+  <div class="footer">
+    <div class="left"><strong>Citare</strong> · {{FOOTER_TAGLINE}}</div>
+    <div>Page 4 · <span class="page-ref">Finding 1</span></div>
+  </div>
+</div>
+
+<div class="page">
+  <div class="brand-strip">
+    <div class="brand-mark"><div class="brand-icon">C</div><div class="brand-text">Citare<span style="color:#f5b942">.</span></div></div>
+    <div class="header-meta"><span class="meta-pill">FINDING 02 / 05</span>{{MONTH_YEAR}}</div>
+  </div>
+
+  <div class="hero-eyebrow">Finding 2</div>
+  <div class="hero-title">{{FINDING_2_TITLE}}</div>
+
+  <div class="stat-block">
+    <div class="stat-number">{{FINDING_2_STAT}}</div>
+    <div class="stat-content">
+      <div class="stat-label">{{FINDING_2_STAT_LABEL}}</div>
+      <div class="stat-headline">{{FINDING_2_HEADLINE}}</div>
+      <div class="stat-detail">{{FINDING_2_DETAIL}}</div>
+    </div>
+  </div>
+
+  <div class="chart-placeholder">[ CHART 2 — branded vs unbranded donut comparison ]</div>
+
+  <div class="prose">
+    <p>{{FINDING_2_BODY_1}}</p>
+    <p>{{FINDING_2_BODY_2}}</p>
+  </div>
+
+  <div class="footer">
+    <div class="left"><strong>Citare</strong> · {{FOOTER_TAGLINE}}</div>
+    <div>Page 5 · <span class="page-ref">Finding 2</span></div>
+  </div>
+</div>
+
+<div class="page">
+  <div class="brand-strip">
+    <div class="brand-mark"><div class="brand-icon">C</div><div class="brand-text">Citare<span style="color:#f5b942">.</span></div></div>
+    <div class="header-meta"><span class="meta-pill">FINDING 03 / 05</span>{{MONTH_YEAR}}</div>
+  </div>
+
+  <div class="hero-eyebrow">Finding 3</div>
+  <div class="hero-title">{{FINDING_3_TITLE}}</div>
+
+  <div class="stat-block">
+    <div class="stat-number">{{FINDING_3_STAT}}</div>
+    <div class="stat-content">
+      <div class="stat-label">{{FINDING_3_STAT_LABEL}}</div>
+      <div class="stat-headline">{{FINDING_3_HEADLINE}}</div>
+      <div class="stat-detail">{{FINDING_3_DETAIL}}</div>
+    </div>
+  </div>
+
+  <div class="chart-placeholder">[ CHART 3 — per-brand AIO vs ChatGPT asymmetry ]</div>
+
+  <div class="prose">
+    <p>{{FINDING_3_BODY_1}}</p>
+    <p>{{FINDING_3_BODY_2}}</p>
+  </div>
+
+  <div class="footer">
+    <div class="left"><strong>Citare</strong> · {{FOOTER_TAGLINE}}</div>
+    <div>Page 6 · <span class="page-ref">Finding 3</span></div>
+  </div>
+</div>
+
+<div class="page">
+  <div class="brand-strip">
+    <div class="brand-mark"><div class="brand-icon">C</div><div class="brand-text">Citare<span style="color:#f5b942">.</span></div></div>
+    <div class="header-meta"><span class="meta-pill">FINDING 04 / 05</span>{{MONTH_YEAR}}</div>
+  </div>
+
+  <div class="hero-eyebrow">Finding 4</div>
+  <div class="hero-title">{{FINDING_4_TITLE}}</div>
+
+  <div class="stat-block">
+    <div class="stat-number">{{FINDING_4_STAT}}</div>
+    <div class="stat-content">
+      <div class="stat-label">{{FINDING_4_STAT_LABEL}}</div>
+      <div class="stat-headline">{{FINDING_4_HEADLINE}}</div>
+      <div class="stat-detail">{{FINDING_4_DETAIL}}</div>
+    </div>
+  </div>
+
+  <div class="chart-placeholder">[ CHART 4 — cohort surface rate distribution ]</div>
+
+  <div class="prose">
+    <p>{{FINDING_4_BODY_1}}</p>
+    <p>{{FINDING_4_BODY_2}}</p>
+  </div>
+
+  <div class="footer">
+    <div class="left"><strong>Citare</strong> · {{FOOTER_TAGLINE}}</div>
+    <div>Page 7 · <span class="page-ref">Finding 4</span></div>
+  </div>
+</div>
+
+<div class="page">
+  <div class="brand-strip">
+    <div class="brand-mark"><div class="brand-icon">C</div><div class="brand-text">Citare<span style="color:#f5b942">.</span></div></div>
+    <div class="header-meta"><span class="meta-pill">FINDING 05 / 05</span>{{MONTH_YEAR}}</div>
+  </div>
+
+  <div class="hero-eyebrow">Finding 5</div>
+  <div class="hero-title">{{FINDING_5_TITLE}}</div>
+
+  <div class="stat-block">
+    <div class="stat-number">{{FINDING_5_STAT}}</div>
+    <div class="stat-content">
+      <div class="stat-label">{{FINDING_5_STAT_LABEL}}</div>
+      <div class="stat-headline">{{FINDING_5_HEADLINE}}</div>
+      <div class="stat-detail">{{FINDING_5_DETAIL}}</div>
+    </div>
+  </div>
+
+  <div class="chart-placeholder">[ CHART 5 — per-vertical top-cited domain grid ]</div>
+
+  <div class="prose">
+    <p>{{FINDING_5_BODY_1}}</p>
+    <p>{{FINDING_5_BODY_2}}</p>
+  </div>
+
+  <div class="footer">
+    <div class="left"><strong>Citare</strong> · {{FOOTER_TAGLINE}}</div>
+    <div>Page 8 · <span class="page-ref">Finding 5</span></div>
+  </div>
+</div>
+
+<!-- ─── ACTIONS ─────────────────────────────────────────── -->
+<div class="page">
+  <div class="brand-strip">
+    <div class="brand-mark"><div class="brand-icon">C</div><div class="brand-text">Citare<span style="color:#f5b942">.</span></div></div>
+    <div class="header-meta"><span class="meta-pill">ACTIONS</span>{{MONTH_YEAR}}</div>
+  </div>
+
+  <div class="section-h"><div class="section-h-num">02</div><div class="section-h-text">Five practical actions for brand teams</div></div>
+
+  <div class="action-card"><div class="action-num">1</div><div class="action-content"><div class="action-title">{{ACTION_1_TITLE}}</div><div class="action-body">{{ACTION_1_BODY}}</div></div></div>
+  <div class="action-card"><div class="action-num">2</div><div class="action-content"><div class="action-title">{{ACTION_2_TITLE}}</div><div class="action-body">{{ACTION_2_BODY}}</div></div></div>
+  <div class="action-card"><div class="action-num">3</div><div class="action-content"><div class="action-title">{{ACTION_3_TITLE}}</div><div class="action-body">{{ACTION_3_BODY}}</div></div></div>
+  <div class="action-card"><div class="action-num">4</div><div class="action-content"><div class="action-title">{{ACTION_4_TITLE}}</div><div class="action-body">{{ACTION_4_BODY}}</div></div></div>
+  <div class="action-card"><div class="action-num">5</div><div class="action-content"><div class="action-title">{{ACTION_5_TITLE}}</div><div class="action-body">{{ACTION_5_BODY}}</div></div></div>
+
+  <div class="footer">
+    <div class="left"><strong>Citare</strong> · {{FOOTER_TAGLINE}}</div>
+    <div>Page 9 · <span class="page-ref">Five Practical Actions</span></div>
+  </div>
+</div>
+
+<!-- ─── CTA + ABOUT ─────────────────────────────────────────── -->
+<div class="page">
+  <div class="brand-strip">
+    <div class="brand-mark"><div class="brand-icon">C</div><div class="brand-text">Citare<span style="color:#f5b942">.</span></div></div>
+    <div class="header-meta">{{MONTH_YEAR}}</div>
+  </div>
+
+  <div class="section-h"><div class="section-h-num">03</div><div class="section-h-text">About this report + next steps</div></div>
+
+  <div class="prose" style="margin-bottom: 14px;">
+    <p>{{ABOUT_BODY}}</p>
+  </div>
+
+  <div class="cta-box">
+    <div class="cta-text">
+      <div class="cta-eyebrow">{{CTA_EYEBROW}}</div>
+      <div class="cta-headline">{{CTA_HEADLINE}}</div>
+      <div class="cta-body">{{CTA_BODY}}</div>
+    </div>
+    <a class="cta-button" href="{{CTA_URL}}">{{CTA_BUTTON_TEXT}}</a>
+  </div>
+
+  <div class="footer">
+    <div class="left"><strong>{{FOOTER_BRAND}}</strong> · {{FOOTER_TAGLINE}}</div>
+    <div><span class="page-ref">{{FOOTER_URL}}</span></div>
+  </div>
+</div>
+
+</body>
+</html>

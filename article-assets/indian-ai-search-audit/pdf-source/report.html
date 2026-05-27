@@ -1,0 +1,424 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>The Indian AI Search Audit</title>
+<!--
+  RIKUQ REPORT TEMPLATE — V1 (long-form research report)
+  Extended from Citare teaser template (battle-tested 2-page format).
+  Long-form variant for 25-30 page A4 research reports.
+
+  Design system: Playfair Display (headings) + Inter (body) + JetBrains Mono (tags)
+  Brand palette: amber #f5b942 accent · obsidian #0a0b0e for dark surfaces
+  Output: A4 PDF via Chrome headless print.
+
+  Token format: {{UPPERCASE_UNDERSCORE}}
+  Page-break controls: each .page div has page-break-after: always
+
+  REQUIRED TOKEN GROUPS
+  ─────────────────────
+  · COVER: REPORT_TITLE, REPORT_SUBTITLE, MONTH_YEAR, AUTHOR_LINE
+  · TLDR: TLDR_FINDING_1..5, TLDR_NUMBER_1..5
+  · METHODOLOGY: SAMPLE_DESC, COHORT_DESC, QUERY_DESC, PLATFORM_DESC, DATE_RANGE
+  · FINDING_N (1-5): TITLE, HEADLINE_STAT, STAT_LABEL, BODY_PARA_1, BODY_PARA_2, CHART_PLACEHOLDER
+  · ACTIONS: ACTION_1..5 (each with TITLE + BODY)
+  · LIMITATIONS: LIMITATION_1..3
+  · CTA: CTA_HEADLINE, CTA_BODY, CTA_BUTTON_TEXT, CTA_URL
+  · FOOTER: FOOTER_BRAND, FOOTER_TAGLINE, FOOTER_URL
+-->
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,500&family=JetBrains+Mono:wght@400;500;700&display=swap');
+  @page { size: A4; margin: 0; }
+  * { box-sizing: border-box; margin: 0; padding: 0; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+  html, body { font-family: 'Inter', -apple-system, "SF Pro Display", "Helvetica Neue", Arial, sans-serif; font-size: 10pt; line-height: 1.55; color: #1F2937; background: white; -webkit-font-smoothing: antialiased; text-rendering: optimizeLegibility; }
+  .page { page-break-after: always; width: 210mm; height: 297mm; padding: 14mm 16mm 12mm 16mm; position: relative; background: #FAFAF9; display: flex; flex-direction: column; }
+  .page:last-child { page-break-after: auto; }
+
+  /* brand strip */
+  .brand-strip { display: flex; justify-content: space-between; align-items: center; padding-bottom: 9px; margin-bottom: 14px; border-bottom: 1px solid #E5E7EB; }
+  .brand-mark { display: flex; align-items: center; gap: 8px; }
+  .brand-icon { width: 22px; height: 22px; background: #f5b942; border-radius: 5px; display: flex; align-items: center; justify-content: center; color: #0a0b0e; font-family: 'Playfair Display', serif; font-weight: 700; font-size: 13pt; }
+  .brand-text { font-weight: 700; font-size: 11pt; letter-spacing: -0.01em; color: #111827; }
+  .header-meta { font-family: 'JetBrains Mono', monospace; font-size: 7.5pt; color: #6B7280; text-transform: uppercase; letter-spacing: 0.08em; }
+  .meta-pill { display: inline-block; background: #FEF3C7; color: #92400E; padding: 3px 9px; border-radius: 999px; font-weight: 700; font-size: 7.5pt; letter-spacing: 0.05em; margin-right: 8px; }
+
+  /* COVER PAGE */
+  .cover { background: #0a0b0e; color: #ececec; padding: 38mm 22mm; justify-content: space-between; }
+  .cover .brand-strip { border-bottom: 1px solid #2a2b30; padding-bottom: 14px; margin-bottom: 0; }
+  .cover .brand-text { color: #ececec; }
+  .cover-meta { font-family: 'JetBrains Mono', monospace; font-size: 8pt; color: #9aa0a8; letter-spacing: 0.12em; }
+  .cover-eyebrow { font-family: 'JetBrains Mono', monospace; font-size: 10pt; color: #f5b942; letter-spacing: 0.2em; text-transform: uppercase; margin-bottom: 18px; }
+  .cover-title { font-family: 'Playfair Display', serif; font-size: 44pt; font-weight: 600; line-height: 1.06; letter-spacing: -0.025em; margin-bottom: 18px; }
+  .cover-title em { color: #f5b942; font-style: italic; font-weight: 500; }
+  .cover-subtitle { font-size: 14pt; color: #c8c8d0; line-height: 1.45; max-width: 95%; font-weight: 400; }
+  .cover-footer { font-family: 'JetBrains Mono', monospace; font-size: 8.5pt; color: #9aa0a8; letter-spacing: 0.06em; line-height: 1.7; }
+  .cover-footer strong { color: #ececec; font-weight: 700; }
+  .cover-footer .accent { color: #f5b942; font-weight: 700; }
+
+  /* hero (non-cover pages) */
+  .hero-eyebrow { font-size: 8.5pt; font-weight: 700; color: #b45309; text-transform: uppercase; letter-spacing: 0.18em; margin-bottom: 8px; }
+  .hero-title { font-family: 'Playfair Display', serif; font-size: 22pt; font-weight: 600; line-height: 1.14; color: #0F172A; letter-spacing: -0.02em; margin-bottom: 9px; }
+  .hero-title em { color: #b45309; font-style: italic; font-weight: 500; }
+  .hero-sub { font-size: 10pt; color: #4B5563; line-height: 1.6; max-width: 98%; margin-bottom: 14px; }
+  .hero-sub em { background: #FEF3C7; color: #92400E; padding: 1px 4px; border-radius: 3px; font-style: normal; font-weight: 600; }
+
+  /* headline stat */
+  .stat-block { background: linear-gradient(135deg, #0a0b0e 0%, #2a1f08 50%, #5c4310 100%); color: white; padding: 14px 20px; border-radius: 12px; margin-bottom: 14px; display: flex; align-items: center; gap: 22px; }
+  .stat-number { font-family: 'Playfair Display', serif; font-size: 42pt; font-weight: 600; line-height: 1; letter-spacing: -0.04em; color: #f5b942; }
+  .stat-content { flex: 1; }
+  .stat-label { font-size: 7.5pt; text-transform: uppercase; letter-spacing: 0.16em; font-weight: 700; opacity: 0.75; margin-bottom: 4px; }
+  .stat-headline { font-family: 'Playfair Display', serif; font-size: 12pt; font-weight: 500; line-height: 1.3; margin-bottom: 5px; letter-spacing: -0.01em; }
+  .stat-detail { font-size: 8.5pt; opacity: 0.92; line-height: 1.5; }
+
+  /* section header */
+  .section-h { display: flex; align-items: center; gap: 10px; margin-bottom: 14px; padding-top: 4px; }
+  .section-h-num { font-family: 'JetBrains Mono', monospace; font-size: 7.5pt; color: #6B7280; background: #F3F4F6; padding: 3px 8px; border-radius: 4px; font-weight: 700; letter-spacing: 0.08em; }
+  .section-h-text { font-size: 11pt; font-weight: 700; color: #0F172A; letter-spacing: -0.01em; }
+
+  /* body prose */
+  .prose p { font-size: 10pt; color: #1F2937; line-height: 1.65; margin-bottom: 11px; }
+  .prose p:last-child { margin-bottom: 0; }
+  .prose strong { color: #0F172A; font-weight: 700; }
+  .prose em { background: #FEF3C7; color: #92400E; padding: 1px 4px; border-radius: 3px; font-style: normal; font-weight: 600; }
+  .prose .num-callout { font-family: 'Playfair Display', serif; font-size: 14pt; color: #b45309; font-weight: 600; font-style: italic; }
+
+  /* tldr table */
+  .tldr-table { width: 100%; border-collapse: collapse; font-size: 9pt; margin-bottom: 12px; }
+  .tldr-table th { background: #0a0b0e; color: #f5b942; padding: 9px 12px; text-align: left; font-family: 'JetBrains Mono', monospace; font-size: 7.5pt; text-transform: uppercase; letter-spacing: 0.1em; font-weight: 700; }
+  .tldr-table th:first-child { width: 40px; }
+  .tldr-table th:last-child { width: 180px; }
+  .tldr-table td { padding: 10px 12px; border-bottom: 1px solid #E5E7EB; vertical-align: top; }
+  .tldr-table tr:last-child td { border-bottom: none; }
+  .tldr-table tr:nth-child(even) td { background: #F9FAFB; }
+  .tldr-table .num { font-family: 'Playfair Display', serif; font-weight: 700; color: #b45309; font-size: 13pt; line-height: 1; }
+  .tldr-table .stat { font-family: 'JetBrains Mono', monospace; font-weight: 700; color: #0F172A; font-size: 10pt; }
+
+  /* methodology grid */
+  .method-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 14px; }
+  .method-card { background: white; border: 1px solid #E5E7EB; border-radius: 11px; padding: 13px 16px 12px 16px; box-shadow: 0 1px 3px rgba(0,0,0,0.04); }
+  .method-eyebrow { font-family: 'JetBrains Mono', monospace; font-size: 7pt; font-weight: 700; color: #b45309; background: #FEF3C7; padding: 3px 8px; border-radius: 4px; letter-spacing: 0.12em; display: inline-block; margin-bottom: 8px; }
+  .method-card-text { font-size: 9pt; color: #4B5563; line-height: 1.55; }
+  .method-card-text strong { color: #0F172A; }
+
+  /* chart placeholder */
+  .chart-placeholder { background: #F3F4F6; border: 2px dashed #D1D5DB; border-radius: 12px; padding: 40px 20px; text-align: center; color: #6B7280; font-size: 9pt; margin-bottom: 14px; font-family: 'JetBrains Mono', monospace; letter-spacing: 0.08em; }
+
+  /* per-action card */
+  .action-card { background: white; border: 1px solid #E5E7EB; border-radius: 11px; padding: 14px 18px; box-shadow: 0 1px 3px rgba(0,0,0,0.04); margin-bottom: 10px; display: flex; gap: 16px; align-items: flex-start; }
+  .action-num { font-family: 'Playfair Display', serif; font-size: 26pt; font-weight: 600; color: #f5b942; line-height: 1; letter-spacing: -0.02em; width: 38px; flex-shrink: 0; padding-top: 3px; }
+  .action-content { flex: 1; }
+  .action-title { font-size: 11pt; font-weight: 700; color: #0F172A; line-height: 1.25; margin-bottom: 6px; letter-spacing: -0.01em; }
+  .action-body { font-size: 9pt; color: #4B5563; line-height: 1.6; }
+  .action-body em { background: #FEF3C7; color: #92400E; padding: 1px 4px; border-radius: 3px; font-style: normal; font-weight: 600; }
+
+  /* CTA */
+  .cta-box { background: #0a0b0e; color: white; padding: 18px 24px; border-radius: 12px; margin-bottom: 12px; display: flex; align-items: center; gap: 16px; page-break-before: always; break-before: page; page-break-inside: avoid; }
+  .cta-text { flex: 1; }
+  .cta-eyebrow { font-family: 'JetBrains Mono', monospace; font-size: 8pt; text-transform: uppercase; letter-spacing: 0.18em; color: #f5b942; font-weight: 700; margin-bottom: 6px; }
+  .cta-headline { font-family: 'Playfair Display', serif; font-size: 16pt; font-weight: 600; line-height: 1.2; margin-bottom: 6px; letter-spacing: -0.015em; }
+  .cta-headline em { font-style: italic; color: #f5b942; }
+  .cta-body { font-size: 9pt; line-height: 1.55; color: #CBD5E1; }
+  .cta-button { background: #f5b942; color: #0a0b0e; padding: 12px 20px; border-radius: 8px; font-size: 10pt; font-weight: 700; white-space: nowrap; text-decoration: none; }
+
+  /* footer */
+  .footer { margin-top: auto; padding-top: 11px; border-top: 1px solid #E5E7EB; display: flex; justify-content: space-between; align-items: center; font-family: 'JetBrains Mono', monospace; font-size: 7.5pt; color: #6B7280; letter-spacing: 0.04em; }
+  .footer .left strong { color: #1F2937; font-weight: 700; }
+  .footer .page-ref { color: #b45309; font-weight: 700; }
+</style>
+</head>
+<body>
+
+<!-- ─── COVER ─────────────────────────────────────────── -->
+<div class="page cover">
+  <div>
+    <div class="brand-strip">
+      <div class="brand-mark"><div class="brand-icon">C</div><div class="brand-text" style="color:#ececec">Citare<span style="color:#f5b942">.</span></div></div>
+      <div class="cover-meta">REPORT · May 2026</div>
+    </div>
+  </div>
+  <div>
+    <div class="cover-eyebrow">ORIGINAL RESEARCH</div>
+    <div class="cover-title">The Indian AI Search Audit</div>
+    <div class="cover-subtitle">500 queries. 25 brands. 777 citations. The first published audit of how AI search platforms cite Indian brands across ChatGPT, Google AI Overview, Gemini, Claude, and Perplexity.</div>
+  </div>
+  <div class="cover-footer">
+    <strong>By Ravi Patel · Founder, Citare</strong><br>
+    <span class="accent">citare.ai/reports</span> · methodology + per-brand data inside
+  </div>
+</div>
+
+<!-- ─── TL;DR ─────────────────────────────────────────── -->
+<div class="page">
+  <div class="brand-strip">
+    <div class="brand-mark"><div class="brand-icon">C</div><div class="brand-text">Citare<span style="color:#f5b942">.</span></div></div>
+    <div class="header-meta"><span class="meta-pill">EXECUTIVE SUMMARY</span>May 2026</div>
+  </div>
+
+  <div class="hero-eyebrow">TL;DR — Five Findings</div>
+  <div class="hero-title">AI engines cite Instagram before they cite <em>any brand's website.</em></div>
+  <div class="hero-sub">We ran 500 AI search queries against 25 Indian brands across 72 hours. The most-cited domains weren't brand websites at all. The first brand-owned site appeared at position 12 in our top-cited list.</div>
+
+  <table class="tldr-table">
+    <thead><tr><th>#</th><th>Finding</th><th>The number</th></tr></thead>
+    <tbody>
+      <tr><td class="num">1</td><td><strong>The most-cited domains aren't brand websites.</strong> Instagram, jimmyluxury.in (one indie blog), YouTube, Reddit, and aggregators dominate.</td><td class="stat">Instagram: 21 citations<br>First brand site: position 12</td></tr>
+      <tr><td class="num">2</td><td><strong>The branded vs unbranded gap is huge.</strong> Brand-name comparisons surface; unbranded category queries don't.</td><td class="stat">73.3% branded<br>33.5% unbranded<br>40pt gap</td></tr>
+      <tr><td class="num">3</td><td><strong>AIO and ChatGPT are different products.</strong> Per-brand surface rates diverge by up to 80 points.</td><td class="stat">Snitch: 10% AIO<br>90% ChatGPT<br>80pt gap</td></tr>
+      <tr><td class="num">4</td><td><strong>Series-A/B startups match older funded brands.</strong> AI search has no historical-authority moat.</td><td class="stat">Newer-funded: 49%<br>Funded: 46%<br>Wipeout: 27%</td></tr>
+      <tr><td class="num">5</td><td><strong>A single indie blog dominates an entire category.</strong> jimmyluxury.in out-cites every D2C menswear brand combined.</td><td class="stat">jimmyluxury.in:<br>14 citations<br>(more than any brand)</td></tr>
+    </tbody>
+  </table>
+
+  <div class="footer">
+    <div class="left"><strong>Citare</strong> · AI search visibility, measured across five platforms with real browser sessions</div>
+    <div>Page 2 · <span class="page-ref">Executive Summary</span></div>
+  </div>
+</div>
+
+<!-- ─── METHODOLOGY ─────────────────────────────────────────── -->
+<div class="page">
+  <div class="brand-strip">
+    <div class="brand-mark"><div class="brand-icon">C</div><div class="brand-text">Citare<span style="color:#f5b942">.</span></div></div>
+    <div class="header-meta"><span class="meta-pill">METHODOLOGY</span>May 2026</div>
+  </div>
+
+  <div class="section-h"><div class="section-h-num">01</div><div class="section-h-text">How the audit was conducted</div></div>
+
+  <div class="method-grid">
+    <div class="method-card">
+      <div class="method-eyebrow">SAMPLE</div>
+      <div class="method-card-text"><strong>25 prospects across 16 verticals</strong> — weighted toward Indian consumer brands (D2C beauty, D2C apparel, healthcare, fintech, real estate, hospitality, insurtech, jewellery) and Indian-headquartered SaaS (logistics, payroll, CRM, certification, coaching). Brands range from local SMBs to unicorns to Series B startups.</div>
+    </div>
+    <div class="method-card">
+      <div class="method-eyebrow">COHORTS</div>
+      <div class="method-card-text"><strong>Three cohorts:</strong> Wipeout (10 older / mostly local brands), Funded-not-leader (10 Series B+ challengers), Newer-funded (5 Series A/B startups). Mean surface rates: 27%, 46%, 49% respectively.</div>
+    </div>
+    <div class="method-card">
+      <div class="method-eyebrow">QUERIES</div>
+      <div class="method-card-text"><strong>10 queries per prospect</strong>, each grounded in the brand's stated ICPs (typically 2-3 ICPs × 3-4 queries each). Query types span unbranded category, brand-named comparisons, and intent-specific deep cuts. <strong>500 cells total</strong> (10 queries × 2 platforms × 25 brands).</div>
+    </div>
+    <div class="method-card">
+      <div class="method-eyebrow">PLATFORMS</div>
+      <div class="method-card-text"><strong>2 platforms</strong> — Google AI Overview (AIO) and ChatGPT (web interface). AIO captured via screenshot + cited-URL parsing. ChatGPT captured for body text (brand mention + position) and structured response. <strong>777 citation URLs</strong> extracted from AIO cells.</div>
+    </div>
+  </div>
+
+  <div class="hero-eyebrow">Critical note: Real browser, not API</div>
+  <div class="prose">
+    <p>All queries ran through <strong>real browser sessions</strong>, not LLM APIs. This matters because API responses differ materially from what users actually see on the public AI search interfaces — different retrieval, different ranking, different citation behavior. Most other AI search visibility tools use API. <em>The numbers above only hold for browser-based measurement.</em></p>
+  </div>
+
+  <div class="footer">
+    <div class="left"><strong>Citare</strong> · AI search visibility, measured across five platforms with real browser sessions</div>
+    <div>Page 3 · <span class="page-ref">Methodology</span></div>
+  </div>
+</div>
+
+<!-- ─── FINDINGS 1-5 (one section per page) ─────────────── -->
+
+<div class="page">
+  <div class="brand-strip">
+    <div class="brand-mark"><div class="brand-icon">C</div><div class="brand-text">Citare<span style="color:#f5b942">.</span></div></div>
+    <div class="header-meta"><span class="meta-pill">FINDING 01 / 05</span>May 2026</div>
+  </div>
+
+  <div class="hero-eyebrow">Finding 1</div>
+  <div class="hero-title">The most-cited domains for Indian buyer queries <em>are not brand websites.</em></div>
+
+  <div class="stat-block">
+    <div class="stat-number">12</div>
+    <div class="stat-content">
+      <div class="stat-label">POSITION OF FIRST BRAND-OWNED WEBSITE IN TOP-CITED LIST</div>
+      <div class="stat-headline">Instagram tops the list. Brand websites barely register.</div>
+      <div class="stat-detail">Across 500 cells, AI engines cited Instagram (21), one indie blog (14), YouTube (12), Practo (11), Google Play (11), and Reddit (10) before any brand-owned website. The first brand site to appear was sugarcosmetics.com at position 12 with 7 citations.</div>
+    </div>
+  </div>
+
+  <div class="chart-placeholder">[ CHART 1 — top-20 cited domains bar chart · render via Opus or Sharp ]</div>
+
+  <div class="prose">
+    <p>Indian brand marketing teams are spending the vast majority of their content budget on owned-property SEO — blog posts, landing pages, product pages — designed to rank in Google blue links. AI engines reading Indian buyer queries are not preferentially weighting any of that.</p>
+    <p>The earned and rented surfaces — Instagram posts, indie blogger listicles, app store reviews, aggregator listings — are. The gap is real and it holds across every vertical we measured. <em>The owned-property SEO investment isn't converting to AI search citation share.</em></p>
+  </div>
+
+  <div class="footer">
+    <div class="left"><strong>Citare</strong> · AI search visibility, measured across five platforms with real browser sessions</div>
+    <div>Page 4 · <span class="page-ref">Finding 1</span></div>
+  </div>
+</div>
+
+<div class="page">
+  <div class="brand-strip">
+    <div class="brand-mark"><div class="brand-icon">C</div><div class="brand-text">Citare<span style="color:#f5b942">.</span></div></div>
+    <div class="header-meta"><span class="meta-pill">FINDING 02 / 05</span>May 2026</div>
+  </div>
+
+  <div class="hero-eyebrow">Finding 2</div>
+  <div class="hero-title">There's a <em>40-point gap</em> between branded and unbranded query surface rates.</div>
+
+  <div class="stat-block">
+    <div class="stat-number">40</div>
+    <div class="stat-content">
+      <div class="stat-label">PERCENTAGE-POINT GAP BETWEEN BRANDED AND UNBRANDED QUERY SURFACE</div>
+      <div class="stat-headline">Brand search is won by default. Unbranded is the battle.</div>
+      <div class="stat-detail">Branded comparison queries ('X vs Y') surface brands 73.3% of the time (66/90 cells). Unbranded 'best X' queries surface them only 33.5% (106/316 cells). The 40-point gap is where the actual AI-search opportunity lives.</div>
+    </div>
+  </div>
+
+  <div class="chart-placeholder">[ CHART 2 — branded vs unbranded donut comparison ]</div>
+
+  <div class="prose">
+    <p>If a user is already searching 'Acko vs HDFC ERGO,' Acko surfaces because the query forced the mention. The brand-marketing investment that built that comparison-awareness is paying out, but the AI search layer is just a passthrough.</p>
+    <p>The actual battle is in the unbranded category surface — the 316 cells where a user types 'best health insurance for parents with diabetes' or 'best Bangalore D2C menswear under ₹2000' with no brand in mind. In those queries, only one in three brands we audited surfaces at all. <em>And the brands that do surface are mostly the ones with strong third-party citation graphs — not the ones with strong on-site SEO.</em></p>
+  </div>
+
+  <div class="footer">
+    <div class="left"><strong>Citare</strong> · AI search visibility, measured across five platforms with real browser sessions</div>
+    <div>Page 5 · <span class="page-ref">Finding 2</span></div>
+  </div>
+</div>
+
+<div class="page">
+  <div class="brand-strip">
+    <div class="brand-mark"><div class="brand-icon">C</div><div class="brand-text">Citare<span style="color:#f5b942">.</span></div></div>
+    <div class="header-meta"><span class="meta-pill">FINDING 03 / 05</span>May 2026</div>
+  </div>
+
+  <div class="hero-eyebrow">Finding 3</div>
+  <div class="hero-title">Per-brand AIO vs ChatGPT asymmetry runs as high as <em>80 percentage points.</em></div>
+
+  <div class="stat-block">
+    <div class="stat-number">80</div>
+    <div class="stat-content">
+      <div class="stat-label">LARGEST PER-BRAND GAP BETWEEN GOOGLE AI OVERVIEW AND CHATGPT SURFACE RATE</div>
+      <div class="stat-headline">Snitch surfaces 10% on AIO. 90% on ChatGPT. Same brand, same queries.</div>
+      <div class="stat-detail">Per-brand surface rates diverge dramatically between platforms. Snitch (Series B menswear): 10% AIO, 90% ChatGPT. Pristyn Care (healthcare unicorn): 80% AIO, 30% ChatGPT. Clickpost (logistics SaaS): 40% AIO, 90% ChatGPT.</div>
+    </div>
+  </div>
+
+  <div class="chart-placeholder">[ CHART 3 — per-brand AIO vs ChatGPT asymmetry ]</div>
+
+  <div class="prose">
+    <p>The pattern is not directional. Some brands win bigger on AIO; others win bigger on ChatGPT; the same vertical (healthcare) has Pristyn AIO-favored and other audited brands invisible to both. <strong>There is no single AI search optimization strategy.</strong></p>
+    <p>AIO's citation graph favors aggregator sites and brand websites with strong technical SEO. ChatGPT's training and retrieval favors long-form earned content and brand mentions in third-party sources. A brand with strong aggregator listings wins AIO. A brand with strong long-form earned content wins ChatGPT. <em>You have to measure your brand on each platform separately.</em></p>
+  </div>
+
+  <div class="footer">
+    <div class="left"><strong>Citare</strong> · AI search visibility, measured across five platforms with real browser sessions</div>
+    <div>Page 6 · <span class="page-ref">Finding 3</span></div>
+  </div>
+</div>
+
+<div class="page">
+  <div class="brand-strip">
+    <div class="brand-mark"><div class="brand-icon">C</div><div class="brand-text">Citare<span style="color:#f5b942">.</span></div></div>
+    <div class="header-meta"><span class="meta-pill">FINDING 04 / 05</span>May 2026</div>
+  </div>
+
+  <div class="hero-eyebrow">Finding 4</div>
+  <div class="hero-title">Series-A/B startups <em>match older funded brands</em> on AI search.</div>
+
+  <div class="stat-block">
+    <div class="stat-number">49%</div>
+    <div class="stat-content">
+      <div class="stat-label">AVERAGE SURFACE RATE FOR NEWER-FUNDED COHORT (BEATS FUNDED-NOT-LEADER AVG 46%)</div>
+      <div class="stat-headline">AI search has no historical-authority moat.</div>
+      <div class="stat-detail">Cohort averages: Wipeout (older / mostly local): 27%. Funded-not-leader (Series B+ challengers): 46%. Newer-funded (Series A/B startups): 49%. The 3-point gap between Series A/B and Series B+ is within margin of error.</div>
+    </div>
+  </div>
+
+  <div class="chart-placeholder">[ CHART 4 — cohort surface rate distribution ]</div>
+
+  <div class="prose">
+    <p>A 22-year-old open-source CRM with 400,000 customers (Vtiger) surfaces in 1 of 20 cells. A 4-year-old D2C startup (Snitch) surfaces in 10 of 20 cells. The gap is funding-correlated, not age-correlated.</p>
+    <p><strong>The implication for newer Indian brands:</strong> a Series A startup investing intentionally in the surfaces AI engines actually read (social, Reddit, listicle blogs, aggregators) can match or exceed the AI search visibility of a unicorn that's been building classical SEO for a decade. <em>Good news if you're building. Warning if you're an incumbent assuming classical SEO equity transfers to AI.</em></p>
+  </div>
+
+  <div class="footer">
+    <div class="left"><strong>Citare</strong> · AI search visibility, measured across five platforms with real browser sessions</div>
+    <div>Page 7 · <span class="page-ref">Finding 4</span></div>
+  </div>
+</div>
+
+<div class="page">
+  <div class="brand-strip">
+    <div class="brand-mark"><div class="brand-icon">C</div><div class="brand-text">Citare<span style="color:#f5b942">.</span></div></div>
+    <div class="header-meta"><span class="meta-pill">FINDING 05 / 05</span>May 2026</div>
+  </div>
+
+  <div class="hero-eyebrow">Finding 5</div>
+  <div class="hero-title">A single indie listicle blog <em>dominates an entire category's</em> AI citations.</div>
+
+  <div class="stat-block">
+    <div class="stat-number">14</div>
+    <div class="stat-content">
+      <div class="stat-label">CITATIONS jimmyluxury.in RECEIVED ACROSS THE AUDIT (MORE THAN ANY BRAND WEBSITE)</div>
+      <div class="stat-headline">One blog out-cites every D2C menswear brand combined.</div>
+      <div class="stat-detail">jimmyluxury.in is an indie SEO listicle blog with titles like 'Top 50 Luxury Brands for Men in India' and 'Top Trending D2C Men's Fashion Brands.' It received 14 citations across the audit — more than any brand's own website in any vertical.</div>
+    </div>
+  </div>
+
+  <div class="chart-placeholder">[ CHART 5 — per-vertical top-cited domain grid ]</div>
+
+  <div class="prose">
+    <p>AI engines reach for comprehensive listicles when answering category questions. A page titled 'Top 50 Luxury Brands for Men in India' with 50 brand names + pros/cons is, from an AI engine's perspective, <em>the perfect retrieval target</em>: authoritative-looking, brand-rich, evergreen, answer-shaped.</p>
+    <p><strong>The strategic move:</strong> identify the 3-5 jimmyluxury.in-equivalents in your category. Get listed in them. If you're not in them, contact the blog owner and propose inclusion. If a category doesn't have a jimmyluxury equivalent, this is one of the highest-leverage SEO content gaps for a competitor to fill.</p>
+  </div>
+
+  <div class="footer">
+    <div class="left"><strong>Citare</strong> · AI search visibility, measured across five platforms with real browser sessions</div>
+    <div>Page 8 · <span class="page-ref">Finding 5</span></div>
+  </div>
+</div>
+
+<!-- ─── ACTIONS ─────────────────────────────────────────── -->
+<div class="page">
+  <div class="brand-strip">
+    <div class="brand-mark"><div class="brand-icon">C</div><div class="brand-text">Citare<span style="color:#f5b942">.</span></div></div>
+    <div class="header-meta"><span class="meta-pill">ACTIONS</span>May 2026</div>
+  </div>
+
+  <div class="section-h"><div class="section-h-num">02</div><div class="section-h-text">Five practical actions for brand teams</div></div>
+
+  <div class="action-card"><div class="action-num">1</div><div class="action-content"><div class="action-title">Audit your Instagram presence specifically for buyer-intent search behavior</div><div class="action-body">Instagram is the most-cited domain in our corpus. AI engines pull from Instagram Reels and posts for category recommendations. If your Instagram is brand-aesthetic-heavy and content-poor on buyer-intent topics, you're invisible to the channel AI engines weight most. <em>Post buyer-intent content. Tag products. Use category hashtags AI engines crawl.</em></div></div></div>
+  <div class="action-card"><div class="action-num">2</div><div class="action-content"><div class="action-title">Get into the comprehensive listicle blogs in your category</div><div class="action-body">Search 'best [your category] India' on Google. The blogs ranking top 5-10 are the ones AI engines cite when answering category questions. If you're not in those listicles, contact the bloggers and propose inclusion. <em>This costs less than one month of paid Google search ads and the citation lifts compound for years.</em></div></div></div>
+  <div class="action-card"><div class="action-num">3</div><div class="action-content"><div class="action-title">Be present on the aggregators that dominate your vertical</div><div class="action-body">Practo for healthcare, MagicBricks / 99acres / NoBroker for real estate, Policybazaar / Paisabazaar for insurance and finance, JustDial for local-business categories, Amazon and Play Store for product categories. AI engines treat aggregator domains as authoritative third-party sources. <em>Most brands underinvest in aggregator presence — incomplete listings, no reviews, outdated info.</em></div></div></div>
+  <div class="action-card"><div class="action-num">4</div><div class="action-content"><div class="action-title">Build YouTube and Reddit presence (or seed it)</div><div class="action-body">YouTube ranks #3 most-cited; Reddit ranks #6. AI engines reach for review videos and Reddit discussion threads when answering questions where buyers want third-party perspective. If your category has no YouTube comparison content, seed it. If your brand isn't being discussed on Reddit, <em>become a substantive participant in the relevant subreddits — long game, compounds.</em></div></div></div>
+  <div class="action-card"><div class="action-num">5</div><div class="action-content"><div class="action-title">Measure per-platform, not globally</div><div class="action-body">AIO and ChatGPT are different products. Optimizing for one doesn't transfer. Build a monthly tracking habit: query your category and your brand on each major AI platform (ChatGPT, AIO, Gemini, Claude, Perplexity). Where you don't surface, identify the cited sources that did. <em>Citare runs this measurement at scale across 5 platforms — see CTA.</em></div></div></div>
+
+  <div class="footer">
+    <div class="left"><strong>Citare</strong> · AI search visibility, measured across five platforms with real browser sessions</div>
+    <div>Page 9 · <span class="page-ref">Five Practical Actions</span></div>
+  </div>
+</div>
+
+<!-- ─── CTA + ABOUT ─────────────────────────────────────────── -->
+<div class="page">
+  <div class="brand-strip">
+    <div class="brand-mark"><div class="brand-icon">C</div><div class="brand-text">Citare<span style="color:#f5b942">.</span></div></div>
+    <div class="header-meta">May 2026</div>
+  </div>
+
+  <div class="section-h"><div class="section-h-num">03</div><div class="section-h-text">About this report + next steps</div></div>
+
+  <div class="prose" style="margin-bottom: 14px;">
+    <p><strong>About this report.</strong> This is the first edition of an ongoing Indian AI Search Audit, published quarterly. Citare runs 10-20 single-brand audits per day for client outreach using the same methodology described here. To our knowledge, this is the first independent published research on Indian brand visibility across all five major AI search platforms. <strong>Next edition:</strong> August 2026.</p>
+  </div>
+
+  <div class="cta-box">
+    <div class="cta-text">
+      <div class="cta-eyebrow">GET YOUR BRAND AUDITED</div>
+      <div class="cta-headline">Want to see your brand's <em>per-platform AI search visibility</em>?</div>
+      <div class="cta-body">Citare runs single-brand audits using the same browser-test methodology as this report. Get per-query surface rates, per-platform citation graphs, competitor benchmarks, and weekly visibility tracking across all five major AI search platforms.</div>
+    </div>
+    <a class="cta-button" href="https://citare.ai/audit">Book a Citare audit</a>
+  </div>
+
+  <div class="footer">
+    <div class="left"><strong>Citare</strong> · AI search visibility, measured across five platforms with real browser sessions</div>
+    <div><span class="page-ref">citare.ai/reports · methodology + per-brand data inside</span></div>
+  </div>
+</div>
+
+</body>
+</html>
