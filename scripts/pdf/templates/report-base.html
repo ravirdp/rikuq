@@ -100,8 +100,9 @@
   .method-card-text { font-size: 9pt; color: #4B5563; line-height: 1.55; }
   .method-card-text strong { color: #0F172A; }
 
-  /* chart placeholder */
-  .chart-placeholder { background: #F3F4F6; border: 2px dashed #D1D5DB; border-radius: 12px; padding: 40px 20px; text-align: center; color: #6B7280; font-size: 9pt; margin-bottom: 14px; font-family: 'JetBrains Mono', monospace; letter-spacing: 0.08em; }
+  /* chart container */
+  .chart-container { margin: 6px 0 12px 0; padding: 10px 0; }
+  .chart-container svg { display: block; max-width: 100%; height: auto; }
 
   /* per-action card */
   .action-card { background: white; border: 1px solid #E5E7EB; border-radius: 11px; padding: 14px 18px; box-shadow: 0 1px 3px rgba(0,0,0,0.04); margin-bottom: 10px; display: flex; gap: 16px; align-items: flex-start; }
@@ -234,7 +235,7 @@
     </div>
   </div>
 
-  <div class="chart-placeholder">[ CHART 1 — top-20 cited domains bar chart · render via Opus or Sharp ]</div>
+  <div class="chart-container">{{FINDING_1_CHART_SVG}}</div>
 
   <div class="prose">
     <p>{{FINDING_1_BODY_1}}</p>
@@ -265,7 +266,7 @@
     </div>
   </div>
 
-  <div class="chart-placeholder">[ CHART 2 — branded vs unbranded donut comparison ]</div>
+  <div class="chart-container">{{FINDING_2_CHART_SVG}}</div>
 
   <div class="prose">
     <p>{{FINDING_2_BODY_1}}</p>
@@ -296,7 +297,7 @@
     </div>
   </div>
 
-  <div class="chart-placeholder">[ CHART 3 — per-brand AIO vs ChatGPT asymmetry ]</div>
+  <div class="chart-container">{{FINDING_3_CHART_SVG}}</div>
 
   <div class="prose">
     <p>{{FINDING_3_BODY_1}}</p>
@@ -327,7 +328,7 @@
     </div>
   </div>
 
-  <div class="chart-placeholder">[ CHART 4 — cohort surface rate distribution ]</div>
+  <div class="chart-container">{{FINDING_4_CHART_SVG}}</div>
 
   <div class="prose">
     <p>{{FINDING_4_BODY_1}}</p>
@@ -358,7 +359,7 @@
     </div>
   </div>
 
-  <div class="chart-placeholder">[ CHART 5 — per-vertical top-cited domain grid ]</div>
+  <div class="chart-container">{{FINDING_5_CHART_SVG}}</div>
 
   <div class="prose">
     <p>{{FINDING_5_BODY_1}}</p>
