@@ -154,11 +154,16 @@ backlog clears in 4-8 weeks depending on cadence achieved.
 | C6 | Hyperscaler-to-Customer AI Spend Reconciliation | AWS/Azure/GCP report ~$80B AI compute revenue. Public customer disclosures add to $X. Trace the $80B − $X gap. | Hyperscaler segment revenue + customer disclosures | 15-20h | **Jul 14** |
 | C7 | The Stock-Market-Implied AI Value Index | 100 public companies that announced material AI investment 2024-26 vs matched control group. Did Wall Street reward AI spend? | Public market data + announcement dates | 20-25h | **Jul 21** |
 | C8 | Sector AI Spend Heatmap | Per-vertical (banking, insurance, retail, healthcare, manufacturing, government). Adoption rate × spend per adopter. | McKinsey/BCG/Gartner reports + IBM AI Adoption Index + earnings | 20-25h | **Jul 28** |
+| **C9** | **Consumer AI Subscription Economics** | Audit ChatGPT Plus, Claude Pro, Gemini Advanced, Perplexity Pro, Midjourney, Suno, Pika, Runway, Copilot, Cursor Pro. Subscribers, ARPU, churn signals, free-to-paid conversion. Who's actually winning consumer AI? | Company statements + leaked figures + app store rankings + Sensor Tower-style estimates | 20-25h | **Aug 4** |
+| **C10** | **AI Startup Burn-Rate Disclosures** | Aggregate every public burn-rate datapoint for Anthropic, OpenAI, xAI, Mistral, Cohere, Adept, Inflection, Character.AI, Magic, Suno, etc. The "who runs out of money first" frame. | TechCrunch + The Information funding rounds + runway statements + Glassdoor + partnerships | 15-20h | **Aug 11** |
+| **C11** | **Government AI Procurement Data Audit** | US (USAspending.gov), UK (gov.uk procurement), India (GeM), EU (TED). Aggregate AI-related contracts: vendor, amount, agency, project. Vendor concentration in gov sector. | National procurement portals (all public) | 20-30h | **Aug 18** |
+| **C12** | **AI Talent Compensation Tracking 2026** | Levels.fyi + LinkedIn job posts + leaked comp from Twitter/Blind. What does it cost to hire an AI engineer in 2026? Comparison by company, level, city. | Levels.fyi public data + scraped job posts + Blind/Twitter leaks | 15-20h | **Aug 25** |
+| **C13** | **The AI Infrastructure Leasing Market** | Coreweave, Lambda, Crusoe, Voltage Park, Together AI as wholesale; OpenAI/Anthropic/Meta as buyers. Disclosed lease deals → implied wholesale cost-per-GPU-hour vs retail. | Press releases of GPU deals + hyperscaler capex + 10-K mentions | 25-30h | **Sep 1** |
 
 ### Cadence sanity-check
 
-At 1/week: 8 angles cleared by **Jul 28** (8 weeks from now).
-At 2/week: 8 angles cleared by **Jun 30** (5 weeks). Sustainable only with significant batching and reuse of data across multiple pieces.
+At 1/week: 13 angles cleared by **Sep 1** (13 weeks from now).
+At 2/week: 13 angles cleared by **Aug 4** (7 weeks). Sustainable only with significant batching and reuse of data across multiple pieces.
 
 **Realistic loading** considering all parallel tracks (Track A spinoff blogs weekly, Track A vertical reports monthly, Track B finops pieces, regular content pipeline, reactive PR): 1/week is firm; 2/week achievable for the angles that share underlying data (e.g., C1 + C4 share most of the corporate-filing dataset; C5 reuses C1+C2+C4 outputs).
 

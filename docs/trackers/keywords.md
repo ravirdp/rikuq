@@ -2,7 +2,7 @@
 
 # Keywords (top 200 by volume)
 
-Total tracked: 67
+Total tracked: 72
 
 | ID | Keyword | Volume | KD | Intent | Status | Source |
 |---|---|---|---|---|---|---|
@@ -73,3 +73,8 @@ Total tracked: 67
 | 65 | hyperscaler ai revenue reconciliation | - | - | informational | brief_created | manual:track-c |
 | 66 | ai stock market value index | - | - | informational | brief_created | manual:track-c |
 | 67 | sector ai spend heatmap | - | - | informational | brief_created | manual:track-c |
+| 68 | consumer ai subscription economics | - | - | informational | brief_created | manual:track-c |
+| 69 | ai startup burn rate disclosures | - | - | informational | brief_created | manual:track-c |
+| 70 | government ai procurement data | - | - | informational | brief_created | manual:track-c |
+| 71 | ai talent compensation tracking | - | - | informational | brief_created | manual:track-c |
+| 72 | ai infrastructure leasing market | - | - | informational | brief_created | manual:track-c |

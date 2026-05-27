@@ -2,10 +2,15 @@
 
 # Briefs
 
-Total: 30
+Total: 35
 
 | ID | Status | Kind | Title | Slug | Created |
 |---|---|---|---|---|---|
+| 31 | approved | new | Consumer AI Subscription Economics: Who is Actually Winning | `consumer-ai-subscription-economics-2026` | 2026-05-27 |
+| 32 | approved | new | AI Startup Burn-Rate Disclosures: Who Runs Out of Money First | `ai-startup-burn-rate-disclosures-2026` | 2026-05-27 |
+| 33 | approved | new | Government AI Procurement Data Audit: Where Public AI Money Goes | `government-ai-procurement-audit-2026` | 2026-05-27 |
+| 34 | approved | new | AI Talent Compensation 2026: What It Actually Costs to Hire AI Engineers | `ai-talent-compensation-tracking-2026` | 2026-05-27 |
+| 35 | approved | new | The AI Infrastructure Leasing Market: Who Controls the Wholesale GPU Supply | `ai-infrastructure-leasing-market-2026` | 2026-05-27 |
 | 23 | approved | new | The 2026 AI Spend Disclosure Audit: What Public Companies Say vs Show | `ai-spend-disclosure-audit-2026` | 2026-05-27 |
 | 24 | approved | new | Indian IT Services AI Spend Audit: TCS, Infosys, Wipro, HCL, TechM | `indian-it-services-ai-spend-audit-2026` | 2026-05-27 |
 | 25 | approved | new | The Anthropic + OpenAI + xAI Revenue Tracker (v0.1, Q2 2026) | `ai-lab-revenue-tracker-q2-2026` | 2026-05-27 |

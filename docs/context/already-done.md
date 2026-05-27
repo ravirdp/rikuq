@@ -37,8 +37,13 @@ check this list and skip anything close to a topic here.
 - **Cursor Review 2026 — Honest 'Not For Me' Take From a VSCode User** — `cursor-review` _(kw: cursor)_
 - **Cursor vs Claude Code 2026 — You're Probably Asking the Wrong Question** — `cursor-vs-claude-code` _(kw: cursor)_
 
-## In pipeline (12)
+## In pipeline (17)
 
+- **Consumer AI Subscription Economics: Who is Actually Winning** — `consumer-ai-subscription-economics-2026`
+- **AI Startup Burn-Rate Disclosures: Who Runs Out of Money First** — `ai-startup-burn-rate-disclosures-2026`
+- **Government AI Procurement Data Audit: Where Public AI Money Goes** — `government-ai-procurement-audit-2026`
+- **AI Talent Compensation 2026: What It Actually Costs to Hire AI Engineers** — `ai-talent-compensation-tracking-2026`
+- **The AI Infrastructure Leasing Market: Who Controls the Wholesale GPU Supply** — `ai-infrastructure-leasing-market-2026`
 - **The 2026 AI Spend Disclosure Audit: What Public Companies Say vs Show** — `ai-spend-disclosure-audit-2026`
 - **Indian IT Services AI Spend Audit: TCS, Infosys, Wipro, HCL, TechM** — `indian-it-services-ai-spend-audit-2026`
 - **The Anthropic + OpenAI + xAI Revenue Tracker (v0.1, Q2 2026)** — `ai-lab-revenue-tracker-q2-2026`
