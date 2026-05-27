@@ -3,6 +3,260 @@
 Send one personalized email per brand to that brand's marketing/PR lead, with
 their specific section as a preview. **Aim: 25 emails, ~10-15 reply, ~5-8 share.**
 
+---
+
+## ⚡ READY-TO-SEND: TOP 8 (paste, set first-name, send)
+
+These 8 are the strongest amplifiers — most likely to share. Each email below
+is fully assembled. Just replace `[first name]` with the actual contact's
+first name and send.
+
+**Contact-finding tips**:
+- For "marketing/CMO" → search LinkedIn: "[brand] marketing director" or "head of marketing at [brand]"
+- For brands without a marketing@ — use the LinkedIn DM template at the bottom instead of email
+
+---
+
+### 1. Acko (insurtech)
+**To**: hello@acko.com (also try Varun Dua via LinkedIn)
+**Subject**: Your brand in our Indian AI Search Audit (publishing May 30)
+
+```
+Hi [first name],
+
+I'm Ravi, founder of Citare (citare.ai) — we measure brand visibility on AI search platforms (ChatGPT, Google AI Overview, Gemini, Claude, Perplexity).
+
+We've just completed a 25-brand audit across all 5 platforms (500 queries, 777 citations), publishing as a free report on Sat May 30. Acko is in the sample, and your section reads like this:
+
+Acko surfaced in 40% of cells (8 of 20), with strong showings on brand-named comparison queries (Acko vs HDFC ERGO, Acko vs Digit). Acko's flagship Platinum Health product did not surface on any unforced health insurance query in our sample — the unbranded health space is currently owned by HDFC ERGO, Niva Bupa, and Policybazaar's aggregator citations. The gap between branded comparison (where you win) and unbranded category (where you don't surface yet) is the most actionable finding for you.
+
+Two reasons I'm sending this advance:
+
+1. If anything in the data is wrong (or has changed since the May 24-26 audit window), I want to fix it before publication.
+2. Marketing teams have been finding the data useful for their own GEO/AEO planning — happy to send the full report (PDF, methodology, all per-brand tables) once published if useful for your team.
+
+Either way, the post goes live Sat May 30. Reply if you want the methodology doc earlier, or have any notes on the Acko section above.
+
+Best,
+Ravi Patel
+Founder, Citare
+citare.ai | rikuq.com | linkedin.com/in/ravirdp
+```
+
+---
+
+### 2. Sugar Cosmetics (beauty)
+**To**: marketing@sugarcosmetics.com (or LinkedIn DM the CMO)
+**Subject**: Your brand in our Indian AI Search Audit (publishing May 30)
+
+```
+Hi [first name],
+
+I'm Ravi, founder of Citare (citare.ai) — we measure brand visibility on AI search platforms.
+
+We've just completed a 25-brand audit across all 5 major platforms (500 queries, 777 citations), publishing as a free report on Sat May 30. Sugar Cosmetics is in the sample, and your section reads like this:
+
+Sugar Cosmetics is the first brand-owned website to appear in our entire top-cited list (position 12, 7 citations). Surface rate of 40% across 20 cells. Notable: sugarcosmetics.com is the highest-ranking brand-owned domain in our corpus, beating brand sites across every other vertical. Where you still have headroom: unbranded "best lipstick under ₹500" type queries where Maybelline + Nykaa surface ahead of Sugar.
+
+Two reasons I'm sending this advance:
+
+1. If anything is wrong (or has changed since the May 24-26 audit window), I want to fix it before publication.
+2. Marketing teams have been finding the data useful for their own GEO/AEO planning — happy to send the full report (PDF, methodology, all per-brand tables) once published if useful for your team.
+
+Either way, the post goes live Sat May 30. Reply if you want the methodology doc earlier, or have any notes on the Sugar section above.
+
+Best,
+Ravi Patel
+Founder, Citare
+citare.ai | rikuq.com | linkedin.com/in/ravirdp
+```
+
+---
+
+### 3. Pristyn Care (healthcare)
+**To**: hello@pristyncare.com (LinkedIn the CMO if no reply)
+**Subject**: Your brand in our Indian AI Search Audit — biggest platform asymmetry in our corpus
+
+```
+Hi [first name],
+
+I'm Ravi, founder of Citare (citare.ai) — we measure brand visibility on AI search platforms.
+
+We've completed a 25-brand audit, publishing Sat May 30. Pristyn Care has a particularly notable result and I wanted you to see it before publication:
+
+Pristyn Care had the largest AI vs Overview vs ChatGPT asymmetry of any brand in our corpus: 80% surface on Google AI Overview vs 30% on ChatGPT — a 50-percentage-point gap. AIO loves Pristyn (lots of healthcare directory citations + pristyncare.com URLs); ChatGPT defaults to Apollo + Manipal + Fortis in body text. Brand-named comparison queries surface well on both platforms; unforced "best hospital in Bangalore" type queries favor the legacy hospital chains.
+
+Two reasons I'm sending this advance:
+
+1. If anything is inaccurate or has changed since the May 24-26 audit window, I want to fix it before publication.
+2. Happy to send the full report (PDF, methodology, all per-brand tables) once published.
+
+Either way, the post goes live Sat May 30. Reply if you want the methodology doc earlier.
+
+Best,
+Ravi Patel
+Founder, Citare
+citare.ai | rikuq.com | linkedin.com/in/ravirdp
+```
+
+---
+
+### 4. Treebo (hospitality)
+**To**: hello@treebohotels.com (LinkedIn CMO if no reply)
+**Subject**: Treebo in our Indian AI Search Audit (publishing May 30) — strong performer
+
+```
+Hi [first name],
+
+I'm Ravi, founder of Citare (citare.ai) — we measure brand visibility on AI search platforms.
+
+We've completed a 25-brand audit, publishing Sat May 30. Treebo is one of the strongest brand performers in the audit:
+
+Treebo surfaced in 65% of cells (13 of 20) — among the highest in our corpus. The strongest brand performer in the budget hospitality category. FabHotels remains the top-mentioned competitor (13 mentions vs Treebo's 13 cells — closely matched). Where Treebo wins: tripadvisor.in citation chains for specific Indian cities, and brand-named comparison queries (Treebo vs FabHotels, Treebo vs OYO).
+
+Two reasons for the advance:
+
+1. If anything is wrong or has changed since the May 24-26 audit window, I want to fix it before publication.
+2. Happy to send the full report (PDF, methodology) once published.
+
+Goes live Sat May 30. Reply if you want the methodology doc earlier.
+
+Best,
+Ravi Patel
+Founder, Citare
+citare.ai | rikuq.com | linkedin.com/in/ravirdp
+```
+
+---
+
+### 5. IndMoney (wealthtech)
+**To**: support@indmoney.com (LinkedIn Ashish Lath if no reply)
+**Subject**: IndMoney in our Indian AI Search Audit (publishing May 30) — strong performer
+
+```
+Hi [first name],
+
+I'm Ravi, founder of Citare (citare.ai) — we measure brand visibility on AI search platforms.
+
+We've completed a 25-brand audit, publishing Sat May 30. IndMoney is one of the strongest performers:
+
+IndMoney surfaced in 65% of cells (13 of 20) — one of the strongest performers in our corpus. Groww remains the most-mentioned wealthtech brand (8 mentions to your 13 cells), but IndMoney holds parity in unbranded "best Indian investing app" cells and wins outright on US stocks / international investing queries. AIO and ChatGPT behave consistently for you (60% / 70%) — no platform asymmetry, just steady surface.
+
+Two reasons for the advance:
+
+1. If anything is wrong or has changed since the May 24-26 audit window, I want to fix it before publication.
+2. Happy to send the full report (PDF, methodology) once published.
+
+Goes live Sat May 30. Reply if you want the methodology doc earlier.
+
+Best,
+Ravi Patel
+Founder, Citare
+citare.ai | rikuq.com | linkedin.com/in/ravirdp
+```
+
+---
+
+### 6. Souled Store (d2c-apparel)
+**To**: hi@thesouledstore.com (LinkedIn CMO/Marketing if no reply)
+**Subject**: Souled Store in our Indian AI Search Audit (publishing May 30)
+
+```
+Hi [first name],
+
+I'm Ravi, founder of Citare (citare.ai) — we measure brand visibility on AI search platforms.
+
+We've completed a 25-brand audit, publishing Sat May 30. Souled Store is among the strongest performers:
+
+Souled Store is one of the strongest brand performers in our entire audit (60% surface, 55% top-3). What stands out: AI engines cite Souled Store via indie listicle blogs (jimmyluxury.in cited Souled Store 4 times across our D2C menswear queries) rather than from thesouledstore.com directly. The closest competitor (Bewakoof) was mentioned 8 times. Where Souled Store wins: graphic-tee category queries and college-fashion queries on ChatGPT.
+
+Two reasons for the advance:
+
+1. If anything is wrong or has changed since the May 24-26 audit window, I want to fix it before publication.
+2. Happy to send the full report (PDF, methodology) once published.
+
+Goes live Sat May 30. Reply if you want the methodology doc earlier.
+
+Best,
+Ravi Patel
+Founder, Citare
+citare.ai | rikuq.com | linkedin.com/in/ravirdp
+```
+
+---
+
+### 7. Forest Essentials (beauty)
+**To**: customercare@forestessentialsindia.com (LinkedIn CMO if no reply)
+**Subject**: Forest Essentials in our Indian AI Search Audit — highest surface rate in our corpus
+
+```
+Hi [first name],
+
+I'm Ravi, founder of Citare (citare.ai) — we measure brand visibility on AI search platforms.
+
+We've completed a 25-brand audit, publishing Sat May 30. Forest Essentials has the highest surface rate of any brand in our corpus:
+
+Forest Essentials is the highest-surface-rate brand in our entire audit (70% surface, 50% top-3). Notable gap: in product-specific Kumkumadi queries (Q1: facial oil under ₹5K, Q4: night cream for pigmentation), Forest Essentials is completely absent from both platforms — Kama Ayurveda owns those cells entirely. The brand surfaces strongly on brand-identity and gifting queries; loses cleanly on the hero-product cells. That's the most actionable finding for your team.
+
+Two reasons for the advance:
+
+1. If anything is wrong or has changed since the May 24-26 audit window, I want to fix it before publication.
+2. Happy to send the full report (PDF, methodology) once published.
+
+Goes live Sat May 30. Reply if you want the methodology doc earlier.
+
+Best,
+Ravi Patel
+Founder, Citare
+citare.ai | rikuq.com | linkedin.com/in/ravirdp
+```
+
+---
+
+### 8. Pilgrim (beauty)
+**To**: hello@discoverpilgrim.com (LinkedIn CMO if no reply)
+**Subject**: Pilgrim in our Indian AI Search Audit (publishing May 30)
+
+```
+Hi [first name],
+
+I'm Ravi, founder of Citare (citare.ai) — we measure brand visibility on AI search platforms.
+
+We've completed a 25-brand audit, publishing Sat May 30. Pilgrim is in the sample:
+
+Pilgrim surfaced in 50% of cells (10 of 20). Mamaearth remains the dominant mention (5 mentions across our queries), with Pilgrim positioned as the cleaner-tier alternative. Where Pilgrim wins: "Pilgrim vs Mamaearth" brand-named cells (consistent top-3 on both platforms). Where Pilgrim is still building: unbranded "best Indian beauty brand for [specific concern]" queries where Forest Essentials + Mamaearth dominate.
+
+Two reasons for the advance:
+
+1. If anything is wrong or has changed since the May 24-26 audit window, I want to fix it before publication.
+2. Happy to send the full report (PDF, methodology) once published.
+
+Goes live Sat May 30. Reply if you want the methodology doc earlier.
+
+Best,
+Ravi Patel
+Founder, Citare
+citare.ai | rikuq.com | linkedin.com/in/ravirdp
+```
+
+---
+
+## LinkedIn DM template (300 chars max for first contact)
+
+If you can't find an email or want to bypass general inboxes, send a LinkedIn DM to the brand's CMO/Head of Marketing:
+
+```
+Hi [first name] — I run Citare (citare.ai). We just audited 25 Indian brands across all 5 AI search platforms (publishing Sat). [BRAND] is in the sample with a notable finding I wanted you to see before publication. Worth 60 seconds? Happy to share the advance section.
+```
+
+(298 chars. Adjust [BRAND] to the actual brand name.)
+
+When they reply, send the full per-brand email body from above.
+
+---
+
+## Original template (for the remaining 17 brands)
+
 ## The template
 
 ```
