@@ -29,7 +29,9 @@
     "forward_capex_guidance": 0,
     "risk_factors": 2,
     "generic_penalty": -3,
-    "total": 8
+    "total": 8,
+    "total_verified": 6,
+    "original": 8
   },
   "tier": "Vague",
   "talk_show_ratio": 24,
@@ -42,5 +44,8 @@
     "ai_risk": [
       "risks inherent in how third-party AI models used in our solutions have been developed and deployed, including situations in which the third party may lack a proper license or consent for the training "
     ]
-  }
+  },
+  "tier_verified": "Vague",
+  "verification_note": "Verified down from 8. Revenue match was EU AI Act compliance language, not Firefly revenue. Firefly naming (cap 4) + risk(2) = 6.",
+  "verified_at": "2026-05-27"
 }

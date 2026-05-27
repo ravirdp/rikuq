@@ -20,7 +20,9 @@
     "forward_capex_guidance": 0,
     "risk_factors": 0,
     "generic_penalty": -2,
-    "total": -2
+    "total": -2,
+    "total_verified": -2,
+    "original": -2
   },
   "tier": "Misleading",
   "talk_show_ratio": 222,
@@ -29,5 +31,8 @@
     "capex": [],
     "forward_capex": [],
     "ai_risk": []
-  }
+  },
+  "tier_verified": "Misleading",
+  "verification_note": "Verified. 111 AI mentions, 2 vague phrases, zero specific. Real DQS in penalty range, hovering near zero.",
+  "verified_at": "2026-05-27"
 }

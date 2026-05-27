@@ -20,7 +20,9 @@
     "forward_capex_guidance": 0,
     "risk_factors": 0,
     "generic_penalty": 0,
-    "total": 8
+    "total": 8,
+    "total_verified": 5,
+    "original": 8
   },
   "tier": "Vague",
   "talk_show_ratio": 6.25,
@@ -33,5 +35,8 @@
     ],
     "forward_capex": [],
     "ai_risk": []
-  }
+  },
+  "tier_verified": "Opaque",
+  "verification_note": "Verified down from 8. $57M cited was the acquisition cost of an AI inference platform (Workers AI infra), not Workers AI revenue. Capex generic. Real DQS: 3 from capex (weak) + 2 risk = 5.",
+  "verified_at": "2026-05-27"
 }

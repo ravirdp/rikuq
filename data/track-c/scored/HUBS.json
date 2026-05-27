@@ -25,7 +25,9 @@
     "forward_capex_guidance": 0,
     "risk_factors": 2,
     "generic_penalty": -3,
-    "total": 9
+    "total": 9,
+    "total_verified": 7,
+    "original": 9
   },
   "tier": "Vague",
   "talk_show_ratio": 19.22222222222222,
@@ -42,5 +44,8 @@
     "ai_risk": [
       "liability for copyright infringement"
     ]
-  }
+  },
+  "tier_verified": "Vague",
+  "verification_note": "Verified down from 9. Revenue match was false positive (about AI subsidiaries via M&A, not AI revenue). Breeze naming holds. Real DQS: named products(4) + risk(2) + 1 weak capex = 7.",
+  "verified_at": "2026-05-27"
 }

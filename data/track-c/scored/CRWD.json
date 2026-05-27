@@ -20,7 +20,9 @@
     "forward_capex_guidance": 0,
     "risk_factors": 0,
     "generic_penalty": -3,
-    "total": -3
+    "total": -3,
+    "total_verified": -3,
+    "original": -3
   },
   "tier": "Misleading",
   "talk_show_ratio": 296,
@@ -29,5 +31,8 @@
     "capex": [],
     "forward_capex": [],
     "ai_risk": []
-  }
+  },
+  "tier_verified": "Misleading",
+  "verification_note": "Verified. 148 AI mentions, 12 vague phrases, zero specific disclosure. \"AI-powered\" everywhere.",
+  "verified_at": "2026-05-27"
 }

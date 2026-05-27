@@ -20,7 +20,9 @@
     "forward_capex_guidance": 0,
     "risk_factors": 0,
     "generic_penalty": -3,
-    "total": -3
+    "total": -3,
+    "total_verified": -3,
+    "original": -3
   },
   "tier": "Misleading",
   "talk_show_ratio": 246,
@@ -29,5 +31,8 @@
     "capex": [],
     "forward_capex": [],
     "ai_risk": []
-  }
+  },
+  "tier_verified": "Misleading",
+  "verification_note": "Verified. 123 AI mentions, 36 vague phrases, zero specific disclosure. Smoking-gun example of \"AI-washed\" filing.",
+  "verified_at": "2026-05-27"
 }

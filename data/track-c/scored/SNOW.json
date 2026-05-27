@@ -29,7 +29,9 @@
     "forward_capex_guidance": 0,
     "risk_factors": 2,
     "generic_penalty": -3,
-    "total": 11
+    "total": 11,
+    "total_verified": 11,
+    "original": 11
   },
   "tier": "Solid",
   "talk_show_ratio": 18.818181818181817,
@@ -47,5 +49,8 @@
     "ai_risk": [
       "risk AI systems; and South Korea s AI Basic Act, the country s first major AI legislation"
     ]
-  }
+  },
+  "tier_verified": "Solid",
+  "verification_note": "Verified. Cortex naming + AI Data Cloud revenue figure confirmed. Capex match is generic (not AI-specific dollar amount); ties Meta for top.",
+  "verified_at": "2026-05-27"
 }

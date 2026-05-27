@@ -20,7 +20,9 @@
     "forward_capex_guidance": 0,
     "risk_factors": 2,
     "generic_penalty": -2,
-    "total": 8
+    "total": 8,
+    "total_verified": 11,
+    "original": 8
   },
   "tier": "Vague",
   "talk_show_ratio": 20.625,
@@ -38,5 +40,8 @@
       "liability for copyright infringement",
       "risks and vulnerabilities, including prompt injection"
     ]
-  }
+  },
+  "tier_verified": "Solid",
+  "verification_note": "Verified up from 8. $115B-$135B 2026 AI capex guidance is the most specific in entire corpus. Llama (not in keyword list) is a named-product equivalent. Updated to capture both.",
+  "verified_at": "2026-05-27"
 }

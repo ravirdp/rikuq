@@ -20,7 +20,9 @@
     "forward_capex_guidance": 0,
     "risk_factors": 2,
     "generic_penalty": -3,
-    "total": -1
+    "total": -1,
+    "total_verified": -1,
+    "original": -1
   },
   "tier": "Misleading",
   "talk_show_ratio": 156,
@@ -31,5 +33,8 @@
     "ai_risk": [
       "risks include those related to intellectual property considerations, the collection and use of personal data, third party risks, technical limitations of algorithms and the accuracy of training data"
     ]
-  }
+  },
+  "tier_verified": "Misleading",
+  "verification_note": "Verified. Risk sample matched was generic (algorithms / training data) not AI-specific. Score stands.",
+  "verified_at": "2026-05-27"
 }
