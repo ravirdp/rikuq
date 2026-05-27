@@ -2,10 +2,18 @@
 
 # Briefs
 
-Total: 22
+Total: 30
 
 | ID | Status | Kind | Title | Slug | Created |
 |---|---|---|---|---|---|
+| 23 | approved | new | The 2026 AI Spend Disclosure Audit: What Public Companies Say vs Show | `ai-spend-disclosure-audit-2026` | 2026-05-27 |
+| 24 | approved | new | Indian IT Services AI Spend Audit: TCS, Infosys, Wipro, HCL, TechM | `indian-it-services-ai-spend-audit-2026` | 2026-05-27 |
+| 25 | approved | new | The Anthropic + OpenAI + xAI Revenue Tracker (v0.1, Q2 2026) | `ai-lab-revenue-tracker-q2-2026` | 2026-05-27 |
+| 26 | approved | new | The 2026 AI Spend vs AI Revenue Index: Who is Profitable on AI? | `ai-spend-vs-revenue-index-2026` | 2026-05-27 |
+| 27 | approved | new | The AI Vendor Concentration Map: Where Public AI Spend Actually Lands | `ai-vendor-concentration-map-2026` | 2026-05-27 |
+| 28 | approved | new | The Hyperscaler-to-Customer AI Spend Reconciliation | `hyperscaler-ai-spend-reconciliation-2026` | 2026-05-27 |
+| 29 | approved | new | The Stock-Market-Implied AI Value Index: Did Wall Street Reward AI Investment? | `ai-stock-market-implied-value-index-2026` | 2026-05-27 |
+| 30 | approved | new | The Sector AI Spend Heatmap: Where the Money Actually Goes by Industry | `sector-ai-spend-heatmap-2026` | 2026-05-27 |
 | 22 | approved | new | The Indian AI Search Audit: 500 Queries, 25 Brands, 777 Citations | `indian-ai-search-audit-may-2026` | 2026-05-26 |
 | 19 | published | new | Best MCP Servers for Claude Code in 2026 (Honest Picks) | `best-mcp-servers-claude-code-2026` | 2026-05-25 |
 | 20 | published | new | Claude Code Hooks vs Skills: When to Use Which | `claude-code-hooks-vs-skills-when-to-use` | 2026-05-25 |

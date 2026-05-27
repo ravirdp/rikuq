@@ -37,8 +37,16 @@ check this list and skip anything close to a topic here.
 - **Cursor Review 2026 — Honest 'Not For Me' Take From a VSCode User** — `cursor-review` _(kw: cursor)_
 - **Cursor vs Claude Code 2026 — You're Probably Asking the Wrong Question** — `cursor-vs-claude-code` _(kw: cursor)_
 
-## In pipeline (4)
+## In pipeline (12)
 
+- **The 2026 AI Spend Disclosure Audit: What Public Companies Say vs Show** — `ai-spend-disclosure-audit-2026`
+- **Indian IT Services AI Spend Audit: TCS, Infosys, Wipro, HCL, TechM** — `indian-it-services-ai-spend-audit-2026`
+- **The Anthropic + OpenAI + xAI Revenue Tracker (v0.1, Q2 2026)** — `ai-lab-revenue-tracker-q2-2026`
+- **The 2026 AI Spend vs AI Revenue Index: Who is Profitable on AI?** — `ai-spend-vs-revenue-index-2026`
+- **The AI Vendor Concentration Map: Where Public AI Spend Actually Lands** — `ai-vendor-concentration-map-2026`
+- **The Hyperscaler-to-Customer AI Spend Reconciliation** — `hyperscaler-ai-spend-reconciliation-2026`
+- **The Stock-Market-Implied AI Value Index: Did Wall Street Reward AI Investment?** — `ai-stock-market-implied-value-index-2026`
+- **The Sector AI Spend Heatmap: Where the Money Actually Goes by Industry** — `sector-ai-spend-heatmap-2026`
 - **The Indian AI Search Audit: 500 Queries, 25 Brands, 777 Citations** — `indian-ai-search-audit-may-2026`
 - **GEO vs AEO vs AIO vs SGE: A Plain-English Glossary for 2026** — `geo-aeo-aio-sge-glossary-2026`
 - **Cloudflare Workers AI vs OpenAI: Real Cost Across 1M Tokens** — `cloudflare-workers-ai-vs-openai-cost`

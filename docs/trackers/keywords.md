@@ -2,7 +2,7 @@
 
 # Keywords (top 200 by volume)
 
-Total tracked: 59
+Total tracked: 67
 
 | ID | Keyword | Volume | KD | Intent | Status | Source |
 |---|---|---|---|---|---|---|
@@ -65,3 +65,11 @@ Total tracked: 59
 | 2 | cloudflare workers ai cost | - | - | commercial | brief_created | manual |
 | 3 | 37 mcp tools | - | - | informational | brief_created | manual |
 | 59 | indian ai search audit | - | - | commercial | brief_created | manual:research-debut |
+| 60 | ai spend disclosure audit 2026 | - | - | informational | brief_created | manual:track-c |
+| 61 | indian it services ai spend | - | - | informational | brief_created | manual:track-c |
+| 62 | anthropic openai revenue tracker | - | - | informational | brief_created | manual:track-c |
+| 63 | ai spend vs revenue index | - | - | informational | brief_created | manual:track-c |
+| 64 | ai vendor concentration map | - | - | informational | brief_created | manual:track-c |
+| 65 | hyperscaler ai revenue reconciliation | - | - | informational | brief_created | manual:track-c |
+| 66 | ai stock market value index | - | - | informational | brief_created | manual:track-c |
+| 67 | sector ai spend heatmap | - | - | informational | brief_created | manual:track-c |
