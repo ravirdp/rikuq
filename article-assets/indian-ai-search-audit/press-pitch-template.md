@@ -2,6 +2,129 @@
 
 Personalized email per publication. **Target: 15 publications, expect 3-5 reply, 1-2 published coverage within 30 days.**
 
+---
+
+## ⚡ READY-TO-SEND: TOP 3 INDIAN TECH PRESS (paste, set first-name, send)
+
+These 3 have the longest lead time and highest likelihood of publishing
+coverage for the Indian audience. Send Wed-Thu (today/tomorrow).
+
+**Contact-finding for each**: search "[publication] [topic beat] editor" on
+LinkedIn; the named writers below are current as of May 2026.
+
+---
+
+### 1. Entrackr — Pratik Bhakta (founder/editor)
+**To**: pratik@entrackr.com (also tip@entrackr.com)
+**Subject**: First independent audit of Indian brand AI search visibility — exclusive (May 30)
+
+```
+Hi Pratik,
+
+I'm Ravi, founder of Citare (citare.ai) — an AI search visibility platform measuring brand presence on ChatGPT, AI Overview, Gemini, Claude, and Perplexity.
+
+We're publishing what we believe is the first independent research on Indian brand visibility across AI search platforms this Saturday, May 30. Reaching out because Entrackr's coverage of Indian fintech + SaaS is right on top of the brands we audited.
+
+The headline finding: AI engines cite Instagram, YouTube, Reddit, aggregators, and indie listicle blogs ahead of brand websites for Indian buyer queries. In our 500-cell corpus across 25 brands, the first brand-owned website appeared at position 12 (sugarcosmetics.com). The most-cited domain was Instagram (21 citations), with one indie SEO listicle (jimmyluxury.in) cited 14 times — more than any brand's own website.
+
+Other quotable findings:
+- Brand-named comparison queries surface 73% of the time; unbranded category queries only 33% (a 40-point gap)
+- Per-brand AIO-vs-ChatGPT asymmetry up to 80 percentage points (Snitch: 10% AIO / 90% ChatGPT)
+- Series A/B startups (avg 49% surface) match older funded brands (avg 46%) — no historical-authority moat
+
+Sample includes Acko, Slice, IndMoney, Jar, Stable Money, Pristyn Care, Treebo, Sugar Cosmetics, Pilgrim, Bombay Shaving, Snitch, Souled Store, Forest Essentials, and 12 others across 16 verticals.
+
+Three things I can offer Entrackr specifically:
+
+1. Advance copy under embargo — full report (PDF + methodology + per-brand tables) before Sat May 30
+2. An on-the-record interview about the findings or the methodology
+3. Custom cuts of the data for any vertical you'd like to lead with (fintech especially — Acko, Slice, Jar, Stable Money, IndMoney all in the audit)
+
+Let me know.
+
+Best,
+Ravi Patel
+Founder, Citare
+citare.ai | rikuq.com | linkedin.com/in/ravirdp
+```
+
+---
+
+### 2. Inc42 — Yatti Soni (deputy editor) or Bhumika Khatri (SaaS beat)
+**To**: yatti@inc42.com or bhumika@inc42.com (also tips@inc42.com)
+**Subject**: First Indian brand AI search audit — Inc42 exclusive (May 30)
+
+```
+Hi [first name],
+
+I'm Ravi, founder of Citare (citare.ai) — an AI search visibility platform measuring brand presence on ChatGPT, AI Overview, Gemini, Claude, and Perplexity.
+
+We're publishing the first independent audit of Indian brand visibility across AI search platforms this Saturday, May 30. Sending an early heads-up because Inc42's startup coverage hits exactly the audience that needs this data.
+
+The headline: AI engines cite Instagram, YouTube, Reddit, aggregators, and indie listicle blogs ahead of brand websites for Indian buyer queries. In our 500-cell corpus across 25 brands, the first brand-owned website appeared at position 12. The most-cited domain was Instagram (21 citations), with one indie SEO listicle (jimmyluxury.in) cited 14 times — more than any brand's own website.
+
+Other quotable findings:
+- Brand-named comparison queries surface 73% of the time; unbranded category queries only 33% (a 40-point gap)
+- Per-brand AIO-vs-ChatGPT asymmetry up to 80 percentage points (Snitch: 10% AIO / 90% ChatGPT)
+- Series A/B startups match older funded brands on surface rate — no historical-authority moat
+
+Sample includes Acko, Slice, Snitch, Pilgrim, Foxtale, IndMoney, Jar, Stable Money, Allo Health, Pristyn Care, Treebo, Sugar Cosmetics, Bombay Shaving, Souled Store, Forest Essentials, and 10 others across 16 verticals.
+
+Three things I can offer Inc42:
+
+1. Advance copy under embargo — full report (PDF + methodology + per-brand tables) before Sat May 30
+2. An on-the-record interview about findings, methodology, or what this means for Indian SaaS specifically
+3. Custom cuts of the data for any vertical you'd like to lead with — fintech (Acko, Slice, Jar, Stable Money, IndMoney), D2C (Snitch, Souled Store, Bombay Shaving, Pilgrim, Foxtale), or healthcare (Pristyn Care, Allo Health)
+
+The post goes live Sat May 30 at rikuq.com/blog/geo/indian-ai-search-audit-may-2026. Let me know.
+
+Best,
+Ravi Patel
+Founder, Citare
+citare.ai | rikuq.com | linkedin.com/in/ravirdp
+```
+
+---
+
+### 3. YourStory — Sindhu Kashyaap (startups beat) or Tarush Bhalla
+**To**: sindhu@yourstory.com or tarush@yourstory.com (also editorial@yourstory.com)
+**Subject**: First Indian brand AI search audit — YourStory advance (May 30)
+
+```
+Hi [first name],
+
+I'm Ravi, founder of Citare (citare.ai) — an AI search visibility platform measuring brand presence on ChatGPT, AI Overview, Gemini, Claude, and Perplexity.
+
+We're publishing what we believe is the first independent audit of Indian brand visibility across AI search platforms this Saturday, May 30. Reaching out because YourStory's startup coverage routinely names the brands we audited, and the findings on the newer-funded cohort might interest you specifically.
+
+The headline finding for startups: Series A/B Indian startups (Snitch, Allo Health, Pilgrim, Foxtale, Jar, Stable Money) average 49% surface rate on AI search — essentially matching more-established funded brands (46% avg). The wipeout cohort of older brands averages just 27%. The gap is funding, not age. AI search has no historical-authority moat, which is good news if you're building.
+
+Other quotable findings:
+- The most-cited domain in our 500-cell corpus is Instagram (21 citations), not any brand's own website
+- First brand-owned website to appear: position 12 (sugarcosmetics.com)
+- Per-brand AIO-vs-ChatGPT asymmetry up to 80 percentage points (Snitch: 10% AIO / 90% ChatGPT)
+- Branded comparison queries surface 73%; unbranded category queries 33% — a 40-point gap
+
+Sample includes 25 brands across 16 verticals — Indian fintech, D2C beauty, D2C apparel, healthcare, hospitality, jewellery, real estate, SaaS.
+
+Three things I can offer YourStory:
+
+1. Advance copy under embargo — full report (PDF + methodology + per-brand tables) before Sat May 30
+2. An on-the-record interview about the methodology or the implications for Indian startup marketing teams
+3. Custom data cut focused on the newer-funded startup cohort (the most YourStory-fit angle)
+
+The post goes live Sat May 30 at rikuq.com/blog/geo/indian-ai-search-audit-may-2026. Let me know.
+
+Best,
+Ravi Patel
+Founder, Citare
+citare.ai | rikuq.com | linkedin.com/in/ravirdp
+```
+
+---
+
+## Master template (for the other 12 publications)
+
 ## Master template
 
 ```
