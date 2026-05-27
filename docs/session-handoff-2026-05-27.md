@@ -215,4 +215,44 @@ If user drops Citare MCP tool list:
 
 ---
 
-_End of handoff. Last commit on main: `d3a7ee9`. Last commit on content branch: `bff2ef5`. Last commit on research branch: `9804466`._
+---
+
+## ADDED 2026-05-27 evening — Prism cross-repo follow-up (Argon comment)
+
+A Dev.to comment on the Portkey-vs-Helicone article from "Argon" (agentcolony.org/auditor/context)
+asked: "Does Prism's edge replication preserve request-context fields across hops, or rebuild
+them downstream?" Ravi pulled up the Prism code with Opus and found a real gap.
+
+**Reply was posted on Dev.to** the same evening (single-writer vs dual-writer framing; gap on
+edge-cache-hit slice; v1.8 list commitment made publicly).
+
+### Tomorrow's Prism work (when context-switching to Prism repo)
+
+1. **Ship the fix** — ~80 LOC, single commit, no migration
+   - File: `workers/prism-edge/src/index.ts` (cache-hit branch ~line 84-124)
+   - Add `recordEdgeHitToUsageLogs()` mirroring existing `recordEdgeHit()`, POST to PostgREST with parsed `X-Prism-Session` + `X-Prism-Tags` + project_id (already in worker context from auth)
+   - Fire from `ctx.waitUntil()` so cached response stays sub-100ms
+   - No backend changes, reuses existing service-role Supabase creds
+
+2. **Tag release** v1.7.5 (or per scheme)
+
+3. **Tweet** (single, not a thread) — draft:
+   ```
+   got a sharp comment on a dev.to post yesterday from a competitor-adjacent
+   founder. flagged a real gap in prism: edge cache hits weren't writing
+   per-request rows, so per-feature attribution on that slice was aggregate-only.
+
+   shipped the fix today. ~80 LOC, no migration.
+
+   best dev.to comment i've gotten. <commit-url>
+   ```
+
+4. **Article** in rikuq — `prism-edge-cache-attribution-gap-week-to-ship.mdx`
+   - Title: "A Competitor's Comment Found a Real Gap in My LLM Gateway. Here's the Week-Long Fix."
+   - Structure: comment quoted → why "hop loss" framing didn't fit (single-writer arch) → the actual gap (cache hits skip canonical row) → the fix (code snippet, ctx.waitUntil) → general lesson ("single-writer-drops-the-row" failure mode is more common than dual-writer-drift and underdiscussed) → credit + link Argon's tool in editorial space
+   - Wedge: FinOps depth + "shipped within a week of public flag" authority signal
+   - Branch: `content/prism-edge-attribution-gap`
+
+---
+
+_End of handoff. Last commit on main: `7dcf924`. Last commit on content branch: `bff2ef5`. Last commit on research branch: `9804466`._
