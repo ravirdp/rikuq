@@ -146,7 +146,7 @@ backlog clears in 4-8 weeks depending on cadence achieved.
 
 | Order | Angle | Thesis | Sources | Effort | Target ship |
 |---|---|---|---|---|---|
-| **C1** | **The 2026 AI Spend Disclosure Audit** | Audit 50 public companies' AI disclosures. Score each on Disclosure Quality. Names laggards. | 10-K/10-Q + earnings call transcripts | 25-35h | **Jun 9** |
+| **C1** | **The 2026 AI Spend Disclosure Audit** | Audit 50 public companies' AI disclosures. Score each on Disclosure Quality. Names laggards. | 10-K/10-Q + earnings call transcripts | 25-35h | **Jun 3** (pulled forward to ride May 30 Indian Audit momentum) |
 | C2 | Indian IT Services AI Spend Audit | TCS / Infosys / Wipro / HCL / TechM vs Accenture / Cognizant / Deloitte. AI capex, headcount, contracts. | NSE/BSE filings + earnings calls + India press | 15-20h | **Jun 16** |
 | C3 | Anthropic + OpenAI + xAI Revenue Tracker (v0.1) | Aggregate every public revenue datapoint. Quarterly recurring publication. | Leaked employee posts + customer announcements + investor letters | 10-15h (v0.1) | **Jun 23** |
 | C4 | AI Spend vs AI Revenue Index 2026 | 2x2 plot of every public AI player: disclosed spend vs disclosed revenue. Who's profitable on AI today? | 10-K segment disclosures + analyst reports | 20-25h | **Jun 30** |
