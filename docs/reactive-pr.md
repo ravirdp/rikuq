@@ -222,6 +222,14 @@ Append rows here every time you send a pitch. Tracks what wedges convert.
 When a pitch gets used and a piece is published, capture the URL + DR via Ahrefs
 and add it to `docs/backlink-tracker.md` as well.
 
+## Twitter / X — owned posts (algo warming track)
+
+Original tweets from `@ravirdp`. Separate from the reply log because owned posts and replies serve different X-algo purposes.
+
+| Date | Tweet | Purpose | Engagement |
+|---|---|---|---|
+| 2026-05-27 | https://x.com/ravirdp/status/2059587229983642082 | GEO/AEO/AIO/SGE glossary post announce (links rikuq) | tracking |
+
 ## Platform signups
 
 | Platform | Status | Notes |
