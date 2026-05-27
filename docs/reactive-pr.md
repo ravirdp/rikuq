@@ -181,6 +181,7 @@ Append rows here every time you send a pitch. Tracks what wedges convert.
 | 2026-05-26 | reddit r/AskMarketing | "What is the simplest AI Visibility tool (AEO/GEO) for my business in 2026?" | Citare | ✅ | ⏳ | https://www.reddit.com/r/AskMarketing/comments/1tnc83z/comment/onxgj4u/ | tracking |
 | 2026-05-26 | reddit r/AskMarketing | "Is Technical SEO alive after AI" | rikuq (geo-vs-seo-2026 link) | ✅ | ⏳ | https://www.reddit.com/r/AskMarketing/comments/1tnwd93/comment/onyf47p/ | tracking |
 | 2026-05-26 | reddit r/AskMarketing | "Anyone else noticing that AI Overviews are changing how people browse search results?" | rikuq (four-index-reality link) | ✅ | ⏳ | https://www.reddit.com/r/AskMarketing/comments/1tn5mgo/comment/onyfuy1/ | tracking |
+| 2026-05-27 | featured/qwoted alt (mentionmatch) | "Looking for SEO experts to share their thoughts on AI citations" (Iryna Vyderko, Adsy.com DR 72) | Citare + rikuq audit data | ✅ | ⏳ | (email pitch, no public URL until journalist publishes) | high-fit query, audit data backed | 
 | 2026-05-26 | featured.com | "Which AI tools does your team actually use every day?" | rikuq (Claude Code stack) + Citare disclosure | ✅ | ⏳ | (Featured.com — no public URL until journalist selects) | first Featured submission |
 
 When a pitch gets used and a piece is published, capture the URL + DR via Ahrefs
