@@ -16,9 +16,9 @@ Use `ravi@rikuq.com` once set up so payout notifications don't get lost.
 
 | Program | URL | Status | Commission (typical) | Notes |
 |---|---|---|---|---|
-| **Brevo** | brevo.com/affiliate | ⏳ pending review | Per paid signup + rev share | We use Brevo for rikuq newsletter |
+| **Brevo** | get.brevo.com/kemgc2nzgwfd | ✅ live (verified 2026-05-27) | Validation AC $0/NPC $100; Pilot 1-4 NPC/mo AC $5/NPC $100 | Via PartnerStack. Must refer 1+ paying client to unlock higher tiers. Wired in `affiliate.ts` as full-URL pattern. |
 | **Resend** | resend.com/insiders | ⏳ pending (Insiders application) | TBD on approval | Application has open-text fields; copy in this repo's notes |
-| **CustomGPT.ai** | customgpt.ai | ✅ enrolled | TBD | Newer addition; useful for chatbot / RAG content angle |
+| **CustomGPT.ai** | customgpt.ai (fpr=ravi52) | ✅ live (tiers confirmed 2026-05-27) | 0-25 customers: 15% / 2yr (30-day cookie); 26-55: 18%; 56+: 20% / 2yr (60-day cookie). **Bonus: $1500 for 20+ referrals in a month.** | Useful for chatbot / RAG content angle. Already wired. |
 | **DataForSEO** | dataforseo.com (partner) | ✅ enrolled | Rev share | Citare-adjacent content; we already use it inside Citare |
 | **Cal.com** | refer.cal.com | ✅ enrolled | Recurring | Open-source scheduling. Fits founder-ops / Stack content. |
 | **Tally** | tally.cello.so | ✅ enrolled | Recurring + reader discount | Form builder. Referred users get a discount, we get commission. Fits Stack content. |
