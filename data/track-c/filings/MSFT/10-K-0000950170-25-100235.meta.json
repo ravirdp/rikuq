@@ -1,0 +1,11 @@
+{
+  "ticker": "MSFT",
+  "cik": "789019",
+  "accession": "0000950170-25-100235",
+  "filingDate": "2025-07-30",
+  "primaryDoc": "msft-20250630.htm",
+  "docUrl": "https://www.sec.gov/Archives/edgar/data/789019/000095017025100235/msft-20250630.htm",
+  "htmlLength": 8158067,
+  "textLength": 346783,
+  "fetchedAt": "2026-05-27T11:17:55.227Z"
+}

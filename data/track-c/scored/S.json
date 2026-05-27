@@ -1,0 +1,35 @@
+{
+  "ticker": "S",
+  "text_length": 488389,
+  "word_count_approx": 81398,
+  "counts": {
+    "ai_terms_total": 179,
+    "vague_phrases": 15,
+    "revenue_matches": 1,
+    "capex_matches": 0,
+    "forward_capex_matches": 0,
+    "ai_risk_matches": 0,
+    "segment_matches": 0
+  },
+  "named_products": [],
+  "dqs": {
+    "specific_ai_revenue": 5,
+    "ai_capex": 0,
+    "segment_breakdown": 0,
+    "named_products": 0,
+    "forward_capex_guidance": 0,
+    "risk_factors": 0,
+    "generic_penalty": -3,
+    "total": 2
+  },
+  "tier": "Opaque",
+  "talk_show_ratio": 89.5,
+  "samples": {
+    "revenue": [
+      "AI can model, map, monitor, and link all behaviors to create rich, contextual narr"
+    ],
+    "capex": [],
+    "forward_capex": [],
+    "ai_risk": []
+  }
+}

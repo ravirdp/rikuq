@@ -1,0 +1,45 @@
+{
+  "ticker": "GOOGL",
+  "text_length": 383612,
+  "word_count_approx": 63935,
+  "counts": {
+    "ai_terms_total": 129,
+    "vague_phrases": 3,
+    "revenue_matches": 4,
+    "capex_matches": 1,
+    "forward_capex_matches": 0,
+    "ai_risk_matches": 0,
+    "segment_matches": 0
+  },
+  "named_products": [
+    {
+      "product": "Gemini",
+      "mentions": 20
+    }
+  ],
+  "dqs": {
+    "specific_ai_revenue": 5,
+    "ai_capex": 3,
+    "segment_breakdown": 0,
+    "named_products": 2,
+    "forward_capex_guidance": 0,
+    "risk_factors": 0,
+    "generic_penalty": -3,
+    "total": 7
+  },
+  "tier": "Vague",
+  "talk_show_ratio": 18.428571428571427,
+  "samples": {
+    "revenue": [
+      "AI training and inference, as well as traditional cloud computing services, we are entering into significant leasing arr",
+      "AI products and services, will continue to benefit our business and our revenue",
+      "AI solutions on our Google Cloud Platform, we may monetize differently than our historical consumer and enterprise offerings which could affect revenue",
+      "AI products and services, which may affect our revenue"
+    ],
+    "capex": [
+      "capital expenditures as we scale our technical infrastructure, in particular for AI"
+    ],
+    "forward_capex": [],
+    "ai_risk": []
+  }
+}

@@ -1,0 +1,35 @@
+{
+  "ticker": "JPM",
+  "text_length": 1406100,
+  "word_count_approx": 234350,
+  "counts": {
+    "ai_terms_total": 32,
+    "vague_phrases": 1,
+    "revenue_matches": 1,
+    "capex_matches": 0,
+    "forward_capex_matches": 0,
+    "ai_risk_matches": 0,
+    "segment_matches": 0
+  },
+  "named_products": [],
+  "dqs": {
+    "specific_ai_revenue": 5,
+    "ai_capex": 0,
+    "segment_breakdown": 0,
+    "named_products": 0,
+    "forward_capex_guidance": 0,
+    "risk_factors": 0,
+    "generic_penalty": -1,
+    "total": 4
+  },
+  "tier": "Opaque",
+  "talk_show_ratio": 8,
+  "samples": {
+    "revenue": [
+      "generative AI, it risks losing clients and market share to competitors, which could negatively impact revenue"
+    ],
+    "capex": [],
+    "forward_capex": [],
+    "ai_risk": []
+  }
+}

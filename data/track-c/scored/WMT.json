@@ -1,0 +1,37 @@
+{
+  "ticker": "WMT",
+  "text_length": 382830,
+  "word_count_approx": 63805,
+  "counts": {
+    "ai_terms_total": 25,
+    "vague_phrases": 5,
+    "revenue_matches": 1,
+    "capex_matches": 1,
+    "forward_capex_matches": 0,
+    "ai_risk_matches": 0,
+    "segment_matches": 0
+  },
+  "named_products": [],
+  "dqs": {
+    "specific_ai_revenue": 5,
+    "ai_capex": 3,
+    "segment_breakdown": 0,
+    "named_products": 0,
+    "forward_capex_guidance": 0,
+    "risk_factors": 0,
+    "generic_penalty": -3,
+    "total": 5
+  },
+  "tier": "Opaque",
+  "talk_show_ratio": 5,
+  "samples": {
+    "revenue": [
+      "AI have intensified existing cybersecurity risks by enabling faster and more automated attack techniques, lowering the barr"
+    ],
+    "capex": [
+      "artificial intelligence \"AI\"), automation, supply chain, new stores and clubs as well as remodels and other omnichannel customer initiatives, such as same day pickup and delivery; investments and capi"
+    ],
+    "forward_capex": [],
+    "ai_risk": []
+  }
+}

@@ -1,0 +1,37 @@
+{
+  "ticker": "NET",
+  "text_length": 600080,
+  "word_count_approx": 100013,
+  "counts": {
+    "ai_terms_total": 50,
+    "vague_phrases": 0,
+    "revenue_matches": 1,
+    "capex_matches": 1,
+    "forward_capex_matches": 0,
+    "ai_risk_matches": 0,
+    "segment_matches": 0
+  },
+  "named_products": [],
+  "dqs": {
+    "specific_ai_revenue": 5,
+    "ai_capex": 3,
+    "segment_breakdown": 0,
+    "named_products": 0,
+    "forward_capex_guidance": 0,
+    "risk_factors": 0,
+    "generic_penalty": 0,
+    "total": 8
+  },
+  "tier": "Vague",
+  "talk_show_ratio": 6.25,
+  "samples": {
+    "revenue": [
+      "AI) platform that enables developers to deploy and run AI models, for a total purchase cash consideration of $ 57"
+    ],
+    "capex": [
+      "artificial intelligence infrastructure and increased demand from hyperscale data center"
+    ],
+    "forward_capex": [],
+    "ai_risk": []
+  }
+}

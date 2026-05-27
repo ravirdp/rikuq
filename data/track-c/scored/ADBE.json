@@ -1,0 +1,46 @@
+{
+  "ticker": "ADBE",
+  "text_length": 370242,
+  "word_count_approx": 61707,
+  "counts": {
+    "ai_terms_total": 192,
+    "vague_phrases": 20,
+    "revenue_matches": 1,
+    "capex_matches": 0,
+    "forward_capex_matches": 0,
+    "ai_risk_matches": 1,
+    "segment_matches": 0
+  },
+  "named_products": [
+    {
+      "product": "Firefly",
+      "mentions": 37
+    },
+    {
+      "product": "Adobe Firefly",
+      "mentions": 14
+    }
+  ],
+  "dqs": {
+    "specific_ai_revenue": 5,
+    "ai_capex": 0,
+    "segment_breakdown": 0,
+    "named_products": 4,
+    "forward_capex_guidance": 0,
+    "risk_factors": 2,
+    "generic_penalty": -3,
+    "total": 8
+  },
+  "tier": "Vague",
+  "talk_show_ratio": 24,
+  "samples": {
+    "revenue": [
+      "AI Act and depending on how the EU AI Act is implemented and interpreted, we may have to adapt our business practices, contractual arr"
+    ],
+    "capex": [],
+    "forward_capex": [],
+    "ai_risk": [
+      "risks inherent in how third-party AI models used in our solutions have been developed and deployed, including situations in which the third party may lack a proper license or consent for the training "
+    ]
+  }
+}

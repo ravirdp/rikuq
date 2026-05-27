@@ -1,0 +1,40 @@
+{
+  "ticker": "ASAN",
+  "text_length": 435487,
+  "word_count_approx": 72581,
+  "counts": {
+    "ai_terms_total": 135,
+    "vague_phrases": 3,
+    "revenue_matches": 2,
+    "capex_matches": 1,
+    "forward_capex_matches": 0,
+    "ai_risk_matches": 1,
+    "segment_matches": 0
+  },
+  "named_products": [],
+  "dqs": {
+    "specific_ai_revenue": 5,
+    "ai_capex": 3,
+    "segment_breakdown": 0,
+    "named_products": 0,
+    "forward_capex_guidance": 0,
+    "risk_factors": 2,
+    "generic_penalty": -3,
+    "total": 7
+  },
+  "tier": "Vague",
+  "talk_show_ratio": 19.285714285714285,
+  "samples": {
+    "revenue": [
+      "AI initiatives, a decrease of $2",
+      "AI Act is implemented and interpreted, 25 Table of Contents we may have to adapt our business practices, contractual arr"
+    ],
+    "capex": [
+      "AI in our products, the performance of sales and marketing activities, costs associated with international expansion, additional capital expenditures"
+    ],
+    "forward_capex": [],
+    "ai_risk": [
+      "liability for copyright infringement"
+    ]
+  }
+}

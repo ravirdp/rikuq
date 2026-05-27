@@ -1,0 +1,42 @@
+{
+  "ticker": "NVDA",
+  "text_length": 359699,
+  "word_count_approx": 59950,
+  "counts": {
+    "ai_terms_total": 190,
+    "vague_phrases": 2,
+    "revenue_matches": 4,
+    "capex_matches": 4,
+    "forward_capex_matches": 0,
+    "ai_risk_matches": 0,
+    "segment_matches": 0
+  },
+  "named_products": [],
+  "dqs": {
+    "specific_ai_revenue": 5,
+    "ai_capex": 3,
+    "segment_breakdown": 0,
+    "named_products": 0,
+    "forward_capex_guidance": 0,
+    "risk_factors": 0,
+    "generic_penalty": -2,
+    "total": 6
+  },
+  "tier": "Vague",
+  "talk_show_ratio": 31.666666666666668,
+  "samples": {
+    "revenue": [
+      "AI infrastructure by our customers and partners is crucial, and any shortage of these and other necessary resources could impact our future revenue",
+      "AI models on our reported revenue",
+      "AI infrastructure by our customers and partners is crucial, and any shortage of these or other necessary resources could impact our future revenue",
+      "AI research and deployment company contributed to a meaningful amount of our revenue"
+    ],
+    "capex": [
+      "AI model makers, and enterprises use our data center",
+      "AI and HPC workloads, the data center",
+      "AI, we provide an end-to-end platform spanning data center"
+    ],
+    "forward_capex": [],
+    "ai_risk": []
+  }
+}

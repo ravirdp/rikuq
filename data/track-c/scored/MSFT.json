@@ -1,0 +1,44 @@
+{
+  "ticker": "MSFT",
+  "text_length": 346783,
+  "word_count_approx": 57797,
+  "counts": {
+    "ai_terms_total": 117,
+    "vague_phrases": 6,
+    "revenue_matches": 3,
+    "capex_matches": 1,
+    "forward_capex_matches": 0,
+    "ai_risk_matches": 0,
+    "segment_matches": 0
+  },
+  "named_products": [
+    {
+      "product": "Copilot",
+      "mentions": 11
+    }
+  ],
+  "dqs": {
+    "specific_ai_revenue": 5,
+    "ai_capex": 3,
+    "segment_breakdown": 0,
+    "named_products": 2,
+    "forward_capex_guidance": 0,
+    "risk_factors": 0,
+    "generic_penalty": -3,
+    "total": 7
+  },
+  "tier": "Vague",
+  "talk_show_ratio": 16.714285714285715,
+  "samples": {
+    "revenue": [
+      "AI models that are open, and earning revenue",
+      "AI services on the growing arr",
+      "AI services, significant business transactions, warr"
+    ],
+    "capex": [
+      "capital expenditures to support growth in our cloud offerings and our investments in AI"
+    ],
+    "forward_capex": [],
+    "ai_risk": []
+  }
+}

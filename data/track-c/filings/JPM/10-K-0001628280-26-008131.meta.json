@@ -1,0 +1,11 @@
+{
+  "ticker": "JPM",
+  "cik": "19617",
+  "accession": "0001628280-26-008131",
+  "filingDate": "2026-02-13",
+  "primaryDoc": "jpm-20251231.htm",
+  "docUrl": "https://www.sec.gov/Archives/edgar/data/19617/000162828026008131/jpm-20251231.htm",
+  "htmlLength": 12927325,
+  "textLength": 1406100,
+  "fetchedAt": "2026-05-27T11:20:46.870Z"
+}

@@ -1,0 +1,42 @@
+{
+  "ticker": "META",
+  "text_length": 534942,
+  "word_count_approx": 89157,
+  "counts": {
+    "ai_terms_total": 165,
+    "vague_phrases": 2,
+    "revenue_matches": 1,
+    "capex_matches": 2,
+    "forward_capex_matches": 0,
+    "ai_risk_matches": 3,
+    "segment_matches": 0
+  },
+  "named_products": [],
+  "dqs": {
+    "specific_ai_revenue": 5,
+    "ai_capex": 3,
+    "segment_breakdown": 0,
+    "named_products": 0,
+    "forward_capex_guidance": 0,
+    "risk_factors": 2,
+    "generic_penalty": -2,
+    "total": 8
+  },
+  "tier": "Vague",
+  "talk_show_ratio": 20.625,
+  "samples": {
+    "revenue": [
+      "AI for $ 13"
+    ],
+    "capex": [
+      "capital expenditures, that we will incur to grow and expand our business and to remain competitive, including costs related to our data centers and technical infrastructure as well as other costs rela",
+      "capital expenditures of approximately $115 billion to $135 billion in 2026 to support our AI"
+    ],
+    "forward_capex": [],
+    "ai_risk": [
+      "liability, cybersecurity, export controls, consumer protection, and data protection laws to AI and/or are considering general legal frameworks on AI (such as the EU AI Act",
+      "liability for copyright infringement",
+      "risks and vulnerabilities, including prompt injection"
+    ]
+  }
+}

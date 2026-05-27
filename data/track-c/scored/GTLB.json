@@ -1,0 +1,38 @@
+{
+  "ticker": "GTLB",
+  "text_length": 444759,
+  "word_count_approx": 74127,
+  "counts": {
+    "ai_terms_total": 93,
+    "vague_phrases": 9,
+    "revenue_matches": 0,
+    "capex_matches": 0,
+    "forward_capex_matches": 0,
+    "ai_risk_matches": 0,
+    "segment_matches": 0
+  },
+  "named_products": [
+    {
+      "product": "Duo",
+      "mentions": 15
+    }
+  ],
+  "dqs": {
+    "specific_ai_revenue": 0,
+    "ai_capex": 0,
+    "segment_breakdown": 0,
+    "named_products": 2,
+    "forward_capex_guidance": 0,
+    "risk_factors": 0,
+    "generic_penalty": -3,
+    "total": -1
+  },
+  "tier": "Misleading",
+  "talk_show_ratio": 186,
+  "samples": {
+    "revenue": [],
+    "capex": [],
+    "forward_capex": [],
+    "ai_risk": []
+  }
+}
