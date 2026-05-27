@@ -104,6 +104,18 @@
   .chart-container { margin: 6px 0 12px 0; padding: 10px 0; }
   .chart-container svg { display: block; max-width: 100%; height: auto; }
 
+  /* brand-card grid for per-brand index */
+  .brand-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+  .brand-card-pdf { background: white; border: 1px solid #E5E7EB; border-radius: 9px; padding: 11px 13px; box-shadow: 0 1px 2px rgba(0,0,0,0.03); }
+  .brand-card-pdf .bc-head { display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 6px; padding-bottom: 6px; border-bottom: 1px solid #F3F4F6; }
+  .brand-card-pdf .bc-name { font-family: 'Playfair Display', serif; font-size: 13pt; font-weight: 600; color: #0F172A; letter-spacing: -0.01em; }
+  .brand-card-pdf .bc-vertical { font-family: 'JetBrains Mono', monospace; font-size: 7pt; color: #6B7280; text-transform: uppercase; letter-spacing: 0.1em; font-weight: 700; }
+  .brand-card-pdf .bc-stats { display: flex; gap: 14px; margin-bottom: 7px; }
+  .brand-card-pdf .bc-stat { font-family: 'JetBrains Mono', monospace; font-size: 8pt; color: #4B5563; }
+  .brand-card-pdf .bc-stat strong { color: #b45309; font-weight: 700; font-size: 10pt; font-family: 'Playfair Display', serif; }
+  .brand-card-pdf .bc-finding { font-size: 8.5pt; color: #4B5563; line-height: 1.5; }
+  .brand-card-pdf .bc-finding strong { color: #0F172A; }
+
   /* per-action card */
   .action-card { background: white; border: 1px solid #E5E7EB; border-radius: 11px; padding: 14px 18px; box-shadow: 0 1px 3px rgba(0,0,0,0.04); margin-bottom: 10px; display: flex; gap: 16px; align-items: flex-start; }
   .action-num { font-family: 'Playfair Display', serif; font-size: 26pt; font-weight: 600; color: #f5b942; line-height: 1; letter-spacing: -0.02em; width: 38px; flex-shrink: 0; padding-top: 3px; }
@@ -369,6 +381,169 @@
   <div class="footer">
     <div class="left"><strong>Citare</strong> · {{FOOTER_TAGLINE}}</div>
     <div>Page 8 · <span class="page-ref">Finding 5</span></div>
+  </div>
+</div>
+
+<!-- ─── METHODOLOGY LIMITATIONS ─────────────────────────── -->
+<div class="page">
+  <div class="brand-strip">
+    <div class="brand-mark"><div class="brand-icon">C</div><div class="brand-text">Citare<span style="color:#f5b942">.</span></div></div>
+    <div class="header-meta"><span class="meta-pill">LIMITATIONS</span>{{MONTH_YEAR}}</div>
+  </div>
+
+  <div class="section-h"><div class="section-h-num">02</div><div class="section-h-text">Methodology limitations + how to read this data</div></div>
+
+  <div class="prose">
+    <p><strong>{{LIMITATION_1_TITLE}}</strong> {{LIMITATION_1_BODY}}</p>
+    <p><strong>{{LIMITATION_2_TITLE}}</strong> {{LIMITATION_2_BODY}}</p>
+    <p><strong>{{LIMITATION_3_TITLE}}</strong> {{LIMITATION_3_BODY}}</p>
+    <p><strong>{{LIMITATION_4_TITLE}}</strong> {{LIMITATION_4_BODY}}</p>
+  </div>
+
+  <div class="footer">
+    <div class="left"><strong>Citare</strong> · {{FOOTER_TAGLINE}}</div>
+    <div>Page 10 · <span class="page-ref">Limitations</span></div>
+  </div>
+</div>
+
+<!-- ─── PER-VERTICAL BREAKDOWNS (3 pages, 1 vertical per page) ─── -->
+<div class="page">
+  <div class="brand-strip">
+    <div class="brand-mark"><div class="brand-icon">C</div><div class="brand-text">Citare<span style="color:#f5b942">.</span></div></div>
+    <div class="header-meta"><span class="meta-pill">VERTICAL · 01 / 03</span>{{MONTH_YEAR}}</div>
+  </div>
+
+  <div class="hero-eyebrow">Vertical breakdown · {{VERTICAL_1_NAME}}</div>
+  <div class="hero-title">{{VERTICAL_1_TITLE}}</div>
+
+  <div class="stat-block">
+    <div class="stat-number">{{VERTICAL_1_STAT}}</div>
+    <div class="stat-content">
+      <div class="stat-label">{{VERTICAL_1_STAT_LABEL}}</div>
+      <div class="stat-headline">{{VERTICAL_1_HEADLINE}}</div>
+      <div class="stat-detail">{{VERTICAL_1_BRANDS_LIST}}</div>
+    </div>
+  </div>
+
+  <div class="prose">
+    <p>{{VERTICAL_1_BODY_1}}</p>
+    <p>{{VERTICAL_1_BODY_2}}</p>
+  </div>
+
+  <div class="footer">
+    <div class="left"><strong>Citare</strong> · {{FOOTER_TAGLINE}}</div>
+    <div>Page 11 · <span class="page-ref">{{VERTICAL_1_NAME}}</span></div>
+  </div>
+</div>
+
+<div class="page">
+  <div class="brand-strip">
+    <div class="brand-mark"><div class="brand-icon">C</div><div class="brand-text">Citare<span style="color:#f5b942">.</span></div></div>
+    <div class="header-meta"><span class="meta-pill">VERTICAL · 02 / 03</span>{{MONTH_YEAR}}</div>
+  </div>
+
+  <div class="hero-eyebrow">Vertical breakdown · {{VERTICAL_2_NAME}}</div>
+  <div class="hero-title">{{VERTICAL_2_TITLE}}</div>
+
+  <div class="stat-block">
+    <div class="stat-number">{{VERTICAL_2_STAT}}</div>
+    <div class="stat-content">
+      <div class="stat-label">{{VERTICAL_2_STAT_LABEL}}</div>
+      <div class="stat-headline">{{VERTICAL_2_HEADLINE}}</div>
+      <div class="stat-detail">{{VERTICAL_2_BRANDS_LIST}}</div>
+    </div>
+  </div>
+
+  <div class="prose">
+    <p>{{VERTICAL_2_BODY_1}}</p>
+    <p>{{VERTICAL_2_BODY_2}}</p>
+  </div>
+
+  <div class="footer">
+    <div class="left"><strong>Citare</strong> · {{FOOTER_TAGLINE}}</div>
+    <div>Page 12 · <span class="page-ref">{{VERTICAL_2_NAME}}</span></div>
+  </div>
+</div>
+
+<div class="page">
+  <div class="brand-strip">
+    <div class="brand-mark"><div class="brand-icon">C</div><div class="brand-text">Citare<span style="color:#f5b942">.</span></div></div>
+    <div class="header-meta"><span class="meta-pill">VERTICAL · 03 / 03</span>{{MONTH_YEAR}}</div>
+  </div>
+
+  <div class="hero-eyebrow">Vertical breakdown · {{VERTICAL_3_NAME}}</div>
+  <div class="hero-title">{{VERTICAL_3_TITLE}}</div>
+
+  <div class="stat-block">
+    <div class="stat-number">{{VERTICAL_3_STAT}}</div>
+    <div class="stat-content">
+      <div class="stat-label">{{VERTICAL_3_STAT_LABEL}}</div>
+      <div class="stat-headline">{{VERTICAL_3_HEADLINE}}</div>
+      <div class="stat-detail">{{VERTICAL_3_BRANDS_LIST}}</div>
+    </div>
+  </div>
+
+  <div class="prose">
+    <p>{{VERTICAL_3_BODY_1}}</p>
+    <p>{{VERTICAL_3_BODY_2}}</p>
+  </div>
+
+  <div class="footer">
+    <div class="left"><strong>Citare</strong> · {{FOOTER_TAGLINE}}</div>
+    <div>Page 13 · <span class="page-ref">{{VERTICAL_3_NAME}}</span></div>
+  </div>
+</div>
+
+<!-- ─── PER-BRAND INDEX (4 pages, brand cards) ─────────────── -->
+<div class="page">
+  <div class="brand-strip">
+    <div class="brand-mark"><div class="brand-icon">C</div><div class="brand-text">Citare<span style="color:#f5b942">.</span></div></div>
+    <div class="header-meta"><span class="meta-pill">PER-BRAND INDEX</span>{{MONTH_YEAR}}</div>
+  </div>
+
+  <div class="section-h"><div class="section-h-num">03</div><div class="section-h-text">Per-brand findings · all 25 brands audited</div></div>
+
+  <div class="prose" style="margin-bottom:14px;">
+    <p>Each card shows surface rate (cells where the brand appeared / total cells), per-platform breakdown (AIO / ChatGPT), top competitor by mention count, and the most actionable finding for that brand. Sample audit window: 24-26 May 2026.</p>
+  </div>
+
+  {{BRAND_CARDS_PAGE_1}}
+
+  <div class="footer">
+    <div class="left"><strong>Citare</strong> · {{FOOTER_TAGLINE}}</div>
+    <div>Page 14 · <span class="page-ref">Brands 1-8</span></div>
+  </div>
+</div>
+
+<div class="page">
+  <div class="brand-strip">
+    <div class="brand-mark"><div class="brand-icon">C</div><div class="brand-text">Citare<span style="color:#f5b942">.</span></div></div>
+    <div class="header-meta"><span class="meta-pill">PER-BRAND INDEX</span>{{MONTH_YEAR}}</div>
+  </div>
+
+  <div class="section-h"><div class="section-h-num">03</div><div class="section-h-text">Per-brand findings · continued</div></div>
+
+  {{BRAND_CARDS_PAGE_2}}
+
+  <div class="footer">
+    <div class="left"><strong>Citare</strong> · {{FOOTER_TAGLINE}}</div>
+    <div>Page 15 · <span class="page-ref">Brands 9-16</span></div>
+  </div>
+</div>
+
+<div class="page">
+  <div class="brand-strip">
+    <div class="brand-mark"><div class="brand-icon">C</div><div class="brand-text">Citare<span style="color:#f5b942">.</span></div></div>
+    <div class="header-meta"><span class="meta-pill">PER-BRAND INDEX</span>{{MONTH_YEAR}}</div>
+  </div>
+
+  <div class="section-h"><div class="section-h-num">03</div><div class="section-h-text">Per-brand findings · continued</div></div>
+
+  {{BRAND_CARDS_PAGE_3}}
+
+  <div class="footer">
+    <div class="left"><strong>Citare</strong> · {{FOOTER_TAGLINE}}</div>
+    <div>Page 16 · <span class="page-ref">Brands 17-25</span></div>
   </div>
 </div>
 

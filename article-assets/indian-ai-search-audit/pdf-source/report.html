@@ -104,6 +104,18 @@
   .chart-container { margin: 6px 0 12px 0; padding: 10px 0; }
   .chart-container svg { display: block; max-width: 100%; height: auto; }
 
+  /* brand-card grid for per-brand index */
+  .brand-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+  .brand-card-pdf { background: white; border: 1px solid #E5E7EB; border-radius: 9px; padding: 11px 13px; box-shadow: 0 1px 2px rgba(0,0,0,0.03); }
+  .brand-card-pdf .bc-head { display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 6px; padding-bottom: 6px; border-bottom: 1px solid #F3F4F6; }
+  .brand-card-pdf .bc-name { font-family: 'Playfair Display', serif; font-size: 13pt; font-weight: 600; color: #0F172A; letter-spacing: -0.01em; }
+  .brand-card-pdf .bc-vertical { font-family: 'JetBrains Mono', monospace; font-size: 7pt; color: #6B7280; text-transform: uppercase; letter-spacing: 0.1em; font-weight: 700; }
+  .brand-card-pdf .bc-stats { display: flex; gap: 14px; margin-bottom: 7px; }
+  .brand-card-pdf .bc-stat { font-family: 'JetBrains Mono', monospace; font-size: 8pt; color: #4B5563; }
+  .brand-card-pdf .bc-stat strong { color: #b45309; font-weight: 700; font-size: 10pt; font-family: 'Playfair Display', serif; }
+  .brand-card-pdf .bc-finding { font-size: 8.5pt; color: #4B5563; line-height: 1.5; }
+  .brand-card-pdf .bc-finding strong { color: #0F172A; }
+
   /* per-action card */
   .action-card { background: white; border: 1px solid #E5E7EB; border-radius: 11px; padding: 14px 18px; box-shadow: 0 1px 3px rgba(0,0,0,0.04); margin-bottom: 10px; display: flex; gap: 16px; align-items: flex-start; }
   .action-num { font-family: 'Playfair Display', serif; font-size: 26pt; font-weight: 600; color: #f5b942; line-height: 1; letter-spacing: -0.02em; width: 38px; flex-shrink: 0; padding-top: 3px; }
@@ -803,6 +815,469 @@
   <div class="footer">
     <div class="left"><strong>Citare</strong> · AI search visibility, measured across five platforms with real browser sessions</div>
     <div>Page 8 · <span class="page-ref">Finding 5</span></div>
+  </div>
+</div>
+
+<!-- ─── METHODOLOGY LIMITATIONS ─────────────────────────── -->
+<div class="page">
+  <div class="brand-strip">
+    <div class="brand-mark"><div class="brand-icon">C</div><div class="brand-text">Citare<span style="color:#f5b942">.</span></div></div>
+    <div class="header-meta"><span class="meta-pill">LIMITATIONS</span>May 2026</div>
+  </div>
+
+  <div class="section-h"><div class="section-h-num">02</div><div class="section-h-text">Methodology limitations + how to read this data</div></div>
+
+  <div class="prose">
+    <p><strong>Sample is Indian-skewed.</strong> All 25 brands are Indian-headquartered or India-primary. The findings about citation graphs (Instagram dominance, aggregator dominance, listicle dominance) likely hold elsewhere directionally, but the specific domains will differ. US queries may favor different aggregators (Yelp, G2, Capterra); UK queries different again. We don't claim global findings from this sample.</p>
+    <p><strong>AIO body text was not captured.</strong> AIO surface scoring is based on cited URLs only. If a brand is mentioned in the AIO summary text but not cited, our methodology marks it as not-surfaced. This understates AIO surface rates marginally. We are addressing this in future audits via OCR + named-entity extraction on the AIO screenshot capture.</p>
+    <p><strong>The audit window is 72 hours.</strong> AI search retrieval shifts weekly. Numbers in this report are accurate as of 24-26 May 2026. We will republish updates quarterly to track drift. A brand's surface rate in any single audit window is a snapshot, not a trend — readers should treat per-brand numbers as directional rather than absolute.</p>
+    <p><strong>Sample is curated for breadth, not statistical representativeness.</strong> 25 brands across 16 verticals is enough for vertical-level patterns but too small for strict statistical claims about any single vertical (most verticals have only 1-3 brands in the sample). Cross-vertical findings (top-cited domains, branded vs unbranded gap, AIO/ChatGPT asymmetry) are robust at this sample size. Single-vertical conclusions should be read as illustrative.</p>
+  </div>
+
+  <div class="footer">
+    <div class="left"><strong>Citare</strong> · AI search visibility, measured across five platforms with real browser sessions</div>
+    <div>Page 10 · <span class="page-ref">Limitations</span></div>
+  </div>
+</div>
+
+<!-- ─── PER-VERTICAL BREAKDOWNS (3 pages, 1 vertical per page) ─── -->
+<div class="page">
+  <div class="brand-strip">
+    <div class="brand-mark"><div class="brand-icon">C</div><div class="brand-text">Citare<span style="color:#f5b942">.</span></div></div>
+    <div class="header-meta"><span class="meta-pill">VERTICAL · 01 / 03</span>May 2026</div>
+  </div>
+
+  <div class="hero-eyebrow">Vertical breakdown · INDIAN FINTECH</div>
+  <div class="hero-title">Indian fintech: <em>aggregators rule, app store reviews carry weight.</em></div>
+
+  <div class="stat-block">
+    <div class="stat-number">5</div>
+    <div class="stat-content">
+      <div class="stat-label">INDIAN FINTECH BRANDS AUDITED IN COHORT</div>
+      <div class="stat-headline">play.google.com tops the cited-domain list for fintech queries.</div>
+      <div class="stat-detail">Acko (40% surface), Slice (25%), Jar (50%), Stable Money (50%), IndMoney (65%). Top competitor across cohort: HDFC ERGO + Groww + PhonePe + Paisabazaar (different competitor per sub-vertical).</div>
+    </div>
+  </div>
+
+  <div class="prose">
+    <p>Indian fintech AI search citations are dominated by Google Play Store review pages (7 citations), Paisabazaar (7), and brand sites of category leaders (stablemoney.in 6, plus older entrants). The pattern is consistent: AI engines treat fintech app stores as a primary trust signal — likely because Play Store reviews are the highest-volume, most structured user-generated content available in the category.</p>
+    <p><strong>Implication for fintech brands:</strong> if your Play Store presence is thin (low review count, no responses to user complaints, outdated app description), you're losing AI search visibility before any blog content can rescue you. <em>Play Store optimization is the highest-leverage GEO move for Indian fintech in 2026.</em> The brand sites that DO surface (stablemoney.in, pristyncare.com) have one thing in common: they invest heavily in long-form comparison content that's been indexed for 12+ months.</p>
+  </div>
+
+  <div class="footer">
+    <div class="left"><strong>Citare</strong> · AI search visibility, measured across five platforms with real browser sessions</div>
+    <div>Page 11 · <span class="page-ref">INDIAN FINTECH</span></div>
+  </div>
+</div>
+
+<div class="page">
+  <div class="brand-strip">
+    <div class="brand-mark"><div class="brand-icon">C</div><div class="brand-text">Citare<span style="color:#f5b942">.</span></div></div>
+    <div class="header-meta"><span class="meta-pill">VERTICAL · 02 / 03</span>May 2026</div>
+  </div>
+
+  <div class="hero-eyebrow">Vertical breakdown · INDIAN D2C BEAUTY</div>
+  <div class="hero-title">D2C beauty: <em>Instagram is the primary AI citation surface.</em></div>
+
+  <div class="stat-block">
+    <div class="stat-number">4</div>
+    <div class="stat-content">
+      <div class="stat-label">INDIAN D2C BEAUTY BRANDS AUDITED IN COHORT</div>
+      <div class="stat-headline">Instagram (10 citations) leads. Brand sites trail in the 5-7 range.</div>
+      <div class="stat-detail">Sugar Cosmetics (40% surface — first brand site in our top-cited list at position 12), Forest Essentials (70% — highest surface in entire corpus), Pilgrim (50%), Foxtale (35%).</div>
+    </div>
+  </div>
+
+  <div class="prose">
+    <p>Beauty is the vertical where the Instagram-dominance finding hits hardest. Instagram leads the citation graph with 10 mentions; brand sites (sugarcosmetics.com 7, kamaayurveda.in 7, forestessentialsindia.com 5) follow but in aggregate get fewer citations than Instagram alone. YouTube reviews (4 citations) and indie blog thedeconstruct.in (6) round out the surface that AI engines reach for on beauty buyer queries.</p>
+    <p><strong>The hero-product trap:</strong> Forest Essentials shows it cleanly. The brand has the highest surface rate in our entire corpus (70%) — but on Kumkumadi-specific queries (their flagship hero product), Forest Essentials is invisible. Kama Ayurveda owns those cells entirely. <em>Brand-level AI search visibility doesn't transfer to product-level AI search visibility.</em> Beauty brands need to audit hero-product queries separately from category queries.</p>
+  </div>
+
+  <div class="footer">
+    <div class="left"><strong>Citare</strong> · AI search visibility, measured across five platforms with real browser sessions</div>
+    <div>Page 12 · <span class="page-ref">INDIAN D2C BEAUTY</span></div>
+  </div>
+</div>
+
+<div class="page">
+  <div class="brand-strip">
+    <div class="brand-mark"><div class="brand-icon">C</div><div class="brand-text">Citare<span style="color:#f5b942">.</span></div></div>
+    <div class="header-meta"><span class="meta-pill">VERTICAL · 03 / 03</span>May 2026</div>
+  </div>
+
+  <div class="hero-eyebrow">Vertical breakdown · INDIAN HEALTHCARE</div>
+  <div class="hero-title">Healthcare: <em>Practo wins, but per-brand divergence is extreme.</em></div>
+
+  <div class="stat-block">
+    <div class="stat-number">3</div>
+    <div class="stat-content">
+      <div class="stat-label">INDIAN HEALTHCARE BRANDS AUDITED IN COHORT</div>
+      <div class="stat-headline">Pristyn Care surfaces 80% on AIO, 30% on ChatGPT — same brand, same queries.</div>
+      <div class="stat-detail">Pristyn Care (55% — biggest AIO/ChatGPT asymmetry in corpus), VSH Hospital (35%), Allo Health (60%). Practo (11 citations) leads the category citation graph; Apollo + Manipal dominate ChatGPT body text.</div>
+    </div>
+  </div>
+
+  <div class="prose">
+    <p>Healthcare is the vertical where AIO and ChatGPT diverge most sharply at the brand level. Pristyn Care surfaces in 80% of AIO cells (rich citation graph via healthcare directory listings + pristyncare.com URLs) but only 30% of ChatGPT cells, where the body text defaults to legacy hospital chains. Practo dominates the per-vertical citation graph with 11 mentions across 20 cells — more than any other domain in healthcare.</p>
+    <p><strong>The brand-rename indexing finding:</strong> VSH Hospital (rebranded from Mallya 4 years ago) shows that <em>ChatGPT has cleanly indexed the rename</em>, surfacing current contact details and routing old-Mallya searches to VSH. AIO is partially there but lags on operating-status queries (still citing legacy Mallya-name directories). For any brand that has rebranded, this matters: <em>different AI platforms index brand transitions at different speeds.</em></p>
+  </div>
+
+  <div class="footer">
+    <div class="left"><strong>Citare</strong> · AI search visibility, measured across five platforms with real browser sessions</div>
+    <div>Page 13 · <span class="page-ref">INDIAN HEALTHCARE</span></div>
+  </div>
+</div>
+
+<!-- ─── PER-BRAND INDEX (4 pages, brand cards) ─────────────── -->
+<div class="page">
+  <div class="brand-strip">
+    <div class="brand-mark"><div class="brand-icon">C</div><div class="brand-text">Citare<span style="color:#f5b942">.</span></div></div>
+    <div class="header-meta"><span class="meta-pill">PER-BRAND INDEX</span>May 2026</div>
+  </div>
+
+  <div class="section-h"><div class="section-h-num">03</div><div class="section-h-text">Per-brand findings · all 25 brands audited</div></div>
+
+  <div class="prose" style="margin-bottom:14px;">
+    <p>Each card shows surface rate (cells where the brand appeared / total cells), per-platform breakdown (AIO / ChatGPT), top competitor by mention count, and the most actionable finding for that brand. Sample audit window: 24-26 May 2026.</p>
+  </div>
+
+  <div class="brand-grid"><div class="brand-card-pdf">
+    <div class="bc-head">
+      <div class="bc-name">Forest Essentials</div>
+      <div class="bc-vertical">beauty</div>
+    </div>
+    <div class="bc-stats">
+      <div class="bc-stat">Surface <strong>70%</strong></div>
+      <div class="bc-stat">AIO <strong>70%</strong></div>
+      <div class="bc-stat">ChatGPT <strong>70%</strong></div>
+      <div class="bc-stat" style="margin-left:auto;">Top: <strong>Kama Ayurveda</strong></div>
+    </div>
+    <div class="bc-finding">Highest surface rate in our corpus. But absent from product-specific Kumkumadi queries — Kama Ayurveda owns those.</div>
+  </div><div class="brand-card-pdf">
+    <div class="bc-head">
+      <div class="bc-name">Clickpost</div>
+      <div class="bc-vertical">logistics-saas</div>
+    </div>
+    <div class="bc-stats">
+      <div class="bc-stat">Surface <strong>65%</strong></div>
+      <div class="bc-stat">AIO <strong>40%</strong></div>
+      <div class="bc-stat">ChatGPT <strong>90%</strong></div>
+      <div class="bc-stat" style="margin-left:auto;">Top: <strong>AfterShip</strong></div>
+    </div>
+    <div class="bc-finding">50-point AIO/ChatGPT asymmetry (ChatGPT-favored). AfterShip is the top-mentioned competitor (8 mentions).</div>
+  </div><div class="brand-card-pdf">
+    <div class="bc-head">
+      <div class="bc-name">IndMoney</div>
+      <div class="bc-vertical">wealthtech</div>
+    </div>
+    <div class="bc-stats">
+      <div class="bc-stat">Surface <strong>65%</strong></div>
+      <div class="bc-stat">AIO <strong>60%</strong></div>
+      <div class="bc-stat">ChatGPT <strong>70%</strong></div>
+      <div class="bc-stat" style="margin-left:auto;">Top: <strong>Groww</strong></div>
+    </div>
+    <div class="bc-finding">Holds parity in unbranded "best Indian investing app" cells. Wins outright on US stocks queries.</div>
+  </div><div class="brand-card-pdf">
+    <div class="bc-head">
+      <div class="bc-name">Treebo</div>
+      <div class="bc-vertical">hospitality</div>
+    </div>
+    <div class="bc-stats">
+      <div class="bc-stat">Surface <strong>65%</strong></div>
+      <div class="bc-stat">AIO <strong>50%</strong></div>
+      <div class="bc-stat">ChatGPT <strong>80%</strong></div>
+      <div class="bc-stat" style="margin-left:auto;">Top: <strong>FabHotels</strong></div>
+    </div>
+    <div class="bc-finding">Strongest brand performer in budget hospitality. Wins on tripadvisor.in citation chains + brand-named queries.</div>
+  </div><div class="brand-card-pdf">
+    <div class="bc-head">
+      <div class="bc-name">Souled Store</div>
+      <div class="bc-vertical">d2c-apparel</div>
+    </div>
+    <div class="bc-stats">
+      <div class="bc-stat">Surface <strong>60%</strong></div>
+      <div class="bc-stat">AIO <strong>60%</strong></div>
+      <div class="bc-stat">ChatGPT <strong>60%</strong></div>
+      <div class="bc-stat" style="margin-left:auto;">Top: <strong>Bewakoof</strong></div>
+    </div>
+    <div class="bc-finding">AI engines cite Souled Store via jimmyluxury.in listicles (4 times) rather than the brand site directly.</div>
+  </div><div class="brand-card-pdf">
+    <div class="bc-head">
+      <div class="bc-name">Allo Health</div>
+      <div class="bc-vertical">healthcare</div>
+    </div>
+    <div class="bc-stats">
+      <div class="bc-stat">Surface <strong>60%</strong></div>
+      <div class="bc-stat">AIO <strong>60%</strong></div>
+      <div class="bc-stat">ChatGPT <strong>60%</strong></div>
+      <div class="bc-stat" style="margin-left:auto;">Top: <strong>Bold Care</strong></div>
+    </div>
+    <div class="bc-finding">Series A startup matching established brands. Citations from Reddit, YouTube, category aggregators.</div>
+  </div><div class="brand-card-pdf">
+    <div class="bc-head">
+      <div class="bc-name">Pristyn Care</div>
+      <div class="bc-vertical">healthcare</div>
+    </div>
+    <div class="bc-stats">
+      <div class="bc-stat">Surface <strong>55%</strong></div>
+      <div class="bc-stat">AIO <strong>80%</strong></div>
+      <div class="bc-stat">ChatGPT <strong>30%</strong></div>
+      <div class="bc-stat" style="margin-left:auto;">Top: <strong>Apollo Hospitals</strong></div>
+    </div>
+    <div class="bc-finding">Largest AIO-favored asymmetry in corpus (50pt). AIO loves Pristyn; ChatGPT defaults to legacy hospital chains.</div>
+  </div><div class="brand-card-pdf">
+    <div class="bc-head">
+      <div class="bc-name">Pilgrim</div>
+      <div class="bc-vertical">beauty</div>
+    </div>
+    <div class="bc-stats">
+      <div class="bc-stat">Surface <strong>50%</strong></div>
+      <div class="bc-stat">AIO <strong>40%</strong></div>
+      <div class="bc-stat">ChatGPT <strong>60%</strong></div>
+      <div class="bc-stat" style="margin-left:auto;">Top: <strong>Mamaearth</strong></div>
+    </div>
+    <div class="bc-finding">Wins "Pilgrim vs Mamaearth" cells. Loses unbranded "best Indian beauty brand" queries to Forest Essentials.</div>
+  </div><div class="brand-card-pdf">
+    <div class="bc-head">
+      <div class="bc-name">Snitch</div>
+      <div class="bc-vertical">d2c-apparel</div>
+    </div>
+    <div class="bc-stats">
+      <div class="bc-stat">Surface <strong>50%</strong></div>
+      <div class="bc-stat">AIO <strong>10%</strong></div>
+      <div class="bc-stat">ChatGPT <strong>90%</strong></div>
+      <div class="bc-stat" style="margin-left:auto;">Top: <strong>Souled Store</strong></div>
+    </div>
+    <div class="bc-finding">Largest platform asymmetry in entire corpus (80pt). ChatGPT cites Snitch via jimmyluxury.in; AIO ignores.</div>
+  </div></div>
+
+  <div class="footer">
+    <div class="left"><strong>Citare</strong> · AI search visibility, measured across five platforms with real browser sessions</div>
+    <div>Page 14 · <span class="page-ref">Brands 1-8</span></div>
+  </div>
+</div>
+
+<div class="page">
+  <div class="brand-strip">
+    <div class="brand-mark"><div class="brand-icon">C</div><div class="brand-text">Citare<span style="color:#f5b942">.</span></div></div>
+    <div class="header-meta"><span class="meta-pill">PER-BRAND INDEX</span>May 2026</div>
+  </div>
+
+  <div class="section-h"><div class="section-h-num">03</div><div class="section-h-text">Per-brand findings · continued</div></div>
+
+  <div class="brand-grid"><div class="brand-card-pdf">
+    <div class="bc-head">
+      <div class="bc-name">Jar</div>
+      <div class="bc-vertical">fintech</div>
+    </div>
+    <div class="bc-stats">
+      <div class="bc-stat">Surface <strong>50%</strong></div>
+      <div class="bc-stat">AIO <strong>30%</strong></div>
+      <div class="bc-stat">ChatGPT <strong>70%</strong></div>
+      <div class="bc-stat" style="margin-left:auto;">Top: <strong>PhonePe</strong></div>
+    </div>
+    <div class="bc-finding">Wins brand-named comparison cells. Loses unbranded "best digital gold app India" to PhonePe + Paytm.</div>
+  </div><div class="brand-card-pdf">
+    <div class="bc-head">
+      <div class="bc-name">Stable Money</div>
+      <div class="bc-vertical">fintech</div>
+    </div>
+    <div class="bc-stats">
+      <div class="bc-stat">Surface <strong>50%</strong></div>
+      <div class="bc-stat">AIO <strong>60%</strong></div>
+      <div class="bc-stat">ChatGPT <strong>40%</strong></div>
+      <div class="bc-stat" style="margin-left:auto;">Top: <strong>Paisabazaar</strong></div>
+    </div>
+    <div class="bc-finding">AIO-favored; stablemoney.in domain is #19 in most-cited list. Paisabazaar dominates fintech content presence.</div>
+  </div><div class="brand-card-pdf">
+    <div class="bc-head">
+      <div class="bc-name">Square Yards</div>
+      <div class="bc-vertical">real-estate</div>
+    </div>
+    <div class="bc-stats">
+      <div class="bc-stat">Surface <strong>50%</strong></div>
+      <div class="bc-stat">AIO <strong>40%</strong></div>
+      <div class="bc-stat">ChatGPT <strong>60%</strong></div>
+      <div class="bc-stat" style="margin-left:auto;">Top: <strong>NoBroker</strong></div>
+    </div>
+    <div class="bc-finding">Aggregator citation moat (MagicBricks, NoBroker, 99acres) dominates the category. Brand sites barely register.</div>
+  </div><div class="brand-card-pdf">
+    <div class="bc-head">
+      <div class="bc-name">Acko</div>
+      <div class="bc-vertical">insurtech</div>
+    </div>
+    <div class="bc-stats">
+      <div class="bc-stat">Surface <strong>40%</strong></div>
+      <div class="bc-stat">AIO <strong>30%</strong></div>
+      <div class="bc-stat">ChatGPT <strong>50%</strong></div>
+      <div class="bc-stat" style="margin-left:auto;">Top: <strong>HDFC ERGO</strong></div>
+    </div>
+    <div class="bc-finding">Strong on brand-named comparisons. Flagship Platinum Health product absent from unforced queries.</div>
+  </div><div class="brand-card-pdf">
+    <div class="bc-head">
+      <div class="bc-name">Sugar Cosmetics</div>
+      <div class="bc-vertical">beauty</div>
+    </div>
+    <div class="bc-stats">
+      <div class="bc-stat">Surface <strong>40%</strong></div>
+      <div class="bc-stat">AIO <strong>30%</strong></div>
+      <div class="bc-stat">ChatGPT <strong>50%</strong></div>
+      <div class="bc-stat" style="margin-left:auto;">Top: <strong>Maybelline</strong></div>
+    </div>
+    <div class="bc-finding">sugarcosmetics.com is the FIRST brand-owned site to appear in our top-cited list (position 12).</div>
+  </div><div class="brand-card-pdf">
+    <div class="bc-head">
+      <div class="bc-name">Whizlabs</div>
+      <div class="bc-vertical">cert-saas</div>
+    </div>
+    <div class="bc-stats">
+      <div class="bc-stat">Surface <strong>40%</strong></div>
+      <div class="bc-stat">AIO <strong>20%</strong></div>
+      <div class="bc-stat">ChatGPT <strong>60%</strong></div>
+      <div class="bc-stat" style="margin-left:auto;">Top: <strong>Udemy</strong></div>
+    </div>
+    <div class="bc-finding">40-point platform asymmetry (ChatGPT-favored). Udemy + Tutorials Dojo dominate practice-test queries.</div>
+  </div><div class="brand-card-pdf">
+    <div class="bc-head">
+      <div class="bc-name">Foxtale</div>
+      <div class="bc-vertical">beauty</div>
+    </div>
+    <div class="bc-stats">
+      <div class="bc-stat">Surface <strong>35%</strong></div>
+      <div class="bc-stat">AIO <strong>10%</strong></div>
+      <div class="bc-stat">ChatGPT <strong>60%</strong></div>
+      <div class="bc-stat" style="margin-left:auto;">Top: <strong>Minimalist</strong></div>
+    </div>
+    <div class="bc-finding">AIO is missing Foxtale entirely from its citation graph; ChatGPT indexes the brand reasonably well.</div>
+  </div><div class="brand-card-pdf">
+    <div class="bc-head">
+      <div class="bc-name">Bombay Shaving</div>
+      <div class="bc-vertical">d2c-grooming</div>
+    </div>
+    <div class="bc-stats">
+      <div class="bc-stat">Surface <strong>35%</strong></div>
+      <div class="bc-stat">AIO <strong>20%</strong></div>
+      <div class="bc-stat">ChatGPT <strong>50%</strong></div>
+      <div class="bc-stat" style="margin-left:auto;">Top: <strong>Beardo</strong></div>
+    </div>
+    <div class="bc-finding">Holds brand-named comparison cells against Beardo. Loses unbranded "best men's grooming brand" queries.</div>
+  </div></div>
+
+  <div class="footer">
+    <div class="left"><strong>Citare</strong> · AI search visibility, measured across five platforms with real browser sessions</div>
+    <div>Page 15 · <span class="page-ref">Brands 9-16</span></div>
+  </div>
+</div>
+
+<div class="page">
+  <div class="brand-strip">
+    <div class="brand-mark"><div class="brand-icon">C</div><div class="brand-text">Citare<span style="color:#f5b942">.</span></div></div>
+    <div class="header-meta"><span class="meta-pill">PER-BRAND INDEX</span>May 2026</div>
+  </div>
+
+  <div class="section-h"><div class="section-h-num">03</div><div class="section-h-text">Per-brand findings · continued</div></div>
+
+  <div class="brand-grid"><div class="brand-card-pdf">
+    <div class="bc-head">
+      <div class="bc-name">VSH Hospital</div>
+      <div class="bc-vertical">healthcare</div>
+    </div>
+    <div class="bc-stats">
+      <div class="bc-stat">Surface <strong>35%</strong></div>
+      <div class="bc-stat">AIO <strong>30%</strong></div>
+      <div class="bc-stat">ChatGPT <strong>40%</strong></div>
+      <div class="bc-stat" style="margin-left:auto;">Top: <strong>Manipal Hospitals</strong></div>
+    </div>
+    <div class="bc-finding">ChatGPT cleanly indexed the Mallya→VSH rename. AIO lags. Joint-replacement ICP is a complete 0/6 blind spot.</div>
+  </div><div class="brand-card-pdf">
+    <div class="bc-head">
+      <div class="bc-name">EaseMyTrip</div>
+      <div class="bc-vertical">ota-travel</div>
+    </div>
+    <div class="bc-stats">
+      <div class="bc-stat">Surface <strong>25%</strong></div>
+      <div class="bc-stat">AIO <strong>20%</strong></div>
+      <div class="bc-stat">ChatGPT <strong>30%</strong></div>
+      <div class="bc-stat" style="margin-left:auto;">Top: <strong>MakeMyTrip</strong></div>
+    </div>
+    <div class="bc-finding">MakeMyTrip dominates (13 mentions vs EaseMyTrip's 4). Strong on US-corridor international flight queries only.</div>
+  </div><div class="brand-card-pdf">
+    <div class="bc-head">
+      <div class="bc-name">Slice</div>
+      <div class="bc-vertical">fintech</div>
+    </div>
+    <div class="bc-stats">
+      <div class="bc-stat">Surface <strong>25%</strong></div>
+      <div class="bc-stat">AIO <strong>20%</strong></div>
+      <div class="bc-stat">ChatGPT <strong>30%</strong></div>
+      <div class="bc-stat" style="margin-left:auto;">Top: <strong>Jupiter</strong></div>
+    </div>
+    <div class="bc-finding">Jupiter dominates Indian neobank category (7 mentions). Slice surfaces only on brand-named comparisons.</div>
+  </div><div class="brand-card-pdf">
+    <div class="bc-head">
+      <div class="bc-name">Adarsh Developers</div>
+      <div class="bc-vertical">real-estate</div>
+    </div>
+    <div class="bc-stats">
+      <div class="bc-stat">Surface <strong>25%</strong></div>
+      <div class="bc-stat">AIO <strong>30%</strong></div>
+      <div class="bc-stat">ChatGPT <strong>20%</strong></div>
+      <div class="bc-stat" style="margin-left:auto;">Top: <strong>Brigade</strong></div>
+    </div>
+    <div class="bc-finding">Brigade dominates Bangalore real-estate (10 mentions). Adarsh holds on named-builder queries only.</div>
+  </div><div class="brand-card-pdf">
+    <div class="bc-head">
+      <div class="bc-name">Endeavor Careers</div>
+      <div class="bc-vertical">coaching</div>
+    </div>
+    <div class="bc-stats">
+      <div class="bc-stat">Surface <strong>5%</strong></div>
+      <div class="bc-stat">AIO <strong>0%</strong></div>
+      <div class="bc-stat">ChatGPT <strong>10%</strong></div>
+      <div class="bc-stat" style="margin-left:auto;">Top: <strong>IMS</strong></div>
+    </div>
+    <div class="bc-finding">1 of 20 cells surfaced — from a Google Maps listing, not editorial content. IMS owns 16/20 cells.</div>
+  </div><div class="brand-card-pdf">
+    <div class="bc-head">
+      <div class="bc-name">Vtiger</div>
+      <div class="bc-vertical">crm-saas</div>
+    </div>
+    <div class="bc-stats">
+      <div class="bc-stat">Surface <strong>5%</strong></div>
+      <div class="bc-stat">AIO <strong>0%</strong></div>
+      <div class="bc-stat">ChatGPT <strong>10%</strong></div>
+      <div class="bc-stat" style="margin-left:auto;">Top: <strong>Zoho</strong></div>
+    </div>
+    <div class="bc-finding">22 years, 400K customers, original SugarCRM fork — and surfaces in 1/20 cells. Outranked by Twenty + EspoCRM.</div>
+  </div><div class="brand-card-pdf">
+    <div class="bc-head">
+      <div class="bc-name">Davanam Jewellers</div>
+      <div class="bc-vertical">jewellery</div>
+    </div>
+    <div class="bc-stats">
+      <div class="bc-stat">Surface <strong>0%</strong></div>
+      <div class="bc-stat">AIO <strong>0%</strong></div>
+      <div class="bc-stat">ChatGPT <strong>0%</strong></div>
+      <div class="bc-stat" style="margin-left:auto;">Top: <strong>Tanishq</strong></div>
+    </div>
+    <div class="bc-finding">0 of 20 cells. Even queries tailored to brand's strongest territory (South Bangalore) returned zero mentions.</div>
+  </div><div class="brand-card-pdf">
+    <div class="bc-head">
+      <div class="bc-name">Paybooks</div>
+      <div class="bc-vertical">payroll-saas</div>
+    </div>
+    <div class="bc-stats">
+      <div class="bc-stat">Surface <strong>0%</strong></div>
+      <div class="bc-stat">AIO <strong>0%</strong></div>
+      <div class="bc-stat">ChatGPT <strong>0%</strong></div>
+      <div class="bc-stat" style="margin-left:auto;">Top: <strong>greytHR</strong></div>
+    </div>
+    <div class="bc-finding">0 of 20 cells. greytHR dominates Indian payroll-SaaS (14 mentions across 20 cells, every ICP cluster).</div>
+  </div></div>
+
+  <div class="footer">
+    <div class="left"><strong>Citare</strong> · AI search visibility, measured across five platforms with real browser sessions</div>
+    <div>Page 16 · <span class="page-ref">Brands 17-25</span></div>
   </div>
 </div>
 
