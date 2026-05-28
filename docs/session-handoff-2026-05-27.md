@@ -255,4 +255,85 @@ edge-cache-hit slice; v1.8 list commitment made publicly).
 
 ---
 
-_End of handoff. Last commit on main: `7dcf924`. Last commit on content branch: `bff2ef5`. Last commit on research branch: `9804466`._
+---
+
+## ADDED 2026-05-28 — Batchwise AI FinOps cluster → rikuq migration
+
+**Context:** Batchwise is repositioning to its core (BRSR/ESG/CBAM + Indian tax/bookkeeping). The AI FinOps / AI-CFO cluster launched there in the last 2 weeks doesn't fit the brand and is moving to rikuq. Full handover memo received from Batchwise Claude session; pasted into this conversation.
+
+**Total scope:** 17 files, ~58k words moving from `/Users/ravi/code/batchwise/src/pages/ai/` and `/Users/ravi/code/batchwise/src/content/{guides,compare,glossary}/`.
+
+### Locked decisions (made 2026-05-28 evening)
+
+| Decision | Choice |
+|---|---|
+| Case studies fate | **Don't migrate as posts.** Copy 6 IT-services case studies (Infosys/TCS/HCL/Wipro/LTIM/TechM) to `data/track-c/research-inputs/it-services-case-studies/` as raw research for Track C #24 (`indian-it-services-ai-spend-audit-2026`, ships Jun 16). Track C #24 becomes a comparative audit using these as foundational research — stronger than 6 disconnected posts. |
+| Services page contact | **Cal.com + Tally both.** Side-by-side CTAs. Cal.com for "just book a call", Tally for structured intake. Both use existing affiliate links from `src/lib/affiliate.ts`. |
+| pubDate strategy | **Fresh dates, staggered.** Treat as new rikuq publications. Stagger over May 28 → Jun 2 so they don't all crosspost the same day. |
+
+### Files to migrate (8 published + 1 services page)
+
+**Long-form articles (5 — heavy editorial reframe):**
+1. `methodology/ai-systems-review-india.astro` → rikuq blog post on finops review framework
+2. `methodology/ai-spend-tax-optimisation-india.astro` → rikuq blog post on Section 195 + GST RCM
+3. `guides/ai-cloud-cost-optimisation-providers-india.mdx` → rikuq blog post (provider comparison)
+4. `compare/ai-software-capex-vs-opex-india.mdx` → rikuq blog post (capex/opex framework)
+5. `compare/section-195-tds-vs-equalisation-levy-foreign-ai-vendors.mdx` → rikuq blog post
+
+**Glossary expansions (3 — short entries → full blog posts):**
+6. `glossary/ai-vendor-consolidation.mdx` → blog post "AI Vendor Consolidation: When to Cut, When to Hold"
+7. `glossary/ai-cost-allocation.mdx` → blog post "AI Cost Allocation: Models That Work in Production"
+8. `glossary/section-195-tds-foreign-ai-vendors.mdx` → blog post "Section 195 TDS on Foreign AI Vendors"
+
+**Services page (NEW):**
+9. `src/pages/services.astro` — combines the 2 Batchwise service Astro pages (AI Systems Review + AI Spend Tax Optimisation) into a single page with simple service list + Cal.com + Tally CTAs
+
+**Existing rikuq CTAs to update:** 10 articles reference `batchwise.ai` — most prominently `what-is-llm-finops` (5 refs). Find-replace pass to point at new `/services` page.
+
+### Publish stagger schedule
+
+| Date | Slot 1 | Slot 2 | Notes |
+|---|---|---|---|
+| May 28 | ✅ #36 LLM gateway attribution | — | Today; already shipped |
+| May 29 | Provider comparison (migrated #3) | Capex vs Opex (migrated #4) | |
+| May 30 (Sat) | **Indian AI Search Audit ships** | — | Hold migration, big audit ship day |
+| May 31 (Sun) | Methodology piece (migrated #1) | — | Sunday slow lane |
+| Jun 1 | Section 195 vs Equalisation Levy (migrated #5) | Methodology #2 (migrated #2) | |
+| Jun 2 | Glossary expansion #6 | Glossary expansion #7 | |
+| Jun 3 | Glossary expansion #8 | Track C #1 ships | |
+
+### Frontmatter rewrite per file (required)
+
+Drop: `lastUpdated`, `lastReviewed`, `reviewedBy`, `schemaType`, `relatedServices`, `sources`, `amendmentLog`
+Add: `pubDate`, `category: 'finops'`, `tags`, `author: 'Ravi'`
+Convert: FAQ `q:/a:` keys → rikuq's `question:/answer:` schema
+Tighten: `title` ≤ 70 chars, `description` 120-160 chars
+Voice swap: "BatchWise we" / "our service" → practitioner voice ("I've seen", "here's the framework")
+CTA swap: `/ai/services/*` Batchwise URLs → `/services` rikuq URL OR drop entirely
+
+### Execution order (tomorrow)
+
+1. **Build services page first** (~45 min) — `src/pages/services.astro` with Cal.com + Tally CTAs. Needed before any CTA-update work has a destination.
+2. **Move 6 case studies → research-inputs/** (~5 min) — fastest task. `mkdir -p data/track-c/research-inputs/it-services-case-studies/ && cp ...`
+3. **Migrate article #1** (Provider Comparison Guide — least voice reframe needed). Bring to Ravi for voice review before doing all 8.
+4. **Update 10 existing rikuq finops CTAs** (~30 min) — find/replace `batchwise.ai/ai` patterns → `rikuq.com/services`.
+5. **Migrate articles #2-8** in batches based on Ravi's voice feedback on #1.
+6. **Add Services link to nav** (header/footer).
+7. **Coordinate Batchwise Phase 1** — wait for Batchwise session to ship its 410 Gone, time it within hours of rikuq pubDates.
+
+### Open considerations for tomorrow
+
+- Should rikuq add a `/finops/` top-level hub page, or rely on existing `/blog/finops/` category filter? (Decision: skip the hub page for now; if traffic concentrates on the finops category, build later.)
+- Affiliate disclosure on the provider comparison guide — current `affiliateDisclosure: false` on most rikuq articles. Provider comparison legitimately compares providers; if any affiliate relationships develop, flip to `true`. For initial migration: `false`.
+- Internal link audit on rikuq side — once migration is done, ensure new finops content cross-links cleanly with existing rikuq tools/infra/geo posts.
+- Coordinate timing: rikuq pubDates should be within hours of Batchwise's `/ai/*` 410 Gone going live, so search engines see the move cleanly. Ping the Batchwise session when rikuq pieces are ready.
+
+### Risks / known issues
+
+- **Heavy editorial reframing** per file (~30-45 min each, sometimes more). 8 articles × 40 min avg = 5-6 hrs of focused work. Plan for 2 sessions.
+- **rikuq case-studies collection schema mismatch** — current schema requires `product: 'batchwise' | 'citare' | 'prism'`. The 6 IT-services audits don't fit. Solution above (don't migrate) sidesteps this. If schema extension is wanted later, add `'public-company-audit'` enum value.
+- **Track C #24 dependency** — the 6 case studies become its raw research. Track C #24 needs to actually use them; flag this to whoever picks up Track C #24.
+
+---
+
+_End of handoff. Last commit on main: `ffb1d0e`. Migration plan committed below._
