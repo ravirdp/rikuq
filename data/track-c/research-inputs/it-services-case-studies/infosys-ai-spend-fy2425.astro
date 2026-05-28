@@ -1,0 +1,266 @@
+---
+export const prerender = true;
+import CommercialLayout from '../../../layouts/CommercialLayout.astro';
+
+const title = 'Methodology Demonstration — Infosys AI/Cloud Spend FY 2024-25';
+const description = 'Applying the BatchWise AI Systems Review + Tax Optimisation methodology to Infosys publicly disclosed FY 2024-25 financials. No engagement with Infosys.';
+const lede = 'This page applies the BatchWise AI Systems Review and AI Spend & Tax Optimisation methodology to Infosys Limited\'s publicly disclosed FY 2024-25 financial data. It is a methodology demonstration on public data — an analysis of what an external observer can infer + what a real engagement would surface beyond. BatchWise has no engagement with Infosys; this page makes no claim of delivered work. The purpose is to demonstrate the methodology so a prospective peer CFO can evaluate the depth before scoping.';
+const canonicalPath = '/ai/case-studies/infosys-ai-spend-fy2425/';
+
+const jsonLdBlocks = [
+  {
+    '@context': 'https://schema.org',
+    '@type': 'Article',
+    headline: title,
+    description,
+    author: {
+      '@type': 'Person',
+      name: 'Ravi Patel',
+      jobTitle: 'Founder, Editor-in-charge',
+      url: 'https://rikuq.com',
+      image: 'https://batchwise.ai/avatars/ravi.webp',
+      sameAs: [
+        'https://rikuq.com',
+        'https://www.linkedin.com/in/ravirdp/',
+        'https://github.com/ravirdp',
+        'https://x.com/ravirdp',
+        'https://batchwise.ai/editorial-team/',
+      ],
+    },
+    publisher: { '@type': 'Organization', name: 'BatchWise', url: 'https://batchwise.ai/' },
+    creator: { '@type': 'Organization', name: 'BatchWise', url: 'https://batchwise.ai/' },
+    url: 'https://batchwise.ai/ai/case-studies/infosys-ai-spend-fy2425/',
+    datePublished: '2026-05-22',
+    dateModified: '2026-05-22',
+    inLanguage: 'en-IN',
+    isBasedOn: [
+      { '@type': 'CreativeWork', name: 'Infosys Limited Annual Report FY 2024-25', url: 'https://www.infosys.com/investors/reports-filings/annual-report.html' },
+      { '@type': 'CreativeWork', name: 'Infosys SEC Form 6-K filings FY 2024-25', url: 'https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=0001067491' },
+    ],
+  },
+];
+
+const faqs = [
+  {
+    q: 'Has BatchWise been engaged by Infosys?',
+    a: 'No. This page is an independent analysis of publicly disclosed financial data from Infosys Limited\'s FY 2024-25 annual report, Form 6-K filings with the US SEC, and earnings call transcripts. BatchWise has no engagement with Infosys and makes no claim of delivered work. The analysis here is what an external observer with access to the same public data could produce by applying the BatchWise methodology — useful as a demonstration of the methodology, not as a representation of Infosys\'s actual internal state.',
+  },
+  {
+    q: 'Why publish analyses of companies you have not engaged with?',
+    a: 'Two reasons. First, methodology demonstrations are how bespoke advisory services prove their depth to prospective buyers. A CFO evaluating BatchWise AI as a potential engagement partner needs to see the methodology applied to data they can independently verify, not just read methodology described in the abstract. Second, the analysis is genuinely useful to peer CFOs in Indian IT services — TCS, HCLTech, LTIMindtree, Wipro, Tech Mahindra — because the same disclosure architecture and the same evolving Indian AI-governance landscape applies to all of them — DPDP Act 2023 where personal data is involved, ICAI voluntary practitioner guidance on AI assurance and audit evidence, the EU AI Act (extraterritorial for Indian exporters), and SEBI\'s June 2025 consultation paper on AI/ML in securities markets as forward-looking direction-of-travel. What the analysis surfaces in Infosys\'s public data is structurally similar to what peer entities will face.',
+  },
+  {
+    q: 'Is this ASCI Code + Consumer Protection Act compliant?',
+    a: 'Yes — and the disclosure discipline is deliberate. The ASCI Code\'s prohibition on misleading advertising and the Consumer Protection Act 2019\'s prohibition on unfair trade practices both bar claims of delivered work that was not delivered. This page is explicitly labelled as a methodology demonstration on public data with no engagement claim. Every analytical observation is sourced to Infosys\'s own public disclosures or labelled as inference. Where the methodology cannot answer a question from public data, the page says so rather than fabricating an answer.',
+  },
+  {
+    q: 'Why Infosys specifically as the first demonstration?',
+    a: 'Three reasons. (1) Largest publicly disclosed Indian IT services entity by revenue, so the data is rich enough to demonstrate methodology depth. (2) Both NYSE-listed (US disclosure obligations under SEC + IFRS) and BSE/NSE-listed (Indian BRSR + the evolving Indian AI-governance overlay: DPDP, ICAI guidance, EU AI Act extraterritoriality, SEBI\'s June 2025 AI/ML consultation paper as forward-looking signal), so the cross-jurisdictional disclosure overlay is illustrative. (3) Maintains its own AI platforms (Topaz for GenAI; Cobalt for cloud) — so the make-vs-buy + capex-vs-opex analysis on AI is materially more interesting than for entities that purely consume third-party AI.',
+  },
+  {
+    q: 'What does the analysis NOT show?',
+    a: 'Several material things, all because they\'re not in public disclosures. (1) Specific AI vendor spend — Infosys does not disclose breakdown by vendor (AWS, Azure, GCP, OpenAI, Anthropic). (2) GenAI revenue contribution — Infosys explicitly does not disclose GenAI revenue separately, only commenting on direction and trends. (3) Internal cost allocation methodology across entities. (4) RCM and Section 195 TDS specifics on foreign AI vendor payments. (5) Internal controls evidence and model documentation framework. These are exactly the categories a real engagement surfaces because they require client cooperation. The methodology demonstration shows the public-data ceiling, not the engagement ceiling.',
+  },
+  {
+    q: 'Will you do similar demonstrations on TCS, HCLTech, etc.?',
+    a: 'Yes — five public-data methodology demonstrations are planned across Weeks 1-2 of the BatchWise AI launch: Infosys (this page), TCS, HCLTech, LTIMindtree, Wipro. Each demonstration applies the same methodology to entity-specific public data; together they show how the methodology adapts to different disclosure footprints (NYSE-listed vs ADR vs purely-BSE/NSE-listed; in-house AI platform vs third-party AI consumption; different sector mixes).',
+  },
+];
+---
+
+<CommercialLayout
+  title={title}
+  description={description}
+  lede={lede}
+  canonicalPath={canonicalPath}
+  jsonLdBlocks={jsonLdBlocks}
+  faqs={faqs}
+>
+  <p class="meta-byline">
+    By <a href="https://rikuq.com" rel="author">Ravi Patel</a> — Founder, BatchWise. Published 22 May 2026. Methodology demonstration on public data; refreshes when Infosys publishes FY 2025-26 results.
+  </p>
+
+  <p><em>Editorial correction (2026-05-25): This page previously referenced a "SEBI/MCA January 2026 AI disclosure mandate" that does not exist in that form. The accurate position is SEBI\'s June 2025 consultation paper on AI/ML in securities markets, still in consultation. This page has been updated accordingly.</em></p>
+
+  <div class="callout callout--important">
+    <p><strong>Disclosure discipline.</strong> This page is a methodology demonstration on publicly disclosed financial data from Infosys Limited\'s FY 2024-25 reporting cycle. BatchWise has no engagement with Infosys. This page makes no claim of delivered work. All numerical observations are sourced to Infosys\'s own public disclosures (annual report, SEC Form 6-K filings, earnings call transcripts) and clearly attributed. Where the methodology cannot answer a question from public data alone, the page says so rather than fabricating an answer. This discipline is ASCI Code + Consumer Protection Act 2019 substantiation-compliant.</p>
+  </div>
+
+  <h2>Public data inputs</h2>
+
+  <p>The analysis is built on four public sources:</p>
+
+  <ul>
+    <li><strong>Infosys Limited Annual Report FY 2024-25</strong> — segment reporting, MD&amp;A, financial statements, intangibles + capex notes</li>
+    <li><strong>Infosys SEC Form 6-K filings FY 2024-25</strong> — quarterly results filed under US securities disclosure obligations; richer than the BSE/NSE quarterly disclosure</li>
+    <li><strong>Infosys earnings call transcripts</strong> Q1 through Q4 FY 2024-25 — management commentary on Cobalt (cloud platform) + Topaz (generative AI platform) + large deal mix + GenAI strategy</li>
+    <li><strong>Infosys investor day materials</strong> — strategic positioning around AI-first services + GCC opportunity</li>
+  </ul>
+
+  <h2>Headline financial markers (FY 2024-25, publicly disclosed)</h2>
+
+  <table class="data">
+    <thead><tr><th>Marker</th><th>FY 2024-25 value</th><th>Source</th></tr></thead>
+    <tbody>
+      <tr><td>Revenue guidance (constant currency)</td><td>3.75% - 4.50% growth (revised up from 3.0% - 4.0% in Q1)</td><td>Q2 FY25 earnings call</td></tr>
+      <tr><td>Operating margin guidance</td><td>20% - 22%</td><td>Q2 FY25 earnings call</td></tr>
+      <tr><td>Large deal TCV (Q2 FY25 alone)</td><td>$2.4 billion (41% net new)</td><td>Q2 FY25 Form 6-K</td></tr>
+      <tr><td>Free cash flow (Q2 FY25)</td><td>$839 million (+25.2% YoY)</td><td>Q2 FY25 Form 6-K</td></tr>
+      <tr><td>Depreciation + amortisation (full year)</td><td>₹4,812 crore</td><td>FY 2024-25 financial statements</td></tr>
+      <tr><td>Cost of software packages and others (full year)</td><td>₹15,911 crore</td><td>FY 2024-25 financial statements</td></tr>
+      <tr><td>Software license amortisation policy</td><td>2-5 years</td><td>Accounting policies note</td></tr>
+      <tr><td>Computer hardware depreciation policy</td><td>3-10 years (straight-line)</td><td>Accounting policies note</td></tr>
+      <tr><td>GenAI revenue disclosure</td><td><strong>Not disclosed separately</strong> — direction commented on only</td><td>Management call commentary across FY25</td></tr>
+    </tbody>
+  </table>
+
+  <p class="caveat"><em>Reconciliation note:</em> Infosys reports in Indian Rupees for Indian regulatory filings + in US Dollars for SEC filings. INR/USD conversion uses FY 2024-25 average exchange rate of approximately ₹83-84/USD. Specific quarterly USD figures cited are from the SEC filings; specific INR figures from BSE/NSE filings.</p>
+
+  <h2>Methodology application — what public data tells us, and what it doesn\'t</h2>
+
+  <p>The BatchWise AI Systems Review covers six domains; the AI Spend &amp; Tax Optimisation engagement covers five sub-domains. We apply the relevant pieces to Infosys\'s public data.</p>
+
+  <h3>Domain 1 — AI + cloud spend taxonomy</h3>
+
+  <p><strong>Public data observation.</strong> Infosys reports "Cost of software packages and others" at ₹15,911 crore for FY 2024-25 (full year). This single line item aggregates internal software, third-party software, cloud services, and AI infrastructure — there is no further public decomposition.</p>
+
+  <p><strong>What methodology would surface in an engagement.</strong> Decomposition of this single line into the BatchWise spend taxonomy: foundation model API costs (OpenAI, Anthropic, Google), fine-tuning runs, embeddings and vector database costs, inference compute (GPU vs CPU), training compute, hyperscaler spend (AWS, Azure, GCP), vertical AI SaaS, ML platforms and tooling. Without this decomposition, every downstream optimisation analysis is a guess. With it, the entity can answer questions like: "what percentage of our cost of software is going to foundation model APIs vs hyperscaler compute vs vertical AI SaaS?"</p>
+
+  <h3>Domain 2 — Vendor consolidation analysis</h3>
+
+  <p><strong>Public data observation.</strong> Infosys discloses partnerships and platform integrations with all major hyperscalers (AWS, Azure, GCP), with foundation model providers (Microsoft via Azure OpenAI; Anthropic; Google), and with its own platforms (Cobalt for cloud, Topaz for GenAI). The MD&amp;A and investor day materials emphasise the multi-cloud + multi-model strategy as a competitive advantage.</p>
+
+  <p><strong>What methodology would surface.</strong> Quantification of vendor consolidation opportunity — at Infosys\'s scale, the multi-vendor strategy is partly deliberate (avoid lock-in, optimise per workload) and partly accreted (every BU buys its own tools). The methodology distinguishes which is which and quantifies the consolidation lift available on the accreted side. For a methodology demonstration on public data, we can only note the strategic direction; the consolidation arithmetic requires internal vendor + contract data.</p>
+
+  <h3>Domain 3 — Model selection economics</h3>
+
+  <p><strong>Public data observation.</strong> Infosys has built its own GenAI platform (Topaz). Management commentary across FY 2024-25 emphasises Topaz as enabling client-specific AI deployments on Indian and US cloud foundations. GenAI revenue is explicitly not disclosed separately.</p>
+
+  <p><strong>What methodology would surface.</strong> Make-vs-buy economics on Topaz itself — how much of the platform sits on foundation models from OpenAI/Anthropic/Google (buy) vs Infosys-trained/fine-tuned models (make)? At Infosys scale, in-house fine-tuning may economically justify itself; for smaller Indian IT services entities, the same analysis would likely conclude buy. The methodology demonstration cannot derive Infosys\'s answer from public data — but it can derive the framework that an Infosys-peer entity could use to derive their own.</p>
+
+  <h3>Domain 4 — Internal controls over AI-augmented finance work</h3>
+
+  <p><strong>Public data observation.</strong> Infosys is dual-listed: NYSE (ADR INFY) + BSE/NSE. Two disclosure regimes apply: US securities (Sarbanes-Oxley internal controls; SEC AI disclosure rules) + Indian (BRSR + DPDP Act 2023 where personal data is involved + ICAI voluntary practitioner guidance on AI assurance + EU AI Act extraterritoriality for EU client delivery). SEBI\'s June 2025 consultation paper on AI/ML in securities markets signals direction of travel for AI governance in Indian financial reporting — applicable today to market infrastructure institutions, intermediaries, and mutual funds (not yet to all listed entities), but informative for how Indian audit committees will think about AI controls.</p>
+
+  <p><strong>What methodology would surface.</strong> Internal controls framework over AI-augmented accounting and finance processes — at Infosys scale, this is substantial. The applicable discipline draws from ICAI guidance on AI assurance (model documentation, log-trail sufficiency, version control, reproducibility), the DPDP Act 2023 obligations for significant data fiduciaries, and the directional signal from SEBI\'s June 2025 consultation. A methodology engagement would map Infosys\'s existing SOX controls (already in place for US compliance) against this combined framework and identify gaps. This is the highest-impact domain for any India-headquartered NYSE-listed entity in FY 2025-26.</p>
+
+  <h3>Domain 5 — AI governance</h3>
+
+  <p><strong>Public data observation.</strong> Infosys discloses an AI governance framework in its ESG reporting and on Topaz platform documentation. The DPDP Act 2023 applies (Infosys processes personal data of Indian residents at scale); the EU AI Act applies (Infosys delivers AI systems and AI outputs to EU clients).</p>
+
+  <p><strong>What methodology would surface.</strong> Assessment of governance framework completeness against (a) DPDP Act significant data fiduciary obligations, (b) EU AI Act provider obligations for high-risk system categories, (c) ICAI ethics framework for the substantial CA workforce employed by Infosys finance, (d) audit-committee reporting cadence on AI use and incidents. For a methodology demonstration, we note the governance overlay; quantification requires internal access.</p>
+
+  <h3>Domain 6 — Cost allocation across business units</h3>
+
+  <p><strong>Public data observation.</strong> Infosys operates a multi-entity group structure: Infosys Limited (Indian parent), Infosys Technologies (US), Infosys Australia, Infosys subsidiaries in 50+ countries. The transfer pricing study and Country-by-Country Report under Section 286 are not public.</p>
+
+  <p><strong>What methodology would surface.</strong> Transfer pricing on shared AI/cloud spend across the multi-entity group — Cobalt and Topaz platforms are presumably developed in one entity (likely India) and consumed across the group. The arm\'s-length cost allocation, benefit-test substantiation, and mark-up methodology under OECD TP Guidelines Chapter VII are exactly what a CFO needs to defend in a TP audit. For an entity of Infosys scale, this is a Big-4-managed engagement; our methodology aligns with that work rather than replacing it.</p>
+
+  <h2>AI Spend &amp; Tax Optimisation overlay</h2>
+
+  <p>Tax-specific observations from public data:</p>
+
+  <ul>
+    <li><strong>GST RCM exposure on foreign vendor spend.</strong> Infosys\'s use of AWS, Azure, GCP, foundation model APIs, and US-based SaaS is material. Under Section 5(3) IGST Act, these are imports of services attracting 18% IGST under RCM. The "Cost of software packages and others" line at ₹15,911 crore includes a meaningful portion of foreign vendor spend. A real engagement would reconcile RCM payments against GSTR-3B Table 3.1(d) and identify any historic gaps.</li>
+    <li><strong>Section 195 TDS post Equalisation Levy 2.0 abolition.</strong> EL 2.0 was abolished 1 August 2024 (Finance Act No. 2, 2024). Infosys\'s FY 2024-25 payments to foreign vendors span both regimes — pre-1 Aug (EL 2.0 applied; Section 195 typically not invoked) + post-1 Aug (Section 195 invoked subject to Engineering Analysis SC + DTAA). The reconciliation discipline for FY 2024-25 returns is material.</li>
+    <li><strong>Topaz and Cobalt classification — capex vs opex.</strong> The platforms are Infosys-developed. Under Ind AS 38, development-phase costs may be capitalised if paragraph 57 criteria are met. The intangibles + capex notes in the annual report would disclose the treatment. For a methodology demonstration, we note the architectural choice; without internal access we cannot evaluate paragraph 57 application.</li>
+    <li><strong>Section 32 software depreciation.</strong> Infosys\'s policy of straight-line amortisation over 2-5 years for software licenses vs Section 32 Block of Assets 40% WDV rate creates permanent timing differences + deferred tax line items. Public disclosure of deferred tax breakdown does not isolate software-related component.</li>
+  </ul>
+
+  <h2>What a peer CFO would draw from this</h2>
+
+  <p>The most actionable observations for a CFO of a comparable Indian IT services entity (TCS, HCLTech, LTIMindtree, Wipro, Tech Mahindra, Persistent, Mphasis, LTIMindtree, Coforge):</p>
+
+  <ol>
+    <li><strong>The "Cost of software packages and others" line is the single biggest opacity zone in your own filings.</strong> If your investors, audit committee, or board are starting to ask "how much of this is AI?" — your methodology answer needs to be ready before they ask. Build the taxonomy now; don\'t wait for the next audit cycle or for the SEBI consultation framework to harden into binding rules to surface the gap.</li>
+    <li><strong>RCM reconciliation on foreign vendor SaaS / AI / cloud spend has a hard 24-month time-limit constraint.</strong> Historic gaps are recoverable only if identified within that window. For FY 2026-27, the GSTR-2B + IMS + ECRS + RCM Liability Statement architecture flags gaps automatically; for prior years, manual reconciliation is the only path. Scope this now.</li>
+    <li><strong>Make-vs-buy on AI platforms is a real strategic question for sub-Infosys-scale entities.</strong> Infosys built Topaz because the volume justified it. For most Indian IT services entities at smaller revenue, the same analysis would conclude buy from foundation model providers. The methodology gives the framework to answer it for your scale rather than copying Infosys\'s answer.</li>
+    <li><strong>Multi-entity TP exposure on shared AI / cloud spend is material and growing.</strong> If your group has US, EU, and Indian entities consuming centrally-procured AI infrastructure, the arm\'s-length cost allocation needs to be defensible. Document it before an assessment officer asks.</li>
+  </ol>
+
+  <h2>How a real engagement differs from this demonstration</h2>
+
+  <p>The methodology demonstration on public data has a hard ceiling — it can show framework + direction + observations that an external analyst can defend, but it cannot quantify the specific opportunity inside any specific entity. A real BatchWise AI engagement adds:</p>
+
+  <ul>
+    <li>Internal spend data — vendor-by-vendor, BU-by-BU, project-by-project decomposition</li>
+    <li>Contract review — committed-use discounts, reserved instance terms, exit clauses, MFN provisions</li>
+    <li>Stakeholder interviews — what the CFO, CTO, AI/ML lead, finance, procurement, internal audit each see and don\'t see</li>
+    <li>Reconciliation working papers — GST RCM gap quantum, Section 195 TDS over/under-deduction, TP allocation defensibility</li>
+    <li>Quantified roadmap — what to fix in 30 days vs 90 days vs 12 months, by impact and effort</li>
+    <li>Audit-committee deliverable — designed for board presentation by the CFO</li>
+  </ul>
+
+  <p>The demonstration shows the shape of the work; the engagement shows the answer.</p>
+
+  <h2>For peer CFOs evaluating BatchWise AI</h2>
+
+  <p>If you are the CFO of a comparable Indian IT services entity and this methodology demonstration is useful, the engagement model is published:</p>
+
+  <ul>
+    <li><a href="/ai/methodology/ai-systems-review-india/">AI Systems Review methodology</a> — full 6-domain framework</li>
+    <li><a href="/ai/methodology/ai-spend-tax-optimisation-india/">AI Spend &amp; Tax Optimisation methodology</a> — 5 tax sub-domains</li>
+    <li><a href="/consult/?subject=AI%20Systems%20Review">Schedule a discovery call</a> — 30 minutes, free, output is a written scope proposal with exact price</li>
+  </ul>
+
+  <h2>Sources</h2>
+  <ul>
+    <li><a href="https://www.infosys.com/investors/reports-filings/annual-report.html">Infosys Limited — Annual Reports archive</a></li>
+    <li><a href="https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=0001067491">Infosys Limited — SEC EDGAR Form 6-K filings</a></li>
+    <li><a href="https://www.infosys.com/services/topaz/">Infosys Topaz</a> — generative AI platform documentation</li>
+    <li><a href="https://www.infosys.com/services/cloud-cobalt/">Infosys Cobalt</a> — cloud platform documentation</li>
+    <li>Infosys quarterly earnings call transcripts FY 2024-25 — Q1, Q2, Q3, Q4</li>
+  </ul>
+</CommercialLayout>
+
+<style>
+  .meta-byline {
+    font-size: 0.875rem;
+    color: var(--color-muted);
+    margin: 0 0 2rem;
+    padding: 0.75rem 1rem;
+    background: color-mix(in srgb, var(--color-accent) 4%, transparent);
+    border-left: 3px solid var(--color-accent);
+    border-radius: 0 6px 6px 0;
+  }
+  .meta-byline a { color: var(--color-accent); text-decoration: underline; }
+
+  .callout {
+    padding: 1rem 1.25rem;
+    border-radius: 6px;
+    margin: 1.5rem 0;
+  }
+  .callout--important {
+    background: color-mix(in srgb, #B45309 6%, transparent);
+    border-left: 4px solid #B45309;
+  }
+  .callout p { margin: 0; font-size: 0.9375rem; }
+
+  table.data {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 1rem 0 1.5rem;
+    font-size: 0.9375rem;
+  }
+  table.data th {
+    background: var(--color-accent);
+    color: #fff;
+    text-align: left;
+    padding: 0.625rem 0.875rem;
+    font-weight: 600;
+  }
+  table.data td {
+    padding: 0.625rem 0.875rem;
+    border-bottom: 1px solid var(--color-border);
+    vertical-align: top;
+  }
+  .caveat {
+    font-size: 0.875rem;
+    color: var(--color-muted);
+    padding: 0.875rem 1rem;
+    background: color-mix(in srgb, var(--color-accent) 4%, transparent);
+    border-left: 3px solid var(--color-accent);
+    border-radius: 0 6px 6px 0;
+    margin: 1rem 0 1.5rem;
+  }
+</style>

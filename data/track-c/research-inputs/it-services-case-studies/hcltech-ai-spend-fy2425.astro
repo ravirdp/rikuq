@@ -1,0 +1,210 @@
+---
+export const prerender = true;
+import CommercialLayout from '../../../layouts/CommercialLayout.astro';
+
+const title = 'Methodology Demonstration — HCLTech AI/Cloud Spend FY 2024-25';
+const description = 'Applying the BatchWise AI Systems Review + Tax Optimisation methodology to HCLTech publicly disclosed FY 2024-25 financials. No engagement with HCLTech.';
+const lede = 'This page applies the BatchWise AI Systems Review and AI Spend & Tax Optimisation methodology to HCL Technologies (HCLTech) publicly disclosed FY 2024-25 financial data. HCLTech is structurally different from pure-services peers — it operates a meaningful Software/Products business unit alongside services — which makes the capex vs opex + transfer pricing analysis more nuanced than for Infosys or TCS. BatchWise has no engagement with HCLTech; this page makes no claim of delivered work.';
+const canonicalPath = '/ai/case-studies/hcltech-ai-spend-fy2425/';
+
+const jsonLdBlocks = [
+  {
+    '@context': 'https://schema.org',
+    '@type': 'Article',
+    headline: title,
+    description,
+    author: {
+      '@type': 'Person',
+      name: 'Ravi Patel',
+      jobTitle: 'Founder, Editor-in-charge',
+      url: 'https://rikuq.com',
+      image: 'https://batchwise.ai/avatars/ravi.webp',
+      sameAs: [
+        'https://rikuq.com',
+        'https://www.linkedin.com/in/ravirdp/',
+        'https://github.com/ravirdp',
+        'https://x.com/ravirdp',
+        'https://batchwise.ai/editorial-team/',
+      ],
+    },
+    publisher: { '@type': 'Organization', name: 'BatchWise', url: 'https://batchwise.ai/' },
+    creator: { '@type': 'Organization', name: 'BatchWise', url: 'https://batchwise.ai/' },
+    url: 'https://batchwise.ai/ai/case-studies/hcltech-ai-spend-fy2425/',
+    datePublished: '2026-05-22',
+    dateModified: '2026-05-22',
+    inLanguage: 'en-IN',
+    isBasedOn: [
+      { '@type': 'CreativeWork', name: 'HCLTech Annual Report FY 2024-25', url: 'https://www.hcltech.com/hcl-annual-report-2025' },
+      { '@type': 'CreativeWork', name: 'HCLTech Quarterly Press Releases FY 2024-25', url: 'https://www.hcltech.com/press-releases' },
+    ],
+  },
+];
+
+const faqs = [
+  {
+    q: 'Has BatchWise been engaged by HCLTech?',
+    a: 'No. This is an independent analysis of publicly disclosed financial data from HCL Technologies Limited\'s FY 2024-25 reporting cycle — annual report, quarterly press releases, earnings call transcripts. BatchWise has no engagement with HCLTech and makes no claim of delivered work. The analysis is what an external observer with the same public data could produce by applying the BatchWise methodology — a demonstration of method, not a representation of HCLTech\'s internal state.',
+  },
+  {
+    q: 'Why HCLTech specifically?',
+    a: 'Three reasons. (1) HCLTech operates a structurally different business mix than pure-services peers — a meaningful Software/Products business unit (formerly HCL Software) alongside the IT services + engineering services. This makes the capex vs opex analysis under Ind AS 38 + Section 32 materially more nuanced than for Infosys or TCS. (2) Digital revenue at 38.5% of services is highest-disclosed share among large Indian IT services peers, with clean growth (+6.3% YoY CC) — useful for analysing how digital + AI overlap in disclosure. (3) AI Force, HCLTech\'s GenAI platform, was rated Leader in Avasant RadarView 2024 — an external benchmark on the platform\'s competitive position.',
+  },
+  {
+    q: 'How is HCLTech different from Infosys + TCS for this methodology?',
+    a: 'The Software/Products business unit is the structural differentiator. Pure-services peers (Infosys, TCS, Wipro, LTIMindtree) treat AI spend largely as cost-of-service-delivery + sales-enablement; HCLTech has a separate product unit where AI investment maps to product capex / product COGS rather than service overhead. This bifurcates the Domain 1 (spend taxonomy) + Domain 4 (internal controls) + Domain 6 (cost allocation) analyses in ways that don\'t apply to pure-services peers. For Indian IT services entities that are also building products (Persistent, Mphasis to a degree), the HCLTech demonstration is the more relevant peer reference.',
+  },
+  {
+    q: 'What did HCLTech publicly disclose about AI in FY 2024-25?',
+    a: 'HCLTech made AI Force the central GenAI narrative through FY25. Key public disclosures: (a) AI Force rated Leader in Avasant RadarView on Generative AI Services 2024 — independent third-party recognition; (b) US-based software company case study (improved tester efficiency 15% via duplicate bug search); (c) Digital revenue 38.5% of services revenue, +6.3% YoY CC growth — implicit AI/digital overlap; (d) Q3 FY25 EBIT margin 19.5% — strong operational efficiency; (e) Annual Report 2025 has a dedicated AI section. Specific AI revenue, AI capex, AI spend are not separately disclosed.',
+  },
+  {
+    q: 'What does the analysis NOT show for HCLTech?',
+    a: 'Same categories as Infosys + TCS demonstrations — specific AI vendor spend; AI revenue contribution; cross-BU (services vs products) AI cost allocation methodology; RCM and Section 195 TDS specifics; internal controls evidence; AI Force unit economics. Plus one HCLTech-specific category: the product-unit AI investment ROI — given HCLTech\'s acquired-product portfolio (BigFix, HCL Sametime, HCL Volt, etc.) some AI investment serves product roadmap rather than services delivery, requiring different capitalisation treatment.',
+  },
+  {
+    q: 'What would a real HCLTech-engagement-equivalent reveal?',
+    a: 'For HCLTech specifically: vendor-by-vendor spend decomposition on hyperscaler + foundation model providers; AI Force unit economics; cross-BU (services vs products vs engineering services) AI cost allocation methodology under Section 92 transfer pricing; capitalisation treatment of product-AI investment vs services-AI investment under Ind AS 38; deferred tax implications from book-vs-Section-32 differential; full RCM reconciliation against foreign-vendor payments for 24 months; AI governance framework completeness against EU AI Act (relevant for product unit\'s EU market reach) + DPDP. These categories require internal data access.',
+  },
+];
+---
+
+<CommercialLayout
+  title={title}
+  description={description}
+  lede={lede}
+  canonicalPath={canonicalPath}
+  jsonLdBlocks={jsonLdBlocks}
+  faqs={faqs}
+>
+  <p class="meta-byline">
+    By <a href="https://rikuq.com" rel="author">Ravi Patel</a> — Founder, BatchWise. Published 22 May 2026. Methodology demonstration on public data; refreshes when HCLTech publishes FY 2025-26 results.
+  </p>
+
+  <p><em>Editorial correction (2026-05-25): This page previously referenced a "SEBI/MCA January 2026 AI disclosure mandate" that does not exist in that form. The accurate position is SEBI\'s June 2025 consultation paper on AI/ML in securities markets, still in consultation. This page has been updated accordingly.</em></p>
+
+  <div class="callout callout--important">
+    <p><strong>Disclosure discipline.</strong> This page is a methodology demonstration on publicly disclosed financial data from HCL Technologies Limited\'s FY 2024-25 reporting cycle. BatchWise has no engagement with HCLTech. This page makes no claim of delivered work. All numerical observations are sourced to HCLTech\'s own public disclosures and clearly attributed. ASCI Code + Consumer Protection Act 2019 substantiation-compliant.</p>
+  </div>
+
+  <h2>Public data inputs</h2>
+
+  <ul>
+    <li><strong>HCLTech Annual Report 2024-25</strong> — dedicated AI section, segment reporting, Software/Products business breakout, intangibles + capex notes</li>
+    <li><strong>HCLTech quarterly press releases FY 2024-25</strong> — Q1, Q2, Q3, Q4 financial results</li>
+    <li><strong>HCLTech earnings call transcripts FY 2024-25</strong> — management commentary on AI Force, GenAI strategy, Software business mix</li>
+    <li><strong>Avasant RadarView 2024</strong> — third-party assessment of AI Force competitive position</li>
+  </ul>
+
+  <h2>Headline financial markers (FY 2024-25, publicly disclosed)</h2>
+
+  <table class="data">
+    <thead><tr><th>Marker</th><th>FY 2024-25 value</th><th>Source</th></tr></thead>
+    <tbody>
+      <tr><td>Q3 FY25 revenue</td><td>$3.5 billion (+3.5% YoY USD; +4.1% constant currency)</td><td>Q3 FY25 press release</td></tr>
+      <tr><td>Q3 FY25 TCV (new deal wins)</td><td>$2.1 billion</td><td>Q3 FY25 press release</td></tr>
+      <tr><td>Q3 FY25 EBIT margin</td><td>19.5%</td><td>Q3 FY25 press release</td></tr>
+      <tr><td>Digital revenue as % of services revenue</td><td>38.5% (+6.3% YoY CC)</td><td>Annual Report 2025</td></tr>
+      <tr><td>AI Force competitive recognition</td><td>Leader — Avasant RadarView Generative AI Services 2024</td><td>Avasant; HCLTech AR 2025 AI section</td></tr>
+      <tr><td>Publicly disclosed client case study</td><td>US software company; AI Force-based duplicate-bug search; 15% tester efficiency improvement</td><td>HCLTech AR 2025</td></tr>
+      <tr><td>Business structure</td><td>IT Services + Engineering Services + Software/Products (distinct units)</td><td>Segment reporting</td></tr>
+      <tr><td>AI revenue disclosure</td><td><strong>Not disclosed separately</strong></td><td>Management commentary across FY25</td></tr>
+    </tbody>
+  </table>
+
+  <p class="caveat"><em>Reconciliation note:</em> HCLTech reports primarily in Indian Rupees for BSE/NSE filings + USD for international investor communications. The Software/Products business unit is reported as a distinct segment in MD&amp;A — useful for cost-allocation analysis that pure-services peers do not enable. HCLTech is BSE/NSE-listed only (not US-listed); the Indian AI-governance overlay (DPDP Act 2023, ICAI voluntary practitioner guidance on AI assurance, EU AI Act extraterritoriality for EU client delivery, and SEBI\'s June 2025 AI/ML consultation paper as forward-looking signal) is the operative frame.</p>
+
+  <h2>Methodology application — HCLTech-specific observations</h2>
+
+  <h3>Domain 1 — AI + cloud spend taxonomy</h3>
+
+  <p><strong>Public data observation.</strong> Like Infosys + TCS, HCLTech reports aggregated software + cloud spend without further decomposition in the public P&amp;L. The Software/Products segment is reported separately in MD&amp;A which provides an additional decomposition axis: services-side AI spend vs product-side AI investment.</p>
+
+  <p><strong>What methodology would surface.</strong> Two-axis decomposition: (a) standard spend taxonomy (foundation model APIs, hyperscaler spend, ML platform tooling) + (b) services/products split. The products-side AI investment maps to a different capitalisation regime under Ind AS 38 (capitalised as part of product cost of development) than services-side AI spend (typically operating expense). The two-axis split is uniquely relevant for HCLTech and not for pure-services peers.</p>
+
+  <h3>Domain 2 — Vendor consolidation analysis</h3>
+
+  <p><strong>Public data observation.</strong> HCLTech\'s multi-cloud + multi-foundation-model strategy mirrors peer practice. AI Force is positioned as a unified AI platform across services and product engagements — reducing vendor sprawl within HCLTech\'s own delivery.</p>
+
+  <p><strong>What methodology would surface.</strong> Consolidation analysis on the services-side vendor mix follows the standard methodology. On the products-side, vendor consolidation involves both procurement leverage (similar to services) and product-roadmap implications (foundation model choice affects what product features can be built). The latter is a strategic decision rather than purely procurement.</p>
+
+  <h3>Domain 3 — Model selection economics</h3>
+
+  <p><strong>Public data observation.</strong> AI Force is HCLTech-built. The Avasant Leader recognition (RadarView 2024) provides external validation of the make-side investment. The Q3 FY25 client case study (15% tester efficiency improvement) is the kind of quantified client outcome that supports the platform\'s ROI narrative.</p>
+
+  <p><strong>What methodology would surface.</strong> Unit economics on AI Force — cost per client deployment, marginal value over equivalent foundation-model API-based approach, maintenance burn rate. For HCLTech\'s scale (~$13-14B revenue based on FY24 base plus FY25 growth trajectory), in-house platform development is past the make-vs-buy threshold but the margin of safety is narrower than at TCS / Infosys scale. Real engagement quantifies the specific return on AI Force investment vs the counterfactual of foundation-model API consumption at HCLTech\'s usage volume.</p>
+
+  <h3>Domain 4 — Internal controls over AI-augmented finance work</h3>
+
+  <p><strong>Public data observation.</strong> HCLTech is BSE/NSE-listed only — same regulatory profile as TCS. The operative Indian AI-governance frame (DPDP Act 2023, ICAI voluntary guidance on AI assurance, EU AI Act extraterritoriality, SEBI June 2025 consultation as forward-looking signal) applies. FY 2025-26 annual report (publishing mid-2026) is the first cycle in which Indian audit committees will materially test AI-augmented finance controls. No US securities disclosure overlay.</p>
+
+  <p><strong>What methodology would surface.</strong> Same as TCS at a smaller absolute scale. The HCLTech-specific complication: the Software/Products business unit has different internal-controls profile than the services business — products development cycles, release management, version control, customer-environment deployment all create AI-controls categories that don\'t apply to pure-services peers. ICAI guidance on log-trail sufficiency, model documentation and reproducibility needs to extend across both business types.</p>
+
+  <h3>Domain 5 — AI governance</h3>
+
+  <p><strong>Public data observation.</strong> HCLTech has a dedicated AI section in the Annual Report 2025 with disclosed governance principles. DPDP applies. EU AI Act applies — particularly for the Software/Products unit since HCL Software products (BigFix, Sametime, Volt, etc.) are deployed in EU customer environments.</p>
+
+  <p><strong>What methodology would surface.</strong> Governance framework assessment with a products-side overlay: the products business unit faces EU AI Act provider obligations on any high-risk AI category embedded in shipped products (different from the services business which faces deployer-side obligations). This bifurcation requires the AI governance framework to handle both — most pure-services peers don\'t need the dual structure.</p>
+
+  <h3>Domain 6 — Cost allocation across business units</h3>
+
+  <p><strong>Public data observation.</strong> HCLTech segments report IT Services + Engineering Services + Software/Products distinctly. Cross-segment AI cost allocation is therefore both a transfer pricing matter (cross-jurisdiction) and a segment-allocation matter (cross-BU even within the same jurisdiction).</p>
+
+  <p><strong>What methodology would surface.</strong> Cross-segment AI cost allocation is uniquely material for HCLTech because the three segments have different gross margin profiles + different cost-recovery economics. AI Force investment spread across all three segments under a single allocation key may misrepresent segment economics. The methodology applies Section 92 (TP) + segment reporting standards (Ind AS 108) to produce an allocation that survives both audit perspectives.</p>
+
+  <h2>AI Spend &amp; Tax Optimisation overlay</h2>
+
+  <ul>
+    <li><strong>GST RCM exposure.</strong> Same pattern as peers — foreign vendor spend attracts 18% IGST under RCM via Section 5(3) IGST Act. Reconciliation against GSTR-3B Table 3.1(d) for past 24 months follows standard methodology.</li>
+    <li><strong>Section 195 TDS post EL 2.0 abolition (1 August 2024).</strong> Same dual-regime reconciliation discipline as peers.</li>
+    <li><strong>AI Force capitalisation under Ind AS 38 — bifurcated.</strong> AI Force has both services applications (operating cost) and product applications (potentially capitalisable as product development cost). Under Ind AS 38 paragraph 57, the bifurcation determines which portion qualifies for capitalisation. This is more nuanced than at pure-services peers where the entire AI platform spend is typically opex.</li>
+    <li><strong>Cross-segment transfer pricing.</strong> Cross-segment AI cost allocation has TP implications where segments operate from different legal entities or jurisdictions. The HCLTech multi-segment + multi-jurisdiction structure makes this materially more complex than at pure-services peers.</li>
+    <li><strong>Section 32 depreciation.</strong> Book amortisation policy (2-5 years on purchased software, similar to peers) vs Section 32 Block of Assets 40% WDV — standard deferred tax pattern.</li>
+  </ul>
+
+  <h2>What a peer CFO would draw from this</h2>
+
+  <p>The HCLTech demonstration is most relevant for CFOs of Indian IT services entities that also have a products business (Persistent Systems, Mphasis, Coforge, and similar):</p>
+
+  <ol>
+    <li><strong>The products business is a different controls + tax regime than services.</strong> If your entity has both, the AI-controls discipline (ICAI guidance + DPDP) + Ind AS 38 + Section 92 TP analysis all bifurcate accordingly. Don\'t map a pure-services framework onto a mixed-business entity.</li>
+    <li><strong>AI investment ROI on a products-side platform is different math than services-side ROI.</strong> Products-side AI investment is amortised over product useful-life + multiple-customer deployments; services-side AI investment is amortised over engagement TCV. The make-vs-buy threshold differs accordingly.</li>
+    <li><strong>EU AI Act provider obligations are larger for products entities than for services entities.</strong> If your products business sells AI-embedded software into the EU market, your provider-side obligations under the EU AI Act are materially different from peer services entities. Scope the governance work accordingly.</li>
+    <li><strong>Cross-segment allocation key matters more for mixed-business entities than for pure-services peers.</strong> If your three segments share central AI platform investment, the allocation methodology under Ind AS 108 (segment reporting) + Section 92 (TP) is a real engagement scope.</li>
+  </ol>
+
+  <h2>How a real engagement differs from this demonstration</h2>
+
+  <p>Same hard ceiling as the Infosys + TCS demonstrations. Public-data methodology demonstration shows framework + direction; real engagement adds internal spend data, contract review, stakeholder interviews, reconciliation working papers, quantified roadmap, audit-committee deliverable. HCLTech at $13-14B revenue scale is the upper end of BatchWise AI\'s target market — engagements at this scale would typically run 6-8 weeks rather than 4-8, and price-band lands at the upper end of the indicative range or scope into a multi-phase structure.</p>
+
+  <h2>For peer CFOs evaluating BatchWise AI</h2>
+
+  <p>If you are the CFO of an Indian IT services entity with mixed services/products business, ₹50-2,000 crore revenue, foreign-vendor spend material, this demonstration is closer to your situation than Infosys or TCS. The engagement model:</p>
+
+  <ul>
+    <li><a href="/ai/methodology/ai-systems-review-india/">AI Systems Review methodology</a> — full 6-domain framework with cross-segment allocation extension</li>
+    <li><a href="/ai/methodology/ai-spend-tax-optimisation-india/">AI Spend &amp; Tax Optimisation methodology</a> — 5 tax sub-domains</li>
+    <li><a href="/consult/?service=ai-systems-review">Schedule a discovery call</a> — 30 minutes, free, written scope proposal</li>
+  </ul>
+
+  <h2>Sources</h2>
+  <ul>
+    <li><a href="https://www.hcltech.com/hcl-annual-report-2025">HCLTech — Annual Report 2024-25</a></li>
+    <li><a href="https://www.hcltech.com/hcl-annual-report-2025/artificial-intelligence">HCLTech AR 2025 — AI section</a></li>
+    <li><a href="https://www.hcltech.com/press-releases">HCLTech — Press Releases archive</a></li>
+    <li><a href="https://www.hcltech.com/ai-force">HCLTech AI Force</a> — GenAI platform documentation</li>
+    <li>Avasant RadarView — Generative AI Services 2024 — independent third-party assessment</li>
+    <li>HCLTech quarterly earnings call transcripts FY 2024-25</li>
+  </ul>
+</CommercialLayout>
+
+<style>
+  .meta-byline { font-size: 0.875rem; color: var(--color-muted); margin: 0 0 2rem; padding: 0.75rem 1rem; background: color-mix(in srgb, var(--color-accent) 4%, transparent); border-left: 3px solid var(--color-accent); border-radius: 0 6px 6px 0; }
+  .meta-byline a { color: var(--color-accent); text-decoration: underline; }
+  .callout { padding: 1rem 1.25rem; border-radius: 6px; margin: 1.5rem 0; }
+  .callout--important { background: color-mix(in srgb, #B45309 6%, transparent); border-left: 4px solid #B45309; }
+  .callout p { margin: 0; font-size: 0.9375rem; }
+  table.data { width: 100%; border-collapse: collapse; margin: 1rem 0 1.5rem; font-size: 0.9375rem; }
+  table.data th { background: var(--color-accent); color: #fff; text-align: left; padding: 0.625rem 0.875rem; font-weight: 600; }
+  table.data td { padding: 0.625rem 0.875rem; border-bottom: 1px solid var(--color-border); vertical-align: top; }
+  .caveat { font-size: 0.875rem; color: var(--color-muted); padding: 0.875rem 1rem; background: color-mix(in srgb, var(--color-accent) 4%, transparent); border-left: 3px solid var(--color-accent); border-radius: 0 6px 6px 0; margin: 1rem 0 1.5rem; }
+</style>
