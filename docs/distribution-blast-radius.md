@@ -67,13 +67,14 @@
 
 | # | Task | Where | Time | Done? |
 |---|---|---|---|---|
-| 1 | Add rikuq.com RSS to Daily.dev | app.daily.dev → submit source | 5 min | ⏳ |
-| 2 | Submit rikuq.com to Refind | refind.com → add source | 5 min | ⏳ |
-| 3 | Create Substack publication (rikuq) | substack.com → start a publication | 10 min | ⏳ |
-| 4 | Apply to BetterProgramming as Medium writer | medium.com → BetterProgramming → "Write for us" | 5 min | ⏳ |
-| 5 | Apply to Level Up Coding as Medium writer | medium.com → Level Up Coding → "Write for us" | 5 min | ⏳ |
-| 6 | Create HackerNoon account + verify | hackernoon.com/sign-up | 5 min | ⏳ |
-| 7 | Create DZone author account | dzone.com → register | 5 min | ⏳ |
+| 0 | Mirror.xyz signup | mirror.xyz | 15-20 min | 🚫 Skipped — requires ETH wallet, audience too niche to justify cost. |
+| 1 | Add rikuq.com RSS to Daily.dev | app.daily.dev → submit source | 5 min | 🚫 Blocked — needs reputation. Revisit after upvoting/commenting earns threshold. |
+| 2 | Submit rikuq.com to Refind | refind.com → add source | 5 min | ✅ 2026-05-27 — no public submit form; emailed hello@refind.com with site/RSS/sample articles |
+| 3 | Create Substack publication (rikuq) | substack.com → start a publication | 10 min | 🟡 Partial — pub created at rikuq1.substack.com (squatter took rikuq), bio set, ~2 manual posts done. Republish workflow confusing in UI; parked, revisit later. |
+| 4 | Apply to BetterProgramming as Medium writer | — | — | ⚠️ Not needed — submit-to-publication is a per-post action AFTER publishing to own Medium profile. No upfront application. |
+| 5 | Apply to Level Up Coding as Medium writer | — | — | ⚠️ Not needed — same as above. Submit per-post after publishing. |
+| 6 | Create HackerNoon account + verify | hackernoon.com/sign-up | 5 min | ✅ 2026-05-28 |
+| 7 | Create DZone author account | dzone.com → register | 5 min | ✅ 2026-05-28 |
 | 8 | Already have: Dev.to, Hashnode, Medium, LinkedIn, IH, Mastodon, Bluesky, Mirror | — | — | ✅ |
 
 **Total setup time:** ~40 min spread across one evening. Then we're armed.
