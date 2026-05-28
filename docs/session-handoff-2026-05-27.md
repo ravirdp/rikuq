@@ -337,3 +337,73 @@ CTA swap: `/ai/services/*` Batchwise URLs → `/services` rikuq URL OR drop enti
 ---
 
 _End of handoff. Last commit on main: `ffb1d0e`. Migration plan committed below._
+
+---
+
+## UPDATED 2026-05-28 (late) — Batchwise Phase 1 COMPLETE + scope expanded
+
+Batchwise Phase 1 shipped (commit `b225a1f` on their side). New brief from Batchwise Claude received.
+
+### What changed from the original plan
+
+1. **Scope grew from 17 → 19 files.** Two new MDX files confirmed on disk:
+   - `compare/finops-vs-traditional-it-cost-management.mdx` (2092 words — substantial)
+   - `glossary/finops.mdx` (985 words — short, expansion candidate)
+2. **GSC indexing reality:** Batchwise `/ai/*` URLs are FULLY indexed with FAQ rich results (originally assumed minimal). Fresh rewrites are now mandatory, not just preferred.
+3. **Cutover protocol formalized:** Batchwise wants ONE signal from rikuq, then opens 24h notice window. Within that window: rikuq publishes ALL content + flips 8 inbound CTAs. Batchwise flips 410. Same day, atomic event.
+
+### Updated scope: 10 articles + services page + CTA cleanup
+
+| Bucket | Files |
+|---|---|
+| Long-form articles | 6 (was 5) — adds `finops-vs-traditional-it-cost-management` |
+| Glossary expansions | 4 (was 3) — adds `glossary/finops.mdx` |
+| Services page (new) | 1 — `src/pages/services.astro` with Cal.com + Tally |
+| Case studies | 6 → `data/track-c/research-inputs/it-services-case-studies/` |
+| CTA cleanup | 8 refs across 2 files (`what-is-llm-finops.mdx` + `FinOpsCTA.astro`) |
+
+### All 5 open questions answered
+
+| Q | Answer |
+|---|---|
+| Q1 Top-level `/finops/` nav? | **No.** Use `/blog/finops/` category filter. Add `Services` as new top-level nav. |
+| Q2 Where do service pages land? | **Combine into ONE** `src/pages/services.astro` with Cal.com + Tally CTAs. Drop Batchwise sales-page format. |
+| Q3 Backdated or fresh pubDate? | **Fresh.** Self-canonical (don't set the field). GSC full-indexing makes this critical. |
+| Q4 Affiliate disclosure on provider guide? | **`false`** initially. No live affiliate relationships with the providers being compared. |
+| Q5 Preserve URL slugs? | **No.** First publication on rikuq side — free to use rikuq-native slugs. |
+
+### Updated cutover timeline
+
+| Day | Work |
+|---|---|
+| Wed May 28 (today) | Plan locked, parked |
+| Thu May 29 | Build services page (~45min). Draft articles #1-2. Voice review on #1. |
+| Fri May 30 | **HOLD** — Indian AI Search Audit ships |
+| Sat May 31 | Draft articles #3-4 |
+| Sun Jun 1 | Draft articles #5-6 |
+| Mon Jun 2 | Draft articles #7-8 |
+| Tue Jun 3 | Draft articles #9-10 + Track C #1 ships |
+| **Wed Jun 4** | Signal "Ready for cutover" to Batchwise |
+| **Thu Jun 5** | CUTOVER: rikuq publishes 10 + flips 8 CTAs. Batchwise flips 410. |
+| Jun 5 → Jun 19 | GSC verification across both properties |
+
+### First task when next session resumes
+
+1. Build `src/pages/services.astro` with Cal.com + Tally CTAs (~45 min)
+2. Add Services link to nav (header + footer)
+3. Move 6 case studies → `data/track-c/research-inputs/it-services-case-studies/`
+4. Draft article #1 (Provider Comparison Guide — least voice reframe needed)
+5. Bring article #1 to Ravi for voice review before drafting #2-10
+
+### Voice rewrite spec (per file)
+
+**Drop:** `lastUpdated`, `lastReviewed`, `reviewedBy`, `schemaType`, `relatedServices`, `sources`, `amendmentLog`, all "BatchWise we" / "our service" framing
+**Add:** `pubDate` (fresh staggered), `category: 'finops'`, `tags`, `author: 'Ravi'`
+**Tighten:** `title` ≤ 70, `description` 120-160
+**Convert:** FAQ `q:/a:` → rikuq's `question:/answer:`
+**Voice swap:** practitioner-essayist first-person ("I've audited X, here's the pattern")
+**CTA swap:** `/ai/services/*` → `/services` rikuq URL
+
+---
+
+_End of handoff (rev 2). Last commit on main: `fe79ddc`._
