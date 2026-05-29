@@ -97,7 +97,7 @@ You're a CTO, VP Engineering, or Head of Platform at a company with $50K+/month 
 
 [Prism](https://ssimplifi.com) is built explicitly for this audience — gateway-as-FinOps-layer. The dashboard surfaces per-feature cost (via `X-Prism-Tags`), the policy layer enforces budgets, the routing engine handles the multi-provider optimization, and every cached request shows up with a real savings number.
 
-If you're building this in-house, you'll re-invent: a request gateway, a cost-tagging schema, a budget enforcement mechanism, an anomaly detector, and a multi-provider routing layer. Six months of engineering. Or use Prism / Portkey / Helicone — covered in depth in [the comparison post](/blog/infra/portkey-vs-helicone-vs-litellm-vs-openrouter) *(coming soon)*.
+If you're building this in-house, you'll re-invent: a request gateway, a cost-tagging schema, a budget enforcement mechanism, an anomaly detector, and a multi-provider routing layer. Six months of engineering. Or use Prism / Portkey / Helicone — covered in depth in [the comparison post](/blog/infra/portkey-vs-helicone-vs-litellm-vs-openrouter).
 
 ### Frame B: AI bill protection (solo founder, small team)
 
@@ -189,12 +189,12 @@ Pick by your situation:
 - Skim the maturity model above and identify your step. Climb one step every quarter.
 
 **If you're at engineering-leadership scale ($50K+/month AI spend):**
-- Pick a gateway/observability layer. [Prism vs Portkey vs Helicone vs LiteLLM vs OpenRouter comparison post](/blog/infra/portkey-vs-helicone-vs-litellm-vs-openrouter) *(coming soon)* — until then, the short version: Portkey for observability-first, Helicone for clean logging, [Prism (my own)](https://ssimplifi.com) for measured savings + edge cache + governance unified.
+- Pick a gateway/observability layer. [Prism vs Portkey vs Helicone vs LiteLLM vs OpenRouter comparison post](/blog/infra/portkey-vs-helicone-vs-litellm-vs-openrouter) — until then, the short version: Portkey for observability-first, Helicone for clean logging, [Prism (my own)](https://ssimplifi.com) for measured savings + edge cache + governance unified.
 - Get to cost attribution (step 3) within 90 days.
 - Build the monthly review cadence.
 
 **If you're an Indian mid-market company (₹2+ crore AI spend, listed or pre-listing):**
-- Either build the internal function or engage outside advisory. The new SEBI/MCA disclosure requirements (live January 2026) make the documentation side mandatory regardless.
+- Either build the internal function or engage outside advisory. The evolving Indian AI-governance frame (DPDP Act 2023, ICAI voluntary AI assurance guidance, and SEBI's June 2025 AI/ML consultation paper — applicable today to MIIs, intermediaries, and mutual funds, still in consultation for the broader market) makes the documentation side increasingly expected regardless.
 - For context on the Indian regulatory layer + the optimization side together, my advisory practice at [rikuq services](/services) covers exactly this. Free 30-minute discovery call if useful.
 
 ## The bottom line
@@ -207,10 +207,24 @@ Either way — start now. AI bills double faster than cloud bills did.
 
 ## Related reading
 
+**The FinOps frameworks and mechanics:**
+
+- **[The FinOps Foundation Framework: A Practitioner's Walkthrough](/blog/finops/finops-foundation-framework-2026)** — the reference architecture this discipline is built on (phases, capabilities, 2026 updates)
+- **[FinOps vs ITFM vs ITAM: Why You Eventually Need All Three](/blog/finops/finops-vs-itfm-vs-itam-2026)** — where LLM FinOps sits relative to the adjacent cost disciplines
+- **[Why LLM Gateway Attribution Is Harder Than Cloud FinOps Ever Was](/blog/finops/llm-gateway-attribution-harder-than-cloud-finops)** — the attribution layer that's the hardest part of the discipline
+- **[AI Cost Allocation: Models That Work in Indian Production](/blog/finops/ai-cost-allocation-india-2026)** — showback vs chargeback, dimensions, tag enforcement
+
+**The Indian regulatory + tax layer:**
+
+- **[AI Systems Review: A 6-Domain Framework You Can Run Internally](/blog/finops/ai-systems-review-framework-india-2026)** — the operational + governance review framework
+- **[AI Tax Recovery for Indian CFOs: The 5-Domain Framework](/blog/finops/ai-tax-recovery-framework-india-2026)** — GST ITC, Section 195, RCM, capex/opex, transfer pricing
+- **[AI / Cloud FinOps Providers in India: A Practitioner's Take](/blog/finops/ai-cloud-finops-providers-india-2026)** — who fits what at the provider-selection layer
+
+**The optimization data + stack:**
+
 - **[Anthropic Prompt Caching: Real Numbers From 330 Production Calls](/blog/infra/anthropic-prompt-caching-real-numbers)** — the data behind the optimization claims here
 - **[How I Run 3 Production AI SaaS on $5/Month of Hosting](/blog/stack/production-stack-2026)** — what LLM FinOps discipline looks like at the bootstrapped end
-- **[Claude Code Review 2026 — From Zero Code to 3 Live SaaS](/blog/tools/claude-code-review)** — the Anthropic Max plan as a FinOps move
-- **[Portkey vs Helicone vs LiteLLM vs OpenRouter](/blog/infra/portkey-vs-helicone-vs-litellm-vs-openrouter)** *(coming soon)* — the gateway/observability landscape
+- **[Portkey vs Helicone vs LiteLLM vs OpenRouter](/blog/infra/portkey-vs-helicone-vs-litellm-vs-openrouter)** — the gateway/observability landscape
 - **[rikuq services](/services)** — the advisory practice for mid-market Indian companies needing this done professionally
 
 ---
