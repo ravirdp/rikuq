@@ -120,11 +120,11 @@ Country detection is a simple browser-locale check on the pricing page, routing 
 
 ## AI layer: Claude Code primary, multi-provider for product
 
-**Dev work:** Claude Code on the $200/month Anthropic Max (20×) plan. Covered in depth in the [Claude Code review](/blog/tools/claude-code-review). The short version: cheapest engineer I'll ever hire.
+**Dev work:** Claude Code on the $200/month Anthropic Max (20×) plan. Covered in depth in the [Claude Code review](/blog/tools/claude-code-review/). The short version: cheapest engineer I'll ever hire.
 
 **Runtime for products:** Prism (my own product) is an OpenAI-compatible AI gateway, so I dogfood it. Apps point at `api.ssimplifi.com/v1` instead of OpenAI's URL; requests get routed to Anthropic, OpenAI, or Gemini depending on the request shape and cost profile. The three-layer cache (exact match → semantic via Upstash Vector + BGE embeddings → provider-native passthrough) cuts the bill 30-60% depending on workload.
 
-For solo founders who don't run their own gateway: use [Claude](https://www.anthropic.com/) direct for highest quality, [OpenAI](https://openai.com/) for proven reliability, or wire up multi-provider routing via something like Prism (or build your own — see [Prism's architecture](/case-studies/prism) once it's published).
+For solo founders who don't run their own gateway: use [Claude](https://www.anthropic.com/) direct for highest quality, [OpenAI](https://openai.com/) for proven reliability, or wire up multi-provider routing via something like Prism (or build your own — see [Prism's architecture](/case-studies/prism/) once it's published).
 
 If you don't want to think about it, just use Anthropic direct. Claude is the highest-quality model for production code today; the day Gemini closes the long-context gap I'll switch, but it hasn't.
 
@@ -152,7 +152,7 @@ Three different storage primitives because they solve three different problems. 
 
 This is the one tool in the stack that has nothing to do with infrastructure but every solo founder should use it.
 
-[Notion](https://www.notion.so/) is where I plan what Claude Code builds. Specs, decision logs, scratch notes, project trackers, my [what-i-did.md equivalents](/blog/tools/claude-code-review) for high-level planning. The killer feature for solo work isn't any specific Notion capability — it's that *one tool* holds your spec, your roadmap, your meeting notes, your reference docs, and your decision archive without making you switch between five apps.
+[Notion](https://www.notion.so/) is where I plan what Claude Code builds. Specs, decision logs, scratch notes, project trackers, my [what-i-did.md equivalents](/blog/tools/claude-code-review/) for high-level planning. The killer feature for solo work isn't any specific Notion capability — it's that *one tool* holds your spec, your roadmap, your meeting notes, your reference docs, and your decision archive without making you switch between five apps.
 
 If you're using a mix of Linear + Apple Notes + Google Docs + Trello + somewhere else, consolidate to Notion. The cognitive overhead saving is the real win.
 
@@ -228,11 +228,11 @@ If you're bootstrapped and waiting until you "have funding" to ship — you don'
 
 ## Related reading
 
-- **[Claude Code Review 2026 — From Zero Code to 3 Live SaaS](/blog/tools/claude-code-review)** — the AI dev tool that costs $200/month and saves more than it costs
-- **[Best AI Coding Tools 2026](/blog/tools/best-ai-coding-tools-2026)** — full landscape if you're evaluating dev tools
-- **[Anthropic prompt caching: real numbers from production](/blog/infra/anthropic-prompt-caching-real-numbers)** — how to cut Claude bills 35-45%
-- **[What is LLM FinOps?](/blog/finops/what-is-llm-finops)** — the discipline that makes the $5/month stack sustainable as you scale
-- **[The FinOps Foundation Framework: A Practitioner's Walkthrough](/blog/finops/finops-foundation-framework-2026)** — the structured version of the cost discipline behind this stack
+- **[Claude Code Review 2026 — From Zero Code to 3 Live SaaS](/blog/tools/claude-code-review/)** — the AI dev tool that costs $200/month and saves more than it costs
+- **[Best AI Coding Tools 2026](/blog/tools/best-ai-coding-tools-2026/)** — full landscape if you're evaluating dev tools
+- **[Anthropic prompt caching: real numbers from production](/blog/infra/anthropic-prompt-caching-real-numbers/)** — how to cut Claude bills 35-45%
+- **[What is LLM FinOps?](/blog/finops/what-is-llm-finops/)** — the discipline that makes the $5/month stack sustainable as you scale
+- **[The FinOps Foundation Framework: A Practitioner's Walkthrough](/blog/finops/finops-foundation-framework-2026/)** — the structured version of the cost discipline behind this stack
 
 ---
 
