@@ -1,6 +1,6 @@
 ---
 // Lead-gen module for the LLM FinOps / AI Spend advisory practice at
-// batchwise.ai/ai. Auto-rendered by PostLayout when frontmatter has
+// /services. Auto-rendered by PostLayout when frontmatter has
 // `advisoryCta: true` (set this on posts where it's editorially natural —
 // the FinOps cornerstone, the prompt caching deep-dive, future gateway
 // comparisons, etc).
@@ -9,14 +9,14 @@
 // - Different visual treatment from NewsletterSignup so the two don't blur
 // - Honest framing ("free 30-min discovery") not pushy
 // - Clear ICP statement (₹2+ crore AI spend) so casual readers self-select out
-// - Single primary CTA pointing to batchwise.ai/ai with UTM for attribution
+// - Dual CTAs to /services page (Cal.com booking + Tally intake)
 
 interface Props {
   variant?: 'inline' | 'card';
 }
 const { variant = 'card' } = Astro.props;
 
-const utmUrl = 'https://batchwise.ai/ai?utm_source=rikuq&utm_medium=blog-cta&utm_campaign=llm-finops';
+const servicesUrl = '/services';
 ---
 
 <aside class:list={['advisory-cta', variant]} aria-label="Advisory engagement">
@@ -45,8 +45,8 @@ const utmUrl = 'https://batchwise.ai/ai?utm_source=rikuq&utm_medium=blog-cta&utm
   </p>
 
   <div class="actions">
-    <a class="btn" href={utmUrl} rel="me">Schedule 30-min discovery →</a>
-    <span class="actions-note">Free. Written scope proposal before any commitment.</span>
+    <a class="btn" href={servicesUrl}>See how to engage →</a>
+    <span class="actions-note">Cal.com booking + Tally intake form. Free 30-min discovery. Written scope before commitment.</span>
   </div>
 </aside>
 

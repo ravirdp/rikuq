@@ -1,0 +1,154 @@
+---
+export const prerender = true;
+import CommercialLayout from '../../../layouts/CommercialLayout.astro';
+
+const title = 'Methodology Demonstration — Tech Mahindra AI/Cloud Spend FY 2024-25';
+const description = 'BatchWise methodology demonstration on Tech Mahindra FY 2024-25 publicly disclosed financials — Project Indus, AI Delivered Right. No engagement.';
+const lede = 'This page applies the BatchWise AI Systems Review and AI Spend & Tax Optimisation methodology to Tech Mahindra Limited publicly disclosed FY 2024-25 financial data. Tech Mahindra is structurally interesting for two reasons: (a) Project Indus — open-sourced Indian foundational large language model, a unique make-side AI investment among Indian IT services peers; (b) "AI Delivered Right" strategy frame launched FY25 to drive responsible AI adoption. BatchWise has no engagement with Tech Mahindra; this page makes no claim of delivered work.';
+const canonicalPath = '/ai/case-studies/tech-mahindra-ai-spend-fy2425/';
+
+const jsonLdBlocks = [
+  {
+    '@context': 'https://schema.org',
+    '@type': 'Article',
+    headline: title,
+    description,
+    author: { '@type': 'Person', name: 'Ravi Patel', jobTitle: 'Founder, Editor-in-charge', url: 'https://rikuq.com', image: 'https://batchwise.ai/avatars/ravi.webp', sameAs: ['https://rikuq.com', 'https://www.linkedin.com/in/ravirdp/', 'https://github.com/ravirdp', 'https://x.com/ravirdp', 'https://batchwise.ai/editorial-team/'] },
+    publisher: { '@type': 'Organization', name: 'BatchWise', url: 'https://batchwise.ai/' },
+    creator: { '@type': 'Organization', name: 'BatchWise', url: 'https://batchwise.ai/' },
+    url: 'https://batchwise.ai/ai/case-studies/tech-mahindra-ai-spend-fy2425/',
+    datePublished: '2026-05-22',
+    dateModified: '2026-05-22',
+    inLanguage: 'en-IN',
+    isBasedOn: [
+      { '@type': 'CreativeWork', name: 'Tech Mahindra Integrated Annual Report FY 2024-25', url: 'https://insights.techmahindra.com/investors/tml-integrated-annual-report-fy-2024-2025.pdf' },
+      { '@type': 'CreativeWork', name: 'Tech Mahindra Q4 FY25 Press Release', url: 'https://www.techmahindra.com/insights/press-releases/' },
+    ],
+  },
+];
+
+const faqs = [
+  {
+    q: 'Has BatchWise been engaged by Tech Mahindra?',
+    a: 'No. Independent analysis of publicly disclosed financial data from Tech Mahindra Limited\'s FY 2024-25 reporting cycle. BatchWise has no engagement with Tech Mahindra and makes no claim of delivered work.',
+  },
+  {
+    q: 'Why Tech Mahindra as a methodology demonstration target?',
+    a: 'Three reasons. (1) Project Indus is a unique data point — open-sourced Indian foundational large language model supporting Hindi and 37+ dialects, the only such initiative among Indian IT services peers in FY25. Useful reference for understanding what foundation-model-development-side investment economics look like in the Indian context. (2) Mahindra Group parent context creates cross-entity TP exposure similar to LTIMindtree but with different group structure. (3) Turnaround narrative — FY25 revenue flat (+0.3% CC) but PAT growth +76.5% YoY in Q4 (Q3 PAT +92.6% YoY) — illustrates margin recovery dynamics that affect AI spend rationalisation differently than steady-state peers.',
+  },
+  {
+    q: 'What does Project Indus tell us about AI investment economics?',
+    a: 'Project Indus is Tech Mahindra\'s indigenous foundational LLM, first phase supporting Hindi + 37 dialects, open-sourced. For external observers, this represents a structurally distinct AI investment category — most Indian IT services peers operate at the platform layer ABOVE foundation models (consuming GPT-4 / Claude / Gemini APIs via fine-tuning + orchestration). Project Indus invests at the foundation model layer itself — fundamentally different unit economics (much higher fixed cost; potential for differentiated capability that purely-consumption peers cannot match). Whether the investment is economically rational for Tech Mahindra specifically depends on internal data not publicly disclosed; methodologically, it represents a category that simply does not exist for most IT services peers.',
+  },
+  {
+    q: 'What did Tech Mahindra publicly disclose about AI in FY 2024-25?',
+    a: '"AI Delivered Right" launched as central AI strategy frame. Key disclosures: (a) Project Indus — indigenous foundational LLM open-sourced; (b) TechM agentX — comprehensive suite of GenAI-powered enterprise solutions; (c) NVIDIA + Google Cloud + Qualcomm partnerships expanded for AI capability; (d) Q3 FY25 new deal TCV $745M (+95.4% YoY); (e) Q4 FY25 PAT ₹1,167 crore (+76.5% YoY); (f) Q3 FY25 PAT ₹983 crore (+92.6% YoY). Specific AI revenue, AI capex, AI-specific spend not separately disclosed.',
+  },
+  {
+    q: 'How is Tech Mahindra different from larger peers for this methodology?',
+    a: 'Three key differences. (1) Project Indus represents a foundation-model-development investment that doesn\'t exist at peers — methodology applied here would need to explicitly evaluate the foundation-model-layer economics that don\'t apply at peer entities. (2) Mahindra Group parent — cross-entity AI cost allocation between Tech Mahindra and Mahindra Group sister entities (Mahindra & Mahindra Auto, Mahindra Finance, etc.) is a transfer pricing matter under Section 92. (3) Turnaround context — margin recovery is the central management theme; spend rationalisation analysis is therefore management-aligned with stronger appetite than at steady-state peers.',
+  },
+  {
+    q: 'What does the analysis NOT show for Tech Mahindra?',
+    a: 'Same categories as peer demonstrations — specific AI vendor spend; AI revenue; Project Indus unit economics (development cost, deployment cost, marginal revenue contribution); Mahindra Group cross-entity cost allocation methodology; RCM and Section 195 TDS specifics; internal controls evidence. Project Indus is particularly opaque from public data — open-source release doesn\'t enable cost-of-development inference; only client-side adoption visibility.',
+  },
+];
+---
+
+<CommercialLayout title={title} description={description} lede={lede} canonicalPath={canonicalPath} jsonLdBlocks={jsonLdBlocks} faqs={faqs}>
+  <p class="meta-byline">By <a href="https://rikuq.com" rel="author">Ravi Patel</a> — Founder, BatchWise. Published 22 May 2026. Methodology demonstration on public data.</p>
+
+  <div class="callout callout--important">
+    <p><strong>Disclosure discipline.</strong> Methodology demonstration on publicly disclosed financial data from Tech Mahindra Limited\'s FY 2024-25 reporting cycle. BatchWise has no engagement with Tech Mahindra. No claim of delivered work.</p>
+  </div>
+
+  <h2>Headline financial markers (FY 2024-25, publicly disclosed)</h2>
+
+  <table class="data">
+    <thead><tr><th>Marker</th><th>FY 2024-25 value</th><th>Source</th></tr></thead>
+    <tbody>
+      <tr><td>Q4 FY25 revenue</td><td>$1.549 billion (flat YoY; +0.3% constant currency)</td><td>Q4 FY25 press release</td></tr>
+      <tr><td>Q4 FY25 PAT</td><td>₹1,167 crore (+76.5% YoY)</td><td>Q4 FY25 press release</td></tr>
+      <tr><td>Q3 FY25 PAT</td><td>₹983 crore (+92.6% YoY)</td><td>Q3 FY25 press release</td></tr>
+      <tr><td>Q3 FY25 new deal TCV</td><td>$745 million (+95.4% YoY)</td><td>Q3 FY25 press release</td></tr>
+      <tr><td>Project Indus</td><td>Open-sourced indigenous Indian foundational LLM; Phase 1 Hindi + 37 dialects</td><td>Public release; AR FY25</td></tr>
+      <tr><td>AI strategy frame</td><td><strong>"AI Delivered Right"</strong> — launched FY25</td><td>Press release; AR FY25</td></tr>
+      <tr><td>TechM agentX</td><td>GenAI-powered enterprise automation suite launched FY25</td><td>Press release</td></tr>
+      <tr><td>Strategic partnerships</td><td>NVIDIA, Google Cloud, Qualcomm — expanded FY25</td><td>FY25 press releases</td></tr>
+      <tr><td>Listings</td><td>BSE/NSE only (not US-listed)</td><td>Public</td></tr>
+      <tr><td>AI revenue disclosure</td><td><strong>Not disclosed separately</strong></td><td>Management commentary FY25</td></tr>
+    </tbody>
+  </table>
+
+  <h2>Methodology application — Tech Mahindra-specific angles</h2>
+
+  <h3>Project Indus — foundation-model-layer investment economics</h3>
+
+  <p>Project Indus is the structurally distinct feature of Tech Mahindra\'s AI strategy. Most Indian IT services peers operate at the platform layer ABOVE foundation models (consuming OpenAI / Anthropic / Google foundation models via fine-tuning + orchestration). Project Indus invests at the foundation model layer itself — building an indigenous Hindi-and-Indic-language LLM from the model-training step.</p>
+
+  <p>The unit economics are fundamentally different from platform-layer AI investments:</p>
+
+  <ul>
+    <li><strong>Much higher fixed cost</strong> — foundation model training requires substantial GPU-time, dataset curation, and ML engineering investment. Specifics not publicly disclosed but the order-of-magnitude is materially larger than fine-tuning costs.</li>
+    <li><strong>Potential for differentiated capability</strong> — language coverage (Hindi + 37 dialects) is not available in equivalent quality from OpenAI / Google / Anthropic foundation models in 2025-2026. Differentiation that purely-consumption peers cannot match.</li>
+    <li><strong>Open-source release strategy</strong> — explicitly releases the foundation as open-source. Implication: revenue model is downstream (services + customisation) rather than direct foundation-model licensing.</li>
+  </ul>
+
+  <p>Whether this investment is economically rational depends on Tech Mahindra-specific data not publicly disclosed (development cost, ongoing maintenance cost, downstream services revenue attributable to differentiated language coverage). Methodologically, Project Indus represents an investment category that simply doesn\'t exist for most IT services peers, and would require methodology extension to evaluate.</p>
+
+  <h3>Turnaround context (Domains 1 + 4)</h3>
+
+  <p>Tech Mahindra\'s FY25 financial profile shows margin recovery dynamics — revenue flat but PAT +76% YoY in Q4 + 92% YoY in Q3. This indicates strong cost discipline at the operational level. The AI spend rationalisation context at Tech Mahindra is management-aligned in a way that differs from steady-state peers — the methodology engagement would have stronger management appetite for findings, but would also need to distinguish change-related AI spend (capability building during the turnaround) from steady-state run-rate.</p>
+
+  <h3>Mahindra Group cross-entity cost allocation (Domain 6)</h3>
+
+  <p>Tech Mahindra is part of the Mahindra Group (Mahindra & Mahindra Auto, Mahindra Finance, Mahindra Holidays, others). Cross-entity AI cost allocation between Tech Mahindra and sister entities is a transfer pricing matter — particularly relevant for shared AI capability (e.g., Project Indus consumed by Mahindra Auto for in-vehicle voice systems would require arm\'s-length allocation). Methodology applies under Section 92 + OECD TP Guidelines Chapter VII; public data does not enable quantification.</p>
+
+  <h3>AI Spend &amp; Tax overlay</h3>
+
+  <ul>
+    <li><strong>GST RCM</strong> on foreign AI/cloud spend — standard 18% IGST under Section 5(3) IGST Act</li>
+    <li><strong>Section 195 TDS</strong> post EL 2.0 (1 August 2024) — same dual-regime reconciliation as peers</li>
+    <li><strong>Project Indus capitalisation under Ind AS 38</strong> — foundation model development costs (GPU compute, ML engineering, dataset curation) may qualify for capitalisation if Ind AS 38 paragraph 57 criteria are met. Open-source release doesn\'t preclude capitalisation if downstream economic benefit (services revenue) is established. Public data does not enable evaluation; real engagement would scope this specifically.</li>
+    <li><strong>Cross-Mahindra-Group TP</strong> — particularly material given the auto / finance / holidays / IT services group diversity</li>
+  </ul>
+
+  <h2>What a peer CFO would draw from this</h2>
+
+  <ol>
+    <li><strong>Foundation-model-layer investment is a different methodology than platform-layer.</strong> If your entity is considering foundation model investment (rare among IT services peers but increasingly considered for sector-specific applications), the methodology framework needs to extend beyond standard AI Systems Review domains.</li>
+    <li><strong>Turnaround-period AI spend mixes change-cost with run-rate.</strong> If your entity is mid-turnaround, the same disaggregation discipline that applies at Wipro applies — methodology engagement should explicitly separate the two.</li>
+    <li><strong>Group structure cross-entity TP is real for multi-business conglomerates.</strong> If your IT services entity is part of a diversified Indian conglomerate (Mahindra, L&T, Tata, Aditya Birla, Reliance group structures all qualify), shared AI capability allocation is a TP scope.</li>
+  </ol>
+
+  <h2>How a real engagement differs</h2>
+
+  <p>Same as the peer demonstrations. Project Indus economics specifically would require internal access — open-source release doesn\'t enable cost-of-development inference; only client-side adoption visibility.</p>
+
+  <h2>For peer CFOs evaluating BatchWise AI</h2>
+
+  <ul>
+    <li><a href="/ai/methodology/ai-systems-review-india/">AI Systems Review methodology</a></li>
+    <li><a href="/ai/methodology/ai-spend-tax-optimisation-india/">AI Spend &amp; Tax Optimisation methodology</a></li>
+    <li><a href="/consult/?service=ai-systems-review">Schedule a discovery call</a></li>
+  </ul>
+
+  <h2>Sources</h2>
+  <ul>
+    <li><a href="https://insights.techmahindra.com/investors/tml-integrated-annual-report-fy-2024-2025.pdf">Tech Mahindra — Integrated Annual Report FY 2024-25</a></li>
+    <li><a href="https://www.techmahindra.com/insights/press-releases/">Tech Mahindra — Press Releases</a></li>
+    <li>Tech Mahindra Project Indus + AI Delivered Right strategy materials</li>
+    <li>Tech Mahindra quarterly earnings call transcripts FY 2024-25</li>
+  </ul>
+</CommercialLayout>
+
+<style>
+  .meta-byline { font-size: 0.875rem; color: var(--color-muted); margin: 0 0 2rem; padding: 0.75rem 1rem; background: color-mix(in srgb, var(--color-accent) 4%, transparent); border-left: 3px solid var(--color-accent); border-radius: 0 6px 6px 0; }
+  .meta-byline a { color: var(--color-accent); text-decoration: underline; }
+  .callout { padding: 1rem 1.25rem; border-radius: 6px; margin: 1.5rem 0; }
+  .callout--important { background: color-mix(in srgb, #B45309 6%, transparent); border-left: 4px solid #B45309; }
+  .callout p { margin: 0; font-size: 0.9375rem; }
+  table.data { width: 100%; border-collapse: collapse; margin: 1rem 0 1.5rem; font-size: 0.9375rem; }
+  table.data th { background: var(--color-accent); color: #fff; text-align: left; padding: 0.625rem 0.875rem; font-weight: 600; }
+  table.data td { padding: 0.625rem 0.875rem; border-bottom: 1px solid var(--color-border); vertical-align: top; }
+</style>

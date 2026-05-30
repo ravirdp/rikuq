@@ -35,7 +35,7 @@ Since then I've shipped three production AI SaaS solo, all live, all serving rea
 - **[Citare](https://citare.ai)** — a unified SEO + AI-search visibility platform tracking ChatGPT, Google AI Overview, Gemini, Claude, and Perplexity. 37 MCP tools exposed to AI agents, a 5-stage Brand Radar pipeline, vision-based AIO screenshot capture.
 - **[BatchWise](https://batchwise.ai)** — a compliance marketplace connecting Indian SMEs and SEBI-listed enterprise with vetted accounting and assurance professionals. GST, ITR, ESG, BRSR assurance.
 
-Aggregate so far: **roughly 107,000 lines of source code across three live SaaS, shipped solo**, mostly through one CLI tool ([Claude Code](/blog/tools/claude-code-review) on the $200/month Anthropic Max plan). I have no team. No co-founder. No prior CS degree. Just a couple of years of figuring it out by doing.
+Aggregate so far: **roughly 107,000 lines of source code across three live SaaS, shipped solo**, mostly through one CLI tool ([Claude Code](/blog/tools/claude-code-review/) on the $200/month Anthropic Max plan). I have no team. No co-founder. No prior CS degree. Just a couple of years of figuring it out by doing.
 
 **rikuq is the blog of what I've learned along the way.** This first post lays out what it's for, what you'll find here, and the principles I try to write under.
 
@@ -47,7 +47,7 @@ Three reasons. They map almost exactly to the failure modes I see in most blogs 
 
 The category is flooded with reviews from content marketers, journalists, and VC commentators. They evaluate features. They compare on paper. They miss what actually breaks when you're 6 hours into a build and the model burns 8,000 tokens before doing the wrong thing.
 
-I write reviews from inside live, shipping projects. When I say [Claude Code is over-eager](/blog/tools/claude-code-review), I mean *I just lost tokens to it five minutes ago and here's the fix*. When I say [Antigravity was great until it wasn't](/blog/tools/antigravity-review), I mean *I dropped it mid-project and here's the switching-cost math I ran*. When I say [Cursor isn't for me](/blog/tools/cursor-review), I mean *I tried it, didn't keep it, here's who should*.
+I write reviews from inside live, shipping projects. When I say [Claude Code is over-eager](/blog/tools/claude-code-review/), I mean *I just lost tokens to it five minutes ago and here's the fix*. When I say [Antigravity was great until it wasn't](/blog/tools/antigravity-review/), I mean *I dropped it mid-project and here's the switching-cost math I ran*. When I say [Cursor isn't for me](/blog/tools/cursor-review/), I mean *I tried it, didn't keep it, here's who should*.
 
 That perspective is rare. It's the whole reason this blog has a reason to exist.
 
@@ -55,7 +55,7 @@ That perspective is rare. It's the whole reason this blog has a reason to exist.
 
 Most technical blogs assume the reader already speaks the language. Most "no-code" blogs are about Webflow and Zapier. There's a thin middle band: *people without formal coding backgrounds, shipping real production software with AI as the engine*. That's where I live. The middle band's voices are underrepresented because the senior engineers don't know what it's like to start from zero, and the people starting from zero are usually still struggling.
 
-I'm shipping production code at scale without that background. The patterns I've developed (CLAUDE.md as a thin index, [what-i-did.md as the most useful file in any project](/blog/tools/claude-code-review), Opus-as-orchestrator-spawning-Sonnet-subagents) aren't in any textbook. They're hard-won. I'd rather share them than hoard them.
+I'm shipping production code at scale without that background. The patterns I've developed (CLAUDE.md as a thin index, [what-i-did.md as the most useful file in any project](/blog/tools/claude-code-review/), Opus-as-orchestrator-spawning-Sonnet-subagents) aren't in any textbook. They're hard-won. I'd rather share them than hoard them.
 
 **3. The intersection of LLM infrastructure and Generative Engine Optimization is underwritten.**
 
@@ -69,10 +69,10 @@ Four technical pillars plus this fifth one for everything that doesn't fit:
 
 | Pillar | What goes here |
 |---|---|
-| **[AI coding tools](/blog/tools)** | Honest reviews and comparisons of Cursor, Claude Code, Antigravity, Windsurf, GitHub Copilot. Written from inside actual shipping work, with decisive per-use-case verdicts. |
-| **[LLM infrastructure](/blog/infra)** | AI gateways, response caching (exact + semantic + native passthrough), multi-provider routing, FinOps. Crosses over with Prism's category. |
-| **[GEO (AI search)](/blog/geo)** | How ChatGPT, Claude, Perplexity, and Google AI Overviews actually index and cite content. Crosses over with Citare's category. |
-| **[Stack & Ops](/blog/stack)** | The production stack for shipping AI SaaS solo — Cloudflare, Supabase, Brevo, Resend, Razorpay, the patterns that hold it together. |
+| **[AI coding tools](/blog/tools/)** | Honest reviews and comparisons of Cursor, Claude Code, Antigravity, Windsurf, GitHub Copilot. Written from inside actual shipping work, with decisive per-use-case verdicts. |
+| **[LLM infrastructure](/blog/infra/)** | AI gateways, response caching (exact + semantic + native passthrough), multi-provider routing, FinOps. Crosses over with Prism's category. |
+| **[GEO (AI search)](/blog/geo/)** | How ChatGPT, Claude, Perplexity, and Google AI Overviews actually index and cite content. Crosses over with Citare's category. |
+| **[Stack & Ops](/blog/stack/)** | The production stack for shipping AI SaaS solo — Cloudflare, Supabase, Brevo, Resend, Razorpay, the patterns that hold it together. |
 | **Essays** (this one) | Personal notes, manifestos, lessons. Meta-content about the work itself. |
 
 There's also a [case-studies section](/case-studies) for full teardowns of the products I've shipped — long-form architecture-and-decisions pieces.
@@ -105,11 +105,11 @@ This isn't a brand. It's me. The byline, the photo, the entity graph, all point 
 
 Five articles are already live as I write this:
 
-1. **[Best AI Coding Tools 2026 — Honest Picks From Shipping 3 SaaS Solo](/blog/tools/best-ai-coding-tools-2026)** — the cornerstone comparison
-2. **[Claude Code Review 2026 — From Zero Code to 3 Live SaaS](/blog/tools/claude-code-review)** — my primary tool, reviewed honestly
-3. **[Cursor Review 2026 — Honest "Not For Me" Take From a VSCode User](/blog/tools/cursor-review)** — why I tried it, why I didn't keep it
-4. **[Antigravity Review (May 2026) — From Daily Driver to Dropped](/blog/tools/antigravity-review)** — the cautionary tale
-5. **[Cursor vs Claude Code — Which to Buy First](/blog/tools/cursor-vs-claude-code)** — the comparison that reframes the question
+1. **[Best AI Coding Tools 2026 — Honest Picks From Shipping 3 SaaS Solo](/blog/tools/best-ai-coding-tools-2026/)** — the cornerstone comparison
+2. **[Claude Code Review 2026 — From Zero Code to 3 Live SaaS](/blog/tools/claude-code-review/)** — my primary tool, reviewed honestly
+3. **[Cursor Review 2026 — Honest "Not For Me" Take From a VSCode User](/blog/tools/cursor-review/)** — why I tried it, why I didn't keep it
+4. **[Antigravity Review (May 2026) — From Daily Driver to Dropped](/blog/tools/antigravity-review/)** — the cautionary tale
+5. **[Cursor vs Claude Code — Which to Buy First](/blog/tools/cursor-vs-claude-code/)** — the comparison that reframes the question
 
 Coming next:
 
@@ -136,7 +136,7 @@ Because I'm asking for your attention, and you deserve to know what kind of writ
 
 If that's what you came here for, welcome.
 
-If you'd rather start with the most-shared piece instead of this manifesto, read **[Claude Code Review 2026 — From Zero Code to 3 Live SaaS](/blog/tools/claude-code-review)** next. It's the most concrete representation of what this whole blog is trying to be.
+If you'd rather start with the most-shared piece instead of this manifesto, read **[Claude Code Review 2026 — From Zero Code to 3 Live SaaS](/blog/tools/claude-code-review/)** next. It's the most concrete representation of what this whole blog is trying to be.
 
 — Ravi
 *rikuq.com · [@rikuq](https://twitter.com/rikuq) · [github.com/ravirdp](https://github.com/ravirdp)*

@@ -89,14 +89,14 @@ The CLI workflow matters more than people give it credit for. Being able to run 
 
 **Cost reality:** two pricing paths.
 
-- **Anthropic API pay-per-token** — variable. For comparable solo-founder usage you'd be looking at $80–$250+/month depending on intensity. [Prompt caching](/blog/infra/anthropic-prompt-caching-real-numbers) trims ~40% off the bill if you're using it.
+- **Anthropic API pay-per-token** — variable. For comparable solo-founder usage you'd be looking at $80–$250+/month depending on intensity. [Prompt caching](/blog/infra/anthropic-prompt-caching-real-numbers/) trims ~40% off the bill if you're using it.
 - **Claude Max subscription** — a flat monthly plan that includes Claude Code with very generous usage limits. **$100/month** for Max (5×) and **$200/month** for Max (20×).
 
 I'm currently on the **$200/month Max plan**. I started on the $100 plan and upgraded when my Citare velocity work (the 76k-LOC-in-12-days sprint above) made me hit the ceiling repeatedly. For my workload, $200 flat is materially better than the API metering anxiety — I stop thinking about cost per query and just *use* the tool, which itself ships more code per day.
 
 If you're building seriously, my recommendation order is: **$100 Max → upgrade to $200 Max when you hit limits → only fall back to API pay-go if you outgrow even $200**. The mental savings of a flat fee are bigger than the dollar savings of pay-go for most solo founders.
 
-**The verdict:** if you only buy one tool in 2026, this is it for serious solo founders building real backends. **[Read the full Claude Code review →](/blog/tools/claude-code-review)** *(coming soon)*
+**The verdict:** if you only buy one tool in 2026, this is it for serious solo founders building real backends. **[Read the full Claude Code review →](/blog/tools/claude-code-review/)**
 
 ### 2. Antigravity — the cautionary tale
 
@@ -114,7 +114,7 @@ So I dropped it. Mid-project. That's a strong signal — when a tool is genuinel
 
 **What it does poorly:** the recent redesign created exactly the wrong kind of churn — disruptive to existing users with no obvious benefit they could feel quickly.
 
-**The verdict:** if you're new to it, try it. If you're already mid-flow on a project, don't migrate — the cost of context-shifting is high right now. Worth re-evaluating in 3 months once the redesign stabilizes. **[Read the full Antigravity review (including what I'd want before re-adopting) →](/blog/tools/antigravity-review)** *(coming soon)*
+**The verdict:** if you're new to it, try it. If you're already mid-flow on a project, don't migrate — the cost of context-shifting is high right now. Worth re-evaluating in 3 months once the redesign stabilizes. **[Read the full Antigravity review (including what I'd want before re-adopting) →](/blog/tools/antigravity-review/)**
 
 ### 3. Cursor — best everyday IDE, even if it's not my pick
 
@@ -138,7 +138,7 @@ So I dropped it. Mid-project. That's a strong signal — when a tool is genuinel
 
 The Pro plan being credit-pool based (since June 2025) is the part most reviews skip. Frontier-model usage burns through the $20 of credits faster than you'd expect — many heavy users end up on Pro+ at $60/mo, which puts it in the same ballpark as Claude Code's API usage.
 
-**The verdict:** the easiest first AI coding tool to buy. The fact that I don't use it doesn't mean you shouldn't — if you're more tab-completion-driven than I am, this is probably your tool. **[Read the full Cursor review →](/blog/tools/cursor-review)** *(coming soon)*
+**The verdict:** the easiest first AI coding tool to buy. The fact that I don't use it doesn't mean you shouldn't — if you're more tab-completion-driven than I am, this is probably your tool. **[Read the full Cursor review →](/blog/tools/cursor-review/)**
 
 ### 4. Windsurf — Cursor's most credible competitor
 
@@ -148,7 +148,7 @@ The Pro plan being credit-pool based (since June 2025) is the part most reviews 
 
 **What it does poorly:** for what I do, it doesn't have a clear advantage over Cursor. The `.cursorrules` ecosystem is more mature on Cursor's side. Momentum is heavier on Cursor's side.
 
-**Verdict:** a strong number two in the IDE category. If you don't like Cursor for whatever reason, this is the next call. **[Read the full Windsurf review →](/blog/tools/windsurf-review)** *(coming soon)*
+**Verdict:** a strong number two in the IDE category. If you don't like Cursor for whatever reason, this is the next call. **[Read the full Windsurf review →](/blog/tools/windsurf-review/)**
 
 ### 5. GitHub Copilot — fine if you're locked in, behind otherwise
 
@@ -158,7 +158,7 @@ The Pro plan being credit-pool based (since June 2025) is the part most reviews 
 
 **What it does poorly:** in head-to-head daily use as a solo founder, it's been outclassed in raw quality by Cursor and outclassed in agentic capability by Claude Code and (pre-redesign) Antigravity. The model defaults are weaker than what competitors expose.
 
-**Verdict:** I don't pay for it personally. **[Read the full Copilot review →](/blog/tools/github-copilot-review)** *(coming soon)*
+**Verdict:** I don't pay for it personally. **[Read the full Copilot review →](/blog/tools/github-copilot-review/)**
 
 ## Quick comparison table
 
@@ -181,21 +181,21 @@ The IDE experience is the part that teaches you the loop of read-code → unders
 **If you're greenfield-building today: consider Antigravity for the routine-work speed advantage.**
 If you have no muscle memory in the old UX to disrupt, the Gemini-native speed is still a genuine differentiator. Pair with Claude Code for the deep work. Re-evaluate the Antigravity decision in 3 months once the redesign stabilizes.
 
-Not sure which stack fits you? I'm building [a 6-question picker](/tools/picker) that recommends one based on your situation.
+Not sure which stack fits you? I'm building [a 6-question picker](/tools/picker/) that recommends one based on your situation.
 
 ## Pricing reality — what you'll actually spend in 2026
 
 Most "free trial" pricing makes these look cheap. Reality at solo-founder usage:
 
 - **Claude Code via Anthropic Max:** $100/month (5×) or $200/month (20×). Flat fee. No usage anxiety. This is what I pay.
-- **Claude Code via API pay-go:** $80–250+/month for equivalent usage. Use [Anthropic's prompt caching](/blog/infra/anthropic-prompt-caching-real-numbers) — 35–45% cost reductions are real.
+- **Claude Code via API pay-go:** $80–250+/month for equivalent usage. Use [Anthropic's prompt caching](/blog/infra/anthropic-prompt-caching-real-numbers/) — 35–45% cost reductions are real.
 - **Cursor Pro:** $20/month, but treat it as $20 of credits and expect heavy users to move to Pro+ at $60/month.
 - **Cursor + Claude Code Max stack:** $120–220/month total.
 - **VSCode + Claude Code Max stack** (my setup): $100–200/month total. Cheaper than Cursor-inclusive setups since VSCode itself is free.
 
 For context: I pay **$200/month flat** for Claude Code Max (20×), upgraded from the $100 plan after Citare's 12-day build hit the ceiling repeatedly. I consider this the cheapest engineer I will ever hire — ~107,000 lines of production code across three SaaS, mostly through one CLI tool.
 
-If your AI bill is creeping up, [my AI API cost calculator](/tools/api-cost-calculator) models savings from caching, routing, and model selection.
+If your AI bill is creeping up, [my AI API cost calculator](/tools/api-cost-calculator/) models savings from caching, routing, and model selection.
 
 ## What changed in 2026 that matters
 
@@ -218,10 +218,10 @@ That's the 2026 stack. Total **$100–200/month at realistic solo-founder volume
 
 ## Where to go next
 
-- **[Cursor vs Claude Code: which to buy first](/blog/tools/cursor-vs-claude-code)** *(coming soon)* — if you can only pick one.
-- **[How I built Prism (AI gateway) using Claude Code](/case-studies/prism)** *(coming soon)* — case study showing the actual prompts and decisions.
-- **[Anthropic prompt caching: real numbers from production](/blog/infra/anthropic-prompt-caching-real-numbers)** *(coming soon)* — the 40% cost cut explained.
-- **[Which AI coding tool fits you? (6-question quiz)](/tools/picker)** *(coming soon)* — personalized recommendation.
+- **[Cursor vs Claude Code: which to buy first](/blog/tools/cursor-vs-claude-code/)** — if you can only pick one.
+- **[How I built Prism (AI gateway) using Claude Code](/case-studies/prism/)** *(coming soon)* — case study showing the actual prompts and decisions.
+- **[Anthropic prompt caching: real numbers from production](/blog/infra/anthropic-prompt-caching-real-numbers/)** — the 40% cost cut explained.
+- **[Which AI coding tool fits you? (6-question quiz)](/tools/picker/)** *(coming soon)* — personalized recommendation.
 
 ---
 

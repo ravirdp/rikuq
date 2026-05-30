@@ -77,6 +77,118 @@ Effort per vertical report: ~12-18h (data prep + writing + design + outreach).
 
 ---
 
+## Parallel track — FinOps research angles (rikuq pillar + BatchWise launch)
+
+The Citare audit corpus drives the GEO-pillar research above. Separately,
+rikuq's **finops** pillar is under-represented (1 article) and **BatchWise**
+has zero rikuq presence. Both can be addressed via the same proprietary-data
+play, with two distinct data sources:
+
+- **Your own bills** across Prism, Citare, BatchWise → LLM FinOps angles
+- **BatchWise reconciliation data** → Indian payments FinOps angles (if/when exportable)
+
+### 10 angles, scored
+
+**LLM FinOps (Ravi-the-builder voice):**
+1. The Solo AI Founder Monthly Bill, Itemized — real screenshots, 12 months. ⭐⭐
+2. Prompt Caching at 10K Calls vs 100K — extends existing "330 calls" piece. ⭐⭐
+3. The 5 LLM Cost-Routing Patterns Solo Founders Use — routing strategy taxonomy with numbers. ⭐⭐⭐
+4. Workers AI vs OpenAI vs Anthropic on 1M Tokens — already brief #17. ⭐⭐⭐
+5. The "Hidden Cost" Index for AI SaaS — egress, retries, cache misses, observability. ⭐⭐
+
+**India Payments FinOps (BatchWise positioning):**
+6. The Indian SaaS Payments Stack: True Cost Breakdown — Razorpay/Cashfree/PayU/Stripe-India/Juspay. ⭐⭐
+7. Settlement Timing Across Indian PSPs: Real Data — **BatchWise's debut piece if data exportable**. ⭐⭐⭐⭐
+8. The 11 Reconciliation Gotchas — anonymized failure modes from BatchWise. ⭐⭐⭐
+9. Cross-Border Settlement for Indian SaaS Selling to US — Stripe → INR stack. ⭐⭐
+
+**Cross-property:**
+10. The Full True Cost of an Indian AI SaaS — flagship synthesis combining 1, 6, 7. ⭐⭐⭐⭐
+
+### Scored shortlist (do these 5 in next 90 days)
+
+| Rank | Angle | Trigger | Target ship |
+|---|---|---|---|
+| 1 | #7 — BatchWise Settlement Timing (data piece) | Awaiting BatchWise data export confirmation | Jun 13 |
+| 2 | #1 — Solo AI Founder Monthly Bill | No external blocker (need Ravi's bill screenshots) | Jun 20 |
+| 3 | #6 — Indian SaaS Payments Stack | No blocker (public pricing + your fee data) | Jun 27 |
+| 4 | #4 — Workers AI vs OpenAI cost (brief #17, already approved) | Awaiting Prism cost data from Ravi | Jul 4 |
+| 5 | #10 — Full True Cost of Indian AI SaaS (flagship) | Builds on #1, #6, #7 | Aug 1 |
+
+### What needs deciding before any of these can ship
+
+1. **Does BatchWise have exportable reconciliation data?** Determines whether #7 is the debut or pushed later.
+2. **Will Ravi share his real bill screenshots?** Determines whether #1 stays low-friction or has to be reframed.
+3. **How does BatchWise's brand appear on rikuq?** Disclosure flag pattern (like Citare) vs explicit launch post vs background-citation-only.
+
+Open questions, not blockers. The angles list is durable in this doc; revisit
+when you have answers.
+
+---
+
+## Track C — Public-data corporate AI audits (1-2/week cadence)
+
+The third research track. Uses ONLY public information (10-K, 10-Q, earnings
+call transcripts, analyst reports, leaked employee posts, press disclosures,
+investor letters). No proprietary data required. Substantive, citable,
+recurring.
+
+**Cadence target**: minimum 1/week, ideally 2/week. 8 angles below; full
+backlog clears in 4-8 weeks depending on cadence achieved.
+
+**Why public-data audits work for rikuq:**
+- Methodology defensible (sources cited per claim)
+- Recurring (quarterly republish with updated numbers)
+- Backlink magnets (named companies' IR teams cite them)
+- Compounding authority (the third such audit gets more press than the first)
+
+### 8 angles, scored + sequenced
+
+| Order | Angle | Thesis | Sources | Effort | Target ship |
+|---|---|---|---|---|---|
+| **C1** | **The 2026 AI Spend Disclosure Audit** | Audit 50 public companies' AI disclosures. Score each on Disclosure Quality. Names laggards. | 10-K/10-Q + earnings call transcripts | 25-35h | **Jun 3** (pulled forward to ride May 30 Indian Audit momentum) |
+| C2 | Indian IT Services AI Spend Audit | TCS / Infosys / Wipro / HCL / TechM vs Accenture / Cognizant / Deloitte. AI capex, headcount, contracts. | NSE/BSE filings + earnings calls + India press | 15-20h | **Jun 16** |
+| C3 | Anthropic + OpenAI + xAI Revenue Tracker (v0.1) | Aggregate every public revenue datapoint. Quarterly recurring publication. | Leaked employee posts + customer announcements + investor letters | 10-15h (v0.1) | **Jun 23** |
+| C4 | AI Spend vs AI Revenue Index 2026 | 2x2 plot of every public AI player: disclosed spend vs disclosed revenue. Who's profitable on AI today? | 10-K segment disclosures + analyst reports | 20-25h | **Jun 30** |
+| C5 | The AI Vendor Concentration Map | Trace every public AI dollar to destination. Show that ~80% lands in 5 hands. Dependency graph. | Synthesis of C1, C2, C4 data | 15-20h | **Jul 7** |
+| C6 | Hyperscaler-to-Customer AI Spend Reconciliation | AWS/Azure/GCP report ~$80B AI compute revenue. Public customer disclosures add to $X. Trace the $80B − $X gap. | Hyperscaler segment revenue + customer disclosures | 15-20h | **Jul 14** |
+| C7 | The Stock-Market-Implied AI Value Index | 100 public companies that announced material AI investment 2024-26 vs matched control group. Did Wall Street reward AI spend? | Public market data + announcement dates | 20-25h | **Jul 21** |
+| C8 | Sector AI Spend Heatmap | Per-vertical (banking, insurance, retail, healthcare, manufacturing, government). Adoption rate × spend per adopter. | McKinsey/BCG/Gartner reports + IBM AI Adoption Index + earnings | 20-25h | **Jul 28** |
+| **C9** | **Consumer AI Subscription Economics** | Audit ChatGPT Plus, Claude Pro, Gemini Advanced, Perplexity Pro, Midjourney, Suno, Pika, Runway, Copilot, Cursor Pro. Subscribers, ARPU, churn signals, free-to-paid conversion. Who's actually winning consumer AI? | Company statements + leaked figures + app store rankings + Sensor Tower-style estimates | 20-25h | **Aug 4** |
+| **C10** | **AI Startup Burn-Rate Disclosures** | Aggregate every public burn-rate datapoint for Anthropic, OpenAI, xAI, Mistral, Cohere, Adept, Inflection, Character.AI, Magic, Suno, etc. The "who runs out of money first" frame. | TechCrunch + The Information funding rounds + runway statements + Glassdoor + partnerships | 15-20h | **Aug 11** |
+| **C11** | **Government AI Procurement Data Audit** | US (USAspending.gov), UK (gov.uk procurement), India (GeM), EU (TED). Aggregate AI-related contracts: vendor, amount, agency, project. Vendor concentration in gov sector. | National procurement portals (all public) | 20-30h | **Aug 18** |
+| **C12** | **AI Talent Compensation Tracking 2026** | Levels.fyi + LinkedIn job posts + leaked comp from Twitter/Blind. What does it cost to hire an AI engineer in 2026? Comparison by company, level, city. | Levels.fyi public data + scraped job posts + Blind/Twitter leaks | 15-20h | **Aug 25** |
+| **C13** | **The AI Infrastructure Leasing Market** | Coreweave, Lambda, Crusoe, Voltage Park, Together AI as wholesale; OpenAI/Anthropic/Meta as buyers. Disclosed lease deals → implied wholesale cost-per-GPU-hour vs retail. | Press releases of GPU deals + hyperscaler capex + 10-K mentions | 25-30h | **Sep 1** |
+
+### Cadence sanity-check
+
+At 1/week: 13 angles cleared by **Sep 1** (13 weeks from now).
+At 2/week: 13 angles cleared by **Aug 4** (7 weeks). Sustainable only with significant batching and reuse of data across multiple pieces.
+
+**Realistic loading** considering all parallel tracks (Track A spinoff blogs weekly, Track A vertical reports monthly, Track B finops pieces, regular content pipeline, reactive PR): 1/week is firm; 2/week achievable for the angles that share underlying data (e.g., C1 + C4 share most of the corporate-filing dataset; C5 reuses C1+C2+C4 outputs).
+
+### Per-piece distribution pattern (same as Tier 1 of the Citare track)
+
+Each Track C piece:
+1. rikuq long-form blog (free, full data inline)
+2. PDF version (Citare-branded for credibility transfer; email-gated download)
+3. LinkedIn carousel (10 slides of the leaderboard / chart)
+4. Twitter thread (12-15 tweets)
+5. Press push: pitch each named company's IR team + 5-8 publications (The Information, Stratechery, Marketing Brew, Inc42 for India angles, ET / Mint / Moneycontrol for India angles, FT Lex / Bloomberg AI desk for global angles)
+6. Re-share quarterly when numbers update
+
+### The C1 + C2 + C3 sprint (next 3 weeks after the May 30 Citare debut)
+
+Three publications in three weeks, each building on the previous. The C1 audit
+establishes methodology + corporate data spine. C2 applies the same
+methodology to Indian IT services using the same tools (different filings).
+C3 launches the running tracker. Combined effect: in 3 weeks, rikuq has
+shipped 3 substantial corporate-data audits + 1 audit corpus debut = 4
+flagships in 5 weeks. That's the "rikuq is THE place where AI economy
+numbers get analyzed" positioning.
+
+---
+
 ## Tier 1 — The Main Report (release order = master pipeline)
 
 ### 1. **THE DEBUT — "The Indian AI Search Audit: 500 Queries, 25 Brands, 777 Citations"**

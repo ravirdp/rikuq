@@ -1,0 +1,236 @@
+---
+title: "AI / Cloud FinOps Providers in India: A Practitioner's Take"
+description: "Honest comparison of AI / cloud cost optimisation providers in India — CloudKeeper, Apptio, Big-4, cloud-native shops, boutique advisory. Who fits what."
+pubDate: 2026-05-28
+updatedDate: 2026-05-28
+category: finops
+tags:
+  - llm-finops
+  - ai-cost-optimization
+  - cloudkeeper
+  - apptio
+  - india-saas
+author: Ravi
+heroImage: /illustrations/covers/ai-cloud-finops-providers-india-2026.jpg
+ogImage: /illustrations/covers/ai-cloud-finops-providers-india-2026.jpg
+draft: false
+crossposted: false
+affiliateDisclosure: false
+prismDisclosure: true
+faqs:
+  - question: "Which AI / cloud FinOps provider is best for Indian mid-market?"
+    answer: "There isn't one. The right provider depends on annual AI + cloud spend, whether you need ongoing platform delivery or one-off diagnostic, whether you have an internal team to execute on recommendations, and whether Indian tax overlay (Section 195, GST RCM, Ind AS 38) is material. CloudKeeper fits ongoing platform delivery for entities with ₹10 crore+ cloud spend. Big-4 India practices fit ₹1,000 crore+ enterprises wanting bundled advisory. Independent boutiques fit ₹50-2,000 crore mid-market wanting diagnostic + tax overlay without platform lock-in. Internal FinOps team build fits above ₹50 crore annual spend where dedicated headcount economic-justifies. Match the provider category to your scenario, not to whatever's loudest in your inbox."
+  - question: "Why are existing cloud FinOps tools insufficient for AI spend?"
+    answer: "They were designed before token-based pricing existed. Tools like CloudHealth, Apptio Cloudability, Vantage, and the cloud-native ones (AWS Cost Explorer, Azure Cost Management) model cost along instance × region × service axes. LLM spend has a different shape: cost per request varies non-deterministically with prompt content, retries can silently double costs, output tokens are uncapped by default, and attribution dimensions (per-feature, per-team, per-user, per-conversation) are open-ended. Most cloud FinOps tools treat AI spend as a single vendor line item rather than decomposing it. Either you need a gateway layer that does attribution natively, or you wrap the existing tools with custom dashboards. Both work; neither is what the existing platforms ship by default."
+  - question: "What's the typical price range across these provider categories?"
+    answer: "Ongoing FinOps platforms: usually 15-25% of identified cloud savings (CloudKeeper, Vantage) or a SaaS fee of ₹15L-2 crore depending on scope (Apptio Cloudability). Big-4 India AI advisory engagements: typically ₹50L+ for diagnostic, bundled with broader advisory. Independent boutique diagnostics: ₹2-15L per engagement (fixed scope, founder or senior delivered). Cloud-native consultancies: ₹10L-1 crore per project (implementation focus). Internal FinOps team build: ₹1-3 crore annual run-rate for 2-5 FTEs plus tooling. The savings-based model on platforms aligns incentives but only works if your baseline spend visibility is already organised — otherwise you're paying for the platform to do the organising work that a diagnostic should have done first."
+  - question: "When should I build internal FinOps capability vs hire external?"
+    answer: "External advisory + tooling subscription is more efficient until annual AI + cloud spend crosses roughly ₹10-15 crore. Above that, a 2-5 FTE internal team plus FinOps tooling becomes economic-justifiable, and the institutional muscle compounds. Below ₹10 crore, the headcount cost exceeds the savings. The other factor is talent supply: FinOps-Certified Practitioners (FOCP) are scarce in India outside large GCCs, so even if the spend justifies the build you may not be able to staff it. A common pattern that works at the ₹15-50 crore spend range is one internal FinOps lead plus targeted external advisors for the specialist gaps."
+  - question: "Are CAs equipped to do LLM FinOps work for Indian mid-market?"
+    answer: "Most aren't, but for a structural reason rather than a quality reason. LLM cost optimisation requires understanding caching architectures, prompt engineering trade-offs, model selection economics, and retry semantics — material the CA curriculum doesn't cover. Tax-side work (Section 195 TDS on foreign AI vendors, GST RCM on imported services, Ind AS 38 classification of AI subscriptions) is firmly in CA territory and most senior CAs handle it well. What's missing is the integrated competence — a single person or firm who understands both sides deeply enough to optimise them together. That gap is the entire reason boutique FinOps advisory exists as a category in India today."
+relatedPosts:
+  - what-is-llm-finops
+  - llm-gateway-attribution-harder-than-cloud-finops
+  - portkey-vs-helicone-vs-litellm-vs-openrouter
+---
+
+Last quarter I had three separate conversations with Indian CFOs asking some version of the same question: *"my AI bill is now meaningful, who should I bring in to look at it?"* Each conversation went in a different direction because none of them had the same situation, but the framework I kept reaching for was the same. This post is that framework, written down so the next CFO who asks doesn't get a worse version of the same answer.
+
+The market is real and growing. NASSCOM expects 80.8% growth in generative-AI spending in India in 2026. The FinOps Foundation's 2026 State of FinOps report says 98% of practitioners are now tasked with managing AI spend (up from 31% in 2024). The providers are responding with new offerings, platform expansion, and dedicated AI-cost-optimisation engagements. Picking the right one is a real decision now, not a future-proofing thought experiment.
+
+I'm Ravi. I run three production AI SaaS solo ([Prism](https://ssimplifi.com), [Citare](https://citare.ai), [BatchWise](https://batchwise.ai)) and also do advisory work via [rikuq services](/services). I've evaluated all the categories below from both sides — as someone with my own AI bill to optimise, and as the third-party brought in to look at someone else's. Honest disclosure: my own advisory practice sits in the "independent boutique" category below, so I have skin in the game on one of the five answers. I've flagged my own practice's fit honestly — there are situations where CloudKeeper, Apptio, Big-4, or internal build is straightforwardly the better answer.
+
+## TL;DR
+
+| Your situation | Best fit |
+|---|---|
+| Annual cloud spend ₹10 crore+, want ongoing platform | **CloudKeeper** (Indian-founded, engineering-led) or Apptio Cloudability (global enterprise standard) |
+| Mid-market ₹50-2,000 crore revenue, want one-off independent diagnostic | **Independent boutique** (mine at rikuq, or specialist firms with similar shape) |
+| Large enterprise ₹1,000 crore+, want bundled advisory | **Big-4 India** AI practices |
+| Need cloud architecture redesign + cost as downstream consequence | **Cloud-native consultancy** (CloudThat, Mphasis Stelligent, Niveus) |
+| Annual spend ₹50 crore+, want institutional FinOps muscle | **Internal FinOps team build** (2-5 FTE) |
+| Annual spend below ₹2 crore | None of the above. Self-serve using AWS Cost Explorer + caching discipline; revisit at scale |
+
+## The decision framework — six dimensions to assess
+
+The same provider can be exactly right for one entity and exactly wrong for another. Before evaluating who, evaluate what about your situation matters:
+
+| Dimension | The question to ask |
+|---|---|
+| **Annual AI + cloud + SaaS spend** | Under ₹2 crore? ₹2-50 crore? Above ₹50 crore? Each band has fundamentally different economics. |
+| **Engagement shape** | One-off diagnostic, ongoing platform delivery, or hybrid? |
+| **Internal implementation capacity** | Do you have engineers who can act on recommendations, or do you need execution too? |
+| **Indian tax / regulatory overlay** | Section 195 TDS, GST RCM, Ind AS 38, DPDP, SEBI's June 2025 AI/ML consultation — material to your entity or not? |
+| **Audit-committee scrutiny** | Is AI spend a board topic now or only operational? |
+| **Vendor relationship tolerance** | Are you OK with an ongoing platform-vendor relationship, or do you specifically want independent advisory? |
+
+The most common mistake is to start with "who's good" before answering these. The same provider list scored differently against six different question sets gives you six different shortlists.
+
+## The five major provider categories
+
+### 1. Ongoing FinOps platforms — CloudKeeper, Apptio Cloudability, Vantage, Spot.io, Finout
+
+**Engagement model:** SaaS + managed services. They sit between you and your cloud provider, continuously monitor, automatically optimise, and bill you either as a percentage of identified savings or as a SaaS fee.
+
+**Typical price:** 15-25% of identified savings (savings-based) or ₹15L-2 crore SaaS fee (subscription-based), scaling with scope.
+
+**Pick this if:**
+
+- Annual cloud spend is meaningful (typically ₹10 crore+) so 15-25% sustained optimisation justifies platform fees
+- You want continuous monitoring and automated optimisation rather than periodic diagnostic
+- Your internal team has engineering capacity to act on platform recommendations
+- You're OK with the platform having ongoing visibility into your spend
+
+**CloudKeeper specifically:** Indian-founded, strong engineering depth. Product surface is wide — CloudKeeper AZ for Azure cost, PPA+ for AWS, Lens for visibility, Commit for reservations, Tuner for right-sizing, LensGPT for natural-language queries. The Indian-founded angle matters because the team understands Indian-entity edge cases (multi-entity GST, RCM on AWS consumption, DTAA treatment of vendor invoices) better than the global platforms do.
+
+**Apptio Cloudability (IBM):** The global enterprise standard. Deepest ITFM + FinOps SaaS integration, especially if you're already using broader Apptio TBM modules. Heavier implementation but more polished once embedded. Better fit at the larger enterprise end of mid-market.
+
+**Skip this if:**
+
+- Cloud spend is below ₹5 crore annual — platform fees and integration overhead will exceed the savings
+- You specifically want a one-off diagnostic rather than ongoing platform relationship
+- Independent advisory matters to you more than continuous optimisation
+
+### 2. Big-4 India AI advisory — KPMG India AI Practice, PwC India Digital, EY India, Deloitte India AI Institute
+
+**Engagement model:** Bundled diagnostic + advisory + risk + transformation, typically as part of a larger engagement.
+
+**Typical price:** ₹50L+ per engagement, often bundled with adjacent advisory work.
+
+**Pick this if:**
+
+- You're a large enterprise (₹1,000 crore+ revenue) where Big-4 brand is appropriate for audit-committee + board positioning
+- You want AI cost optimisation bundled with broader risk advisory, ESG advisory, or transformation consulting (and the bundling is genuinely useful, not just upsell)
+- Your statutory auditor is Big-4 and relationship continuity matters
+- Budget isn't the binding constraint relative to advisory value
+
+**Skip this if:**
+
+- You're mid-market (under ₹500 crore revenue) where Big-4 pricing exceeds the work's standalone value
+- You want independent assessment specifically and don't want it bundled with whatever else the Big-4 firm is motivated to sell
+- You prefer published fixed pricing and methodology you can read before engaging
+
+### 3. Independent boutique diagnostic — specialist firms in this space
+
+**Engagement model:** Fixed-scope diagnostic engagement, founder or senior-delivered, written report with quantified recommendations.
+
+**Typical price:** ₹2-15L per engagement, bespoke to scope.
+
+**Pick this if:**
+
+- You're Indian mid-market (₹50-2,000 crore revenue) with material AI/cloud spend (typically ₹2 crore+ annual)
+- You want independent assessment with no platform-vendor conflict of interest
+- You need the Indian tax/regulatory overlay integrated into the work (Section 195, RCM, Ind AS 38, DPDP, ICAI AI guidance, EU AI Act extraterritoriality, SEBI's June 2025 AI/ML consultation)
+- You want senior-delivered or founder-delivered work rather than the partner-led-junior-delivered model
+- You value being able to read the methodology before engaging
+
+**Skip this if:**
+
+- You need ongoing platform tooling — that's the CloudKeeper/Apptio shape, not a diagnostic shape
+- You need cloud-engineering implementation — that's the cloud-native consultancy shape
+- You're enterprise scale where Big-4 brand is the audit-committee expectation
+
+**Disclosure on this category:** my own advisory practice ([rikuq services](/services)) sits here. Specifically: AI Systems Review (₹2-15L bespoke, 4-8 weeks, founder-delivered) and AI Spend & Tax Optimisation (₹50K-3L bespoke, 2-4 weeks). I keep capacity intentionally constrained to 8-15 engagements per year so the work stays founder-delivered. Other firms operate in the same shape with different specialisations.
+
+### 4. Cloud-native consultancies — CloudThat, Mphasis Stelligent, Niveus, similar
+
+**Engagement model:** Implementation + architecture work where cost optimisation is a downstream consequence of the architecture decisions, not the headline.
+
+**Typical price:** ₹10L-1 crore per project, scope-priced.
+
+**Pick this if:**
+
+- You need cloud migration, re-platforming, or architecture redesign as the primary scope
+- Cost optimisation is the side effect of better architecture, not the explicit deliverable
+- You need implementation execution alongside recommendations
+
+**Skip this if:**
+
+- Your cloud architecture is stable and the question is purely cost optimisation (no architecture change needed)
+- You want a diagnostic deliverable specifically — their model is implementation-centric
+
+### 5. Internal FinOps team build
+
+**Engagement model:** Hire a FinOps lead + analysts + tooling, build the capability internally.
+
+**Typical price:** ₹1-3 crore annual run-rate for 2-5 FTE plus tooling.
+
+**Pick this if:**
+
+- Annual AI + cloud spend is above ₹50 crore where dedicated headcount economic-justifies
+- You're strategic about AI as a core operational capability requiring institutional FinOps muscle
+- You can attract FinOps-Certified Practitioners + engineers — there's a real talent supply constraint in India outside large GCCs
+- You have leadership commitment to a 6-12 month maturity build
+
+**Skip this if:**
+
+- Annual spend is below ₹10-15 crore — headcount cost exceeds savings
+- You can't attract the talent — FOCP-certified practitioners are scarce in India today
+- Your spend will scale up or down materially over 24 months (sunk-cost risk in headcount)
+
+## The 5-second decision tree
+
+```
+What's your situation?
+
+├── Annual AI + cloud spend < ₹2 crore?
+│   → Self-serve. AWS Cost Explorer + caching discipline. Revisit at scale.
+│
+├── ₹2-5 crore spend + want a diagnostic with Indian tax overlay?
+│   → Independent boutique (rikuq services or similar specialist)
+│
+├── ₹5-50 crore spend + want ongoing platform delivery?
+│   → CloudKeeper (Indian-founded, engineering-led)
+│
+├── ₹5-50 crore spend + want one-off independent assessment with tax overlay?
+│   → Independent boutique diagnostic (₹2-15L)
+│
+├── Enterprise ₹1,000 crore+ + want bundled advisory + audit-committee fit?
+│   → Big-4 India AI practice
+│
+├── ₹50 crore+ spend + strategic AI as core capability?
+│   → Internal FinOps team build + targeted external advisors for gaps
+│
+├── Need cloud migration / architecture redesign?
+│   → Cloud-native consultancy (CloudThat, similar)
+│
+└── Need Indian tax-side work specifically (Section 195, RCM, ITC recovery)?
+    → Independent boutique with tax specialisation
+```
+
+## Common mistakes when picking
+
+**Picking the platform before the diagnostic.** FinOps platforms work best on top of organised spend data. If your spend taxonomy is messy (typical for mid-market entities before any FinOps work) the platform spends its first quarter doing the organising work a diagnostic should have done first — at platform fees. Pay for a small diagnostic to build the baseline, then layer a platform on top if ongoing optimisation is the goal.
+
+**Bundling AI cost work into broader Big-4 engagements.** Big-4 firms have natural incentive to bundle AI cost optimisation into wider advisory engagements where the broader fee dominates. If you specifically want AI/cloud cost work, scope it separately and resist the bundling. The narrow work gets done better when it's the deliverable rather than a sub-section of a 200-slide deck.
+
+**Underestimating the Indian tax + governance overlay.** Pure FinOps optimisation that ignores Section 195 TDS on foreign AI vendors, GST RCM on imported services, Ind AS 38 classification of capitalisable vs expensable AI work, and the evolving Indian AI-governance frame creates compliance gaps that compound. For SEBI-listed entities and entities with EU subsidiary exposure these dimensions are non-optional and they accelerate in importance through FY 2026-27.
+
+**Building an internal team prematurely.** A 3-FTE FinOps team at ₹1.5 crore annual run-rate needs roughly ₹10-15 crore of cloud spend to break even on direct savings. Below that, external advisory plus tooling subscription is more efficient. The institutional benefit of the internal team (ongoing capability, organisational muscle) matters at higher spend levels where the math also works; both have to be true.
+
+**Picking a provider without checking their methodology.** Independent boutiques should publish their methodology openly. If you can't read what they'll actually do before engaging, ask why. The Big-4 firms publish enough at the framework level that you can evaluate their approach; the boutiques should match that bar.
+
+## What this guide deliberately doesn't cover
+
+- **Cloud-vendor-native FinOps tools** (AWS Cost Explorer, Azure Cost Management, Google Cloud Billing Reports). These are free starting points for any FinOps practice and should be your baseline before considering paid platforms. They're not external providers.
+- **ML-engineering tooling** (Weights & Biases, MLflow, Vertex AI Workbench). Adjacent space, different problem — model lifecycle, not cost optimisation specifically.
+- **Pure AI ethics / governance consultancies.** Important but different work (ethics frameworks, model risk management) rather than cost optimisation.
+- **Big-Tech consulting practices** (Accenture, Infosys, TCS, HCLTech) selling FinOps to third parties. They participate in this market at the large-enterprise scale; their shape is essentially the same as Big-4 advisory above with different brand positioning.
+
+## Where to start
+
+If you've read this far, you've already done more provider-selection homework than most CFOs do. Concrete next steps:
+
+- **If your situation maps cleanly to one of the five categories**, shortlist 2-3 providers in that category, ask each to send their methodology, and pick based on fit rather than pitch.
+- **If your situation crosses categories** (common — mid-market entities often have one foot in "want diagnostic" and one in "want ongoing"), get a diagnostic first to clarify scope, then make the platform decision afterward with better data.
+- **If your spend is below ₹2 crore**, you don't need any of these providers yet. The [LLM FinOps explainer](/blog/finops/what-is-llm-finops/) and the [$5/month production stack](/blog/stack/production-stack-2026/) are where to start. Revisit this guide when your bill hits the threshold where external help pays for itself.
+
+If you want a written scope proposal for the boutique category — what an engagement with me would look like for your specific situation — the [services page](/services) has both a Cal.com booking link and a Tally intake form. Free 30-min discovery, written scope before any commitment.
+
+## What's next
+
+Provider selection is the start, not the finish. The adjacent posts worth reading if you're thinking about LLM cost discipline more broadly:
+
+- [What is LLM FinOps?](/blog/finops/what-is-llm-finops/) — the underlying discipline this fits inside
+- [Why LLM gateway attribution is harder than cloud FinOps ever was](/blog/finops/llm-gateway-attribution-harder-than-cloud-finops/) — the attribution problem any provider will run into
+- [Portkey vs Helicone vs LiteLLM vs OpenRouter](/blog/infra/portkey-vs-helicone-vs-litellm-vs-openrouter/) — the gateway layer most of these providers sit on top of

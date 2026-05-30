@@ -1,0 +1,176 @@
+---
+title: "Section 195 TDS on Foreign AI Vendors: Complete India Guide"
+description: "Section 195 TDS mechanics on OpenAI, Anthropic, AWS Bedrock payments. Engineering Analysis SC, DTAA rates, Form 15CA/15CB workflow, IT Act 2025 transition."
+pubDate: 2026-06-03
+updatedDate: 2026-06-03
+category: finops
+tags:
+  - section-195
+  - indian-tax
+  - foreign-ai-vendors
+  - engineering-analysis
+  - dtaa
+author: Ravi
+heroImage: /illustrations/covers/section-195-tds-foreign-ai-vendors-india-2026.jpg
+ogImage: /illustrations/covers/section-195-tds-foreign-ai-vendors-india-2026.jpg
+draft: false
+crossposted: false
+affiliateDisclosure: false
+prismDisclosure: true
+faqs:
+  - question: "Does TDS apply on OpenAI / Anthropic / AWS Bedrock subscription payments?"
+    answer: "Under domestic Indian law, generally no. The Engineering Analysis Centre of Excellence Supreme Court judgment (March 2021) held that payments for standard end-user software licences — including subscription-based AI service access where the buyer receives only a right to use without copyright transfer — do not constitute royalty under Section 9(1)(vi). For typical foreign AI API subscriptions used by Indian businesses, Section 195 TDS does not apply. However, the DTAA position may differ. Some older treaties define royalty more broadly. Under Section 90(2) the Indian payer applies whichever is more beneficial — usually domestic law (nil) for these payments. The position has been settled since the May 2026 review petition dismissal."
+  - question: "What's the Form 15CA / 15CB threshold?"
+    answer: "₹5 lakh aggregate per non-resident payee per FY. For aggregate taxable remittances at or below ₹5 lakh, Form 15CA Part A suffices (declarant declaration only, no CA certificate required). For aggregate above ₹5 lakh, Form 15CA Part C plus Form 15CB are required — Form 15CB being the Chartered Accountant certificate that certifies the nature of payment, applicable TDS rate, and DTAA position. The CA carries professional responsibility for the classification. For non-taxable remittances (e.g., remittance of own funds rather than taxable payments to non-residents), Form 15CA Part D applies. Forms renumber under the Income-tax Act 2025: Form 15CA becomes Form 145, Form 15CB becomes Form 146 for remittances on or after 1 April 2026."
+  - question: "How does Section 195 change under the Income-tax Act 2025?"
+    answer: "Section 195 of the 1961 Act maps to Section 393(2) of the Income-tax Act 2025 — consolidating under the broader non-salary TDS provision alongside Sections 194C / 194J / 194T etc. Section 195(6), which governs the foreign-remittance reporting obligation under the Form 15CA / 15CB regime, maps to Section 397(3)(d). Section 397 covers TDS administrative machinery (quarterly returns, PAN quoting, TAN requirements, foreign-remittance reporting). Forms renumber: Form 15CA becomes Form 145; Form 15CB becomes Form 146. For remittances on or after 1 April 2026, declarants and CAs must use the new section numbers and new forms. Treaty-rate mechanics (DTAA reference, TRC, Form 10F) carry forward substantively unchanged."
+  - question: "What's the India-US DTAA position on AI vendor payments?"
+    answer: "India-USA DTAA Article 12 caps royalties and Fees for Included Services at 10-15% depending on the specific nature of rights or services. For Indian payers transacting with US-resident foreign AI vendors (OpenAI, Anthropic, Microsoft Azure OpenAI, AWS Bedrock with US-resident counterparty), the analysis runs: (1) establish tax residency of the counterparty via TRC plus Form 10F; (2) classify the payment under domestic law (royalty vs FTS vs business income); (3) apply the lower of domestic rate or DTAA rate per Section 90(2); (4) deduct TDS at the applicable rate before remittance; (5) issue Form 15CA/15CB per threshold rules. Where Engineering Analysis applies under domestic law (typical for standard end-user AI subscriptions), domestic rate is nil and DTAA doesn't override that downward."
+  - question: "What's the most common compliance gap?"
+    answer: "Three patterns I see most often. First, conservative over-deduction — entities deduct TDS at a flat 10% on all foreign software payments, missing the Engineering Analysis nil treatment or DTAA-beneficial rates. Refund claim is possible subject to time limits but requires Section 195 application before the assessing officer. Second, Form 15CA/15CB gaps on payments above ₹5L per payee per FY — historical compliance was lighter under EL 2.0 (where EL applied, Section 195 generally didn't, so the 15CA/15CB obligation didn't trigger). Post-1 Aug 2024 the obligation triggered and was often missed retrospectively. Third, missed Section 195 classification entirely — entities treated post-EL payments as exempt from all income-tax-side levies without running the Engineering Analysis plus DTAA classification. The first two are recovery opportunities; the third is audit risk that needs remediation."
+relatedPosts:
+  - section-195-vs-equalisation-levy-foreign-ai-vendors-2026
+  - ai-tax-recovery-framework-india-2026
+  - ai-software-capex-vs-opex-india-2026
+---
+
+Every Indian company paying OpenAI, Anthropic, Google, Microsoft, or AWS for AI services hits Section 195 of the Income Tax Act the moment it remits the bill. The question of whether TDS actually applies, at what rate, with what documentation — has settled in the last few years but the operational compliance still trips up most mid-market entities. Conservative over-deduction is the dominant pattern, with under-deduction or skipped classification close behind.
+
+This post walks through the Section 195 mechanics specifically for foreign AI vendor payments — the Engineering Analysis Supreme Court position, the DTAA overlay, the Form 15CA/15CB workflow, the IT Act 2025 transition that lands in FY 2026-27, and the common compliance gaps that produce either tax refund opportunities or audit risk depending on which direction your entity has drifted.
+
+I'm Ravi. I run three production AI SaaS solo ([Prism](https://ssimplifi.com), [Citare](https://citare.ai), [BatchWise](https://batchwise.ai)) and do advisory work on Indian tax treatment of foreign AI spend via [rikuq services](/services). The framework below is what I take into every Section 195 reconciliation engagement.
+
+## TL;DR
+
+| Element | Position |
+|---|---|
+| **Domestic law on end-user AI subscriptions** | Generally NIL under Engineering Analysis (March 2021 SC, review dismissed May 2026) |
+| **DTAA position** | Some older treaties define royalty more broadly; Section 90(2) lets you pick the more beneficial |
+| **Form 15CA threshold** | All taxable remittances need Form 15CA (Part A if ≤₹5L, Part C if >₹5L) |
+| **Form 15CB threshold** | Required for aggregate >₹5L per non-resident payee per FY |
+| **EL 2.0 transition** | Pre-1 Aug 2024 = EL regime, post-1 Aug 2024 = Section 195 regime |
+| **IT Act 2025 mapping** | Section 195 → Section 393(2); Form 15CA → Form 145; Form 15CB → Form 146 from 1 April 2026 |
+
+## What Section 195 actually says
+
+**Section 195 of the Income Tax Act 1961** governs Tax Deducted at Source on payments made by Indian residents to non-residents. The substantive rule is straightforward: TDS applies whenever the payment is chargeable to tax in India under the Income Tax Act.
+
+There is **no monetary threshold** in Section 195 itself. TDS applies from the first rupee paid, subject only to the substantive classification (is the income chargeable in India?), DTAA relief (does treaty cap the rate or eliminate the obligation?), and the Engineering Analysis position (does the payment qualify as royalty under domestic law?).
+
+For foreign AI vendor payments — OpenAI subscriptions, Anthropic Claude API access, AWS Bedrock consumption, Microsoft Azure OpenAI Service, Google Cloud Gemini API — the Section 195 analysis runs through these three layers in sequence.
+
+## The Engineering Analysis Supreme Court ruling
+
+The defining case for TDS on foreign software and AI vendor payments is **Engineering Analysis Centre of Excellence Pvt. Ltd. v. CIT** — Supreme Court Civil Appeal Nos. 8733-8734 of 2018, judgment dated 2 March 2021.
+
+The Court held that payments for standard end-user software licences — off-the-shelf, shrink-wrapped, or subscription-based with no transfer of copyright — do not constitute royalty under Section 9(1)(vi) of the Income Tax Act. The buyer receives only a right to use the software, not the underlying copyright. Consequently:
+
+- **No TDS under Section 195** for standard end-user software / AI service subscriptions under domestic law
+- The position is **absolute under domestic law** — a May 2026 review petition by the Revenue Department was dismissed by the Supreme Court, settling the issue
+
+This ruling is what makes most foreign AI API subscription payments by Indian businesses exempt from Section 195 TDS under domestic law. OpenAI, Anthropic, Google Gemini, Azure OpenAI, AWS Bedrock — when consumed as end-user services without copyright transfer (the standard subscription model) — fall under Engineering Analysis.
+
+**However**, the DTAA position may differ.
+
+## The DTAA overlay
+
+Some older Double Taxation Avoidance Agreements define "royalty" more broadly than domestic Indian law. For payments under those treaties, royalty TDS may still apply at the DTAA rate even where domestic law would not require TDS.
+
+Under Section 90(2), the Indian payer can apply whichever is more beneficial — domestic law or treaty. For standard end-user AI subscriptions where Engineering Analysis applies under domestic law (yielding nil), domestic law is the more beneficial position and you don't need to invoke DTAA. The DTAA matters when:
+
+- Domestic law would impose TDS at, say, 20.8% effective (non-treaty FTS rate) and the relevant DTAA caps the rate at 10-15%
+- The treaty has a more favourable definition of business income that overrides domestic royalty classification
+- Multiple treaty positions create planning opportunities for the structure of the payment
+
+For the India-USA DTAA specifically — relevant for OpenAI, Anthropic, Microsoft Azure OpenAI, and AWS Bedrock counterparties resident in the US — Article 12 caps royalties and Fees for Included Services at 10-15% depending on the specific nature of rights or services.
+
+## The five-step Section 195 workflow
+
+For any taxable foreign vendor payment, the Indian payer must:
+
+**Step 1: Establish tax residency of the foreign counterparty.** Tax Residency Certificate (TRC) from the counterparty's tax authority plus Form 10F (self-declaration of treaty-eligibility details) are required to claim DTAA benefits. Without these documents, the entity cannot invoke DTAA relief regardless of substantive eligibility.
+
+**Step 2: Classify the payment under domestic law.** Royalty under Section 9(1)(vi)? Fees for Technical Services under Section 9(1)(vii)? Business income under Section 9(1)(i)? Each classification triggers different mechanics. Engineering Analysis applies to the royalty test for end-user software.
+
+**Step 3: Apply the lower of domestic rate or DTAA rate per Section 90(2).** This is the beneficial-treatment selection. For Engineering Analysis cases the domestic rate is nil; DTAA doesn't override that downward.
+
+**Step 4: Deduct TDS at the applicable rate before remittance.** Cash flow consideration here is real — TDS is deducted from the gross amount before paying the foreign vendor, so the entity's actual outflow is reduced by the TDS amount, then the TDS gets deposited separately to the government.
+
+**Step 5: Issue Form 15CA / Form 15CB per the threshold rules.** Procedural compliance for the foreign remittance reporting obligation under Section 195(6) (now mapping to Section 397(3)(d) under the Income-tax Act 2025).
+
+## Form 15CA / 15CB requirements in detail
+
+For aggregate taxable remittances to a single non-resident payee:
+
+| Aggregate amount per FY per payee | Form 15CA | Form 15CB |
+|---|---|---|
+| **≤ ₹5 lakh** | Form 15CA Part A | Not required |
+| **> ₹5 lakh** | Form 15CA Part C | Required (CA certificate) |
+| **Non-taxable payment** (e.g., remittance of own funds, not taxable payment to non-resident) | Form 15CA Part D | Not required |
+
+Form 15CB certifies the nature of payment, applicable TDS rate, and DTAA position — making the Chartered Accountant professionally responsible for the classification. The CA cannot sign Form 15CB without performing the substantive analysis; mechanical sign-off creates professional risk.
+
+For mid-market entities the threshold matters operationally. A single OpenAI annual subscription at ₹15 lakh hits the threshold. Six monthly Anthropic Claude API bills totalling ₹8 lakh hit the threshold. The threshold is per payee per FY, so multiple payments to the same vendor aggregate.
+
+## Section 195 under the Income-tax Act 2025
+
+Per CBDT FAQs Q6 series, the substantive provisions of the 1961 Act map to the Income-tax Act 2025 as follows:
+
+- **Section 195 of the 1961 Act** (substantive TDS on non-residents) maps to **Section 393(2) of the 2025 Act** — consolidating under the broader non-salary TDS provision alongside Sections 194C / 194J / 194T etc.
+- **Section 195(6)** (foreign-remittance reporting obligation under the 15CA / 15CB regime) maps to **Section 397(3)(d)** — Section 397 covers TDS administrative machinery (quarterly returns, PAN quoting, TAN requirements, foreign-remittance reporting).
+- **Form 15CA** renumbers to **Form 145** (declarant declaration).
+- **Form 15CB** renumbers to **Form 146** (CA-signed certificate).
+
+For remittances on or after 1 April 2026, declarants and CAs must use the new section numbers and new forms. Treaty-rate mechanics (DTAA reference, TRC, Form 10F) carry forward substantively unchanged. This is a renumbering exercise rather than a substantive change in the obligations.
+
+The practical implication: anyone updating Section 195 compliance documentation in 2026 should add the new section and form references so the documentation reads correctly for both the 1961 Act period (through 31 March 2026) and the 2025 Act period (from 1 April 2026 onwards).
+
+## Common patterns for foreign AI vendor payments
+
+| Vendor / service | Typical classification | TDS under domestic law | TDS under DTAA (US) |
+|---|---|---|---|
+| **OpenAI direct API subscription** (end-user use) | End-user software / service under Engineering Analysis | Nil | Article 12: 10-15% if classified as royalty/FIS under treaty; nil if business income with no India PE |
+| **Anthropic Claude API subscription** | Same as above | Nil | Same |
+| **Microsoft Azure OpenAI Service** | Cloud + AI bundle, end-user use | Typically nil | Same |
+| **AWS Bedrock (foundation model API)** | Cloud + AI bundle | Same | Same |
+| **Google Cloud Gemini API** | Same | Same | Same |
+| **Foreign AI consultant / fine-tuning service provider** (Fees for Technical Services character) | FTS under Section 9(1)(vii) | TDS applies at rate per IT Act + cess | DTAA-beneficial rate if treaty applies |
+| **Foreign AI infrastructure with India PE** | Business income via PE | Subject to India tax on PE-attributable income | Treaty does not override PE-attributable income |
+
+The default position for typical end-user AI subscriptions is nil under domestic law. The exception cases (FTS character, India PE, copyright-transfer payments) are where TDS actually applies.
+
+## The four most common compliance gaps
+
+The recurring patterns I see in Section 195 reviews across mid-market entities:
+
+**Pre-1 Aug 2024 payments — EL 2.0 was paid, Section 195 was correctly not deducted.** Documentation may be incomplete but substantively the position is correct. Common gap: EL Statement filing reconciliation against Form 26AS and the actual TDS / EL deducted ledger.
+
+**Post-1 Aug 2024 payments — entity continued treating payments as exempt without re-classifying.** Section 195 risk depends on classification. If Engineering Analysis applies (typical for end-user subscriptions), the substantive position is correct but Form 15CA/15CB above the ₹5L threshold was often missed. If FTS or PE classifications apply, there's TDS non-deduction risk plus Section 40(a)(i) expense disallowance exposure.
+
+**Form 15CA/15CB compliance gap.** Historically incomplete on payments above ₹5L per payee per FY. Reconciliation against Form 26AS is the recovery / risk-quantification exercise. The 15CA/15CB obligation triggers regardless of whether substantive TDS applies — it's a reporting obligation, not just a TDS-collection obligation.
+
+**Conservative over-deduction.** Some entities deducted TDS at a flat 10% on all foreign software payments, missing DTAA-beneficial rates or Engineering Analysis nil treatment. Refund claim is possible subject to time limits but requires Section 195 application before the assessing officer — a process that can run 6-18 months for genuine refunds.
+
+The first three are audit-risk gaps; the fourth is a recovery opportunity. Both directions are worth running through reconciliation for FY 2024-25 and FY 2025-26 before FY 2026-27 audit cycles compress timelines.
+
+## What to do this week
+
+If you're a CFO or tax head at an Indian entity with material foreign AI / SaaS / cloud vendor spend:
+
+- **Pull your FY 2024-25 + FY 2025-26 foreign vendor ledger** with payee, date, amount, currency, and current TDS treatment per payment
+- **Identify the ₹5L+ aggregate payees** — these are the Form 15CA/15CB exposure points
+- **Run the Engineering Analysis filter** on the substantive TDS classification per payee. Most end-user AI subscriptions will be nil; flag the exceptions
+- **Cross-check Form 26AS** for both years. Identify TDS deduction-vs-deposit gaps and over-deductions
+- **Audit your Form 10F + TRC documentation** for DTAA-claiming payees. Missing TRC means the DTAA claim isn't sustainable
+- **Plan the IT Act 2025 transition** — update compliance documentation references for the post-1 April 2026 period
+
+If you want a written scope proposal for what a Section 195 reconciliation engagement would look like for your specific situation, the [services page](/services) has both a Cal.com booking link and a Tally intake form.
+
+## What's next
+
+This post focuses on Section 195 mechanics specifically. The adjacent posts that go deeper on related dimensions:
+
+- [Section 195 vs Equalisation Levy: foreign AI vendor TDS](/blog/finops/section-195-vs-equalisation-levy-foreign-ai-vendors-2026/) — the transition-window reconciliation guide for FY 2024-25 and FY 2025-26
+- [AI Tax Recovery for Indian CFOs: the 5-domain framework](/blog/finops/ai-tax-recovery-framework-india-2026/) — where Section 195 fits within the broader tax recovery framework (sub-domain 2)
+- [AI Software Capex vs Opex in India: the Ind AS 38 test](/blog/finops/ai-software-capex-vs-opex-india-2026/) — the parallel accounting classification work
+- [The FinOps Foundation Framework](/blog/finops/finops-foundation-framework-2026/) — the broader cost management framework Section 195 tax work integrates with

@@ -70,12 +70,13 @@ const PROGRAMS: Record<string, ProgramConfig> = {
     note: 'Tally — form builder. Referred users get a discount; we get recurring commission. Cello-hosted referral.',
   },
 
-  // ⏳ Pending (ID will be hydrated from env once approved)
+  // ✅ Live — full-URL pattern (PartnerStack-hosted referral, verified 2026-05-27)
   brevo: {
-    base: 'https://www.brevo.com',
-    param: 'tap_a',
-    envVar: 'AFFID_BREVO',
+    refUrl: 'https://get.brevo.com/kemgc2nzgwfd',
+    note: 'Brevo — PartnerStack-hosted referral. Tiers: Validation AC $0/NPC $100; Pilot 1-4 NPC/mo AC $5/NPC $100. Must refer 1+ paying client to unlock higher tiers.',
   },
+
+  // ⏳ Pending (ID will be hydrated from env once approved)
   resend: {
     base: 'https://resend.com',
     param: 'via',

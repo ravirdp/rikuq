@@ -1,0 +1,149 @@
+---
+export const prerender = true;
+import CommercialLayout from '../../../layouts/CommercialLayout.astro';
+
+const title = 'Methodology Demonstration — Wipro AI/Cloud Spend FY 2024-25';
+const description = 'Applying the BatchWise AI Systems Review + Tax Optimisation methodology to Wipro publicly disclosed FY 2024-25 financials. No engagement with Wipro.';
+const lede = 'This page applies the BatchWise AI Systems Review and AI Spend & Tax Optimisation methodology to Wipro Limited publicly disclosed FY 2024-25 financial data. Wipro is dual-listed (NYSE + BSE/NSE) like Infosys — making it a relevant comparison for the US disclosure + Indian regulatory dual frame. Strategic context: Wipro is mid-turnaround with margin expansion priority and the ai360 strategy as the central AI narrative through FY25. BatchWise has no engagement with Wipro; this page makes no claim of delivered work.';
+const canonicalPath = '/ai/case-studies/wipro-ai-spend-fy2425/';
+
+const jsonLdBlocks = [
+  {
+    '@context': 'https://schema.org',
+    '@type': 'Article',
+    headline: title,
+    description,
+    author: { '@type': 'Person', name: 'Ravi Patel', jobTitle: 'Founder, Editor-in-charge', url: 'https://rikuq.com', image: 'https://batchwise.ai/avatars/ravi.webp', sameAs: ['https://rikuq.com', 'https://www.linkedin.com/in/ravirdp/', 'https://github.com/ravirdp', 'https://x.com/ravirdp', 'https://batchwise.ai/editorial-team/'] },
+    publisher: { '@type': 'Organization', name: 'BatchWise', url: 'https://batchwise.ai/' },
+    creator: { '@type': 'Organization', name: 'BatchWise', url: 'https://batchwise.ai/' },
+    url: 'https://batchwise.ai/ai/case-studies/wipro-ai-spend-fy2425/',
+    datePublished: '2026-05-22',
+    dateModified: '2026-05-22',
+    inLanguage: 'en-IN',
+    isBasedOn: [
+      { '@type': 'CreativeWork', name: 'Wipro SEC Form 6-K filings FY 2024-25', url: 'https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=0001123799' },
+      { '@type': 'CreativeWork', name: 'Wipro Annual Report FY 2024-25', url: 'https://www.wipro.com/investors/' },
+    ],
+  },
+];
+
+const faqs = [
+  {
+    q: 'Has BatchWise been engaged by Wipro?',
+    a: 'No. Independent analysis of publicly disclosed financial data from Wipro Limited\'s FY 2024-25 reporting cycle. BatchWise has no engagement with Wipro and makes no claim of delivered work.',
+  },
+  {
+    q: 'Why Wipro as a methodology demonstration target?',
+    a: 'Three reasons. (1) Dual-listed (NYSE ADR WIT + BSE/NSE) — same regulatory disclosure profile as Infosys, requiring both US (Sarbanes-Oxley + SEC) and Indian (SEBI BRSR + the evolving Indian AI-governance overlay of DPDP / ICAI guidance / EU AI Act extraterritoriality; plus SEBI\'s June 2025 AI/ML consultation paper as forward-looking signal) compliance. (2) Mid-turnaround strategic context — Wipro\'s FY25 emphasised margin expansion and structural turnaround; this makes spend rationalisation analysis structurally interesting because cost discipline is an active management theme. (3) ai360 + Lab45 — Wipro has its own AI strategy frame (ai360) and innovation arm (Lab45) — useful reference for entities that have built or are considering similar internal AI capability centres.',
+  },
+  {
+    q: 'How is Wipro different from Infosys for this methodology?',
+    a: 'Two key differences. (1) Strategic context — Wipro is mid-turnaround with margin expansion as central management theme through FY25; Infosys has been steadier through the same period. Spend rationalisation analysis is therefore management-aligned at Wipro in a way that requires more justification at Infosys. (2) ai360 + Lab45 organisational structure — Wipro\'s AI strategy is housed in a more identifiable internal capability centre than Infosys\'s consolidated Topaz + Cobalt approach. The methodology applied to Wipro would surface internal capability centre unit economics specifically.',
+  },
+  {
+    q: 'What did Wipro publicly disclose about AI in FY 2024-25?',
+    a: 'ai360 was the strategic frame through FY25 with workforce-preparation emphasis. Key disclosures: (a) ai360 strategy preparing workforce for AI-first future; (b) Q2 FY25 large deal bookings $1.5B — 10-quarter high; (c) Q3 FY25 17 large deals worth $1B total; (d) Q3 operating margin 17.5% — 12-quarter high reflecting turnaround execution; (e) US financial services client case study using AI + GenAI for customer 360-degree view. Specific AI revenue, AI capex, AI-specific spend not separately disclosed.',
+  },
+  {
+    q: 'What does the analysis NOT show?',
+    a: 'Same categories as peer demonstrations — specific AI vendor spend; AI revenue; ai360 + Lab45 internal capability unit economics; cross-jurisdictional cost allocation specifics; RCM and Section 195 TDS specifics; internal controls evidence. Plus a Wipro-specific gap: turnaround-period investments vs run-rate spend — the FY25 financial profile includes change costs that don\'t persist into FY26; methodology demonstration cannot disaggregate without internal data.',
+  },
+  {
+    q: 'How does the NYSE dual-listing affect the analysis?',
+    a: 'Wipro files Form 6-K with the US SEC quarterly — meaning richer English-language quarterly disclosure than BSE/NSE-only peers. For methodology demonstration this means MORE public data is available than for TCS or HCLTech. The SOX internal controls overlay also means Wipro\'s existing internal controls infrastructure is more mature than BSE/NSE-only peers — Indian AI-controls expectations (ICAI guidance on AI assurance, DPDP) map against existing SOX architecture rather than being implemented greenfield.',
+  },
+];
+---
+
+<CommercialLayout title={title} description={description} lede={lede} canonicalPath={canonicalPath} jsonLdBlocks={jsonLdBlocks} faqs={faqs}>
+  <p class="meta-byline">By <a href="https://rikuq.com" rel="author">Ravi Patel</a> — Founder, BatchWise. Published 22 May 2026. Methodology demonstration on public data.</p>
+
+  <p><em>Editorial correction (2026-05-25): This page previously referenced a "SEBI/MCA January 2026 AI disclosure mandate" that does not exist in that form. The accurate position is SEBI\'s June 2025 consultation paper on AI/ML in securities markets, still in consultation. This page has been updated accordingly.</em></p>
+
+  <div class="callout callout--important">
+    <p><strong>Disclosure discipline.</strong> Methodology demonstration on publicly disclosed financial data from Wipro Limited\'s FY 2024-25 reporting cycle. BatchWise has no engagement with Wipro. No claim of delivered work.</p>
+  </div>
+
+  <h2>Headline financial markers (FY 2024-25, publicly disclosed)</h2>
+
+  <table class="data">
+    <thead><tr><th>Marker</th><th>FY 2024-25 value</th><th>Source</th></tr></thead>
+    <tbody>
+      <tr><td>Q1 FY25 IT Services revenue</td><td>$2,625.9 million</td><td>Q1 FY25 Form 6-K</td></tr>
+      <tr><td>Q3 FY25 IT Services revenue</td><td>$2,629.1 million</td><td>Q3 FY25 Form 6-K</td></tr>
+      <tr><td>Q2 FY25 Large Deal Bookings</td><td>$1.5 billion (10-quarter high)</td><td>Q2 FY25 Form 6-K</td></tr>
+      <tr><td>Q3 FY25 large deal count + value</td><td>17 large deals, $1B total value</td><td>Q3 FY25 Form 6-K</td></tr>
+      <tr><td>Q3 FY25 operating margin</td><td>17.5% (12-quarter high)</td><td>Q3 FY25 Form 6-K</td></tr>
+      <tr><td>AI strategy frame</td><td><strong>ai360</strong> — workforce-preparation emphasis through FY25</td><td>FY25 management commentary</td></tr>
+      <tr><td>Innovation arm</td><td><strong>Lab45</strong> — internal AI capability centre</td><td>Wipro public communications</td></tr>
+      <tr><td>Listings</td><td>NYSE (ADR WIT) + BSE/NSE</td><td>Public; SEC + BSE filings</td></tr>
+      <tr><td>AI revenue disclosure</td><td><strong>Not disclosed separately</strong></td><td>Management commentary FY25</td></tr>
+    </tbody>
+  </table>
+
+  <h2>Methodology application — Wipro-specific angles</h2>
+
+  <h3>Dual-listing disclosure depth</h3>
+
+  <p>Wipro\'s Form 6-K filings provide quarterly English-language disclosure richer than BSE/NSE-only peers. For external observers (and for methodology demonstrations on public data), this means MORE inputs are available — quarterly segment data, geographic breakdowns, large-deal counts and TCV, operational margin walk. The methodology applied to Wipro therefore has more public-data depth than equivalent methodology applied to TCS or HCLTech.</p>
+
+  <h3>SOX + Indian AI-controls overlap (Domain 4)</h3>
+
+  <p>Wipro\'s existing Sarbanes-Oxley internal controls infrastructure has been in place since the NYSE listing. This creates a mature controls baseline that the Indian AI-controls discipline (ICAI voluntary practitioner guidance on AI assurance, DPDP Act 2023 fiduciary obligations, audit-committee expectations on AI-augmented finance work) maps against rather than greenfield implementation. A methodology engagement would specifically identify gaps between SOX controls (designed for financial reporting reliability) and Indian AI-controls expectations (model documentation, log-trail sufficiency, version control, reproducibility on AI-augmented processes) — different scope, partial overlap.</p>
+
+  <h3>Turnaround context affects spend analysis</h3>
+
+  <p>Wipro\'s FY25 financial profile reflects mid-turnaround dynamics: margin expansion (Q3 17.5% — 12-quarter high), large deal recovery (Q2 $1.5B bookings — 10-quarter high), operational discipline. This means FY25 spend includes BOTH structural change costs (severance, restructuring, capability investment) AND base-state run-rate operating costs. Public-data methodology cannot disaggregate these; a real engagement would explicitly separate change-related from steady-state AI spend, providing CFO with a forward-going baseline rather than a turnaround-period total.</p>
+
+  <h3>ai360 + Lab45 internal capability centre unit economics</h3>
+
+  <p>Wipro\'s ai360 strategy is housed in a more identifiable internal capability structure than Infosys\'s consolidated Topaz + Cobalt approach. Methodology engagement would surface Lab45 unit economics — cost per AI deployment supported, ROI on innovation arm investment, marginal revenue contribution from Lab45-developed capability vs equivalent foundation-model API consumption. Same framework as the Infosys / TCS in-house platform analysis but applied to a structurally different organisational unit.</p>
+
+  <h3>AI Spend &amp; Tax overlay</h3>
+
+  <ul>
+    <li><strong>GST RCM</strong> on foreign AI/cloud spend — same 18% IGST under Section 5(3) IGST Act standard; reconciliation against GSTR-3B Table 3.1(d) for past 24 months</li>
+    <li><strong>Section 195 TDS</strong> post EL 2.0 (1 August 2024) — same dual-regime reconciliation discipline; richer public data via Form 6-K means more pre-engagement visibility into foreign vendor exposure</li>
+    <li><strong>Multi-jurisdiction TP</strong> — Wipro operates in 50+ countries; same Big-4-managed engagement scope as TCS and larger peers</li>
+    <li><strong>SOX / Indian AI-controls convergence</strong> — both regimes intersect on internal controls over AI-augmented finance work; the engagement would identify where SOX already satisfies ICAI/DPDP expectations and where additional work is needed</li>
+  </ul>
+
+  <h2>What a peer CFO would draw from this</h2>
+
+  <ol>
+    <li><strong>Dual-listing creates compliance overlap that smaller dual-listed peers can leverage.</strong> If your entity is also NYSE/NASDAQ + BSE/NSE listed, the SOX + Indian AI-controls (ICAI / DPDP) overlap is a real efficiency opportunity — don\'t implement greenfield where SOX already covers.</li>
+    <li><strong>Turnaround-context CFOs have additional spend disaggregation needs.</strong> If your entity is mid-restructuring, separating change-cost AI spend from steady-state is a real analytical need that doesn\'t exist for steady-state peers.</li>
+    <li><strong>Internal AI capability centres need their own unit economics, separate from general AI spend.</strong> If your entity has built an innovation arm or AI capability centre, the methodology applied to that unit is different from the methodology applied to general AI/cloud procurement.</li>
+  </ol>
+
+  <h2>How a real engagement differs</h2>
+
+  <p>Same as the Infosys, TCS, HCLTech, LTIMindtree demonstrations. Methodology on public data shows framework + direction; engagement requires internal data access for entity-specific quantification.</p>
+
+  <h2>For peer CFOs evaluating BatchWise AI</h2>
+
+  <ul>
+    <li><a href="/ai/methodology/ai-systems-review-india/">AI Systems Review methodology</a></li>
+    <li><a href="/ai/methodology/ai-spend-tax-optimisation-india/">AI Spend &amp; Tax Optimisation methodology</a></li>
+    <li><a href="/consult/?service=ai-systems-review">Schedule a discovery call</a></li>
+  </ul>
+
+  <h2>Sources</h2>
+  <ul>
+    <li><a href="https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=0001123799">Wipro Limited — SEC EDGAR Form 6-K filings</a></li>
+    <li><a href="https://www.wipro.com/investors/">Wipro Limited — Investor Relations</a></li>
+    <li>Wipro quarterly earnings call transcripts FY 2024-25 — Q1, Q2, Q3, Q4</li>
+    <li>Wipro ai360 + Lab45 strategy materials</li>
+  </ul>
+</CommercialLayout>
+
+<style>
+  .meta-byline { font-size: 0.875rem; color: var(--color-muted); margin: 0 0 2rem; padding: 0.75rem 1rem; background: color-mix(in srgb, var(--color-accent) 4%, transparent); border-left: 3px solid var(--color-accent); border-radius: 0 6px 6px 0; }
+  .meta-byline a { color: var(--color-accent); text-decoration: underline; }
+  .callout { padding: 1rem 1.25rem; border-radius: 6px; margin: 1.5rem 0; }
+  .callout--important { background: color-mix(in srgb, #B45309 6%, transparent); border-left: 4px solid #B45309; }
+  .callout p { margin: 0; font-size: 0.9375rem; }
+  table.data { width: 100%; border-collapse: collapse; margin: 1rem 0 1.5rem; font-size: 0.9375rem; }
+  table.data th { background: var(--color-accent); color: #fff; text-align: left; padding: 0.625rem 0.875rem; font-weight: 600; }
+  table.data td { padding: 0.625rem 0.875rem; border-bottom: 1px solid var(--color-border); vertical-align: top; }
+</style>

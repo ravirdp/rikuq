@@ -1,0 +1,159 @@
+---
+title: "Section 195 vs Equalisation Levy: Foreign AI Vendor TDS"
+description: "Equalisation Levy abolished. Section 195 TDS + DTAA + Engineering Analysis is the new framework for foreign AI vendor payments. Transition reconciliation guide."
+pubDate: 2026-05-31
+updatedDate: 2026-05-31
+category: finops
+tags:
+  - indian-tax
+  - section-195
+  - equalisation-levy
+  - llm-finops
+  - foreign-ai-vendors
+author: Ravi
+heroImage: /illustrations/covers/section-195-vs-equalisation-levy-foreign-ai-vendors-2026.jpg
+ogImage: /illustrations/covers/section-195-vs-equalisation-levy-foreign-ai-vendors-2026.jpg
+draft: false
+crossposted: false
+affiliateDisclosure: false
+prismDisclosure: true
+faqs:
+  - question: "Why does the Section 195 vs Equalisation Levy comparison matter for FY 2024-25 returns?"
+    answer: "Because the same foreign vendor payment got different tax treatment depending on the exact date it was paid in FY 2024-25. Payments made 1 April 2024 to 31 July 2024 fell under EL 2.0 (2% levy on gross consideration) where the underlying income was exempt from Section 195. Payments made 1 August 2024 to 31 March 2025 fell under the post-EL-2.0 regime where Section 195 applies, subject to Engineering Analysis position and DTAA. FY 2024-25 returns therefore have two distinct payment buckets requiring separate classification, separate reconciliation against Form 26AS, and separate Form 15CA/15CB documentation. The same vendor (e.g., OpenAI Inc) may have been paid under both regimes during the same FY."
+  - question: "What's the equivalent transition window for online advertising spend?"
+    answer: "1 April 2025. EL 1.0 (6% on online advertising services from non-resident vendors with aggregate annual consideration above ₹1 lakh) was abolished by Finance Act 2025 effective 1 April 2025. Payments before that date attracted 6% EL; payments after fall under Section 195 plus DTAA. FY 2025-26 is the first full year under the post-EL-1.0 regime for online advertising payments to Google Ads, Meta Ads, LinkedIn Ads, etc. FY 2025-26 returns have the dual-regime issue for advertising spend that FY 2024-25 had for SaaS / cloud / AI vendor spend."
+  - question: "Was the EL 2.0 to Section 195 transition a tax increase or decrease for Indian payers?"
+    answer: "Depends on the specific vendor and DTAA + Engineering Analysis classification. For most foreign SaaS / cloud / AI subscriptions where Engineering Analysis applies (end-user software licence without copyright transfer), the post-EL-2.0 Section 195 treatment is NIL under domestic law — meaning the post-transition Indian payer pays no income-tax-side levy where they previously paid 2% EL. So for the dominant pattern, it was a tax decrease. However, for foreign vendors with India PE, for services classified as Fees for Technical Services under Section 9(1)(vii), or for older DTAAs that classify software as royalty broadly, post-transition Section 195 may attract higher rates than 2% EL — meaning a tax increase. The classification analysis per vendor is what determines which case you're in."
+  - question: "What's the practical reconciliation discipline?"
+    answer: "Four steps. (1) Bucket FY 2024-25 foreign vendor payments by date — pre-1 Aug 2024 (EL 2.0 regime) vs post-1 Aug 2024 (Section 195 regime). (2) For pre-1 Aug 2024 payments, verify EL 2.0 was correctly paid and reported in the EL Statement. (3) For post-1 Aug 2024 payments, classify per Engineering Analysis + DTAA + Section 9 of IT Act, then apply Section 195 at the determined rate (often nil for end-user software licences). (4) Reconcile against Form 26AS quarterly and ensure Form 15CA/15CB filings exist where aggregate remittance exceeds ₹5L per payee per FY. The same discipline applies for FY 2025-26 with online advertising payments and the 1 April 2025 cutoff."
+  - question: "How does this affect FY 2026-27 returns?"
+    answer: "FY 2026-27 is the first full year under the post-EL regime for both SaaS / cloud / AI vendor payments AND online advertising payments. No dual-regime complications. Section 195 + DTAA + Engineering Analysis is the only operative framework. The complexity shifts from transition reconciliation to steady-state classification work — which payments are chargeable to tax in India and at what rate under domestic plus DTAA — and the Form 15CA/15CB compliance discipline at scale. For Indian listed entities, statutory audit for FY 2026-27 cycles is increasingly testing Section 195 classification on material foreign AI vendor payments under existing ICAI audit standards and audit-committee scrutiny of AI-augmented finance work."
+relatedPosts:
+  - ai-software-capex-vs-opex-india-2026
+  - finops-vs-itfm-vs-itam-2026
+  - ai-cloud-finops-providers-india-2026
+---
+
+A quick recap of what changed in the last 18 months for Indian payers making foreign AI vendor payments: Equalisation Levy 2.0 was abolished on 1 August 2024, EL 1.0 on online advertising followed on 1 April 2025. What you're left with is Section 195 of the Income Tax Act, DTAA relief where applicable, and the Engineering Analysis Supreme Court position from March 2021 that defines when end-user software payments are royalty (mostly never) versus business income (mostly always).
+
+This sounds like a clean simplification. It is, eventually. The catch is FY 2024-25 and FY 2025-26 are transition years where the same foreign vendor payment is taxed differently depending on the day it was paid. If your books haven't been bucketed by date and reconciled separately for each bucket, you're carrying audit risk into FY 2026-27.
+
+This post walks through the comparison, the transition reconciliation discipline, and what FY 2026-27 steady state actually looks like.
+
+I'm Ravi. I run three production AI SaaS solo ([Prism](https://ssimplifi.com), [Citare](https://citare.ai), [BatchWise](https://batchwise.ai)) and do advisory work on Indian tax treatment of foreign AI vendor spend via [rikuq services](/services). The framework below is what I take into every reconciliation engagement.
+
+## TL;DR
+
+| | EL 2.0 (now abolished) | Section 195 TDS (post-EL) |
+|---|---|---|
+| **Status** | Abolished 1 August 2024 | Active operative framework |
+| **Rate** | 2% on gross consideration | Per Section 9 IT Act + DTAA; often NIL for end-user software (Engineering Analysis) |
+| **Who paid the liability** | Indian payer paid directly to govt on vendor's behalf | Indian payer deducts TDS from payment before remittance |
+| **Threshold** | Aggregate > ₹2 crore from Indian residents | No threshold — TDS from first rupee where chargeable |
+| **DTAA relief** | Not available | Available under Section 90(2) |
+| **Engineering Analysis SC** | Did not apply | Applies fully |
+| **Form 15CA/15CB** | Not required | Required above ₹5L per payee per FY |
+| **Tax credit to Indian payer** | None (EL was a final levy) | TDS deducted is creditable |
+| **GST RCM interaction** | RCM applied separately (both were owed) | RCM still applies separately |
+
+## The full side-by-side
+
+| Dimension | Equalisation Levy 2.0 (abolished) | Section 195 TDS (replacement) |
+|---|---|---|
+| **Status** | Abolished 1 August 2024 by Finance Act (No. 2) 2024 | Active — operative framework post-abolition |
+| **Rate** | 2% on gross consideration | Per Section 9 IT Act classification plus DTAA; nil for end-user software (Engineering Analysis); 10-15% for royalty/FTS under typical DTAA; up to ~20.8% effective for non-treaty foreign companies |
+| **Who paid the liability** | Indian payer paid the levy directly to the government on behalf of foreign vendor | Indian payer deducts TDS from payment to foreign vendor before remittance |
+| **Coverage** | Non-resident e-commerce operators (broad scope covering most foreign SaaS / cloud / AI in many configurations) | Any non-resident payment chargeable to tax in India under Section 9 |
+| **Threshold** | Annual aggregate > ₹2 crore from Indian residents (per non-resident operator) | No threshold — TDS from first rupee where chargeable |
+| **Classification work required** | Minimal — applied to "e-commerce supply or services" broadly | Substantial — per-vendor classification under Section 9 + DTAA + Engineering Analysis |
+| **DTAA interaction** | Operated OUTSIDE DTAA framework; no treaty relief | Operates WITHIN DTAA framework; treaty-beneficial rate via Section 90(2) |
+| **Engineering Analysis SC position** | Did not apply | Applies — standard end-user software licences NOT royalty under domestic law (March 2021 SC + May 2026 review dismissed) |
+| **Form compliance** | EL Statement filed; no Form 15CA/15CB | Form 15CA Part C + Form 15CB required for aggregate remittances > ₹5L per payee per FY |
+| **CA certification** | Not required for levy payment | Form 15CB = CA certificate required above threshold |
+| **Tax credit available to Indian payer** | None — EL was a final levy | Yes — TDS deducted is creditable in computing income tax liability |
+| **GST RCM interaction** | RCM applied separately (Section 5(3) IGST Act) — both were owed | RCM still applies separately — both Section 195 + IGST RCM may apply to same payment |
+
+## EL 1.0 — the parallel transition for online advertising
+
+The same comparison applies to EL 1.0 (online advertising services) with a different cutoff date — 1 April 2025 — and a different rate (6% rather than 2%).
+
+| Dimension | EL 1.0 (abolished 1 April 2025) | Section 195 TDS post-EL-1.0 |
+|---|---|---|
+| **Status** | Abolished 1 April 2025 by Finance Act 2025 | Active post-abolition |
+| **Rate** | 6% on consideration where annual aggregate to single non-resident > ₹1 lakh | Per Section 9 + DTAA classification |
+| **Coverage** | Online advertisement services from foreign vendors (Google Ads, Meta Ads, LinkedIn Ads, X / Twitter Ads, etc.) | Same vendors post 1 April 2025 |
+| **Pre 1 April 2025 payments** | 6% EL applied | N/A |
+| **Post 1 April 2025 payments** | N/A | Section 195 applies subject to Engineering Analysis + DTAA |
+
+For Indian companies with material online advertising spend (typical for SaaS exporters, e-commerce companies, fintechs, D2C brands), FY 2025-26 is the dual-regime year for advertising spend — same reconciliation discipline as FY 2024-25 was for SaaS / cloud / AI spend.
+
+## Transition windows — what each FY actually involves
+
+| FY | EL 2.0 (foreign e-commerce / SaaS / cloud / AI) | EL 1.0 (online advertising) | Dual-regime issue? |
+|---|---|---|---|
+| **FY 2024-25** | EL 2.0 applies 1 Apr - 31 Jul 2024 (4 months); abolished 1 Aug 2024 | EL 1.0 applies full year | **YES for SaaS / cloud / AI payments** |
+| **FY 2025-26** | Section 195 applies full year | EL 1.0 abolished 1 Apr 2025, so Section 195 applies full year for advertising too | **YES for advertising payments (cutoff at FY start; reconciliation against pre-1 Apr 2025 records persists)** |
+| **FY 2026-27** | Section 195 full year | Section 195 full year | No — steady state |
+
+## The reconciliation discipline
+
+For Indian payers with material foreign vendor spend, the FY 2024-25 and FY 2025-26 reconciliation work involves six steps:
+
+**1. Bucket payments by date.** Pre-cutoff (EL regime) versus post-cutoff (Section 195 regime). The cutoffs: 1 August 2024 for SaaS / cloud / AI; 1 April 2025 for online advertising.
+
+**2. For pre-cutoff payments:** Verify EL was correctly paid and reported in the relevant EL Statement. Confirm Section 195 was NOT also deducted on the same payment (would create double taxation).
+
+**3. For post-cutoff payments:** Classify per Section 9 IT Act (royalty vs FTS vs business income); apply DTAA plus Engineering Analysis; deduct TDS at the determined rate (often nil for end-user software licences under domestic law).
+
+**4. Form 15CA/15CB compliance:** For aggregate remittance > ₹5L per payee per FY, file Form 15CA Part C plus obtain Form 15CB CA certificate. Coverage typically expands materially in the post-EL period because more payments now fall under the Section 195 framework.
+
+**5. Form 26AS reconciliation:** Cross-check TDS deducted and paid against Form 26AS quarterly. Identify gaps where TDS was deducted but not deposited, or where Section 195 was over-deducted relative to the Engineering Analysis position.
+
+**6. GST RCM separately:** RCM under Section 5(3) IGST Act applies to imported services regardless of Section 195 treatment. The same payment can trigger both Section 195 TDS (income tax) and 18% IGST RCM (GST). Neither absorbs the other; they operate on parallel tracks.
+
+## The five reconciliation findings I see most often
+
+These are the patterns that show up in audit review when Section 195 vs EL classification hasn't been disciplined through the transition:
+
+- **Over-paid EL 2.0.** Entity continued paying 2% EL on post-1 Aug 2024 payments out of habit; refund claim possible within statutory time limits but easy to miss.
+- **Missed Section 195 classification.** Entity treated post-1 Aug 2024 payments as exempt from all income-tax-side levies; Section 195 classification was never done. Audit risk on TDS non-deduction, plus potential Section 40(a)(i) disallowance on the expense.
+- **Over-deducted Section 195.** Entity deducted TDS at a flat 10% on all foreign software payments without applying the Engineering Analysis position (which would yield nil for most end-user software). Refund claim possible but requires Section 195 application before the assessing officer.
+- **Form 15CA/15CB compliance gap.** Historical compliance was lighter under EL 2.0 (where EL applied, Section 195 generally didn't, so Form 15CA/15CB was often simpler). Post-transition coverage expansion creates retrospective filing obligation that's commonly missed for FY 2024-25 returns.
+- **Missed RCM despite EL.** Entity paid EL 2.0 but missed 18% IGST RCM under Section 5(3) IGST Act; both were owed in the pre-1 Aug 2024 period. The EL did not absorb the GST RCM obligation.
+
+The pattern: most reconciliation findings are tax over-payments (recoverable, with effort) or tax under-payments (audit risk that compounds if left). Both directions are worth fixing before FY 2026-27 audit cycles.
+
+## What FY 2026-27 steady state actually looks like
+
+FY 2026-27 is the first full year under the post-EL regime for everything. No transition windows. Section 195 plus Section 5(3) IGST RCM are the only operative regimes.
+
+The complexity shifts from transition reconciliation to **steady-state classification work** — per-vendor Section 9 plus DTAA plus Engineering Analysis classification at scale. The discipline involves:
+
+- A vendor master that classifies each foreign payee under Section 9 (royalty, FTS, business income, capital gains)
+- A DTAA mapping per vendor jurisdiction with rate determination per income head
+- An Engineering Analysis filter on software vendors (most end-user licences → nil)
+- Form 15CA/15CB workflow integrated with the AP system so filings happen at remittance, not retrospectively
+- Quarterly Form 26AS reconciliation tied to the AP ledger
+- Section 195 application before the assessing officer for any disputed classification
+
+For Indian listed entities, FY 2026-27 statutory audit is increasingly testing Section 195 classification on material foreign AI vendor payments. The operative frameworks are existing ICAI audit standards plus audit-committee scrutiny of AI-augmented finance work. SEBI's June 2025 consultation paper on AI/ML in securities markets applies today only to MIIs, intermediaries, and mutual funds and is still in consultation; it signals direction of travel rather than current binding obligation. The audit-readiness logic operates under the existing framework regardless.
+
+## What to do this week
+
+If you're a CFO or tax head at an Indian entity with material foreign AI / SaaS / cloud / advertising vendor spend through FY 2024-25 and FY 2025-26:
+
+- **Pull your FY 2024-25 foreign vendor ledger and bucket payments by date** (pre-1 Aug 2024 vs post-1 Aug 2024 for SaaS / cloud / AI; full-year EL 1.0 vs post-1 Apr 2025 Section 195 for advertising spend in FY 2025-26).
+- **Run an Engineering Analysis filter** on the post-EL Section 195 payments. Most end-user software will be nil; flag the ones that aren't.
+- **Cross-check Form 26AS quarterly** for both years. Identify TDS deduction-vs-deposit gaps and over-deductions.
+- **Audit Form 15CA/15CB coverage** for post-EL payments. The threshold is ₹5L per payee per FY; post-EL coverage expanded materially.
+- **Reconcile against EL Statement** for pre-cutoff payments. Over-payments recoverable; gaps need fixing.
+
+If you want a written scope proposal for the transition reconciliation work — what an AI Spend & Tax Optimisation engagement would look like for your specific situation, including the Section 195 / Form 15CA/15CB workflow setup for FY 2026-27 steady state — the [services page](/services) has both a Cal.com booking link and a Tally intake form.
+
+## What's next
+
+This post focuses on the income-tax side of foreign AI vendor payments. The adjacent posts that go deeper on related dimensions:
+
+- [AI Software Capex vs Opex in India: the Ind AS 38 test](/blog/finops/ai-software-capex-vs-opex-india-2026/) — the accounting classification layer that runs parallel to the tax classification
+- [FinOps vs ITFM vs ITAM](/blog/finops/finops-vs-itfm-vs-itam-2026/) — where this work fits within the broader cost-management framework
+- [What is LLM FinOps?](/blog/finops/what-is-llm-finops/) — the operational discipline that produces the consumption data this reconciliation depends on

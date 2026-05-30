@@ -2,15 +2,28 @@
 
 # Briefs
 
-Total: 22
+Total: 35
 
 | ID | Status | Kind | Title | Slug | Created |
 |---|---|---|---|---|---|
+| 31 | approved | new | Consumer AI Subscription Economics: Who is Actually Winning | `consumer-ai-subscription-economics-2026` | 2026-05-27 |
+| 32 | approved | new | AI Startup Burn-Rate Disclosures: Who Runs Out of Money First | `ai-startup-burn-rate-disclosures-2026` | 2026-05-27 |
+| 33 | approved | new | Government AI Procurement Data Audit: Where Public AI Money Goes | `government-ai-procurement-audit-2026` | 2026-05-27 |
+| 34 | approved | new | AI Talent Compensation 2026: What It Actually Costs to Hire AI Engineers | `ai-talent-compensation-tracking-2026` | 2026-05-27 |
+| 35 | approved | new | The AI Infrastructure Leasing Market: Who Controls the Wholesale GPU Supply | `ai-infrastructure-leasing-market-2026` | 2026-05-27 |
+| 23 | approved | new | The 2026 AI Spend Disclosure Audit: What Public Companies Say vs Show | `ai-spend-disclosure-audit-2026` | 2026-05-27 |
+| 24 | approved | new | Indian IT Services AI Spend Audit: TCS, Infosys, Wipro, HCL, TechM | `indian-it-services-ai-spend-audit-2026` | 2026-05-27 |
+| 25 | approved | new | The Anthropic + OpenAI + xAI Revenue Tracker (v0.1, Q2 2026) | `ai-lab-revenue-tracker-q2-2026` | 2026-05-27 |
+| 26 | approved | new | The 2026 AI Spend vs AI Revenue Index: Who is Profitable on AI? | `ai-spend-vs-revenue-index-2026` | 2026-05-27 |
+| 27 | approved | new | The AI Vendor Concentration Map: Where Public AI Spend Actually Lands | `ai-vendor-concentration-map-2026` | 2026-05-27 |
+| 28 | approved | new | The Hyperscaler-to-Customer AI Spend Reconciliation | `hyperscaler-ai-spend-reconciliation-2026` | 2026-05-27 |
+| 29 | approved | new | The Stock-Market-Implied AI Value Index: Did Wall Street Reward AI Investment? | `ai-stock-market-implied-value-index-2026` | 2026-05-27 |
+| 30 | approved | new | The Sector AI Spend Heatmap: Where the Money Actually Goes by Industry | `sector-ai-spend-heatmap-2026` | 2026-05-27 |
 | 22 | approved | new | The Indian AI Search Audit: 500 Queries, 25 Brands, 777 Citations | `indian-ai-search-audit-may-2026` | 2026-05-26 |
 | 19 | published | new | Best MCP Servers for Claude Code in 2026 (Honest Picks) | `best-mcp-servers-claude-code-2026` | 2026-05-25 |
 | 20 | published | new | Claude Code Hooks vs Skills: When to Use Which | `claude-code-hooks-vs-skills-when-to-use` | 2026-05-25 |
 | 21 | published | new | AI Search Visibility Tools: Honest Comparison From a Builder | `ai-search-visibility-tools-honest-comparison` | 2026-05-25 |
-| 16 | approved | new | GEO vs AEO vs AIO vs SGE: A Plain-English Glossary for 2026 | `geo-aeo-aio-sge-glossary-2026` | 2026-05-25 |
+| 16 | published | new | GEO vs AEO vs AIO vs SGE: A Plain-English Glossary for 2026 | `geo-aeo-aio-sge-glossary-2026` | 2026-05-25 |
 | 17 | approved | new | Cloudflare Workers AI vs OpenAI: Real Cost Across 1M Tokens | `cloudflare-workers-ai-vs-openai-cost` | 2026-05-25 |
 | 18 | approved | new | 37 MCP Tools for Citare: What Worked, What I Would Cut | `37-mcp-tools-citare-lessons` | 2026-05-25 |
 | 1 | published | new | Anthropic Prompt Caching: Real Numbers From 330 Production Calls | `anthropic-prompt-caching-real-numbers` | 2026-05-25 |

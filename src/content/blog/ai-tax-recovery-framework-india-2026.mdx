@@ -1,0 +1,217 @@
+---
+title: "AI Tax Recovery for Indian CFOs: The 5-Domain Framework"
+description: "GST input credit, Section 195 TDS, RCM, capex/opex, transfer pricing — the five tax-recovery domains for Indian companies with material AI/cloud spend."
+pubDate: 2026-06-01
+updatedDate: 2026-06-01
+category: finops
+tags:
+  - indian-tax
+  - section-195
+  - gst-rcm
+  - ind-as-38
+  - transfer-pricing
+author: Ravi
+heroImage: /illustrations/covers/ai-tax-recovery-framework-india-2026.jpg
+ogImage: /illustrations/covers/ai-tax-recovery-framework-india-2026.jpg
+draft: false
+crossposted: false
+affiliateDisclosure: false
+prismDisclosure: true
+faqs:
+  - question: "What's the typical recovery quantum on AI spend tax work?"
+    answer: "Varies too much across entities for averages to be meaningful, but I can characterise the dominant patterns. The largest single recovery component is usually GST input credit on imports of services where RCM was not paid (common pattern: mid-market entities missing RCM on OpenAI, Anthropic, AWS, Microsoft, GCP, Adobe, Atlassian subscriptions for 12-24 months). Recovery here is typically 18% of the missed imported-service spend, subject to time limits under Section 16(4) CGST Act. Second-largest is usually Section 195 TDS reconciliation — over-deducted where DTAA relief was available but not invoked, or under-deducted where Engineering Analysis position was applicable but conservative deduction was made anyway. Third is capex vs opex misclassification on multi-year prepaid SaaS or cloud commitments."
+  - question: "Is this a tax opinion or a return-filing service?"
+    answer: "No. The framework is an advisory diagnostic that produces analysis, recommendations, and a quantified remediation roadmap. It is explicitly not a tax opinion, not a litigation-defence engagement, not a return-signing service, and not representation before tax authorities. The remediation work itself — actual filing of revised returns, Form 15CA submissions, ITC reclaim filings — runs through the entity's existing CA firm. If you don't have one, this work pairs with an ICAI-empanelled CA firm that can execute the implementation. The diagnostic identifies and quantifies; the execution sits separately."
+  - question: "When does this work pay for itself?"
+    answer: "For entities with material foreign AI/SaaS/cloud spend (typically ₹2 crore+ annual) where historical compliance has been incomplete, recovery quantum usually exceeds engagement cost by a meaningful multiple. The dominant pattern: GST RCM gaps over 12-24 months on subscriptions to OpenAI / Anthropic / AWS / Azure / GCP / Adobe at 18% each, plus over-deducted Section 195 TDS where Engineering Analysis would have yielded nil. Smaller-spend entities (under ₹2 crore annual foreign service spend) may not have enough quantum to justify the work; in those cases the framework runs more as compliance hygiene than recovery."
+  - question: "What's the FY 2026-27 compliance architecture?"
+    answer: "FY 2026-27 is the first full year under the new GST architecture: GSTR-2B matching, IMS (Invoice Management System) actions, ECRS (Electronic Credit Reversal and Re-claimed Statement), and the RCM Liability Statement portal mechanism. These collectively automate detection of historic RCM gaps and ITC mismatches within the same return period. The implication: lazy historical compliance that previously took years to surface now flags automatically. Establishing the FY 2026-27 forward-going compliance framework before the first quarter closes is materially easier than retrospective remediation."
+  - question: "How does this work integrate with statutory audit?"
+    answer: "The diagnostic findings feed the entity's statutory audit evidence in several ways. AI spend classification under Ind AS 38 (capex vs opex) affects intangible asset balances and amortisation. Section 195 reconciliation against Form 26AS affects TDS deduction completeness — a common audit qualification area. GST input credit recovery affects current asset balances and indirect tax disclosures. Transfer pricing analysis affects related-party transactions disclosures and TP study sufficiency. For SEBI-listed entities and entities with EU subsidiary exposure these dimensions are increasingly scrutinised. The framework is designed so the working papers it produces survive contact with the statutory auditor."
+relatedPosts:
+  - section-195-vs-equalisation-levy-foreign-ai-vendors-2026
+  - ai-software-capex-vs-opex-india-2026
+  - ai-systems-review-framework-india-2026
+---
+
+This is the tax-focused companion to the [AI Systems Review framework](/blog/finops/ai-systems-review-framework-india-2026/). Where that framework covers the operational and governance side of AI spend, this one covers the five tax + accounting recovery domains that follow once the spend picture is clear: GST input credit on cloud / AI / SaaS, Section 195 TDS on foreign AI vendor payments (post Equalisation Levy 2.0 abolition), Reverse Charge Mechanism on imported services, capex vs opex classification, and transfer pricing on cross-entity AI cost allocation.
+
+Each of these domains independently produces tax recovery or risk mitigation for mid-market Indian entities with material AI spend. Run together, they cover the full tax-side audit of AI / cloud / SaaS spend that statutory auditors are increasingly testing.
+
+I'm Ravi. I run three production AI SaaS solo ([Prism](https://ssimplifi.com), [Citare](https://citare.ai), [BatchWise](https://batchwise.ai)) and do advisory work on this via [rikuq services](/services). The framework below is what I take into every AI tax recovery engagement; the same structure works if you run it internally with your existing CA firm.
+
+## TL;DR
+
+| Sub-domain | What it covers | Typical recovery / risk |
+|---|---|---|
+| 1. GST input credit on cloud / AI / SaaS | Section 16 CGST eligibility; RCM mechanics | Under-claimed ITC recoverable within Section 16(4) time limits |
+| 2. Section 195 TDS + Form 15CA/15CB | Royalty vs FTS vs business income; DTAA; Engineering Analysis | Over- or under-deduction; Form 15CA/15CB gap |
+| 3. Reverse Charge Mechanism | Section 5(3) IGST self-assessment; 18% IGST | Historical RCM gaps on foreign SaaS subscriptions |
+| 4. Capex vs Opex classification | Ind AS 38 + Section 32 + Section 37 | Multi-year prepayments expensed wrong; Section 32 depreciation lost |
+| 5. Transfer pricing on cross-entity AI allocation | Section 92 + OECD Chapter VII | Allocation methodology survives arm's-length test |
+
+## What this is and what it is not
+
+The framework is **advisory in nature**. It produces:
+
+- A structured tax diagnostic across the five sub-domains
+- Quantified recovery opportunities with effort-to-recover estimates and time-limit constraints
+- GST reconciliation working papers (RCM gap closure, ITC under-claim recovery)
+- TDS / 26AS reconciliation working papers (Section 195 + Form 15CA/15CB)
+- A forward-going compliance framework for FY 2026-27 portal architecture (GSTR-2B, IMS, ECRS, RCM Liability Statement)
+
+It is **explicitly not**:
+
+- A tax opinion (binding tax opinions sit with the entity's tax counsel)
+- A return-signing service (GST, TDS, income tax returns sign elsewhere)
+- A litigation defence engagement (active assessment proceedings need separate counsel)
+- Representation before tax authorities
+- A return filing service (actual filings run through the CA firm executing the remediation)
+
+The boundary discipline matters because tax recovery work has natural scope-creep into adjacent areas that aren't actually recovery work. Keeping the diagnostic separate from implementation is what makes the diagnostic affordable enough to be worth doing.
+
+## The five sub-domains in detail
+
+### Sub-domain 1: GST input credit on cloud / AI / SaaS
+
+Most mid-market entities under-claim GST input credit on cloud and SaaS spend. The recurring pattern across the engagements I've run:
+
+**Domestic SaaS** (Zoho, Tally on cloud, Razorpay subscriptions, Indian PaaS) — supplier charges 18% IGST or CGST + SGST. ITC is directly claimable under Section 16 CGST Act. Generally available unless the spend is for personal use (blocked under Section 17(5)) or for exempt supplies.
+
+**Foreign SaaS / AI / cloud** (OpenAI, Anthropic, AWS, Microsoft Azure, Google Cloud, Adobe, Notion, Atlassian, Google Ads, Meta Ads) — these are imports of services. The Indian recipient self-assesses 18% IGST under reverse charge per Section 5(3) IGST Act, pays it in cash through GSTR-3B Table 3.1(d), and claims the same IGST as ITC in Table 4(A)(3) the same month. ITC eligibility under Section 16 is contingent on the service being used for taxable business purposes.
+
+**Section 17 CGST blocked credits** — SaaS / cloud / AI spend is generally NOT in the blocked credit list. The standard blocked items are motor vehicles, food and beverages, club memberships, certain insurance, and services for personal use. Cloud / SaaS used for business operations is claimable.
+
+The diagnostic identifies three categories: (a) historic ITC under-claims still within Section 16(4) time limit and recoverable; (b) ITC erroneously claimed without underlying RCM payment (a compliance gap that surfaces on GSTR-2B / IMS reconciliation); (c) classification errors where spend was booked under the wrong HSN / SAC code causing downstream ITC matching issues.
+
+### Sub-domain 2: Section 195 TDS + Form 15CA/15CB on foreign AI vendors
+
+The post-Equalisation-Levy-2.0 picture is what makes this domain a 2026 priority. EL 2.0 was abolished by Finance Act (No. 2) 2024 effective 1 August 2024. Before abolition, payments to many foreign e-commerce operators were covered by EL 2.0 and were exempt from Section 195 TDS to prevent double taxation. After abolition, Section 195 again applies where the underlying income is chargeable under the Income Tax Act.
+
+Three classification axes determine TDS treatment for any specific foreign vendor payment:
+
+**Royalty vs Fees for Technical Services (FTS) vs Business Income.** The Engineering Analysis Centre of Excellence v. CIT Supreme Court judgment (March 2021) held that standard end-user software licences do not constitute royalty under domestic law — only a right to use, no copyright transfer. So under Section 9(1)(vi) IT Act plus Section 195, TDS does not apply on these payments under domestic law. The review petition was dismissed in May 2026, so the position is now settled.
+
+**DTAA position.** Some older DTAAs define royalty more broadly than domestic law and include software payments. Indian payers can invoke Section 90(2) to use whichever is more beneficial — domestic law or treaty. For India-US treaty payments, royalty and FTS are capped at 10-15% per Article 12. Engineering Analysis applies under domestic law; treaty may apply differently depending on the specific royalty definition.
+
+**Form 15CA / 15CB compliance.** Form 15CB (CA certificate) is required for aggregate taxable remittances exceeding ₹5 lakh per FY to a single non-resident payee. Form 15CA (online declaration) accompanies the remittance. For aggregate remittances at or below ₹5L, Form 15CA Part A suffices. Above the threshold, Form 15CA Part C plus Form 15CB are required.
+
+The diagnostic evaluates each material foreign vendor against (a) vendor residency jurisdiction, (b) DTAA royalty + FTS definitions, (c) specific licence terms, and (d) the entity's historic position. Common recovery pattern: TDS over-deducted where DTAA relief was available but not invoked, or where Engineering Analysis position was applicable but conservative deduction was made anyway.
+
+See [Section 195 vs Equalisation Levy](/blog/finops/section-195-vs-equalisation-levy-foreign-ai-vendors-2026/) for the operational detail on transition reconciliation.
+
+### Sub-domain 3: Reverse Charge Mechanism on imported services
+
+The most common compliance gap across mid-market entities with foreign SaaS / AI spend. Under Section 5(3) IGST Act, when:
+
+- the supplier is located outside India,
+- the recipient is located in India, and
+- the place of supply is in India,
+
+then IGST is payable by the Indian recipient under reverse charge. This applies to every foreign SaaS subscription, cloud service, AI API access, and online professional service used by Indian businesses.
+
+The compliance flow:
+
+1. Self-assess 18% IGST on the imported service value (FX-converted at the rate prescribed)
+2. Report the RCM liability in GSTR-3B Table 3.1(d)
+3. Pay the IGST in cash through the GST Electronic Cash Ledger
+4. Claim the same IGST as ITC in GSTR-3B Table 4(A)(3) in the same return period, subject to Section 16(1) CGST Act business-purpose test
+
+The FY 2026-27 GST compliance architecture (GSTR-2B matching, IMS actions, ECRS, RCM Liability Statement) flags RCM gaps automatically within the same month. Historic RCM gaps from prior years — where the entity missed RCM on OpenAI, Anthropic, AWS, GCP, Microsoft, Adobe, Atlassian subscriptions for 12-24 months — are recoverable subject to time-limit rules under Section 16(4) and the Electronic Credit Reversal and Re-claimed Statement framework. The diagnostic quantifies the recovery and produces the reconciliation documentation.
+
+In my experience this domain alone often justifies the entire engagement at mid-market scale. A typical pattern: entity has been paying ₹50 lakh annual on OpenAI + Anthropic + AWS combined without RCM compliance for 18 months. The 18% recovery (subject to time limits) runs into the 7-9 lakh range, well above typical diagnostic cost.
+
+### Sub-domain 4: Capex vs Opex classification for AI software
+
+Indian accounting treatment of AI / cloud / SaaS spend turns on whether the expense creates an intangible asset (capex, amortise over useful life) or is a period operating expense (opex, expense in the period incurred). The governing standard is Ind AS 38 for Ind AS preparers; AS 26 for AS preparers. Income Tax Act provisions on depreciation (Section 32) and revenue expense deduction (Section 37) layer on top.
+
+| Spend category | Typical treatment | Reasoning |
+|---|---|---|
+| SaaS / cloud subscription (monthly or annual) | **OpEx** — expense in period incurred | No control / no intangible asset; recurring access right ceases on non-renewal |
+| Perpetual on-premise software licence | **CapEx** — capitalise + amortise over useful life | Control of asset; future economic benefit beyond one period |
+| Multi-year reserved instance / committed-use cloud commitment | **Prepaid expense** — recognised over commitment period | Pre-paid opex; not an intangible asset under Ind AS 38 |
+| Custom AI model fine-tuning costs (third-party API) | **OpEx** — §57 criterion 3 fails | Capability inseparable from provider's platform |
+| Custom AI model fine-tuning costs (self-hosted open-weight) | **OpEx default; CapEx if all 6 §57 criteria met** | All Ind AS 38 paragraph 57 criteria require demonstration |
+| Post-deployment AI model maintenance + updates | **OpEx** | Recurring maintenance; doesn't extend useful life |
+| Internal staff costs developing AI capability | **Mixed** — research OpEx; development CapEx if §57 met | Same §57 test framework |
+
+The Income Tax Act adds a layer: Section 32 depreciation rates for capitalised software (40% on Written Down Value for computer software) differ from book amortisation under Ind AS 38 (straight-line over useful life). This creates a permanent timing difference and a deferred tax line item the diagnostic identifies and quantifies.
+
+Common misclassifications the diagnostic catches: (a) multi-year SaaS prepayments expensed in year of payment instead of spread over commitment period; (b) custom AI model build costs expensed when capex treatment would have been correct (loses Section 32 depreciation claim); (c) cloud reserved instances treated as opex without prepaid expense recognition.
+
+See [AI Software Capex vs Opex in India](/blog/finops/ai-software-capex-vs-opex-india-2026/) for the full Ind AS 38 framework and the §57 six-criteria test.
+
+### Sub-domain 5: Transfer pricing on cross-BU / cross-entity AI cost allocation
+
+For groups operating across multiple legal entities — Indian parent with foreign subsidiaries, foreign parent with Indian subsidiary, or multiple Indian entities under common control — shared AI / cloud / SaaS spend allocated across entities is a transfer pricing matter under Section 92 IT Act plus Rule 10A-10F.
+
+The arm's-length analysis follows OECD Transfer Pricing Guidelines Chapter VII (Intra-Group Services). The Indian regulatory and audit lens additionally requires:
+
+- **Benefit test** — the receiving entity must derive economic or commercial benefit from the allocated AI / cloud cost; pure cost-pass-through without benefit fails arm's-length
+- **Allocation key** — usage-based (API calls, compute hours), headcount-based, or revenue-based, depending on what most closely reflects benefit received
+- **Mark-up** — for routine support services centralised in a cost centre, a mark-up of 5-10% over cost is typically defensible under Safe Harbour Rules plus comparables analysis; pure cost-sharing arrangements (no mark-up) are permitted only in limited cost-contribution-arrangement structures
+- **Documentation** — TP study under Section 92D plus Rule 10D; benefit test substantiation; allocation key justification; Master File / Country-by-Country Report obligations under Section 286 if thresholds met
+
+Common TP risk patterns: (a) Indian subsidiary absorbing more than arm's-length share of group-wide AI/cloud spend without benefit; (b) Indian parent allocating to foreign subsidiaries at cost without permissible mark-up; (c) cost-allocation methodology that doesn't survive arm's-length analysis under audit; (d) Safe Harbour Rules eligibility unevaluated for entities that may qualify.
+
+For domestic-only mid-market entities this sub-domain may not apply. For any entity with cross-border related parties or significant intercompany flows, it's essential.
+
+## Indian statutory and regulatory framework
+
+Five regulatory frames intersect on this work:
+
+- **CGST Act 2017 + IGST Act 2017** — primary GST law on ITC and RCM
+- **Income Tax Act 1961** — Sections 9, 32, 37, 90(2), 92, 195, 286 plus Finance Act 2024 (EL 2.0 abolition) plus Finance Act 2025 (various threshold revisions including Section 206AB omission)
+- **Ind AS 38 / AS 26** — intangible assets accounting; ICAI guidance plus Companies (Indian Accounting Standards) Rules 2015
+- **OECD Transfer Pricing Guidelines** plus UN Model Tax Convention — interpretive reference for Section 92 and DTAA royalty / FTS analysis
+- **FY 2026-27 GST compliance architecture** — GSTR-2B, IMS, ECRS, RCM Liability Statement portal mechanisms
+
+The cumulative effect: tax-side AI spend work that was loose through 2023-24 is now machine-flagged within the same return period. Doing it manually before the system surfaces gaps is materially less expensive than retroactive remediation.
+
+## How to actually run this internally
+
+If you have an existing CA firm with capacity to handle the diagnostic work, here's the practical sequencing:
+
+**Week 1: Document collection.** Vendor contracts (foreign and domestic), GSTR-3B and GSTR-9 for past 24 months, TDS returns and Form 26AS reconciliation, foreign remittance records, TP study (if applicable), Ind AS or AS financial statements.
+
+**Week 2: Sub-domains 1 + 3 analysis.** GST ITC eligibility review + RCM gap quantification. These two run together because they're on the same data set.
+
+**Week 3: Sub-domain 2 analysis.** Section 195 + DTAA + Engineering Analysis classification per material foreign vendor. Form 15CA/15CB coverage review.
+
+**Week 4: Sub-domain 4 analysis.** Capex vs opex classification review across Ind AS 38 categories. Deferred tax timing differences quantified.
+
+**Week 5: Sub-domain 5 analysis** (if applicable). Transfer pricing on related-party AI cost allocation. Arm's-length analysis, benefit test, mark-up determination.
+
+**Week 6: Synthesis + forward-going framework.** Pull findings into a single quantified recovery roadmap with time-limit constraints. Build the FY 2026-27 forward-going compliance framework for GSTR-2B / IMS / ECRS / RCM Liability Statement workflows.
+
+Smaller scopes (single sub-domain — e.g., RCM reconciliation only — for past 12 months) compress to 1-2 weeks. Larger scopes (full five-domain plus multi-entity TP) extend to 4-6 weeks. The bottleneck is usually data collection and Form 26AS reconciliation accuracy.
+
+## What this framework deliberately doesn't cover
+
+Honest scope discipline:
+
+- **Not a tax opinion.** Binding tax opinions are scope for tax counsel.
+- **Not a return-signing service.** GST, TDS, income tax returns sign elsewhere.
+- **Not litigation defence.** Active tax litigation or assessment proceedings need separate counsel.
+- **Not representation.** The framework doesn't appear before the GST Council, CBDT, or tax authorities.
+- **Not return filing.** Implementation — actual filing of revised returns, Form 15CA submissions, ITC reclaim filings — runs through the entity's existing CA firm.
+
+These boundaries matter. The diagnostic value depends on being separate from implementation; mixing the two is where engagement scope gets unmanageable and the per-hour effective rate stops being defensible.
+
+## Where to start
+
+If you're a CFO or tax head at an Indian mid-market entity with material foreign AI/SaaS/cloud spend and you haven't formalised the tax recovery framework:
+
+- **If foreign service spend is under ₹2 crore annual,** the RCM and Section 195 work is probably worth doing as compliance hygiene but the recovery quantum may not justify a full five-domain engagement. Start with sub-domain 3 (RCM) as a focused 1-2 week exercise.
+- **If foreign service spend is ₹2-20 crore annual,** the full five-domain framework usually justifies the work. Run sub-domains 1 + 3 first (GST + RCM — fastest recovery), then 2 (Section 195), then 4 (capex/opex), then 5 (TP) if applicable.
+- **If you're a SEBI-listed entity or have material EU subsidiary exposure,** the audit-readiness dimension typically justifies the full framework regardless of spend size.
+
+If you want a written scope proposal for what an external engagement would look like for your specific situation, the [services page](/services) has both a Cal.com booking link and a Tally intake form. Free 30-min discovery, written scope before any commitment.
+
+## What's next
+
+This post is the tax-recovery framework. The adjacent posts that go deeper on specific sub-domains:
+
+- [Section 195 vs Equalisation Levy: foreign AI vendor TDS](/blog/finops/section-195-vs-equalisation-levy-foreign-ai-vendors-2026/) — operational detail on sub-domain 2
+- [AI Software Capex vs Opex in India: the Ind AS 38 test](/blog/finops/ai-software-capex-vs-opex-india-2026/) — operational detail on sub-domain 4
+- [AI Systems Review: 6-domain framework](/blog/finops/ai-systems-review-framework-india-2026/) — the operational and governance companion to this tax-focused framework
