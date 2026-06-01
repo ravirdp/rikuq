@@ -28,7 +28,7 @@
     "total": 4
   },
   "tier": "Opaque",
-  "talk_show_ratio": 36.75,
+  "talk_show_ratio": 44.5,
   "samples": {
     "revenue": [
       "AI-powered, composable Configure, Price, Quote ( CPQ ) solution for total purchase consideration of $ 506 million"
@@ -36,5 +36,20 @@
     "capex": [],
     "forward_capex": [],
     "ai_risk": []
-  }
+  },
+  "earnings": {
+    "transcript_word_count": 12803,
+    "ai_mentions": 178,
+    "ai_mentions_per_1k_words": 13.9,
+    "per_term": {
+      "\\bAI\\b": 138,
+      "\\blarge language models?\\b": 1,
+      "\\bLLMs?\\b": 1,
+      "\\bfoundation models?\\b": 2,
+      "\\bagentic\\b": 8,
+      "\\bagent(?:s|ic workflows?)?\\b": 28
+    }
+  },
+  "talk_show_ratio_10k_placeholder": 36.75,
+  "talk_show_ratio_normalized": 3.476
 }

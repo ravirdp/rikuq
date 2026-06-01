@@ -25,7 +25,7 @@
     "original": -3
   },
   "tier": "Misleading",
-  "talk_show_ratio": 138,
+  "talk_show_ratio": 90,
   "samples": {
     "revenue": [],
     "capex": [],
@@ -34,5 +34,19 @@
   },
   "tier_verified": "Misleading",
   "verification_note": "Verified, adjusted from -3 to -1. Generic penalty was too aggressive on only 3 vague matches.",
-  "verified_at": "2026-05-27"
+  "verified_at": "2026-05-27",
+  "earnings": {
+    "transcript_word_count": 11186,
+    "ai_mentions": 45,
+    "ai_mentions_per_1k_words": 4.02,
+    "per_term": {
+      "\\bAI\\b": 12,
+      "\\bgenerative AI\\b": 2,
+      "\\bLLMs?\\b": 1,
+      "\\bagentic\\b": 8,
+      "\\bagent(?:s|ic workflows?)?\\b": 22
+    }
+  },
+  "talk_show_ratio_10k_placeholder": 90,
+  "talk_show_ratio_normalized": 8.046
 }

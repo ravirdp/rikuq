@@ -23,7 +23,7 @@
     "total": 7
   },
   "tier": "Vague",
-  "talk_show_ratio": 9.428571428571429,
+  "talk_show_ratio": 22.71,
   "samples": {
     "revenue": [
       "AI products may not operate as anticipated, which could adversely affect our reputation, revenue"
@@ -33,5 +33,19 @@
     ],
     "forward_capex": [],
     "ai_risk": []
-  }
+  },
+  "earnings": {
+    "transcript_word_count": 8352,
+    "ai_mentions": 159,
+    "ai_mentions_per_1k_words": 19.04,
+    "per_term": {
+      "\\bAI\\b": 113,
+      "\\blarge language models?\\b": 1,
+      "\\bLLMs?\\b": 3,
+      "\\bagentic\\b": 3,
+      "\\bagent(?:s|ic workflows?)?\\b": 39
+    }
+  },
+  "talk_show_ratio_10k_placeholder": 9.428571428571429,
+  "talk_show_ratio_normalized": 2.72
 }

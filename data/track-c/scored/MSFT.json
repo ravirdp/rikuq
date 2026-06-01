@@ -28,7 +28,7 @@
     "total": 7
   },
   "tier": "Vague",
-  "talk_show_ratio": 16.714285714285715,
+  "talk_show_ratio": 20,
   "samples": {
     "revenue": [
       "AI models that are open, and earning revenue",
@@ -40,5 +40,19 @@
     ],
     "forward_capex": [],
     "ai_risk": []
-  }
+  },
+  "earnings": {
+    "transcript_word_count": 9689,
+    "ai_mentions": 140,
+    "ai_mentions_per_1k_words": 14.45,
+    "per_term": {
+      "\\bAI\\b": 46,
+      "\\bgenerative AI\\b": 1,
+      "\\bcopilot\\b": 51,
+      "\\bagentic\\b": 6,
+      "\\bagent(?:s|ic workflows?)?\\b": 36
+    }
+  },
+  "talk_show_ratio_10k_placeholder": 20,
+  "talk_show_ratio_normalized": 2.064
 }

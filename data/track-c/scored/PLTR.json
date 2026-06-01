@@ -32,7 +32,7 @@
     "total": 6
   },
   "tier": "Vague",
-  "talk_show_ratio": 18.166666666666668,
+  "talk_show_ratio": 11.83,
   "samples": {
     "revenue": [
       "AI-powered agents and automations, an arr",
@@ -41,5 +41,19 @@
     "capex": [],
     "forward_capex": [],
     "ai_risk": []
-  }
+  },
+  "earnings": {
+    "transcript_word_count": 7755,
+    "ai_mentions": 71,
+    "ai_mentions_per_1k_words": 9.16,
+    "per_term": {
+      "\\bAI\\b": 47,
+      "\\bartificial intelligence\\b": 1,
+      "\\bLLMs?\\b": 1,
+      "\\bagentic\\b": 4,
+      "\\bagent(?:s|ic workflows?)?\\b": 18
+    }
+  },
+  "talk_show_ratio_10k_placeholder": 18.166666666666668,
+  "talk_show_ratio_normalized": 1.526
 }

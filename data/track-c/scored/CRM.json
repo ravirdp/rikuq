@@ -42,5 +42,18 @@
     "ai_risk": [
       "liability for monetary damages arising from copyright infringement"
     ]
-  }
+  },
+  "earnings": {
+    "transcript_word_count": 14351,
+    "ai_mentions": 144,
+    "ai_mentions_per_1k_words": 10.03,
+    "per_term": {
+      "\\bAI\\b": 32,
+      "\\bcopilot\\b": 1,
+      "\\bagentic\\b": 42,
+      "\\bagent(?:s|ic workflows?)?\\b": 69
+    }
+  },
+  "talk_show_ratio_10k_placeholder": 24,
+  "talk_show_ratio_normalized": 1.672
 }

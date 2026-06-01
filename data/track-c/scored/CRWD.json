@@ -25,7 +25,7 @@
     "original": -3
   },
   "tier": "Misleading",
-  "talk_show_ratio": 296,
+  "talk_show_ratio": 306,
   "samples": {
     "revenue": [],
     "capex": [],
@@ -34,5 +34,19 @@
   },
   "tier_verified": "Misleading",
   "verification_note": "Verified. 148 AI mentions, 12 vague phrases, zero specific disclosure. \"AI-powered\" everywhere.",
-  "verified_at": "2026-05-27"
+  "verified_at": "2026-05-27",
+  "earnings": {
+    "transcript_word_count": 10376,
+    "ai_mentions": 153,
+    "ai_mentions_per_1k_words": 14.75,
+    "per_term": {
+      "\\bAI\\b": 102,
+      "\\bartificial intelligence\\b": 1,
+      "\\bLLMs?\\b": 11,
+      "\\bagentic\\b": 17,
+      "\\bagent(?:s|ic workflows?)?\\b": 22
+    }
+  },
+  "talk_show_ratio_10k_placeholder": 306,
+  "talk_show_ratio_normalized": 29.491
 }

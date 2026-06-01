@@ -23,11 +23,25 @@
     "total": 0
   },
   "tier": "Opaque",
-  "talk_show_ratio": 88,
+  "talk_show_ratio": 250,
   "samples": {
     "revenue": [],
     "capex": [],
     "forward_capex": [],
     "ai_risk": []
-  }
+  },
+  "earnings": {
+    "transcript_word_count": 9440,
+    "ai_mentions": 125,
+    "ai_mentions_per_1k_words": 13.24,
+    "per_term": {
+      "\\bAI\\b": 72,
+      "\\bgenerative AI\\b": 5,
+      "\\bfoundation models?\\b": 1,
+      "\\bagentic\\b": 25,
+      "\\bagent(?:s|ic workflows?)?\\b": 22
+    }
+  },
+  "talk_show_ratio_10k_placeholder": 88,
+  "talk_show_ratio_normalized": 26.483
 }

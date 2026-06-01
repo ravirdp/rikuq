@@ -28,7 +28,7 @@
     "total": 7
   },
   "tier": "Vague",
-  "talk_show_ratio": 18.428571428571427,
+  "talk_show_ratio": 21.14,
   "samples": {
     "revenue": [
       "AI training and inference, as well as traditional cloud computing services, we are entering into significant leasing arr",
@@ -41,5 +41,20 @@
     ],
     "forward_capex": [],
     "ai_risk": []
-  }
+  },
+  "earnings": {
+    "transcript_word_count": 9375,
+    "ai_mentions": 148,
+    "ai_mentions_per_1k_words": 15.79,
+    "per_term": {
+      "\\bAI\\b": 103,
+      "\\bgenerative AI\\b": 2,
+      "\\bGenAI\\b": 3,
+      "\\bfoundation models?\\b": 1,
+      "\\bagentic\\b": 23,
+      "\\bagent(?:s|ic workflows?)?\\b": 16
+    }
+  },
+  "talk_show_ratio_10k_placeholder": 21.14,
+  "talk_show_ratio_normalized": 2.255
 }

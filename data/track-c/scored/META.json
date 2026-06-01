@@ -25,7 +25,7 @@
     "original": 8
   },
   "tier": "Vague",
-  "talk_show_ratio": 20.625,
+  "talk_show_ratio": 15,
   "samples": {
     "revenue": [
       "AI for $ 13"
@@ -43,5 +43,22 @@
   },
   "tier_verified": "Solid",
   "verification_note": "Verified up from 8. $115B-$135B 2026 AI capex guidance is the most specific in entire corpus. Llama (not in keyword list) is a named-product equivalent. Updated to capture both.",
-  "verified_at": "2026-05-27"
+  "verified_at": "2026-05-27",
+  "earnings": {
+    "transcript_word_count": 10169,
+    "ai_mentions": 120,
+    "ai_mentions_per_1k_words": 11.8,
+    "per_term": {
+      "\\bAI\\b": 70,
+      "\\bgenerative AI\\b": 1,
+      "\\bGenAI\\b": 4,
+      "\\blarge language models?\\b": 1,
+      "\\bLLMs?\\b": 8,
+      "\\bfoundation models?\\b": 1,
+      "\\bagentic\\b": 6,
+      "\\bagent(?:s|ic workflows?)?\\b": 29
+    }
+  },
+  "talk_show_ratio_10k_placeholder": 15,
+  "talk_show_ratio_normalized": 1.475
 }

@@ -30,7 +30,7 @@
     "original": 9
   },
   "tier": "Vague",
-  "talk_show_ratio": 19.22222222222222,
+  "talk_show_ratio": 20,
   "samples": {
     "revenue": [
       "AI capabilities, and educational resources, but also to build their own business by offering new services and shifting their revenue",
@@ -47,5 +47,18 @@
   },
   "tier_verified": "Vague",
   "verification_note": "Verified down from 9. Revenue match was false positive (about AI subsidiaries via M&A, not AI revenue). Breeze naming holds. Real DQS: named products(4) + risk(2) + 1 weak capex = 7.",
-  "verified_at": "2026-05-27"
+  "verified_at": "2026-05-27",
+  "earnings": {
+    "transcript_word_count": 8785,
+    "ai_mentions": 180,
+    "ai_mentions_per_1k_words": 20.49,
+    "per_term": {
+      "\\bAI\\b": 61,
+      "\\bLLMs?\\b": 2,
+      "\\bagentic\\b": 9,
+      "\\bagent(?:s|ic workflows?)?\\b": 108
+    }
+  },
+  "talk_show_ratio_10k_placeholder": 19.22222222222222,
+  "talk_show_ratio_normalized": 2.277
 }

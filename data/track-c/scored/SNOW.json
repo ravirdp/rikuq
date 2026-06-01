@@ -34,7 +34,7 @@
     "original": 11
   },
   "tier": "Solid",
-  "talk_show_ratio": 18.818181818181817,
+  "talk_show_ratio": 12.73,
   "samples": {
     "revenue": [
       "AI Data Cloud, for $ 76",
@@ -52,5 +52,18 @@
   },
   "tier_verified": "Solid",
   "verification_note": "Verified. Cortex naming + AI Data Cloud revenue figure confirmed. Capex match is generic (not AI-specific dollar amount); ties Meta for top.",
-  "verified_at": "2026-05-27"
+  "verified_at": "2026-05-27",
+  "earnings": {
+    "transcript_word_count": 8696,
+    "ai_mentions": 140,
+    "ai_mentions_per_1k_words": 16.1,
+    "per_term": {
+      "\\bAI\\b": 90,
+      "\\bmachine learning\\b": 1,
+      "\\bagentic\\b": 13,
+      "\\bagent(?:s|ic workflows?)?\\b": 36
+    }
+  },
+  "talk_show_ratio_10k_placeholder": 12.73,
+  "talk_show_ratio_normalized": 1.464
 }

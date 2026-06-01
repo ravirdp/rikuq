@@ -25,7 +25,7 @@
     "original": 8
   },
   "tier": "Vague",
-  "talk_show_ratio": 6.25,
+  "talk_show_ratio": 12.38,
   "samples": {
     "revenue": [
       "AI) platform that enables developers to deploy and run AI models, for a total purchase cash consideration of $ 57"
@@ -38,5 +38,18 @@
   },
   "tier_verified": "Opaque",
   "verification_note": "Verified down from 8. $57M cited was the acquisition cost of an AI inference platform (Workers AI infra), not Workers AI revenue. Capex generic. Real DQS: 3 from capex (weak) + 2 risk = 5.",
-  "verified_at": "2026-05-27"
+  "verified_at": "2026-05-27",
+  "earnings": {
+    "transcript_word_count": 8825,
+    "ai_mentions": 99,
+    "ai_mentions_per_1k_words": 11.22,
+    "per_term": {
+      "\\bAI\\b": 56,
+      "\\bLLMs?\\b": 4,
+      "\\bagentic\\b": 22,
+      "\\bagent(?:s|ic workflows?)?\\b": 17
+    }
+  },
+  "talk_show_ratio_10k_placeholder": 6.25,
+  "talk_show_ratio_normalized": 1.402
 }

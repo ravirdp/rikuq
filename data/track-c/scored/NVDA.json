@@ -23,7 +23,7 @@
     "total": 6
   },
   "tier": "Vague",
-  "talk_show_ratio": 31.666666666666668,
+  "talk_show_ratio": 27.5,
   "samples": {
     "revenue": [
       "AI infrastructure by our customers and partners is crucial, and any shortage of these and other necessary resources could impact our future revenue",
@@ -38,5 +38,18 @@
     ],
     "forward_capex": [],
     "ai_risk": []
-  }
+  },
+  "earnings": {
+    "transcript_word_count": 9186,
+    "ai_mentions": 165,
+    "ai_mentions_per_1k_words": 17.96,
+    "per_term": {
+      "\\bAI\\b": 129,
+      "\\bmachine learning\\b": 2,
+      "\\bagentic\\b": 19,
+      "\\bagent(?:s|ic workflows?)?\\b": 15
+    }
+  },
+  "talk_show_ratio_10k_placeholder": 31.666666666666668,
+  "talk_show_ratio_normalized": 2.994
 }

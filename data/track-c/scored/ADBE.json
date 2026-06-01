@@ -34,7 +34,7 @@
     "original": 8
   },
   "tier": "Vague",
-  "talk_show_ratio": 24,
+  "talk_show_ratio": 14,
   "samples": {
     "revenue": [
       "AI Act and depending on how the EU AI Act is implemented and interpreted, we may have to adapt our business practices, contractual arr"
@@ -47,5 +47,22 @@
   },
   "tier_verified": "Vague",
   "verification_note": "Verified down from 8. Revenue match was EU AI Act compliance language, not Firefly revenue. Firefly naming (cap 4) + risk(2) = 6.",
-  "verified_at": "2026-05-27"
+  "verified_at": "2026-05-27",
+  "earnings": {
+    "transcript_word_count": 10093,
+    "ai_mentions": 112,
+    "ai_mentions_per_1k_words": 11.1,
+    "per_term": {
+      "\\bAI\\b": 78,
+      "\\bgenerative AI\\b": 5,
+      "\\bGenAI\\b": 1,
+      "\\blarge language models?\\b": 1,
+      "\\bLLMs?\\b": 15,
+      "\\bcopilot\\b": 1,
+      "\\bagentic\\b": 6,
+      "\\bagent(?:s|ic workflows?)?\\b": 5
+    }
+  },
+  "talk_show_ratio_10k_placeholder": 24,
+  "talk_show_ratio_normalized": 1.387
 }
