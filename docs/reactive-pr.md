@@ -241,3 +241,33 @@ Original tweets from `@ravirdp`. Separate from the reply log because owned posts
 | Featured.com | ✅ Active as of 2026-05-26 | First pitch submitted same day |
 | Help a B2B Writer | ⏳ Not yet signed up | Lowest friction; do when you have 3 min |
 | SourceBottle | ⏭️ Skipped | AU/UK skew, not priority |
+
+## Indian AI Search Audit — outreach campaign (sent 2026-05-30, audit ship day)
+
+Proactive outreach tied to the flagship audit. Each email carried a per-brand
+or per-publication data hook from the 500-cell audit.
+
+### Brand outreach (8 sent) — offering pre-publication per-brand data
+
+| Brand | Hook | Sent | Reply |
+|---|---|---|---|
+| Forest Essentials | #1 overall, 70% surface rate | ✅ 2026-05-30 | ⏳ |
+| Sugar Cosmetics | #1 brand-owned domain (position 12) | ✅ 2026-05-30 | ⏳ |
+| Pristyn Care | 50pt AIO/ChatGPT gap (80/30) | ✅ 2026-05-30 | ⏳ |
+| Treebo | Top 4 at 65%, balanced citations | ✅ 2026-05-30 | ⏳ |
+| IndMoney | Top 4 at 65%, fintech triangulation | ✅ 2026-05-30 | ⏳ |
+| Souled Store | 60%, jimmyluxury.in category dependency | ✅ 2026-05-30 | ⏳ |
+| Acko | Strong branded, unbranded gap | ✅ 2026-05-30 | ⏳ |
+| Pilgrim | Series B context vs top D2C performers | ✅ 2026-05-30 | ⏳ |
+
+### Press pitches (3 sent) — exclusive data angle pre-publication
+
+| Publication | Angle | Sent | Reply |
+|---|---|---|---|
+| Entrackr | Instagram #1 cited / no brand sites top 11 / 80pt gap | ✅ 2026-05-30 | ⏳ |
+| Inc42 | Series A/B no authority moat + founder playbook | ✅ 2026-05-30 | ⏳ |
+| YourStory | Top performers + discovery rebuilt on 3rd-party platforms | ✅ 2026-05-30 | ⏳ |
+
+Follow-up: if no reply by ~2026-06-04, send one polite nudge to the press
+contacts (brands often go quiet; press worth one chase). Log any pickup +
+DR in docs/backlink-tracker.md.
