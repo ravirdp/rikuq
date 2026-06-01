@@ -11,7 +11,7 @@ pages_build_output_dir = "./dist"
 [vars]
 PUBLIC_SITE_URL = "https://rikuq.com"
 PUBLIC_CF_BEACON = "0a002e9d4b924b3a90bc1eafa654701a"
-PUBLIC_GA4_MEASUREMENT_ID = "G-XNN33YQDX9"
+PUBLIC_GA4_MEASUREMENT_ID = "G-DV2MSGVH6G"
 BREVO_LIST_ID = "5"
 BREVO_DOI_TEMPLATE_ID = "2"
 BREVO_REDIRECT_URL = "https://rikuq.com/newsletter/confirmed"
