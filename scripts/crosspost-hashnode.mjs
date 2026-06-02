@@ -29,7 +29,7 @@ if (!pat || !publicationId) {
   process.exit(1);
 }
 
-const article = await loadArticle(slug);
+const article = await loadArticle(slug, { platform: 'hashnode', platformName: 'Hashnode' });
 
 // Hashnode accepts up to 5 tags. Each tag is {slug, name}. We approximate
 // slug by lowercase + replace non-alphanumerics with dashes; name keeps
@@ -39,7 +39,7 @@ const tags = article.tags.slice(0, 5).map((t) => ({
   name: t,
 }));
 
-const intro = article.republishIntro.replace('{platform}', 'Hashnode');
+const intro = article.republishIntro;
 const contentMarkdown = `${intro}${article.body}`;
 
 const mutation = `

@@ -45,13 +45,35 @@ function parseFrontmatter(raw) {
   return { fm, body };
 }
 
-/** Rewrite all internal Markdown links and image refs to absolute rikuq.com URLs. */
-function absoluteLinks(md) {
-  // Markdown links: [text](/path)
-  let out = md.replace(/(\[[^\]]+\])\((\/[^)]+)\)/g, (_, txt, href) => `${txt}(${SITE_BASE}${href})`);
-  // Markdown images: ![alt](/path)
+/** Build a UTM query string for crosspost attribution. */
+function utmSuffix(platform, slug) {
+  return `utm_source=${platform}&utm_medium=crosspost&utm_campaign=${slug}`;
+}
+
+/** True if a path points at an asset (has a file extension in its last segment). */
+function isAssetPath(href) {
+  const last = href.split('#')[0].split('?')[0].split('/').filter(Boolean).pop() || '';
+  return last.includes('.');
+}
+
+/**
+ * Rewrite internal Markdown links and image refs to absolute rikuq.com URLs.
+ * When `utm` ({platform, slug}) is provided, page links (not images, not
+ * assets) get UTM params appended so crosspost traffic is attributable in GA4.
+ * Image and asset links never get UTM (breaks caching, meaningless).
+ */
+function absoluteLinks(md, utm) {
+  const suffix = utm ? utmSuffix(utm.platform, utm.slug) : null;
+  // Page links — [text](/path), NOT preceded by ! (those are images).
+  let out = md.replace(/(?<!!)(\[[^\]]+\])\((\/[^)]+)\)/g, (_, txt, href) => {
+    const abs = `${SITE_BASE}${href}`;
+    if (!suffix || isAssetPath(href)) return `${txt}(${abs})`;
+    const sep = href.includes('?') ? '&' : '?';
+    return `${txt}(${abs}${sep}${suffix})`;
+  });
+  // Markdown images: ![alt](/path) — absolutize only, never UTM.
   out = out.replace(/(!\[[^\]]*\])\((\/[^)]+)\)/g, (_, txt, href) => `${txt}(${SITE_BASE}${href})`);
-  // HTML <img src="/path">
+  // HTML <img src="/path"> — absolutize only.
   out = out.replace(/(<img[^>]+src=)["'](\/[^"']+)["']/g, (_, prefix, href) => `${prefix}"${SITE_BASE}${href}"`);
   return out;
 }
@@ -78,21 +100,28 @@ function canonicalUrl(slug, category) {
  * Load and prepare an article for republishing.
  * @param {string} slug — filename without extension (e.g. "claude-code-review")
  */
-export async function loadArticle(slug) {
+export async function loadArticle(slug, { platform, platformName } = {}) {
   const path = resolve(`src/content/blog/${slug}.mdx`);
   const raw = await readFile(path, 'utf8');
   const { fm, body } = parseFrontmatter(raw);
 
-  const cleanBody = stripMdx(absoluteLinks(body));
+  const utm = platform ? { platform, slug } : null;
+  const cleanBody = stripMdx(absoluteLinks(body, utm));
 
-  // Republish intro — prepended above the body so readers know the source.
-  const republishIntro = `*Originally published on [rikuq.com](${canonicalUrl(slug, fm.category)}). Republished here for ${'{platform}'}'s readers.*\n\n`;
+  // The "read the original" CTA link gets UTM (highest-intent click) — but the
+  // canonical_url returned below stays clean for SEO.
+  const canonical = canonicalUrl(slug, fm.category);
+  const introUrl = platform
+    ? `${canonical}?${utmSuffix(platform, slug)}`
+    : canonical;
+  const platformLabel = platformName || '{platform}';
+  const republishIntro = `*Originally published on [rikuq.com](${introUrl}). Republished here for ${platformLabel}'s readers.*\n\n`;
 
   return {
     slug,
     title: fm.title,
     description: fm.description,
-    canonicalUrl: canonicalUrl(slug, fm.category),
+    canonicalUrl: canonical,
     heroImage: fm.heroImage ? `${SITE_BASE}${fm.heroImage}` : undefined,
     ogImage: fm.ogImage ? `${SITE_BASE}${fm.ogImage}` : undefined,
     category: fm.category,

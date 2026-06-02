@@ -1,0 +1,260 @@
+---
+title: "The Indian AI Search Audit: 500 Queries, 25 Brands, 777 Citations"
+description: "25 Indian brands audited across 500 AI search queries. The most-cited domains weren't brand websites — they were Instagram, aggregators, and one indie blog."
+pubDate: 2026-05-30
+updatedDate: 2026-05-30
+category: geo
+tags:
+  - ai-search
+  - geo
+  - india
+  - citare
+  - brand-visibility
+  - research
+  - report
+author: Ravi
+heroImage: /illustrations/covers/indian-ai-search-audit-may-2026.jpg
+ogImage: /illustrations/covers/indian-ai-search-audit-may-2026.jpg
+draft: false
+affiliateDisclosure: false
+citareDisclosure: true
+faqs:
+  - question: "What did the Indian AI Search Audit measure?"
+    answer: "Brand visibility across Google AI Overview (AIO) and ChatGPT for 25 Indian brands spanning 16 verticals. 10 queries per brand per platform = 500 cells total. 777 citations were captured from the AIO panels. All queries were run through real browser sessions, not LLM APIs, so the answers match what a real user would see."
+  - question: "Why does AI search matter for Indian brands specifically?"
+    answer: "AI search is increasingly the surface where Indian buyers make purchase decisions — and the citation behavior of AI engines on Indian queries is materially different from what SEO teams have optimized for. The data shows that for Indian buyer queries, AI engines cite Instagram, Reddit, aggregators, and listicle blogs heavily, while brand-owned websites are largely absent from the most-cited list."
+  - question: "How many brands surface on AI search for unbranded category queries?"
+    answer: "Across 316 unbranded 'best X' queries in the audit, brands surfaced 33.5% of the time. The same brands surface 73.3% of the time on branded comparison queries ('Brand X vs Brand Y'). That 40-point gap is where the actual AI search opportunity lives."
+  - question: "What's the difference between AIO and ChatGPT in this audit?"
+    answer: "AIO and ChatGPT often surface completely different brands for the same query. Pristyn Care surfaces in 80% of AIO cells but only 30% of ChatGPT cells. Clickpost is the inverse — 90% on ChatGPT, 40% on AIO. Optimizing for one platform does not transfer to the other. There are five major AI search surfaces (ChatGPT, AIO, Gemini, Claude with browsing, Perplexity) and each has its own ranking behavior."
+  - question: "Which Indian brands surfaced best on AI search?"
+    answer: "Top performers in the audit: Forest Essentials (70%), Clickpost (65%), Treebo (65%), IndMoney (65%), Allo Health (60%), Souled Store (60%), Pristyn Care (55%). The full per-brand table is in Finding 4 below. Newer Series-A and Series-B brands surfaced as well as more-established funded brands — AI search appears to have no historical-authority moat."
+  - question: "How can I read the full data?"
+    answer: "A sanitized aggregate CSV of headline numbers is linked at the bottom of the article. Full per-cell data is available via Citare for brands or agencies that want their own audit. The methodology document used in the audit is also linked."
+relatedPosts:
+  - ai-search-visibility-tools-honest-comparison
+  - geo-vs-seo-2026
+  - four-index-reality
+---
+
+We ran 500 AI search queries against 25 Indian brands across 16 verticals over 72 hours in late May 2026, and the result rewrites what Indian brand teams should be optimizing for.
+
+**The headline:** the domains that AI engines cite most heavily on Indian buyer queries are not brand websites. They are Instagram (the single most-cited domain), one indie listicle blog (jimmyluxury.in), YouTube, Reddit, Practo, app stores, and aggregators. The first brand-owned website does not appear in the top-cited list until position 12. Marketing teams at every brand we audited are pouring resources into SEO content that — in the AI search era — is being read past in favor of the surfaces above.
+
+To our knowledge, this is the first published research on Indian brand visibility across the major AI search platforms. The data is ours; the brands are real; the names are named.
+
+## TL;DR — five findings
+
+| # | Finding | The number |
+|---|---|---|
+| 1 | The most-cited domains for Indian buyer queries are not brand websites | **Instagram = 21 citations; first brand-owned site = position 12** |
+| 2 | The gap between branded and unbranded query surface rates is 40 points | **73.3% branded vs 33.5% unbranded** |
+| 3 | Per-brand AIO vs ChatGPT asymmetry is large and consistent | **Per-brand gaps up to 80 points** (Snitch: 10% AIO / 90% ChatGPT) |
+| 4 | Newer-funded brands surface as well as more-established ones | **Series A/B avg ~49% vs funded-not-leader avg ~46%** |
+| 5 | A single indie listicle blog dominates an entire category's AI citations | **jimmyluxury.in = 14 citations across D2C menswear** |
+
+## Methodology
+
+**Sample.** 25 prospects across 16 verticals, weighted toward Indian consumer brands (D2C beauty, D2C apparel, healthcare, fintech, real estate, hospitality, insurtech, jewellery) and Indian-headquartered SaaS (logistics, payroll, CRM, certification, coaching). Brands range from local SMBs (Davanam Jewellers) to unicorns (Acko, Pristyn Care) to Series B startups (Snitch, Pilgrim, Foxtale, Jar, Stable Money, Allo Health).
+
+**Cohorts.** Each prospect is assigned to one of three cohorts:
+- **Wipeout** (10 brands) — older brands, mostly local-tier SEO equity
+- **Funded-not-leader** (10 brands) — challenger brands with venture funding
+- **Newer-funded** (5 brands) — Series A and B startups
+
+**Queries.** 10 queries per prospect, designed around the prospect's stated ICPs (typically 2-3 ICPs per brand × 3-4 queries each). Query types span unbranded category searches ("best AI coding tool," "best car insurance India"), brand-named comparisons ("Acko vs HDFC ERGO," "Souled Store vs Bewakoof"), and intent-specific deep cuts ("best Bangalore showrooms for solitaire diamond engagement ring 2 lakh budget").
+
+**Platforms.** 2 AI search platforms per query — **Google AI Overview (AIO)** and **ChatGPT (web interface, not API)**. 10 queries × 2 platforms × 25 brands = **500 cells** measured. AIO cells were captured via screenshot and parsed for cited URLs; ChatGPT cells captured both body text (for brand mention + position) and structured response.
+
+**Citation extract.** From the AIO cells, every cited URL was extracted into a citation graph: 777 URLs across 500 cells = ~1.5 citations per AIO panel.
+
+**Method note.** All queries were run through real browser sessions, not LLM APIs. This matters because API responses differ materially from what users actually see on the public AI search interfaces — different retrieval, different ranking, different citation behavior. ([Our previous post](/blog/geo/ai-search-visibility-tools-honest-comparison) covers why API-based tools measure the wrong thing.)
+
+**Dates.** Audit window: 24-26 May 2026. All numbers in this report are as of that window. AI search retrieval changes weekly; treat this as a snapshot.
+
+**Limitations.** Five older audits from a previous file-layout convention were excluded from the unified dataset. AIO body text was not captured (citations only) — so AIO surface rate is scored from citation URLs, which understates surface on cells where a brand is mentioned in the AIO summary text but not in the citations.
+
+## Finding 1: The most-cited domains for Indian buyer queries are not brand websites
+
+When AI engines answer Indian buyer queries, what do they cite? We pulled every citation URL across all 500 cells and counted the most-frequent domains. The top 20:
+
+| Rank | Domain | Citations | Type |
+|---|---|---|---|
+| 1 | **instagram.com** | 21 | Social / UGC |
+| 2 | **jimmyluxury.in** | 14 | Indie listicle blog |
+| 3 | youtube.com | 12 | Social / UGC |
+| 4 | practo.com | 11 | Healthcare aggregator |
+| 5 | play.google.com | 11 | App store reviews |
+| 6 | reddit.com | 10 | Social / UGC |
+| 7 | magicbricks.com | 9 | Real-estate aggregator |
+| 8 | justdial.com | 9 | Local-business aggregator |
+| 9 | amazon.in | 9 | Marketplace |
+| 10 | policybazaar.com | 8 | Insurance aggregator |
+| 11 | tryreadable.ai | 7 | UGC / review tool |
+| **12** | **sugarcosmetics.com** | **7** | **Brand website (first to appear)** |
+| 13 | paisabazaar.com | 7 | Finance aggregator |
+| 14 | nobroker.in | 7 | Real-estate aggregator |
+| 15 | kamaayurveda.in | 7 | Brand website |
+| 16 | 99acres.com | 7 | Real-estate aggregator |
+| 17 | udemy.com | 6 | Course marketplace |
+| 18 | thedeconstruct.in | 6 | Indie blog |
+| 19 | stablemoney.in | 6 | Brand website |
+| 20 | pristyncare.com | 6 | Brand website |
+
+Read that table twice. **The first 11 most-cited domains include zero brand-owned websites.** They are social platforms (Instagram, YouTube, Reddit), one independent listicle blog (jimmyluxury.in), one app store (Play), one marketplace (Amazon), and a handful of category aggregators (Practo for healthcare, MagicBricks/JustDial/99acres for real estate, Policybazaar for insurance).
+
+The first brand-owned website to appear is sugarcosmetics.com at position 12, with 7 citations across the entire 500-cell corpus. The brand sites that follow it (Kama Ayurveda, Stable Money, Pristyn Care) each get 5-7 citations apiece. For comparison, Instagram gets 21 — three times the citations of any brand site.
+
+**This is not a measurement artifact.** It holds across verticals:
+
+- **Beauty**: instagram.com (10 citations) is the most-cited domain. sugarcosmetics.com (7) and kamaayurveda.in (7) follow.
+- **Healthcare**: practo.com (11) leads. The actual hospital and clinic brand sites trail.
+- **Real estate**: magicbricks.com (9), justdial.com, 99acres.com, nobroker.in (each 7-9). No real-estate brand site cracks the per-vertical top 5.
+- **Insurance**: policybazaar.com (8) leads — the aggregator owns the category citation graph, not the insurers themselves.
+- **Fintech**: play.google.com (7) leads — AI engines cite the Google Play app review pages of fintech apps, not the brand websites.
+- **D2C apparel**: jimmyluxury.in (14). One indie listicle blog out-cites every brand site combined. We come back to this in Finding 5.
+- **Coaching**: imsindia.com (6) — but this is a competitor brand site (IMS dominates the category we audited via Endeavor Careers). It's the only vertical where a brand site is the most-cited, and even then, the audited brand's own site is invisible.
+- **Cert-SaaS**: udemy.com (6) — the marketplace beats every certification platform's own site.
+
+**The implication is direct.** Indian brand teams are spending the vast majority of their content budget on owned-property SEO — blog posts on the company website, landing pages, product pages — designed to rank in Google blue links. AI engines reading Indian buyer queries are not preferentially weighting any of that. They are weighting social posts the brand may or may not control, indie blogger listicles the brand has no relationship with, app reviews on stores the brand barely audits, and aggregator sites the brand sometimes paid to be listed on.
+
+That is the gap. The owned-property SEO investment is not converting to AI search citation share for the verticals we measured. The earned and rented surfaces (social, aggregators, listicle blogs) are.
+
+## Finding 2: The 40-point gap between branded and unbranded query surface rates
+
+Not every query in our audit is the same shape. Some are unbranded category queries — "best car insurance India 2026," "budget moisturizer for oily skin in Mumbai." Others are branded comparison queries — "Acko vs HDFC ERGO," "Pilgrim vs Mamaearth ubtan." Both kinds matter, but they behave very differently in AI search.
+
+We split the 500 cells by query shape and calculated the surface rate per type:
+
+| Query type | Cells | Brand surfaced | Surface rate |
+|---|---|---|---|
+| **Branded comparison** (contains "vs") | 90 | 66 | **73.3%** |
+| **Unbranded "best X"** | 316 | 106 | **33.5%** |
+
+A 40-percentage-point gap. When the user is already typing your brand name in a comparison query, you surface roughly three out of every four times. When the user is searching the category without your brand name, you surface roughly one out of every three.
+
+**Why this matters strategically:** the branded comparison query is largely won by default. If a user is already searching "Acko vs HDFC ERGO," they have intent that does not need to be created. Acko surfaces because the query forced its mention. The brand-marketing investment that built the awareness for that comparison is paying out, but the AI search layer is just a passthrough.
+
+The actual battle is in the unbranded category surface — the 316 cells where a user types "best health insurance for parents with diabetes" or "best Bangalore D2C menswear under ₹2000" with no brand in mind. In those queries, only one in three brands we audited surfaces at all, and the brands that do surface are mostly the ones with strong third-party citation graphs (social posts, blogger listicles, aggregator listings) — not the ones with strong on-site SEO content.
+
+This is also where the cohort difference matters most. We compare cohort surface rates in Finding 4. For now, the takeaway: **if you're an Indian brand wondering why your AI search visibility is low, the question to ask is not "how is our SEO?" — it's "what does our third-party citation graph look like?"**
+
+## Finding 3: Per-brand AIO vs ChatGPT asymmetry is large and consistent
+
+Google AI Overview and ChatGPT are not the same product. They have different retrieval pipelines, different ranking signals, different citation surfaces. A brand that ranks highly on one frequently does not rank on the other. We measured this per-brand across the audit.
+
+The biggest asymmetries:
+
+| Brand | AIO surface | ChatGPT surface | Gap | Direction |
+|---|---|---|---|---|
+| **Snitch** | 10% | 90% | **80 points** | ChatGPT-favored |
+| **Pristyn Care** | 80% | 30% | 50 points | AIO-favored |
+| **Clickpost** | 40% | 90% | 50 points | ChatGPT-favored |
+| **Foxtale** | 10% | 60% | 50 points | ChatGPT-favored |
+| **Whizlabs** | 20% | 60% | 40 points | ChatGPT-favored |
+| **Stable Money** | 60% | 40% | 20 points | AIO-favored |
+
+(These are the standouts. Most other brands sit in a 0-15 point gap range.)
+
+**The pattern is not directional.** Some brands win bigger on AIO; others win bigger on ChatGPT; the same vertical (healthcare) has Pristyn Care AIO-favored and the audited brand that's invisible to both. There is no rule like "AIO is harder than ChatGPT" or "B2B brands surface better on ChatGPT." Each platform's behavior is brand-specific.
+
+**Why this happens (our read).** AIO's citation graph is anchored heavily in URLs Google has indexed and trusts — which favors aggregator sites, brand websites with strong technical SEO, and high-authority editorial pages. ChatGPT's training and retrieval favors brand mentions that appear frequently in long-form web content, Reddit threads, and developer-style how-to guides. A brand with strong aggregator listings (Pristyn Care on healthcare directories) wins AIO. A brand with strong long-form comparison content (Clickpost's case studies and blog posts) wins ChatGPT.
+
+**Practical implication for brand teams:** there is no single "AI search optimization" strategy. You have to measure your brand on each platform separately and decide which gaps to close based on your category's buyer behavior. If the people you're trying to reach are using ChatGPT for research (developers, B2B operators), invest in long-form earned content. If they're using Google AIO (consumer queries, fact-finding), invest in aggregator listings and technical SEO.
+
+We cover this in more depth in [Four Index Reality](/blog/geo/four-index-reality) — the structural reason these platforms behave differently. The audit data confirms it at the brand level.
+
+## Finding 4: Newer-funded brands surface as well as more-established ones
+
+We compared cohort surface rates:
+
+| Cohort | Brands | Avg surface rate | Best in cohort | Worst in cohort |
+|---|---|---|---|---|
+| **Wipeout** (older, mostly local) | 9 | 27% | Forest Essentials 70%, Clickpost 65% | Davanam 0%, Paybooks 0%, Vtiger 5% |
+| **Funded-not-leader** (Series B+ challengers) | 10 | 46% | IndMoney 65%, Treebo 65%, Souled Store 60% | EaseMyTrip 25%, Slice 25% |
+| **Newer-funded** (Series A/B) | 6 | 49% | Allo Health 60%, all others 50% | Foxtale 35% |
+
+The **3-point gap** between funded-not-leader (46%) and newer-funded (49%) cohorts is well within margin of error. **Series A and B startups are surfacing on AI search at essentially the same rate as more-established funded brands.** This is the opposite of what classical SEO would predict, where older domains with more backlink history typically dominate.
+
+**The bigger gap (20 points)** is between wipeout-cohort brands and the funded cohorts. This is funding-correlated, not age-correlated. A 22-year-old open-source CRM (Vtiger) surfaces 5% of the time. A 4-year-old D2C startup (Snitch) surfaces 50% of the time.
+
+**The implication for newer Indian brands:** AI search does not have a historical-authority moat. A Series A startup that invests intentionally in the surfaces AI engines actually read (social, Reddit, listicle blogs, aggregators) can match or exceed the AI search visibility of a unicorn that's been building classical SEO for a decade. This is good news if you're building. It's a warning if you're an incumbent assuming your existing SEO equity transfers to AI.
+
+**Case study — Vtiger:** 22 years of operation, 400,000+ customers, the original SugarCRM open-source fork. In our audit, it surfaces in 1 of 20 cells. ChatGPT, asked for "best CRM for Indian SMBs," names Zoho, HubSpot, Pipedrive, Salesforce, Freshworks. Vtiger appears once — at position 4 on an open-source CRM question, with a hedging caveat about its "community edition being limited vs paid cloud version." The brand that helped define the category is now an afterthought to AI search.
+
+**Case study — Vice versa, Allo Health:** founded ~2023, Series A. In our audit, surfaces 60% of the time across health-and-wellness queries, with citations spread across Reddit threads, YouTube reviews, and category-listing aggregator sites. Bold Care (its closest competitor) shows up more often by mention count, but Allo Health is solidly in the consideration set. None of this is because Allo Health has been building SEO for 10 years. It hasn't existed for 10 years. It earned the surface through the channels AI search actually reads.
+
+## Finding 5: A single indie listicle blog dominates an entire category's AI citations
+
+The second-most-cited domain in our entire 500-cell corpus is **jimmyluxury.in** — 14 citations.
+
+jimmyluxury.in is not a brand. It's not a major publication. It's an independent listicle blog whose posts include:
+
+- "List of Top 50 Luxury Brands for Men in India"
+- "Popular and Affordable Men's Brands — Casual Everyday"
+- "Top 10 Affordable Men's Clothing Brands in India"
+- "Top Affordable Men's Clothing Brands by Category in India"
+- "Top Trending D2C Men's Fashion Brands in India"
+
+The titles read like they were optimized for SEO in 2018, and they probably were. The pages are dense, contain dozens of brand names, are updated reasonably often, and rank well in classical Google search.
+
+In our audit, AI engines cited jimmyluxury.in **14 times** across D2C menswear queries for Snitch and Souled Store. That is more than any audited brand's own website received in the entire corpus, across any vertical. **One person's listicle blog out-cites every single D2C apparel brand's own marketing site combined.**
+
+This is among the most actionable findings in the audit, and most Indian brand teams will dismiss it as a quirk. Don't. Three things to internalize:
+
+1. **AI engines reach for comprehensive third-party listicles when answering category questions.** A page titled "Top 50 Luxury Brands for Men in India" with 50 brand names and pros/cons each is, from an AI engine's perspective, the perfect retrieval target. It's authoritative-looking, brand-rich, evergreen, and answer-shaped.
+
+2. **The brands listed inside that blog get the AI citation.** The blog gets the URL credit; the brands mentioned inside get the surface mention. This is why Snitch surfaces well on ChatGPT (Snitch is listed inside several of these blogs) even though Snitch's own website barely gets cited.
+
+3. **No brand we audited had a relationship with jimmyluxury.in.** Not a partnership, not a sponsored post, not even a quoted email. The blog independently decided to list these brands and is independently distributing the AI citation share. The brands cannot influence it directly — they can only ensure they appear in the few comprehensive listicles their category has.
+
+**The strategic move for any Indian D2C brand:** identify the 3-5 jimmyluxury.in-equivalents in your category. Get listed in them. If you're not in them, contact the blog owner and propose inclusion (often free, sometimes paid). If a category doesn't have a jimmyluxury equivalent, this is one of the highest-leverage SEO content gaps for a competitor to fill. One well-built listicle that becomes the AI engines' default category source is worth more than 50 product-page SEO pieces from any single brand.
+
+## What this means for Indian brand teams (five practical actions)
+
+If you operate marketing for an Indian brand and want to improve your AI search visibility, here is what the data says to do, in priority order:
+
+**1. Audit your Instagram presence specifically for buyer-intent search behavior.** Instagram is the most-cited domain in our corpus. AI engines are pulling from Instagram Reels, posts, and reels for category recommendations. If your Instagram is brand-aesthetic-heavy and content-poor on buyer-intent topics ("which Acko plan is right for me," "is Forest Essentials kumkumadi worth the price"), you're invisible to the channel AI engines weight most. Post buyer-intent content. Tag products. Use category hashtags AI engines crawl.
+
+**2. Get into the comprehensive listicle blogs in your category.** Search "best [your category] India" on Google. The blogs that rank top 5-10 are the ones AI engines will cite when answering category questions. If you're not in those listicles, contact the bloggers and propose inclusion. This costs less than one month of paid Google search ads and the citation lifts compound for years.
+
+**3. Be present on the aggregators that dominate your vertical.** In our audit: Practo for healthcare, MagicBricks / 99acres / NoBroker for real estate, Policybazaar / Paisabazaar for insurance and finance, JustDial for local-business categories, Amazon and Play Store for product categories. These aggregator domains are top-10 most-cited because AI engines treat them as authoritative third-party sources. Most brands underinvest in their aggregator presence (incomplete listings, no reviews, outdated info).
+
+**4. Build YouTube and Reddit presence (or seed it).** YouTube ranks #3 most-cited domain in our corpus; Reddit ranks #6. AI engines reach for review videos and Reddit discussion threads when answering questions where buyers want third-party perspective. If your category has no YouTube comparison content, seed it. If your brand isn't being discussed on Reddit, become a substantive participant in the relevant subreddits (long game, but compounds).
+
+**5. Measure your AI search visibility separately for each platform.** AIO and ChatGPT are different products. Optimizing for one does not transfer to the other. Build a monthly tracking habit: query your category and your brand on each major AI platform (ChatGPT, AIO via Google, Gemini, Claude with browsing, Perplexity). Note what surfaces. Where you don't surface, identify the cited sources that did and decide whether you can be added to those sources, or build content that matches their shape. (Disclosure: this is what Citare does at scale across the 5 platforms. If you want to outsource the measurement, we run client audits at the same depth as this report.)
+
+## Methodology limitations + how to read this data
+
+Three caveats worth being explicit about:
+
+**Sample is Indian-skewed.** All 25 brands are Indian-headquartered or India-primary. The findings about citation graphs (Instagram dominance, aggregator dominance, listicle dominance) likely hold elsewhere directionally, but the specific domains will differ. US queries may favor different aggregators (Yelp, G2, Capterra); UK queries different again. We don't claim global findings from this sample.
+
+**AIO body text was not captured.** AIO surface scoring is based on cited URLs only. If a brand is mentioned in the AIO summary text but not cited, our methodology marks it as not-surfaced. This understates AIO surface rates marginally. We are addressing this in future audits.
+
+**The audit window is 72 hours.** AI search retrieval shifts weekly. Numbers in this report are accurate as of 24-26 May 2026. We will republish updates quarterly.
+
+## What's next in this series
+
+This is the anchor report. Over the next 10 weeks, we are publishing one focused blog per week diving deeper into specific findings from this corpus:
+
+- Why Instagram Reels are the most-cited domain for Indian buyer queries
+- The 40-point branded-vs-unbranded gap, with per-vertical specifics
+- AIO vs ChatGPT per-brand asymmetry as a measurable phenomenon
+- Newer-funded vs established brands on AI search — the moat that isn't
+- The jimmyluxury.in story — long-form interview with the blog operator
+- The aggregator citation monopoly: Practo, Justdial, MagicBricks
+- What Indian D2C brands need to change about their SEO strategy now
+- ChatGPT vs Gemini brand recognition for Indian brands
+- Citation graph as the new Domain Authority
+- Practical playbook: a 90-day AI search visibility plan for Indian brands
+
+From July onward, we are publishing per-vertical deep-dive reports — Indian fintech, Indian D2C beauty, Indian healthcare, Indian real estate, Indian hospitality, Indian D2C apparel — each with vertical-specific data and named brands.
+
+## Get the data
+
+This article is the public version. The accompanying PDF report (with full per-brand tables, citation graphs, and per-vertical analysis) is available at [citare.ai/reports/indian-ai-search-audit-may-2026](https://citare.ai/reports/indian-ai-search-audit-may-2026). Email-gated; the report ships free.
+
+If you want your brand audited at the same depth this report uses, [Citare](https://citare.ai) runs client audits across all five major AI search platforms with real browser sessions (not API). The methodology used in this report is the same methodology we run for clients.
+
+If you want updates as we publish the next 16 pieces in this research series, [subscribe to the rikuq newsletter](/newsletter) — you'll get each piece in your inbox the day it lands.

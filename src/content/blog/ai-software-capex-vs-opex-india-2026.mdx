@@ -1,0 +1,163 @@
+---
+title: "AI Software Capex vs Opex in India: The Ind AS 38 Test"
+description: "Most AI spend is opex by default — SaaS, API consumption, fine-tuning third-party APIs. The narrow capex window explained for Indian CFOs and auditors."
+pubDate: 2026-05-29
+updatedDate: 2026-05-29
+category: finops
+tags:
+  - llm-finops
+  - ai-cost-optimization
+  - ind-as-38
+  - indian-tax
+  - section-32
+author: Ravi
+heroImage: /illustrations/covers/ai-software-capex-vs-opex-india-2026.jpg
+ogImage: /illustrations/covers/ai-software-capex-vs-opex-india-2026.jpg
+draft: false
+crossposted: true
+affiliateDisclosure: false
+prismDisclosure: true
+faqs:
+  - question: "Is a SaaS subscription capex or opex?"
+    answer: "Opex for the subscription itself. A SaaS subscription (monthly or annual) does not create an intangible asset under Ind AS 38 because the customer does not control the software — it has a right to access via subscription that ceases on non-renewal. The cost is recognised as a period operating expense. However, multi-year prepaid subscriptions are recognised as a prepaid expense (current asset for the portion expected to be consumed within 12 months, non-current beyond) and expensed over the prepaid period, not as opex in year 1. Configuration and customisation costs paid to the SaaS vendor at onboarding are also generally opex — the customer doesn't control the configuration. Only in narrow scenarios where the customisation is sufficiently distinct and customer-controlled (rare for typical SaaS) can it be capitalised."
+  - question: "When can AI fine-tuning costs be capitalised?"
+    answer: "Only when all six Ind AS 38 paragraph 57 criteria are demonstrably met. The practical hurdle for AI fine-tuning specifically is criterion (c) — ability to use or sell. If the fine-tuning sits on a third-party foundation model and the resulting capability is inseparable from the provider's platform (typical for fine-tuning via Anthropic, OpenAI, Google APIs), the entity cannot separate the asset to use independently, so capitalisation fails. In contrast, fine-tuning on an open-weight model the entity hosts itself (Llama, Mistral, etc.) where outputs can be separated and controlled, capitalisation is possible if all six criteria are met. Most Indian mid-market AI fine-tuning currently sits in the third-party-API category, hence is opex by default."
+  - question: "How do Ind AS 38 and Section 32 interact for capitalised software?"
+    answer: "Ind AS 38 governs the accounting (book) treatment: capitalised software is amortised over its useful life, typically 2-5 years for purchased software licences. Section 32 of the Income Tax Act governs the tax treatment: software is in the Block of Assets and depreciated at 40% on Written Down Value basis. The two are not identical — book amortisation is straight-line over useful life; tax depreciation is 40% WDV. This creates a permanent timing difference and a deferred tax line item under Ind AS 12. For purely opex-classified software (SaaS subscriptions, fine-tuning third-party APIs), neither standard applies — the full amount is expensed in the period under Section 37 IT Act."
+  - question: "What about cloud commitments (reserved instances, committed-use discounts)?"
+    answer: "Multi-year cloud reserved capacity or committed-use commitments are NOT intangible assets — they are pre-paid expenses (current asset for the portion expected to be consumed within 12 months; non-current asset for the portion beyond 12 months). They get recognised as expense over the commitment period via amortisation of the prepaid asset. The common misclassification: an entity treats the full upfront commitment as opex in the year of payment, distorting that year's P&L and creating a reconciliation mismatch with internal management reporting. This shows up in audit review as a recurring finding."
+  - question: "Why does this matter for Indian listed entities right now?"
+    answer: "Indian audit committees and statutory auditors are increasingly scrutinising AI-augmented financial reporting under the operative Indian frameworks: DPDP Act 2023, ICAI voluntary practitioner guidance on AI assurance and audit evidence (model documentation, log-trail sufficiency, version control, reproducibility), and the EU AI Act for entities with European exposure. SEBI's June 2025 consultation paper on AI/ML in securities markets — applicable today to MIIs, intermediaries, and mutual funds — signals direction of travel for broader Indian audit-committee thinking. Misclassification of AI spend under Ind AS 38 (capex vs opex) creates audit risk regardless of how the SEBI consultation hardens. AI spend classification review is now part of normal audit-readiness work."
+relatedPosts:
+  - what-is-llm-finops
+  - finops-vs-itfm-vs-itam-2026
+  - ai-cloud-finops-providers-india-2026
+---
+
+The question I get most often from Indian CFOs about AI accounting goes something like: *"we just paid OpenAI ₹40 lakh for the year. Capitalise or expense?"* The short answer is expense — but the long answer is a structured test that produces the wrong answer if you don't actually run it, and the wrong answer here is the kind that statutory auditors flag at year-end and audit committees ask about in board meetings.
+
+This post walks through the Ind AS 38 framework as applied to AI software at Indian mid-market scale, the narrow situations where capitalisation actually applies, the Section 32 tax overlay that creates timing differences when you do capitalise, and the misclassifications that show up repeatedly in audit review.
+
+I'm Ravi. I run three production AI SaaS ([Prism](https://ssimplifi.com), [Citare](https://citare.ai), [BatchWise](https://batchwise.ai)) and do advisory work on AI spend tax classification via [rikuq services](/services). The framework below is what I take into every CFO conversation about AI accounting under Ind AS.
+
+## TL;DR
+
+| Default treatment for typical AI spend categories |
+|---|
+| SaaS subscription (Salesforce, Notion, GitHub, etc.) → **Opex** |
+| Foundation model API consumption (OpenAI, Anthropic, Google, Azure OpenAI) → **Opex** |
+| Fine-tuning on third-party API → **Opex** (criterion 3 fails) |
+| Fine-tuning on self-hosted open-weight model → **Opex by default, CapEx only if all 6 §57 criteria met** |
+| Purchased perpetual software licence → **CapEx** (amortise + 40% WDV tax depreciation) |
+| Internally-developed AI capability → **OpEx during research, CapEx during development if criteria met** |
+| Multi-year prepaid SaaS or cloud commitment → **Prepaid expense (current asset)**, NOT opex in year 1 |
+| Staff training to operate AI → **OpEx** (§69(b) explicit exclusion from capitalisation) |
+| Post-deployment maintenance + updates → **OpEx** |
+
+Most AI spend at Indian mid-market scale ends up opex. The capex window is narrow and specific.
+
+## The side-by-side classification table
+
+| Spend category | Typical treatment | Why | Standards reference |
+|---|---|---|---|
+| **SaaS subscription** (monthly / annual) | **OpEx** — period expense | No control / no intangible asset created; access right ceases on non-renewal | Ind AS 38 §17 (control test) + Section 37 IT Act |
+| **Multi-year SaaS prepayment** | **Prepaid expense** — amortise over commitment period | Pre-paid opex, not an intangible asset | Ind AS 38 (no asset) + Section 37 |
+| **Foundation model API consumption** | **OpEx** — period expense | Pay-per-use; no asset; no control of underlying model | Ind AS 38 (no asset) + Section 37 |
+| **Fine-tuning on third-party API** | **OpEx** | Resulting capability inseparable from provider's platform; criterion 3 fails | Ind AS 38 §57 + Section 37 |
+| **Fine-tuning on open-weight model self-hosted** | **OpEx default; CapEx if all 6 criteria met** | Customer-controlled outputs possible; capitalisation requires §57 satisfaction | Ind AS 38 §57 + Section 32 (40% WDV) |
+| **Purchased perpetual licence** (on-premise) | **CapEx** — capitalise + amortise | Control of asset; benefit extending beyond one period | Ind AS 38 §10-17 + Section 32 (40% WDV) |
+| **Internally-developed AI capability** | **OpEx in research phase; CapEx in development phase if criteria met** | §54 (research) vs §57 (development); 6-criteria test | Ind AS 38 §54-57 + Section 32 |
+| **Post-deployment maintenance + updates** | **OpEx** | Recurring maintenance; doesn't extend useful life | Ind AS 38 §69 + Section 37 |
+| **Staff training to operate AI** | **OpEx** | Explicit exclusion from capitalisation | Ind AS 38 §69(b) + Section 37 |
+| **Cloud reserved-instance / committed-use prepayment** | **Prepaid expense** (current + non-current portions) | Multi-period opex, not an asset | Ind AS 38 + Section 37 |
+| **Cloud labour at delivery** (engineers building on cloud) | **OpEx default; CapEx allocable to internally-developed asset if §57 met** | Direct attributable cost capitalisable if asset criteria met | Ind AS 38 §66 |
+
+## The Ind AS 38 paragraph 57 six-criteria test
+
+For any internally-generated intangible asset (including internally-developed AI capability), all six criteria must be demonstrably met before capitalisation is allowed:
+
+1. **Technical feasibility** of completing the intangible asset
+2. **Intention** to complete and use or sell it
+3. **Ability to use or sell** the intangible asset
+4. Demonstration of how the asset will generate **probable future economic benefits**
+5. Availability of **adequate technical, financial, and other resources** to complete development
+6. Ability to **reliably measure expenditure** attributable to the intangible asset
+
+In my experience the criterion that most often fails for AI fine-tuning is **criterion 3 — ability to use or sell**. If the fine-tuning lives on a third-party API platform (the OpenAI fine-tuning endpoint, Anthropic's custom-model service, Google's PaLM tuning) and the entity cannot extract the resulting capability for use independently of the provider, criterion 3 fails. Capitalisation is precluded regardless of how well the other five criteria are satisfied.
+
+For internally-developed AI capability on open-weight models (Llama, Mistral, etc.) hosted on the entity's own infrastructure, all six criteria can be satisfied. Capitalisation becomes possible, but you still have to run the test — it's not automatic.
+
+The auditor will ask you to document the §57 evaluation. If you haven't run it, you've already lost the conversation.
+
+## The Section 32 tax overlay
+
+Where Ind AS 38 capitalises a software asset, Section 32 of the Income Tax Act governs the tax depreciation:
+
+- **Computer software** falls in the Block of Assets category attracting **40% depreciation on Written Down Value (WDV)** basis
+- Tax depreciation calculation is **independent** of book amortisation under Ind AS 38
+- Book amortisation under Ind AS 38 is typically straight-line over useful life (2-5 years for purchased software licences); tax depreciation is 40% WDV
+- The differential creates a **timing difference** under Ind AS 12 (Income Taxes) which gets recognised as a deferred tax line item
+- For internally-developed AI capability capitalised under Ind AS 38, the tax treatment depends on classification — if the asset qualifies as "computer software," 40% WDV applies; otherwise the general intangibles regime applies
+
+The practical implication: when you do capitalise (the narrow case), the tax depreciation is materially faster than book amortisation, so you end up with a deferred tax asset that unwinds over the asset's useful life. This isn't a problem — it's a normal Ind AS 12 mechanic — but it has to be calculated, disclosed, and reconciled. Skipping the deferred tax line is one of the more common findings in audit review.
+
+## The six misclassifications I see most often
+
+These are the patterns that show up in mid-market entity books when AI spend classification hasn't been disciplined. Each one creates audit risk and most create tax inefficiency on top.
+
+| Misclassification | Why it happens | Consequence |
+|---|---|---|
+| **Multi-year SaaS prepayment expensed in year 1** | Bookkeeper treats full payment as period cost | Year 1 P&L overstated; subsequent years understated; current-asset balance understated |
+| **Custom AI model build expensed instead of capitalised** | Finance team defaults all R&D to opex; doesn't run the §57 test | Section 32 depreciation claim lost; permanent tax disadvantage |
+| **Fine-tuning on third-party API capitalised in error** | Finance team capitalises any "AI development" cost regardless of platform | Audit risk — capitalised asset that doesn't meet §57 criterion 3 |
+| **Reserved-instance cloud commitments expensed upfront** | Bookkeeper treats full commitment as period cost | Year 1 P&L overstated; mismatch with consumption; prepaid asset balance missing |
+| **Staff training on AI tooling capitalised** | Finance team includes training in "AI implementation cost" | Audit risk — §69(b) explicit exclusion violated |
+| **Configuration/customisation paid to SaaS vendor capitalised** | Finance team treats one-time setup as asset creation | Audit risk — no control over the underlying SaaS |
+
+The pattern: most misclassifications fall on the "over-capitalise" side, because finance teams treat AI work as analogous to traditional software development where capitalisation was more common. The Ind AS 38 framework actually pushes the other way for AI spend — the control test and §57 criteria are harder to satisfy than they were for traditional internally-developed software, so opex is the more common outcome.
+
+## The Indian audit-readiness angle
+
+Indian audit committees and statutory auditors are increasingly scrutinising AI-augmented financial reporting on these dimensions:
+
+- Whether AI software in financial statements is classified consistent with Ind AS 38 control test plus §57 criteria
+- Whether SaaS and API consumption is correctly opex-classified (not erroneously capitalised)
+- Whether internally-developed AI capability meeting §57 is correctly capitalised (not erroneously expensed, which loses the Section 32 claim)
+- Whether deferred tax under Ind AS 12 correctly reflects book versus tax timing differences
+- Whether multi-year prepayments are correctly classified as prepaid asset (not opex in year 1)
+
+The operative frameworks are the DPDP Act 2023, ICAI voluntary practitioner guidance on AI assurance and audit evidence, and the EU AI Act for entities with European exposure. SEBI's June 2025 consultation paper on AI/ML in securities markets applies today to market infrastructure institutions, market intermediaries, and mutual funds; it's still in consultation for the broader market. The point is that misclassification under Ind AS 38 is audit risk independent of how the SEBI consultation hardens.
+
+AI spend classification review under Ind AS 38 plus Section 32 is now part of normal audit-readiness work. Best done before the financial year closes, not at audit when the auditor surfaces it.
+
+## How Indian mid-market entities actually consume AI
+
+For context on why the table above lands as it does, here's the practical pattern at Indian mid-market scale:
+
+1. **Foundation model APIs** (OpenAI, Anthropic, Google, Azure OpenAI, AWS Bedrock) — **opex** by default
+2. **SaaS tools with AI features** (Notion AI, Salesforce Einstein, GitHub Copilot, Adobe Firefly) — **opex** as part of the SaaS subscription
+3. **Internally-developed AI workflows** using prompt engineering on third-party APIs — **opex** (no internally-generated intangible asset)
+4. **Fine-tuning on third-party APIs** (OpenAI fine-tuning, Anthropic custom models) — **opex** (§57 criterion 3 fails on the platform-dependency)
+5. **Self-hosted open-weight models** (Llama, Mistral on own infrastructure) — **opex default; CapEx if internal development meets §57**, which is a real case but requires careful documentation
+6. **Cloud reserved capacity** for AI workloads — **prepaid expense**, amortised over commitment period
+
+The vast majority of AI spend at this scale is opex. CapEx applies in specific cases — purchased perpetual licences (increasingly rare), genuinely internally-developed AI capability with §57 satisfied, and certain customer-controlled customisation scenarios. The discipline is running the test rather than defaulting to either outcome.
+
+## What to do this week
+
+If you're a CFO or finance lead at an Indian mid-market entity with material AI spend and you haven't formalised the classification framework:
+
+- **Run the §57 test on any AI spend currently classified as capex.** If you can't document satisfaction of all six criteria, opex is the safer answer.
+- **Audit your multi-year SaaS prepayments.** Confirm they're sitting in prepaid expense (current + non-current as appropriate), not opex in year 1.
+- **Verify your reserved-instance cloud commitments are prepaid asset, not opex upfront.** This is the easiest one to find and fix.
+- **Confirm Ind AS 12 deferred tax reflects timing differences** where you've correctly capitalised. The 40% WDV vs straight-line book amortisation differential creates deferred tax that has to be on the books.
+
+If you want a written scope proposal for the tax-recovery side of this work — what an AI Spend & Tax Optimisation engagement would look like for your specific situation, including the Ind AS 38 review and any GST RCM / Section 195 work — the [services page](/services) has both a Cal.com booking link and a Tally intake form.
+
+## What's next
+
+This post focuses on the accounting and tax classification layer. The adjacent posts that go deeper on related dimensions:
+
+- [What is LLM FinOps?](/blog/finops/what-is-llm-finops/) — the operational discipline that produces the consumption data this classification work depends on
+- [FinOps vs ITFM vs ITAM](/blog/finops/finops-vs-itfm-vs-itam-2026/) — where this classification work sits within the broader cost-management framework
+- [AI / Cloud FinOps Providers in India](/blog/finops/ai-cloud-finops-providers-india-2026/) — provider selection for the FinOps and tax-recovery work

@@ -1,8 +1,12 @@
 # Crosspost Tracker — Manual Republish to Other Platforms
 
-Source of truth for which articles are live where. Dev.to is automated (Day-3 cron). Hashnode / Medium / LinkedIn are manual.
+Source of truth for which articles are live where. Dev.to is automated (Day-3 cron). Everything else manual.
 
-**Last updated:** 2026-05-27.
+**Distribution strategy:** maximum blast radius — see [distribution-blast-radius.md](./distribution-blast-radius.md) for the full Tier 1-5 platform map and per-article checklist.
+
+**Tier 1 platforms** (every article goes here): Dev.to + Medium + Hashnode + LinkedIn + Substack + HackerNoon.
+
+**Last updated:** 2026-05-27 (evening — expanded to Tier 1 stack).
 
 ---
 
@@ -68,24 +72,26 @@ Top articles by my read of likely traction:
 
 ## Tracker — all 16 rikuq articles
 
-| # | Article | Dev.to | Hashnode | Medium | LinkedIn |
-|---|---|---|---|---|---|
-| 1 | Claude Code Hooks vs Skills: When to Use Which | [✅ live](https://dev.to/rikuq/claude-code-hooks-vs-skills-when-to-use-which-ple) | ⏳ | ⏳ | ⏳ |
-| 2 | How I Built Citare V2 in 12 Days After Throwing V1 Away | [✅ live](https://dev.to/rikuq/how-i-built-citare-v2-in-12-days-after-throwing-v1-away-3j2o) | ⏳ | ⏳ | ⏳ |
-| 3 | Portkey vs Helicone vs LiteLLM vs OpenRouter | [✅ live](https://dev.to/rikuq/portkey-vs-helicone-vs-litellm-vs-openrouter-honest-comparison-3fn3) | ⏳ | ⏳ | ⏳ |
-| 4 | How I Run 3 Production AI SaaS on $5/Month | [✅ live](https://dev.to/rikuq/how-i-run-3-production-ai-saas-on-5month-of-hosting-40fd) | ⏳ | ⏳ | ⏳ |
-| 5 | What is LLM FinOps? | [✅ live](https://dev.to/rikuq/what-is-llm-finops-the-missing-discipline-for-ai-era-companies-54la) | ⏳ | ⏳ | ⏳ |
-| 6 | The Four-Index Reality | [✅ live](https://dev.to/rikuq/the-four-index-reality-why-ai-search-isnt-one-thing-4bno) | ⏳ | ⏳ | ⏳ |
-| 7 | Best AI Coding Tools 2026 | [✅ live](https://dev.to/rikuq/best-ai-coding-tools-2026-honest-picks-from-shipping-3-saas-solo-365d) | ⏳ | ⏳ | ⏳ |
-| 8 | Antigravity Review (May 2026) | [✅ live](https://dev.to/rikuq/antigravity-review-may-2026-from-daily-driver-to-dropped-5560) | ⏳ | ⏳ | ⏳ |
-| 9 | GitHub Copilot Review 2026 | [✅ live](https://dev.to/rikuq/github-copilot-review-2026-built-for-enterprise-not-solo-founders-5ahh) | ⏳ | ⏳ | ⏳ |
-| 10 | Windsurf Review 2026 | [✅ live](https://dev.to/rikuq/windsurf-review-2026-not-for-solo-founders-great-for-small-teams-11ho) | ⏳ | ⏳ | ⏳ |
-| 11 | Cursor vs Claude Code 2026 | [✅ live](https://dev.to/rikuq/cursor-vs-claude-code-2026-youre-probably-asking-the-wrong-question-218n) | ⏳ | ⏳ | ⏳ |
-| 12 | Anthropic Prompt Caching: Real Numbers | [✅ live](https://dev.to/rikuq/anthropic-prompt-caching-real-numbers-from-330-production-calls-2eg4) | ⏳ | ⏳ | ⏳ |
-| 13 | GEO vs SEO in 2026 | [✅ live](https://dev.to/rikuq/geo-vs-seo-in-2026-what-googles-may-guidance-changed-3hhb) | ⏳ | ⏳ | ⏳ |
-| 14 | Cursor Review 2026 | [✅ live](https://dev.to/rikuq/cursor-review-2026-honest-not-for-me-take-from-a-vscode-user-931) | ⏳ | ⏳ | ⏳ |
-| 15 | Hello from rikuq | [✅ live](https://dev.to/rikuq/hello-from-rikuq-a-practitioner-blog-for-solo-ai-saas-founders-1i3) | ⏳ | ⏳ | ⏳ |
-| 16 | Claude Code Review 2026 — From Zero Code to 3 Live SaaS | [✅ live](https://dev.to/rikuq/claude-code-review-2026-from-zero-code-to-3-live-saas-203k) | ⏳ | ⏳ | ⏳ |
+Columns are Tier 1 platforms. For Tier 2/3/4 amplifiers, see distribution-blast-radius.md per-article notes.
+
+| # | Article | Dev.to | Medium | Hashnode | LinkedIn | Substack | HackerNoon |
+|---|---|---|---|---|---|---|---|
+| 1 | Claude Code Hooks vs Skills: When to Use Which | [✅ live](https://dev.to/rikuq/claude-code-hooks-vs-skills-when-to-use-which-ple) | ⏳ | ⏳ | ⏳ | ⏳ | ⏳ |
+| 2 | How I Built Citare V2 in 12 Days After Throwing V1 Away | [✅ live](https://dev.to/rikuq/how-i-built-citare-v2-in-12-days-after-throwing-v1-away-3j2o) | ⏳ | ⏳ | ⏳ | ⏳ | ⏳ |
+| 3 | Portkey vs Helicone vs LiteLLM vs OpenRouter | [✅ live](https://dev.to/rikuq/portkey-vs-helicone-vs-litellm-vs-openrouter-honest-comparison-3fn3) | ⏳ | ⏳ | ⏳ | ⏳ | ⏳ |
+| 4 | How I Run 3 Production AI SaaS on $5/Month | [✅ live](https://dev.to/rikuq/how-i-run-3-production-ai-saas-on-5month-of-hosting-40fd) | ⏳ | ⏳ | ⏳ | ⏳ | ⏳ |
+| 5 | What is LLM FinOps? | [✅ live](https://dev.to/rikuq/what-is-llm-finops-the-missing-discipline-for-ai-era-companies-54la) | ⏳ | ⏳ | ⏳ | ⏳ | ⏳ |
+| 6 | The Four-Index Reality | [✅ live](https://dev.to/rikuq/the-four-index-reality-why-ai-search-isnt-one-thing-4bno) | ⏳ | ⏳ | ⏳ | ⏳ | ⏳ |
+| 7 | Best AI Coding Tools 2026 | [✅ live](https://dev.to/rikuq/best-ai-coding-tools-2026-honest-picks-from-shipping-3-saas-solo-365d) | ⏳ | ⏳ | ⏳ | ⏳ | ⏳ |
+| 8 | Antigravity Review (May 2026) | [✅ live](https://dev.to/rikuq/antigravity-review-may-2026-from-daily-driver-to-dropped-5560) | ⏳ | ⏳ | ⏳ | ⏳ | ⏳ |
+| 9 | GitHub Copilot Review 2026 | [✅ live](https://dev.to/rikuq/github-copilot-review-2026-built-for-enterprise-not-solo-founders-5ahh) | ⏳ | ⏳ | ⏳ | ⏳ | ⏳ |
+| 10 | Windsurf Review 2026 | [✅ live](https://dev.to/rikuq/windsurf-review-2026-not-for-solo-founders-great-for-small-teams-11ho) | ⏳ | ⏳ | ⏳ | ⏳ | ⏳ |
+| 11 | Cursor vs Claude Code 2026 | [✅ live](https://dev.to/rikuq/cursor-vs-claude-code-2026-youre-probably-asking-the-wrong-question-218n) | ⏳ | ⏳ | ⏳ | ⏳ | ⏳ |
+| 12 | Anthropic Prompt Caching: Real Numbers | [✅ live](https://dev.to/rikuq/anthropic-prompt-caching-real-numbers-from-330-production-calls-2eg4) | ⏳ | ⏳ | ⏳ | ⏳ | ⏳ |
+| 13 | GEO vs SEO in 2026 | [✅ live](https://dev.to/rikuq/geo-vs-seo-in-2026-what-googles-may-guidance-changed-3hhb) | ⏳ | ⏳ | ⏳ | ⏳ | ⏳ |
+| 14 | Cursor Review 2026 | [✅ live](https://dev.to/rikuq/cursor-review-2026-honest-not-for-me-take-from-a-vscode-user-931) | ⏳ | ⏳ | ⏳ | ⏳ | ⏳ |
+| 15 | Hello from rikuq | [✅ live](https://dev.to/rikuq/hello-from-rikuq-a-practitioner-blog-for-solo-ai-saas-founders-1i3) | ⏳ | ⏳ | ⏳ | ⏳ | ⏳ |
+| 16 | Claude Code Review 2026 — From Zero Code to 3 Live SaaS | [✅ live](https://dev.to/rikuq/claude-code-review-2026-from-zero-code-to-3-live-saas-203k) | ⏳ | ⏳ | ⏳ | ⏳ | ⏳ |
 
 **Pending Dev.to (auto-crosspost cron handles these):**
 

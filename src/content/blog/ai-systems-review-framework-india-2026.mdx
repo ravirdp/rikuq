@@ -1,0 +1,212 @@
+---
+title: "AI Systems Review: A 6-Domain Framework You Can Run Internally"
+description: "Six-domain framework for auditing AI spend, vendor consolidation, model selection, controls, governance, and cost allocation at Indian mid-market scale."
+pubDate: 2026-06-01
+updatedDate: 2026-06-01
+category: finops
+tags:
+  - llm-finops
+  - ai-systems-review
+  - ai-governance
+  - ind-as-38
+  - indian-tax
+author: Ravi
+heroImage: /illustrations/covers/ai-systems-review-framework-india-2026.jpg
+ogImage: /illustrations/covers/ai-systems-review-framework-india-2026.jpg
+draft: false
+crossposted: true
+affiliateDisclosure: false
+prismDisclosure: true
+faqs:
+  - question: "Is an AI Systems Review a statutory audit?"
+    answer: "No. The AI Systems Review framework is advisory in nature. It produces analysis, recommendations, and prioritisation across AI spend, vendor selection, model economics, internal controls, governance, and cost allocation. It is explicitly not a statutory audit under the Companies Act 2013, not an assurance engagement under any ICAI standard (SAE 3000, SAE 3410, etc.), and not signed under a Digital Signature Certificate as an assurance opinion. The naming discipline matters — calling it a 'review' rather than an 'audit' avoids statutory-word overload that creates confusion in the Indian context."
+  - question: "Can an internal team run this without external help?"
+    answer: "Yes, if you have the integrated competence across FinOps, AI model selection, cloud architecture, Indian tax overlay, and AI governance. The framework is published openly precisely so internal teams can run it. The practical constraint is that the six domains require both technical depth (model selection economics, cloud architecture) and finance + regulatory depth (Indian tax, audit-committee positioning, DPDP / ICAI / SEBI context) in the same engagement. Most mid-market entities don't have both capabilities in one team, which is why external advisory exists as a category. If you have a CTO comfortable with FinOps and a CFO comfortable with the AI governance overlay, doing this internally is realistic and probably the right move."
+  - question: "How long does the framework take to run end-to-end?"
+    answer: "Six to eight weeks of focused work for a mid-market entity with concentrated spend. Smaller engagements (single business unit with concentrated spend on one or two hyperscalers) can compress to four weeks. Larger engagements (multi-BU with international footprint, complex regulatory overlay including EU exposure) can extend to eight or even ten weeks. The bottleneck is usually stakeholder availability for discovery interviews (Domain 1 + 4 + 5 require CFO, CTO, AI/ML lead, finance, procurement, and internal audit input) rather than the analytical work itself."
+  - question: "Which domain produces the highest ROI?"
+    answer: "Usually Domain 3 (model selection economics) for entities running production AI workloads with material API spend, and Domain 2 (vendor consolidation) for entities with sprawl across multiple AI providers. The 15x cost differential between GPU and CPU instances combined with the 5-20x cost differential across foundation model providers means Domain 3 findings often quantify into 30-50% optimisation opportunities. Domain 6 (cost allocation) produces highest ROI for SEBI-listed entities preparing for audit cycles where AI spend disclosure is becoming material. Domain 4 (internal controls) produces highest ROI for entities under direct audit-committee scrutiny on AI-augmented finance work. Run all six because they inform each other; the order of impact varies by entity."
+  - question: "How does this align with the FinOps Foundation Framework 2026?"
+    answer: "The six domains map cleanly to FinOps Foundation's three-phase architecture. Inform phase corresponds to Domain 1 (spend taxonomy) and Domain 6 (cost allocation). Optimize phase corresponds to Domain 2 (vendor consolidation) and Domain 3 (model selection economics). Operate phase corresponds to Domain 4 (internal controls) and Domain 5 (governance). The 2026 framework's new Executive Strategy Alignment capability is reflected in how findings are framed for board / audit committee consumption rather than just operational teams. The mapping isn't accidental — the framework was deliberately built on the FinOps Foundation architecture with the Indian regulatory + tax overlay added."
+relatedPosts:
+  - what-is-llm-finops
+  - finops-vs-itfm-vs-itam-2026
+  - ai-software-capex-vs-opex-india-2026
+---
+
+The phrase "AI systems review" sounds like consultant jargon for "we'll look at your stuff." In practice it covers a specific set of analyses with a specific output structure, and at Indian mid-market scale it's increasingly the work that has to happen before the next audit cycle, the next board meeting, or the next vendor renegotiation produces a number that doesn't make sense to anyone.
+
+This post documents the six-domain framework openly so you can run it internally if you have the competence in-house, or evaluate external providers against a known standard rather than whatever they say their methodology is. The framework is built on the FinOps Foundation Framework 2026 architecture with the Indian regulatory and tax overlay added — DPDP Act 2023, ICAI voluntary AI assurance guidance, the SEBI June 2025 AI/ML consultation paper (still in consultation), and the EU AI Act for entities with European exposure.
+
+I'm Ravi. I run three production AI SaaS solo ([Prism](https://ssimplifi.com), [Citare](https://citare.ai), [BatchWise](https://batchwise.ai)) and do advisory work via [rikuq services](/services). The framework below is what I use when CFOs hire me for this work; the same framework runs equally well if you keep it internal.
+
+## TL;DR
+
+| Domain | What it covers | When this matters most |
+|---|---|---|
+| 1. AI + cloud spend taxonomy | Comprehensive categorisation of consumption | Always — foundation for everything else |
+| 2. Vendor consolidation analysis | Redundant providers, contract overlap, leverage | Mid-market entities with vendor sprawl |
+| 3. Model selection economics | Cost-per-output across models and providers | Production AI workloads with material API spend |
+| 4. Internal controls over AI in finance | Controls extending to AI inputs and outputs | Audit-committee scrutiny on AI-augmented finance |
+| 5. AI governance | DPDP, ICAI, EU AI Act, audit-committee reporting | SEBI-listed entities and EU-exposed exporters |
+| 6. Cost allocation across business units | Allocation method, tax overlay, GST credit, TP | Multi-BU entities, especially with intercompany flows |
+
+## What this is and what it is not
+
+The AI Systems Review framework is **advisory in nature**. It produces:
+
+- A structured diagnostic across the six domains
+- Quantified optimisation opportunities prioritised by impact
+- An AI governance framework draft
+- An implementation prioritisation matrix tied to actionable owners and timelines
+
+It is **explicitly not** a statutory audit. Not an assurance engagement under any ICAI standard. Not a tax opinion. Not a systems integration scope. The output supports decisions; the client (or your internal team, if you run it yourself) retains decision authority and accountability for actions taken.
+
+The naming discipline matters in the Indian context where the word "audit" carries statutory weight. Calling this a review is precise — analytical rigour without the statutory-audit confusion.
+
+## Why this work matters now (Indian context)
+
+Three structural shifts converged across 2024-2026 to create the demand for this discipline:
+
+**1. AI spend became a material P&L line item.** NASSCOM expects 80.8% growth in generative-AI spending in India in 2026. The FinOps Foundation's 2026 State of FinOps report says 98% of practitioners are now tasked with managing AI spend (up from 31% in 2024). Per the NASSCOM-BCG projection, the Indian AI market reaches $17 billion by 2027 at 25-35% CAGR. The structural feature making AI spend different from generic cloud spend is the 15x cost differential between GPU and CPU compute instances — a procurement decision that gets the model + provider + instance type right or wrong has 15x more financial impact than equivalent traditional cloud decisions.
+
+**2. The regulatory and assurance perimeter caught up.** India's AI governance perimeter formed across DPDP, ICAI guidance, and SEBI's sector consultation. The Digital Personal Data Protection Act 2023 became binding for AI processing of personal data. ICAI published voluntary practitioner guidance on AI assurance, model documentation, and audit-evidence sufficiency — non-binding but increasingly relied on by statutory auditors evaluating AI-augmented finance work. SEBI's June 2025 consultation paper on AI/ML in securities markets, applicable today to MIIs, intermediaries, and mutual funds, proposes a six-pillar framework (ethics, accountability, transparency, auditability, data privacy, fairness); it's still in consultation but signals the direction of travel.
+
+**3. Cross-border AI regulation became live.** The EU AI Act has extraterritorial reach for Indian exporters, Indian companies with EU subsidiaries, and Indian providers of AI systems used in the EU market. For these entities the AI Act runs parallel to DPDP and adds material compliance overhead. DPDP itself has been operational through 2025-2026 and is now testing the operational readiness of AI systems processing personal data of Indian residents.
+
+The cumulative effect is that statutory auditors of in-scope entities are testing internal controls over AI-augmented finance work, and the entity must produce documentation supporting that. Doing the review work proactively is materially less expensive than scrambling at audit.
+
+## The six domains in detail
+
+The domains are not separate workstreams — they are facets of a single integrated analysis. Findings in one typically inform questions in another (a vendor consolidation finding in Domain 2 usually surfaces internal-controls implications in Domain 4).
+
+### Domain 1: AI + cloud spend taxonomy
+
+Foundation work. You build a comprehensive taxonomy of the entity's AI + cloud spend, categorised by:
+
+- **AI model type** — foundation model API calls (OpenAI, Anthropic, Google, regional providers); fine-tuning runs; embedding and vector database costs; inference compute; training compute
+- **Compute type** — GPU vs CPU instances; on-demand vs reserved vs spot pricing; regional cost differentials
+- **Business unit attribution** — which BUs drive which spend; current cost-allocation methodology; gaps and double-counting
+- **Vendor classification** — primary hyperscalers (AWS, Azure, GCP); foundation model providers; vertical AI SaaS; ML platforms and tooling
+
+**Output:** a structured spend taxonomy that supports every downstream analysis. Where existing FinOps tooling provides this, you validate and extend. Where it doesn't exist, you build it. Typical effort: 3-7 days of focused work depending on data availability.
+
+### Domain 2: Vendor consolidation analysis
+
+Mid-market entities typically accrete AI/cloud vendors faster than they consolidate them. The analysis identifies:
+
+- Redundant vendors (multiple foundation model providers used for substantially similar workloads without a clear differentiator)
+- Contract overlap (multiple commitments to the same provider across BUs without portfolio negotiation leverage)
+- Consolidation opportunities with quantified annualised savings
+- Concentration risks — where consolidation may be desirable for procurement but introduces single-vendor risk
+- Negotiation leverage analysis — total spend, alternative provider availability, switching costs
+
+This domain pays for itself most often via the negotiation leverage analysis — entities that consolidate cleanly across BUs typically renegotiate enterprise contracts at 15-30% lower rates than fragmented procurement achieves.
+
+### Domain 3: Model selection economics
+
+The core technical-economic analysis. For each material use case identified in Domain 1, you evaluate:
+
+- Cost-per-output across model + provider combinations (e.g., GPT-4 class vs Claude class vs open-weight Llama-class for the same workload)
+- The cost differential between in-house fine-tuning vs API-based access at the entity's actual usage volumes
+- Where the 15x GPU/CPU cost differential is and is not justified by accuracy / latency / capability requirements
+- Foundation model versioning trade-offs (cost vs capability at sequential model releases)
+- Hybrid architectures (e.g., cheap model for first-pass, expensive model for high-confidence-required output)
+
+This domain is where the technical-economic depth produces the most differentiation. Pure cloud-cost consultants typically lack the AI economics depth here; pure AI consultants typically lack the cost-attribution discipline. The integration is the value.
+
+Common findings in this domain include 30-60% cost optimisation on production AI workloads via model substitution alone, plus another 20-40% via prompt caching and retry hygiene. The numbers compound.
+
+### Domain 4: Internal controls over AI-augmented finance work
+
+Where AI handles material accounting, financial reporting, or finance-adjacent operational work, the internal-controls framework must extend to AI systems. Aligned with ICAI voluntary guidance on AI assurance, you evaluate:
+
+- Control framework over AI inputs (data quality, prompt management, version control of system prompts and configurations)
+- Log-trail sufficiency for audit evidence (model invocation logs, output logs, decision logs)
+- Model documentation completeness (intended use, training data provenance, performance characteristics, known limitations)
+- Reproducibility — can the AI output that informed a financial-reporting decision be reproduced under audit conditions?
+- Version control of models in production and the change-management process around model upgrades
+- Human-in-the-loop checkpoints and escalation pathways for material decisions
+
+This domain directly supports the entity's preparation for statutory-audit testing of AI-augmented finance work. The discipline is often where the work that should have been done quietly over months gets compressed into a scramble at audit if you skip it.
+
+### Domain 5: AI governance
+
+Governance is the documented framework by which AI use is authorised, monitored, escalated, and held accountable. Covers:
+
+- DPDP 2023 compliance for AI processing of personal data — consent architecture, data principal rights, significant data fiduciary status assessment
+- EU AI Act applicability for Indian exporters (companies placing AI systems into the EU market, or providing AI outputs used in the EU)
+- ICAI ethics framework alignment — particularly relevant for CFOs who are also CAs or whose finance teams include CAs
+- Audit-committee reporting structure on AI use, incidents, and risk register
+- AI usage policy (employee, contractor, vendor) and incident response framework
+
+For SEBI-listed entities and entities with EU subsidiaries this domain is where the audit-committee meeting questions come from. Having a documented governance framework is the difference between answering "yes, here's the policy" and "we're working on it."
+
+### Domain 6: Cost allocation across business units
+
+The least glamorous, most operationally consequential domain. How shared AI / cloud spend gets allocated across BUs for internal P&L, transfer pricing, and tax purposes:
+
+- Current allocation methodology — usage-based, headcount-based, revenue-based, formulaic
+- Tax implications — particularly transfer pricing on cross-BU AI cost allocation where BUs span jurisdictions
+- GST input credit recovery — Section 17 CGST treatment of AI / SaaS / cloud spend; eligibility analysis
+- Section 195 TDS on foreign AI vendor payments — particularly post Equalisation Levy 2.0 abolition
+- Capex vs opex classification — AI software licences, model fine-tuning costs, prepaid cloud commitments
+
+Where Domain 6 surfaces material tax-recovery opportunities (GST input credit, Section 195 over-deductions, capex vs opex misclassifications), they feed into a parallel tax-recovery diagnostic. The [Section 195 vs Equalisation Levy](/blog/finops/section-195-vs-equalisation-levy-foreign-ai-vendors-2026/) and [AI Software Capex vs Opex](/blog/finops/ai-software-capex-vs-opex-india-2026/) posts go into operational depth on those specific reconciliations.
+
+## FinOps Foundation Framework alignment
+
+The six domains map to FinOps Foundation's three-phase architecture:
+
+- **Inform phase** ⟷ Domain 1 (taxonomy) + Domain 6 (allocation). Establishing what is being spent, where, and why.
+- **Optimize phase** ⟷ Domain 2 (consolidation) + Domain 3 (model selection). Identifying and quantifying optimisation opportunities.
+- **Operate phase** ⟷ Domain 4 (internal controls) + Domain 5 (governance). Building the operating model so optimisations sustain and risks are managed.
+
+The 2026 FinOps Framework introduces Executive Strategy Alignment as a new core Capability — reflected in how findings should be framed for board / audit committee consumption, not just operational teams.
+
+## How to actually run this internally
+
+If you have the in-house competence and want to run the framework yourself, here's the practical sequencing:
+
+**Week 1-2: Discovery and document collection.** Stakeholder interviews (CFO, CTO, AI/ML lead, finance, procurement, internal audit). Document collection — cloud bills, AI vendor contracts, model inventory, internal controls documentation, cost-allocation methodology.
+
+**Week 3-4: Domain 1 + 6 analysis.** Build the spend taxonomy. Map current cost allocation methodology. Quantify the GST RCM, Section 195, and capex/opex tax exposures.
+
+**Week 5: Domain 2 + 3 analysis.** Vendor consolidation analysis with negotiation leverage. Model selection economics with quantified optimisation opportunities. This is the highest-effort week because it requires both finance and engineering work in parallel.
+
+**Week 6: Domain 4 + 5 analysis.** Internal controls evaluation. AI governance framework draft. DPDP and EU AI Act applicability assessment.
+
+**Week 7-8: Synthesis, drafting, prioritisation matrix.** Pull findings together into a single report. Build the 30-day / 90-day / 12-month implementation prioritisation matrix. Frame the executive summary for board / audit committee consumption.
+
+Smaller entities can compress to four weeks. Larger entities with multi-BU / international footprint extend to eight or ten.
+
+## What this framework deliberately doesn't cover
+
+Honest scope discipline. The framework does NOT cover:
+
+- **Contract negotiation execution.** It produces the negotiation leverage analysis; your procurement team executes.
+- **Implementation of recommendations.** It produces the prioritisation matrix; implementation runs through the relevant internal teams.
+- **Statutory audit work.** It coordinates with the existing statutory auditor where findings inform their evidence-gathering, but it doesn't replace them.
+- **Tax filing or opinion work.** Tax-specific findings (Domain 6) feed your existing CA firm for execution.
+- **AI systems integration or build work.** It evaluates AI systems; it doesn't construct them.
+
+These boundaries matter because scope creep on AI Systems Review work is the most common reason engagements run over time and budget — internal or external.
+
+## Where to start
+
+If you're a CFO or CTO at an Indian mid-market entity with material AI spend and you're thinking about whether to run this work:
+
+- **If your AI + cloud spend is under ₹2 crore annual,** you probably don't need the full six-domain review yet. Start with Domain 1 (taxonomy) as a one-week exercise and revisit annually.
+- **If your spend is ₹2-20 crore annual,** the full framework run internally is realistic if you have the competence. Three to four weeks of focused work; significant ROI potential on Domain 2 + 3.
+- **If your spend is above ₹20 crore annual or you're SEBI-listed,** the regulatory dimensions (Domains 4 + 5) usually justify the full framework. Whether you run internally or bring in external advisory depends on whether you have integrated finance + engineering + regulatory competence in the same team.
+
+If you want a written scope proposal for what an external engagement would look like for your specific situation — when in-house execution isn't realistic given the integrated competence required — the [services page](/services) has both a Cal.com booking link and a Tally intake form. Free 30-min discovery, written scope before any commitment.
+
+## What's next
+
+This post is the framework. The adjacent posts that go deeper on specific domains:
+
+- [AI Software Capex vs Opex in India: the Ind AS 38 test](/blog/finops/ai-software-capex-vs-opex-india-2026/) — Domain 6 accounting overlay
+- [Section 195 vs Equalisation Levy: foreign AI vendor TDS](/blog/finops/section-195-vs-equalisation-levy-foreign-ai-vendors-2026/) — Domain 6 tax overlay
+- [What is LLM FinOps?](/blog/finops/what-is-llm-finops/) — broader discipline this fits inside
+- [LLM gateway attribution is harder than cloud FinOps ever was](/blog/finops/llm-gateway-attribution-harder-than-cloud-finops/) — Domain 1 + 6 architectural deep-dive

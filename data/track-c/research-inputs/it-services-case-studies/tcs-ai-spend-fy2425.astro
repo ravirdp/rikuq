@@ -1,0 +1,210 @@
+---
+export const prerender = true;
+import CommercialLayout from '../../../layouts/CommercialLayout.astro';
+
+const title = 'Methodology Demonstration — TCS AI/Cloud Spend FY 2024-25';
+const description = 'Applying the BatchWise AI Systems Review + Tax Optimisation methodology to TCS publicly disclosed FY 2024-25 financials. No engagement with TCS.';
+const lede = 'This page applies the BatchWise AI Systems Review and AI Spend & Tax Optimisation methodology to Tata Consultancy Services Limited (TCS) publicly disclosed FY 2024-25 financial data. It is a methodology demonstration on public data — an analysis of what an external observer can infer + what a real engagement would surface beyond. BatchWise has no engagement with TCS; this page makes no claim of delivered work. TCS at $30 billion revenue is the largest publicly disclosed Indian IT services entity, making it a useful upper-end reference point for peer CFOs at smaller-scale entities scoping AI spend governance.';
+const canonicalPath = '/ai/case-studies/tcs-ai-spend-fy2425/';
+
+const jsonLdBlocks = [
+  {
+    '@context': 'https://schema.org',
+    '@type': 'Article',
+    headline: title,
+    description,
+    author: {
+      '@type': 'Person',
+      name: 'Ravi Patel',
+      jobTitle: 'Founder, Editor-in-charge',
+      url: 'https://rikuq.com',
+      image: 'https://batchwise.ai/avatars/ravi.webp',
+      sameAs: [
+        'https://rikuq.com',
+        'https://www.linkedin.com/in/ravirdp/',
+        'https://github.com/ravirdp',
+        'https://x.com/ravirdp',
+        'https://batchwise.ai/editorial-team/',
+      ],
+    },
+    publisher: { '@type': 'Organization', name: 'BatchWise', url: 'https://batchwise.ai/' },
+    creator: { '@type': 'Organization', name: 'BatchWise', url: 'https://batchwise.ai/' },
+    url: 'https://batchwise.ai/ai/case-studies/tcs-ai-spend-fy2425/',
+    datePublished: '2026-05-22',
+    dateModified: '2026-05-22',
+    inLanguage: 'en-IN',
+    isBasedOn: [
+      { '@type': 'CreativeWork', name: 'TCS Annual Report FY 2024-25', url: 'https://www.tcs.com/who-we-are/investor-relations/financial-statements' },
+      { '@type': 'CreativeWork', name: 'TCS Q4 FY25 Press Release', url: 'https://www.tcs.com/who-we-are/newsroom/press-release/tcs-financial-results-q4-fy-2025' },
+    ],
+  },
+];
+
+const faqs = [
+  {
+    q: 'Has BatchWise been engaged by TCS?',
+    a: 'No. This is an independent analysis of publicly disclosed financial data from TCS Limited\'s FY 2024-25 reporting cycle — the annual report, quarterly results press releases, earnings call transcripts. BatchWise has no engagement with TCS and makes no claim of delivered work. The analysis here is what an external observer with access to the same public data could produce by applying the BatchWise methodology — useful as a demonstration of method, not as a representation of TCS\'s actual internal state.',
+  },
+  {
+    q: 'Why TCS as a methodology demonstration target?',
+    a: 'Four reasons. (1) At $30 billion revenue, TCS is the largest publicly disclosed Indian IT services entity, making it a useful upper-end reference. (2) TCS is BSE/NSE-listed only — not US-listed — so the regulatory overlay is purely Indian (BRSR + DPDP + ICAI guidance + EU AI Act extraterritoriality for EU client delivery; plus SEBI\'s June 2025 AI/ML consultation paper as forward-looking signal) without the parallel US SOX/SEC architecture that complicates the Infosys demonstration. (3) TCS has built three distinct in-house AI/automation platforms (WisdomNext for GenAI, ignio for AIOps, Cognix for cognitive automation) — useful for analysing make-vs-buy economics at scale. (4) TCS publicly disclosed AI as embedded across one-third of client engagements + claims the "largest AI-trained workforce in the industry" — material AI as a P&L line item even though not separately disclosed.',
+  },
+  {
+    q: 'How is the TCS demonstration different from the Infosys demonstration?',
+    a: 'Three key differences. (1) TCS is not US-listed (Infosys has NYSE ADR INFY); TCS\'s regulatory overlay is purely Indian (BRSR + DPDP + ICAI guidance + EU AI Act extraterritoriality), without the parallel US SOX/SEC layer Infosys carries. (2) TCS has multiple in-house AI platforms (WisdomNext, ignio, Cognix) vs Infosys\'s consolidated Topaz + Cobalt approach — the make-vs-buy analysis branches further. (3) TCS revenue scale ($30B) is roughly 50% larger than Infosys; the absolute spend opacity on "Cost of software packages and others" is correspondingly larger. The methodology framework is identical; the specific findings differ by entity profile.',
+  },
+  {
+    q: 'What does the analysis NOT show for TCS?',
+    a: 'Same categories as the Infosys demonstration — specific AI vendor spend (TCS does not disclose breakdown by vendor); GenAI revenue contribution (not disclosed separately); internal cost allocation methodology across TCS\'s 50+ country operations; RCM and Section 195 TDS specifics on foreign AI vendor payments; internal controls evidence; specific make-vs-buy economics on the three in-house platforms. These require client cooperation; the public-data demonstration shows the ceiling of what an external observer can infer, not the engagement ceiling.',
+  },
+  {
+    q: 'What did TCS publicly disclose about AI in FY 2024-25?',
+    a: 'TCS made AI a strategic narrative theme through FY 2024-25 but did not disclose specific AI revenue, AI capex, or AI-specific spend. Key public disclosures: (a) launched WisdomNext 2.0 with agentic capabilities; (b) leveraged ignio for AIOps and Cognix for cognitive automation across client engagements; (c) claimed the "largest AI-trained workforce in the industry"; (d) noted that over one-third of client engagements use AI/GenAI for accelerated outcomes; (e) reported $39.4 billion FY25 total contract value with strong demand for AI integration. The directional commentary is rich; the quantitative disclosure on AI specifically is not.',
+  },
+  {
+    q: 'What would a real TCS-engagement-equivalent reveal?',
+    a: 'For an entity at TCS scale, a real engagement would surface: vendor-by-vendor spend decomposition on hyperscaler + foundation model providers; in-house platform unit economics (cost per WisdomNext deployment, ROI on ignio investments, Cognix model maintenance burn rate); cross-entity transfer pricing on platform consumption across the 50+ country operations; capitalisation treatment of platform development costs under Ind AS 38 paragraph 57; deferred tax implications of book amortisation vs Section 32 depreciation differential at scale; full RCM reconciliation across foreign vendor payments for the past 24 months. These are categories that public disclosures cannot show by design — they require internal data access.',
+  },
+];
+---
+
+<CommercialLayout
+  title={title}
+  description={description}
+  lede={lede}
+  canonicalPath={canonicalPath}
+  jsonLdBlocks={jsonLdBlocks}
+  faqs={faqs}
+>
+  <p class="meta-byline">
+    By <a href="https://rikuq.com" rel="author">Ravi Patel</a> — Founder, BatchWise. Published 22 May 2026. Methodology demonstration on public data; refreshes when TCS publishes FY 2025-26 results.
+  </p>
+
+  <p><em>Editorial correction (2026-05-25): This page previously referenced a "SEBI/MCA January 2026 AI disclosure mandate" that does not exist in that form. The accurate position is SEBI\'s June 2025 consultation paper on AI/ML in securities markets, still in consultation. This page has been updated accordingly.</em></p>
+
+  <div class="callout callout--important">
+    <p><strong>Disclosure discipline.</strong> This page is a methodology demonstration on publicly disclosed financial data from Tata Consultancy Services Limited\'s FY 2024-25 reporting cycle. BatchWise has no engagement with TCS. This page makes no claim of delivered work. All numerical observations are sourced to TCS\'s own public disclosures (annual report, Q4 FY25 press release, earnings call transcripts) and clearly attributed. Where the methodology cannot answer a question from public data alone, the page says so. ASCI Code + Consumer Protection Act 2019 substantiation-compliant.</p>
+  </div>
+
+  <h2>Public data inputs</h2>
+
+  <ul>
+    <li><strong>TCS Limited Annual Report FY 2024-25</strong> — segment reporting, MD&amp;A, financial statements, intangibles + capex notes</li>
+    <li><strong>TCS Q4 FY25 press release + Ind-AS / IFRS financial statements</strong> — full-year quantitative results</li>
+    <li><strong>TCS quarterly earnings call transcripts FY 2024-25</strong> — Q1, Q2, Q3, Q4 management commentary on WisdomNext, ignio, Cognix, GenAI strategy</li>
+    <li><strong>TCS investor day materials + year-end debrief</strong> — strategic positioning around AI-first services + agentic transformation</li>
+  </ul>
+
+  <h2>Headline financial markers (FY 2024-25, publicly disclosed)</h2>
+
+  <table class="data">
+    <thead><tr><th>Marker</th><th>FY 2024-25 value</th><th>Source</th></tr></thead>
+    <tbody>
+      <tr><td>Total revenue</td><td>$30+ billion (+3.8% YoY USD; +4.2% constant currency)</td><td>Q4 FY25 press release; year-end debrief</td></tr>
+      <tr><td>Total Contract Value FY25</td><td>$39.4 billion</td><td>Q4 FY25 press release</td></tr>
+      <tr><td>Regional Markets growth</td><td>+37.2% YoY</td><td>Year-end debrief</td></tr>
+      <tr><td>Energy, Resources, Utilities vertical growth</td><td>+5.1% YoY</td><td>Year-end debrief</td></tr>
+      <tr><td>Manufacturing vertical growth</td><td>+2.9% YoY</td><td>Year-end debrief</td></tr>
+      <tr><td>AI-embedded client engagements</td><td>"Over one-third" (qualitative)</td><td>Management commentary across FY25</td></tr>
+      <tr><td>In-house AI / automation platforms</td><td>WisdomNext (GenAI; 2.0 with agentic capabilities), ignio (AIOps), Cognix (cognitive automation)</td><td>TCS platform pages + press releases</td></tr>
+      <tr><td>AI-trained workforce claim</td><td>"Largest in the industry" (qualitative)</td><td>FY25 year-end debrief</td></tr>
+      <tr><td>GenAI revenue disclosure</td><td><strong>Not disclosed separately</strong></td><td>Management commentary across FY25</td></tr>
+    </tbody>
+  </table>
+
+  <p class="caveat"><em>Reconciliation note:</em> TCS reports primarily in Indian Rupees for BSE/NSE filings; USD totals are derived using FY 2024-25 average exchange rate of approximately ₹83-84/USD. TCS is not US-listed (no NYSE / Form 6-K filings) — so the disclosure footprint is purely Indian regulatory (SEBI BRSR, Companies Act, Ind AS) plus the evolving Indian AI-governance overlay (DPDP Act 2023, ICAI voluntary practitioner guidance on AI assurance, EU AI Act extraterritoriality for EU client delivery, and SEBI\'s June 2025 AI/ML consultation paper as forward-looking direction).</p>
+
+  <h2>Methodology application — TCS-specific observations</h2>
+
+  <h3>Domain 1 — AI + cloud spend taxonomy</h3>
+
+  <p><strong>Public data observation.</strong> Like Infosys, TCS reports an aggregated "Cost of software packages and others" line in its P&amp;L without further decomposition. At TCS scale ($30B revenue), this single line is materially larger in absolute terms than the equivalent at smaller peers.</p>
+
+  <p><strong>What methodology would surface.</strong> Decomposition of spend across the three in-house platforms (WisdomNext, ignio, Cognix) + third-party hyperscaler spend (AWS, Azure, GCP) + foundation model provider spend (OpenAI via Azure, Anthropic, Google) + vertical AI SaaS. At TCS scale, even modest miscategorisation in the public-facing line carries large rupee implications — the engagement would build the taxonomy that makes downstream analysis defensible.</p>
+
+  <h3>Domain 2 — Vendor consolidation analysis</h3>
+
+  <p><strong>Public data observation.</strong> TCS\'s multi-cloud strategy spans all three hyperscalers, with extensive partnership disclosures. The three in-house platforms (WisdomNext, ignio, Cognix) reduce dependence on external AI vendors for core platform capability but increase internal-tooling diversity.</p>
+
+  <p><strong>What methodology would surface.</strong> The vendor-consolidation analysis at TCS scale is structurally different from smaller peers — TCS has the procurement leverage to negotiate hyperscaler reserved-capacity discounts unavailable to mid-market. The optimisation opportunity sits less in vendor count rationalisation and more in contract term sophistication (committed-use discounts, MFN provisions, take-or-pay structures). Real engagement quantifies the gap between contracted rates and best-available-rate; public data cannot.</p>
+
+  <h3>Domain 3 — Model selection economics</h3>
+
+  <p><strong>Public data observation.</strong> TCS\'s investment in WisdomNext, ignio, and Cognix suggests a strong make-side economic position — at $30B revenue + over one-third of engagements AI-embedded, in-house platform development justifies itself. The strategic narrative through FY25 emphasises "agentic capabilities" as the WisdomNext 2.0 frontier.</p>
+
+  <p><strong>What methodology would surface.</strong> Unit economics on each in-house platform — cost per WisdomNext deployment, marginal revenue per ignio-managed AIOps client, Cognix model maintenance burn rate. The make-vs-buy threshold for in-house platform development is empirically estimated to be around the $1-3B revenue mark for IT services entities; TCS is well past it. For peer entities below ~$5B revenue, the same analysis typically tilts the other way (buy from foundation model providers). A real engagement would quantify the threshold for the specific entity rather than copying TCS\'s answer.</p>
+
+  <h3>Domain 4 — Internal controls over AI-augmented finance work</h3>
+
+  <p><strong>Public data observation.</strong> TCS is BSE/NSE-listed only — no US securities disclosure obligation. The applicable Indian AI-governance frame draws from the DPDP Act 2023 (TCS is a significant data fiduciary at scale), ICAI voluntary practitioner guidance on AI assurance and audit evidence, the EU AI Act (extraterritorial for EU client delivery), and SEBI\'s June 2025 consultation paper on AI/ML in securities markets as forward-looking signal. TCS\'s FY 2025-26 annual report (publishing mid-2026) will be the first cycle in which Indian audit committees materially test internal controls over AI-augmented finance processes against this combined framework.</p>
+
+  <p><strong>What methodology would surface.</strong> For an entity of TCS scale, internal controls over AI-augmented finance and accounting processes are substantial in absolute terms. The Jan 2026 mandate requires model documentation, log-trail sufficiency, version control, reproducibility. ICAI guidance on AI assurance provides the framework. A methodology engagement would map TCS\'s existing internal controls (already mature for Companies Act + SEBI compliance) against the new Indian mandate and identify gaps. The fact that TCS is not US-listed means there is no SOX-equivalent overlay — the Jan 2026 mandate is being implemented "greenfield" rather than mapped against existing US controls.</p>
+
+  <h3>Domain 5 — AI governance</h3>
+
+  <p><strong>Public data observation.</strong> TCS discloses ethical AI principles and an AI governance framework in its ESG and integrated reporting. DPDP Act 2023 applies at scale (TCS processes personal data of Indian residents through both employee operations and client engagements). EU AI Act applies — TCS delivers AI systems and AI outputs to EU clients across financial services, manufacturing, energy.</p>
+
+  <p><strong>What methodology would surface.</strong> Assessment of governance framework completeness against (a) DPDP Act significant data fiduciary obligations (TCS would meet the threshold), (b) EU AI Act provider obligations for high-risk AI system categories — particularly relevant for the BFSI client work, (c) ICAI ethics framework for the very large CA workforce in TCS finance, (d) audit-committee reporting cadence specifically on AI use and incidents. For a methodology demonstration, we note the governance overlay; quantification of gap requires internal access.</p>
+
+  <h3>Domain 6 — Cost allocation across business units</h3>
+
+  <p><strong>Public data observation.</strong> TCS operates across 50+ countries through subsidiary entities. The transfer pricing study + Country-by-Country Report under Section 286 IT Act are not public. The three in-house platforms (WisdomNext, ignio, Cognix) are presumably developed in Indian entities (likely TCS Limited itself) and consumed across the multi-jurisdiction group.</p>
+
+  <p><strong>What methodology would surface.</strong> Transfer pricing on platform consumption across the 50+ country group is a Big-4-managed engagement at TCS scale. The arm\'s-length cost allocation methodology, benefit-test substantiation, and mark-up under OECD TP Guidelines Chapter VII are exactly what a CFO needs to defend in TP audit. Our methodology aligns with that work rather than replacing it. For peer entities with smaller multi-country footprint, the same analysis is materially smaller scope but uses the same framework.</p>
+
+  <h2>AI Spend &amp; Tax Optimisation overlay</h2>
+
+  <ul>
+    <li><strong>GST RCM exposure.</strong> TCS\'s foreign vendor spend (AWS, Azure, GCP, foundation model APIs, US-based SaaS) is material in absolute terms. Under Section 5(3) IGST Act, these are imports of services attracting 18% IGST under RCM. The aggregate "Cost of software packages and others" line includes a meaningful portion of foreign vendor spend; reconciliation against GSTR-3B Table 3.1(d) is a substantial engagement at TCS scale.</li>
+    <li><strong>Section 195 TDS post Equalisation Levy 2.0 abolition.</strong> EL 2.0 was abolished 1 August 2024. TCS\'s FY 2024-25 payments to foreign vendors span both regimes — pre-1 Aug + post-1 Aug have different TDS treatment. The reconciliation discipline applies at TCS scale with much larger absolute numbers than mid-market peers, but the methodology framework is identical.</li>
+    <li><strong>WisdomNext, ignio, Cognix capitalisation under Ind AS 38.</strong> The three platforms are TCS-developed. Under Ind AS 38 paragraph 57, development-phase costs may be capitalised if the criteria are met (technical feasibility, intent to use, ability to use, future economic benefit, adequate resources, ability to measure expenditure reliably). At TCS scale + multiple platforms, the capitalisation choice creates a material deferred tax line. The intangibles + capex notes in the annual report disclose the aggregate treatment; entity-specific platform-by-platform breakdown is not public.</li>
+    <li><strong>Section 32 software depreciation.</strong> TCS\'s book amortisation policy (2-5 years for purchased software, similar to Infosys) vs Section 32 Block of Assets 40% WDV creates permanent timing differences. The deferred tax line in the annual report does not isolate software-related component.</li>
+  </ul>
+
+  <h2>What a peer CFO would draw from this</h2>
+
+  <p>For CFOs of Indian IT services entities at smaller revenue scale (HCLTech, LTIMindtree, Wipro, Tech Mahindra, Persistent, Mphasis, Coforge):</p>
+
+  <ol>
+    <li><strong>TCS\'s in-house platform strategy is not your strategy.</strong> WisdomNext, ignio, Cognix make economic sense at $30B revenue. The make-vs-buy threshold for in-house AI platform development is empirically around $1-3B for IT services entities. Below that, foundation model APIs from OpenAI / Anthropic / Google are typically cheaper and faster. The methodology framework is to compute your specific threshold, not copy TCS\'s answer.</li>
+    <li><strong>AI-controls expectations apply to you with the same force as TCS, with less existing controls infrastructure.</strong> TCS is mature in internal controls from years of large-cap Companies Act compliance. Smaller peers have lighter existing controls + the same DPDP / ICAI guidance / audit-committee scrutiny of AI-augmented finance work. Scope the controls work earlier to avoid an audit-cycle surprise.</li>
+    <li><strong>Multi-cloud + multi-foundation-model strategy can be a genuine accident at your scale.</strong> TCS\'s multi-cloud is deliberate; for smaller peers, the same multi-vendor footprint is often accreted (different BUs picked different tools) rather than chosen. The consolidation lift is materially larger as a percentage of total spend for entities below ~$5B revenue.</li>
+    <li><strong>RCM gap quantum scales linearly with foreign-vendor spend, not with revenue.</strong> An entity 1/10th the revenue of TCS with similar foreign-vendor mix has roughly 1/10th the absolute RCM gap, but the recovery effort is proportionally similar. The methodology applies at every scale.</li>
+  </ol>
+
+  <h2>How a real engagement differs from this demonstration</h2>
+
+  <p>Same hard ceiling as the Infosys demonstration. Methodology on public data can show framework + direction + observations defensible to an external analyst, but cannot quantify the specific opportunity inside any specific entity. A real BatchWise AI engagement at TCS-scale would add internal spend data, contract review, stakeholder interviews, reconciliation working papers, quantified roadmap, and an audit-committee deliverable. At TCS scale, this is a Big-4-managed engagement; BatchWise AI is positioned at the mid-market scale tier below, not for entities at this revenue band.</p>
+
+  <h2>For peer CFOs evaluating BatchWise AI</h2>
+
+  <p>If you are the CFO of a mid-market Indian IT services entity (₹50-2,000 crore revenue, foreign vendor spend material) and this methodology demonstration is useful, the engagement model is published:</p>
+
+  <ul>
+    <li><a href="/ai/methodology/ai-systems-review-india/">AI Systems Review methodology</a> — full 6-domain framework</li>
+    <li><a href="/ai/methodology/ai-spend-tax-optimisation-india/">AI Spend &amp; Tax Optimisation methodology</a> — 5 tax sub-domains</li>
+    <li><a href="/consult/?service=ai-systems-review">Schedule a discovery call</a> — 30 minutes, free, output is a written scope proposal</li>
+  </ul>
+
+  <h2>Sources</h2>
+  <ul>
+    <li><a href="https://www.tcs.com/who-we-are/investor-relations/financial-statements">TCS Limited — Annual Reports + Financial Statements</a></li>
+    <li><a href="https://www.tcs.com/who-we-are/newsroom/press-release/tcs-financial-results-q4-fy-2025">TCS Q4 FY25 Press Release</a></li>
+    <li><a href="https://www.tcs.com/investor-relations/quarterly-takeaways/tcs-fy25-year-end-debrief">TCS FY24-25 Year-End Debrief</a></li>
+    <li><a href="https://www.tcs.com/what-we-do/products-platforms/wisdomnext">TCS WisdomNext</a> — GenAI platform documentation</li>
+    <li><a href="https://www.ignio.ai/">TCS ignio</a> — AIOps platform documentation</li>
+    <li>TCS quarterly earnings call transcripts FY 2024-25 — Q1, Q2, Q3, Q4</li>
+  </ul>
+</CommercialLayout>
+
+<style>
+  .meta-byline { font-size: 0.875rem; color: var(--color-muted); margin: 0 0 2rem; padding: 0.75rem 1rem; background: color-mix(in srgb, var(--color-accent) 4%, transparent); border-left: 3px solid var(--color-accent); border-radius: 0 6px 6px 0; }
+  .meta-byline a { color: var(--color-accent); text-decoration: underline; }
+  .callout { padding: 1rem 1.25rem; border-radius: 6px; margin: 1.5rem 0; }
+  .callout--important { background: color-mix(in srgb, #B45309 6%, transparent); border-left: 4px solid #B45309; }
+  .callout p { margin: 0; font-size: 0.9375rem; }
+  table.data { width: 100%; border-collapse: collapse; margin: 1rem 0 1.5rem; font-size: 0.9375rem; }
+  table.data th { background: var(--color-accent); color: #fff; text-align: left; padding: 0.625rem 0.875rem; font-weight: 600; }
+  table.data td { padding: 0.625rem 0.875rem; border-bottom: 1px solid var(--color-border); vertical-align: top; }
+  .caveat { font-size: 0.875rem; color: var(--color-muted); padding: 0.875rem 1rem; background: color-mix(in srgb, var(--color-accent) 4%, transparent); border-left: 3px solid var(--color-accent); border-radius: 0 6px 6px 0; margin: 1rem 0 1.5rem; }
+</style>

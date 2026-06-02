@@ -1,0 +1,317 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import { SITE } from '@/lib/site';
+
+const CAL_URL = 'https://cal.com/ravi-patel-rips6a/quick-chat';
+const TALLY_URL = 'https://tally.so/r/44zBKo';
+
+const serviceSchemas = [
+  {
+    '@context': 'https://schema.org',
+    '@type': 'Service',
+    serviceType: 'Advisory diagnostic engagement',
+    name: 'AI Systems Review',
+    description:
+      'Independent founder-delivered review of AI systems, AI spend, vendor consolidation, model selection, and governance. Six-domain diagnostic for mid-market companies with material AI exposure.',
+    provider: {
+      '@type': 'Person',
+      name: 'Ravi Patel',
+      url: SITE.url,
+    },
+    areaServed: { '@type': 'Country', name: 'India' },
+    audience: {
+      '@type': 'BusinessAudience',
+      audienceType:
+        'Mid-market CFOs and CTOs with material AI/cloud spend',
+    },
+    offers: {
+      '@type': 'AggregateOffer',
+      priceCurrency: 'INR',
+      lowPrice: '200000',
+      highPrice: '1500000',
+      offerCount: '1',
+      description:
+        'Bespoke pricing tailored to entity size, AI spend depth, and regulatory complexity. Free 30-minute discovery call defines exact scope.',
+    },
+    url: `${SITE.url}/services/`,
+  },
+  {
+    '@context': 'https://schema.org',
+    '@type': 'Service',
+    serviceType: 'Advisory diagnostic engagement',
+    name: 'AI Spend & Tax Optimisation',
+    description:
+      'Tax-recovery diagnostic on AI / cloud / SaaS spend. GST input credit, Section 195 TDS, Reverse Charge Mechanism, capex vs opex classification, transfer pricing on cross-entity AI cost allocation.',
+    provider: {
+      '@type': 'Person',
+      name: 'Ravi Patel',
+      url: SITE.url,
+    },
+    areaServed: { '@type': 'Country', name: 'India' },
+    audience: {
+      '@type': 'BusinessAudience',
+      audienceType:
+        'Indian mid-market CFOs with material foreign AI / SaaS / cloud spend',
+    },
+    offers: {
+      '@type': 'AggregateOffer',
+      priceCurrency: 'INR',
+      lowPrice: '50000',
+      highPrice: '300000',
+      offerCount: '1',
+      description:
+        'Bespoke pricing tailored to entity size, foreign vendor exposure, and historic period covered. Free 30-minute discovery call defines exact scope.',
+    },
+    url: `${SITE.url}/services/`,
+  },
+  {
+    '@context': 'https://schema.org',
+    '@type': 'Service',
+    serviceType: 'Ongoing advisory',
+    name: 'LLM FinOps Coaching',
+    description:
+      'Ongoing monthly retainer to coach an engineering or finance team through implementing LLM FinOps discipline — cost attribution, caching, model routing, and governance — without hiring a full-time specialist.',
+    provider: {
+      '@type': 'Person',
+      name: 'Ravi Patel',
+      url: SITE.url,
+    },
+    areaServed: { '@type': 'Country', name: 'India' },
+    audience: {
+      '@type': 'BusinessAudience',
+      audienceType:
+        'Engineering or finance teams shipping AI products without a dedicated FinOps function',
+    },
+    url: `${SITE.url}/services/`,
+  },
+];
+---
+
+<BaseLayout
+  title="Services — Work with Ravi"
+  description="Three ways to work with me on LLM FinOps + AI spend: AI Systems Review, AI Spend & Tax Optimisation, and ongoing LLM FinOps coaching. Free 30-min discovery call."
+>
+  {serviceSchemas.map((schema) => (
+    <script type="application/ld+json" set:html={JSON.stringify(schema)} />
+  ))}
+
+  <article class="container prose">
+    <h1>Work with Ravi</h1>
+    <p class="lede">
+      I run three production AI SaaS solo (<a href="https://ssimplifi.com">Prism</a>,
+      <a href="https://citare.ai">Citare</a>, <a href="https://batchwise.ai">BatchWise</a>)
+      and write about the actual mechanics of LLM FinOps. If your AI spend
+      is meaningful and you want practitioner-level help — not a Big-4-style
+      slide deck — here's how to engage.
+    </p>
+
+    <div class="cta-row primary">
+      <a href={CAL_URL} class="cta cta-primary" rel="noopener">
+        Book a 30-min call
+        <span class="cta-note">No prep needed. Free.</span>
+      </a>
+      <a href={TALLY_URL} class="cta cta-secondary" rel="noopener">
+        Send context first
+        <span class="cta-note">2 min form. I respond within 24h.</span>
+      </a>
+    </div>
+
+    <h2>Who I work with</h2>
+    <p>
+      Indian mid-market companies (typically ₹50 crore - ₹2,000 crore revenue)
+      with material AI / cloud spend, and solo founders or small engineering
+      teams running production AI products with monthly LLM bills above $10K.
+      If your AI bill is under $1K/mo, you don't need me yet — read
+      <a href="/blog/finops/what-is-llm-finops/">the LLM FinOps explainer</a>
+      and the
+      <a href="/blog/stack/production-stack-2026/">$5/month production stack</a>
+      first.
+    </p>
+
+    <h2>What I do</h2>
+
+    <section class="service">
+      <h3>1. AI Systems Review</h3>
+      <p class="service-meta">
+        <strong>Bespoke ₹2-15L</strong> · 4-8 weeks · founder-delivered
+      </p>
+      <p>
+        Six-domain independent review across AI spend attribution, vendor
+        consolidation, model selection, cloud architecture for AI workloads,
+        Indian regulatory overlay (SEBI / ICAI / DPDP / RBI), and internal
+        controls. Output: written report with findings, quantified
+        optimisation roadmap, governance framework, and executive deck.
+      </p>
+      <p>
+        Not a statutory audit. Advisory in nature; you retain decision authority.
+      </p>
+    </section>
+
+    <section class="service">
+      <h3>2. AI Spend & Tax Optimisation</h3>
+      <p class="service-meta">
+        <strong>Bespoke ₹50K-3L</strong> · 2-4 weeks · founder-delivered
+      </p>
+      <p>
+        Tax-recovery diagnostic across five sub-domains: GST input credit on
+        AI / cloud imports, Section 195 TDS reconciliation with DTAA relief,
+        Reverse Charge Mechanism on imported services, capex vs opex
+        classification under Ind AS, transfer pricing on cross-entity AI cost
+        allocation. Output: quantified recovery roadmap your existing CA can
+        execute against.
+      </p>
+      <p>
+        Not a tax opinion or filing service. Diagnostic only; implementation
+        runs through your existing CA firm.
+      </p>
+    </section>
+
+    <section class="service">
+      <h3>3. LLM FinOps Coaching</h3>
+      <p class="service-meta">
+        <strong>Monthly retainer, scope-dependent</strong> · ongoing
+      </p>
+      <p>
+        Embedded coaching for an engineering or finance team implementing LLM
+        FinOps discipline — cost attribution architecture, caching, model
+        routing, retry hygiene, governance — without hiring a full-time
+        specialist. Two calls per month plus async review of code and
+        dashboards.
+      </p>
+      <p>
+        Fit: teams with $10K-$100K/mo LLM spend who want capability inside
+        the team, not a vendor relationship.
+      </p>
+    </section>
+
+    <h2>Why bespoke pricing</h2>
+    <p>
+      Engagement scope varies too much across entities for fixed tiers to be
+      honest. A multi-BU group with ₹50 crore annual AI spend and EU
+      subsidiary exposure has fundamentally different requirements than a
+      single-entity SaaS with ₹3 crore spend. The free 30-minute discovery
+      call produces a written scope proposal with the exact price before any
+      commitment. No pressure. If we're not the right fit, I'll say so.
+    </p>
+
+    <h2>How to start</h2>
+    <p>
+      Two paths, both free:
+    </p>
+    <ul>
+      <li>
+        <strong><a href={CAL_URL} rel="noopener">Book a 30-min call</a></strong>
+        — for when you'd rather talk through the situation than write it down.
+      </li>
+      <li>
+        <strong><a href={TALLY_URL} rel="noopener">Send context first via the intake form</a></strong>
+        — for when you want me to read up before we talk, or when async
+        written response is a better fit than a call. I read every form
+        personally and respond within 24h Mon-Fri.
+      </li>
+    </ul>
+
+    <div class="cta-row secondary">
+      <a href={CAL_URL} class="cta cta-primary" rel="noopener">Book a 30-min call</a>
+      <a href={TALLY_URL} class="cta cta-secondary" rel="noopener">Send context first</a>
+    </div>
+
+    <h2>About me</h2>
+    <p>
+      I'm Ravi Patel. I built and ship three production AI SaaS solo —
+      <a href="https://ssimplifi.com">Prism</a> (an OpenAI-compatible AI
+      gateway competing with Portkey and Helicone),
+      <a href="https://citare.ai">Citare</a> (AI search visibility tracker
+      across AIO / ChatGPT / Perplexity / Gemini), and
+      <a href="https://batchwise.ai">BatchWise</a> (Indian compliance
+      marketplace). I write practitioner notes on the work at
+      <a href="/">rikuq.com</a>.
+    </p>
+    <p>
+      The advisory practice exists because of a structural gap in the market:
+      technologists deep enough to optimise LLM infrastructure usually don't
+      do finance work, and finance professionals deep enough to handle
+      Section 195 / GST RCM / Ind AS classification usually don't understand
+      AI infrastructure well enough to optimise it. I sit in that gap and
+      have shipped enough production AI to know what actually breaks vs.
+      what only looks scary on a slide.
+    </p>
+
+    <p class="footer-note">
+      For deeper context on what this work looks like in practice, the
+      <a href="/blog/finops/">finops</a> section of the blog covers
+      attribution architecture, prompt caching, cost-vs-quality trade-offs,
+      and Indian regulatory specifics.
+    </p>
+  </article>
+</BaseLayout>
+
+<style>
+  .lede {
+    font-size: 1.1rem;
+    color: var(--fg-muted);
+    margin-bottom: 2rem;
+  }
+  .cta-row {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+    margin: 2rem 0 3rem;
+  }
+  .cta-row.secondary {
+    margin: 2rem 0;
+  }
+  .cta {
+    flex: 1 1 240px;
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+    padding: 1rem 1.25rem;
+    border-radius: 8px;
+    text-decoration: none;
+    transition: transform 0.1s ease, box-shadow 0.1s ease;
+    line-height: 1.3;
+  }
+  .cta:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+  }
+  .cta-primary {
+    background: var(--accent, #f5b942);
+    color: #0a0b0e;
+    font-weight: 600;
+  }
+  .cta-secondary {
+    background: transparent;
+    color: var(--fg);
+    border: 1px solid var(--border);
+    font-weight: 500;
+  }
+  .cta-note {
+    font-size: 0.82rem;
+    font-weight: 400;
+    opacity: 0.8;
+  }
+  .service {
+    margin: 2rem 0;
+    padding: 1.25rem 1.5rem;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    background: var(--bg-subtle, rgba(245, 185, 66, 0.03));
+  }
+  .service h3 {
+    margin-top: 0;
+  }
+  .service-meta {
+    font-size: 0.9rem;
+    color: var(--fg-muted);
+    margin: -0.5rem 0 1rem;
+  }
+  .footer-note {
+    margin-top: 3rem;
+    font-size: 0.92rem;
+    color: var(--fg-muted);
+    border-top: 1px solid var(--border);
+    padding-top: 1.5rem;
+  }
+</style>

@@ -28,7 +28,7 @@ faqs:
   - question: "When does LLM FinOps need a dedicated professional?"
     answer: "When your annual AI spend crosses roughly ₹2 crore (~$240K USD) or when you're an SEBI-listed company subject to MCA/SEBI AI disclosure requirements. At that scale, the savings from professional optimization typically pay for the engagement many times over within the first year, and the regulatory exposure of not having documented AI governance becomes material. Below that scale, DIY using the patterns in this post is usually sufficient."
   - question: "Are traditional CAs equipped to do LLM FinOps work?"
-    answer: "Most aren't, because LLM cost optimization requires understanding the technology side — caching architectures, prompt engineering, model selection trade-offs, retry semantics — at a level that's outside traditional CA training. CAs are excellent at tax structure, GST ITC recovery on AI spend, and compliance documentation; the optimization side requires a builder's understanding of how the systems actually work. The gap is structural: technologists don't usually do finance, finance professionals don't usually understand AI infrastructure deeply enough to optimize it. Filling that gap is exactly the practice I run at [batchwise.ai/ai](https://batchwise.ai/ai)."
+    answer: "Most aren't, because LLM cost optimization requires understanding the technology side — caching architectures, prompt engineering, model selection trade-offs, retry semantics — at a level that's outside traditional CA training. CAs are excellent at tax structure, GST ITC recovery on AI spend, and compliance documentation; the optimization side requires a builder's understanding of how the systems actually work. The gap is structural: technologists don't usually do finance, finance professionals don't usually understand AI infrastructure deeply enough to optimize it. Filling that gap is exactly the practice I run at [rikuq services](/services)."
 ---
 
 In 2014, FinOps emerged as a discipline because companies started spending real money on cloud infrastructure with zero accountability for who consumed what. Engineers spun up instances; finance got the bill; nobody connected the two. The FinOps Foundation formed to fix this, and a decade later, "cloud FinOps" is a recognized function with tools, certifications, and dedicated teams at most companies above mid-market scale.
@@ -39,7 +39,7 @@ We are exactly at that 2014 moment again — but with AI spend instead of cloud 
 
 This post defines the discipline, walks through the three audiences it serves, and ends with what to do if you're in any of them.
 
-I'm Ravi. I run three production AI SaaS solo — [Prism](https://ssimplifi.com) (an AI gateway with caching + FinOps controls built in), [Citare](https://citare.ai), [BatchWise](https://batchwise.ai) — and an advisory practice doing this work professionally for mid-market Indian companies at [batchwise.ai/ai](https://batchwise.ai/ai). I write both sides: the technical implementation and the financial structure. That's the gap LLM FinOps lives in.
+I'm Ravi. I run three production AI SaaS solo — [Prism](https://ssimplifi.com) (an AI gateway with caching + FinOps controls built in), [Citare](https://citare.ai), [BatchWise](https://batchwise.ai) — and an advisory practice doing this work professionally for mid-market Indian companies at [rikuq services](/services). I write both sides: the technical implementation and the financial structure. That's the gap LLM FinOps lives in.
 
 ## TL;DR
 
@@ -65,14 +65,14 @@ The cost model is fundamentally different. Token pricing varies by model, by dir
 
 In cloud FinOps, runaway costs typically come from infrastructure misconfiguration — a forgotten test instance, an over-provisioned database. The patterns are well-known; the tools detect them.
 
-In LLM workloads, runaway costs come from places cloud FinOps doesn't watch: insufficient `max_tokens` triggering retry loops, prompts that accidentally request 8K-token outputs when 500 would suffice, model selection mistakes that route trivial classification tasks to expensive Opus calls. [I burned $20 in one afternoon on a retry loop](/blog/infra/anthropic-prompt-caching-real-numbers) precisely because no cost-monitoring tool was watching for the pattern.
+In LLM workloads, runaway costs come from places cloud FinOps doesn't watch: insufficient `max_tokens` triggering retry loops, prompts that accidentally request 8K-token outputs when 500 would suffice, model selection mistakes that route trivial classification tasks to expensive Opus calls. [I burned $20 in one afternoon on a retry loop](/blog/infra/anthropic-prompt-caching-real-numbers/) precisely because no cost-monitoring tool was watching for the pattern.
 
 **3. The optimization levers are unfamiliar.**
 
 Cloud FinOps optimization tools recommend rightsizing instances, switching reserved/spot capacity, shutting down idle resources. None of these apply to LLM spend.
 
 LLM optimization levers are:
-- **Prompt caching** ([35% workload reduction on the right shape](/blog/infra/anthropic-prompt-caching-real-numbers))
+- **Prompt caching** ([35% workload reduction on the right shape](/blog/infra/anthropic-prompt-caching-real-numbers/))
 - **Model selection routing** (Sonnet/Haiku for routine, Opus only for hard reasoning)
 - **Output schema discipline** (structured JSON outputs instead of free-form prose)
 - **Retry semantics** (hard caps, exponential backoff, never unbounded)
@@ -97,7 +97,7 @@ You're a CTO, VP Engineering, or Head of Platform at a company with $50K+/month 
 
 [Prism](https://ssimplifi.com) is built explicitly for this audience — gateway-as-FinOps-layer. The dashboard surfaces per-feature cost (via `X-Prism-Tags`), the policy layer enforces budgets, the routing engine handles the multi-provider optimization, and every cached request shows up with a real savings number.
 
-If you're building this in-house, you'll re-invent: a request gateway, a cost-tagging schema, a budget enforcement mechanism, an anomaly detector, and a multi-provider routing layer. Six months of engineering. Or use Prism / Portkey / Helicone — covered in depth in [the comparison post](/blog/infra/portkey-vs-helicone-vs-litellm-vs-openrouter) *(coming soon)*.
+If you're building this in-house, you'll re-invent: a request gateway, a cost-tagging schema, a budget enforcement mechanism, an anomaly detector, and a multi-provider routing layer. Six months of engineering. Or use Prism / Portkey / Helicone — covered in depth in [the comparison post](/blog/infra/portkey-vs-helicone-vs-litellm-vs-openrouter/).
 
 ### Frame B: AI bill protection (solo founder, small team)
 
@@ -105,7 +105,7 @@ You're a solo founder or 2-5 person team. Your monthly AI bill is $50-2,000 righ
 
 The lightweight LLM FinOps playbook for this scale:
 
-1. **Enable Anthropic native prompt caching on day one.** ([How.](/blog/infra/anthropic-prompt-caching-real-numbers)) Single parameter, 25-35% savings on the right workloads.
+1. **Enable Anthropic native prompt caching on day one.** ([How.](/blog/infra/anthropic-prompt-caching-real-numbers/)) Single parameter, 25-35% savings on the right workloads.
 2. **Set hard retry caps.** Maximum 3 attempts, exponential backoff, then surface failure. Never let retry loops run unattended.
 3. **Generously provision `max_tokens`.** Set 2× what you think you'll need. The cost of overprovisioning is small; the cost of truncate-into-retry loops is large.
 4. **Use the cheapest model that works.** Sonnet is usually right; Opus only for tasks Sonnet measurably fails at. Try Haiku for classification before assuming you need Sonnet.
@@ -136,13 +136,13 @@ The answer often isn't to cut AI features; it's to re-price them, gate them, or 
 
 The structural problem with LLM FinOps as a discipline:
 
-- **Most CAs (or US/EU equivalent: CPAs, controllers, FP&A leads) don't understand the technology well enough.** They can analyze the bill but can't recommend the technical optimization. Telling a CFO "we should use semantic caching" without understanding when it pays off (and when it doesn't — [our data shows](/blog/infra/anthropic-prompt-caching-real-numbers) it's ROI-negative below 10K calls/month) is worse than no recommendation.
+- **Most CAs (or US/EU equivalent: CPAs, controllers, FP&A leads) don't understand the technology well enough.** They can analyze the bill but can't recommend the technical optimization. Telling a CFO "we should use semantic caching" without understanding when it pays off (and when it doesn't — [our data shows](/blog/infra/anthropic-prompt-caching-real-numbers/) it's ROI-negative below 10K calls/month) is worse than no recommendation.
 
 - **Most AI engineers don't think about cost structurally.** They optimize for capability — "what model gives the best answer?" — without weighing the dollars. Asked to recommend a model, they'll pick the best one regardless of price. This is the right instinct for product quality but the wrong instinct for FinOps.
 
 - **The intersection is rare.** Technologists who do finance, or finance professionals who understand AI infrastructure deeply enough to optimize it, is a small population. The discipline is staffed slowly because the qualified pool is small.
 
-This is exactly the gap I work in at [batchwise.ai/ai](https://batchwise.ai/ai). I'm a builder who shipped three production AI SaaS at scale; the technical optimization comes from doing the work, not from reading about it. I'm also building toward the Indian regulatory side — SEBI's January 2026 AI disclosure mandates, GST input tax credit on cloud and AI spend, Section 195 TDS on foreign AI vendor payments — because the technical optimization without the financial structure leaves money on the table.
+This is exactly the gap I work in at [rikuq services](/services). I'm a builder who shipped three production AI SaaS at scale; the technical optimization comes from doing the work, not from reading about it. I'm also building toward the Indian regulatory side — SEBI's January 2026 AI disclosure mandates, GST input tax credit on cloud and AI spend, Section 195 TDS on foreign AI vendor payments — because the technical optimization without the financial structure leaves money on the table.
 
 The advisory practice serves mid-market Indian companies with ₹2+ crore annual AI spend who need both sides done well. Below that scale, the DIY playbook in this post is usually sufficient; above it, the savings from professional optimization typically pay for the engagement many times over within the first year.
 
@@ -184,34 +184,48 @@ If you can't check most of those boxes, you have LLM FinOps debt. The debt compo
 Pick by your situation:
 
 **If you're a solo founder doing this DIY:**
-- Start with [the prompt caching playbook](/blog/infra/anthropic-prompt-caching-real-numbers) — it covers the highest-impact technical patterns
+- Start with [the prompt caching playbook](/blog/infra/anthropic-prompt-caching-real-numbers/) — it covers the highest-impact technical patterns
 - Set up retry caps + cost alerts today (literally today)
 - Skim the maturity model above and identify your step. Climb one step every quarter.
 
 **If you're at engineering-leadership scale ($50K+/month AI spend):**
-- Pick a gateway/observability layer. [Prism vs Portkey vs Helicone vs LiteLLM vs OpenRouter comparison post](/blog/infra/portkey-vs-helicone-vs-litellm-vs-openrouter) *(coming soon)* — until then, the short version: Portkey for observability-first, Helicone for clean logging, [Prism (my own)](https://ssimplifi.com) for measured savings + edge cache + governance unified.
+- Pick a gateway/observability layer. [Prism vs Portkey vs Helicone vs LiteLLM vs OpenRouter comparison post](/blog/infra/portkey-vs-helicone-vs-litellm-vs-openrouter/) — until then, the short version: Portkey for observability-first, Helicone for clean logging, [Prism (my own)](https://ssimplifi.com) for measured savings + edge cache + governance unified.
 - Get to cost attribution (step 3) within 90 days.
 - Build the monthly review cadence.
 
 **If you're an Indian mid-market company (₹2+ crore AI spend, listed or pre-listing):**
-- Either build the internal function or engage outside advisory. The new SEBI/MCA disclosure requirements (live January 2026) make the documentation side mandatory regardless.
-- For context on the Indian regulatory layer + the optimization side together, my advisory practice at [batchwise.ai/ai](https://batchwise.ai/ai) covers exactly this. Free 30-minute discovery call if useful.
+- Either build the internal function or engage outside advisory. The evolving Indian AI-governance frame (DPDP Act 2023, ICAI voluntary AI assurance guidance, and SEBI's June 2025 AI/ML consultation paper — applicable today to MIIs, intermediaries, and mutual funds, still in consultation for the broader market) makes the documentation side increasingly expected regardless.
+- For context on the Indian regulatory layer + the optimization side together, my advisory practice at [rikuq services](/services) covers exactly this. Free 30-minute discovery call if useful.
 
 ## The bottom line
 
 LLM FinOps is the discipline that turns AI from a cost-of-magic line item into a managed cost-of-goods like any other infrastructure spend. The companies that develop this discipline early will defend their margins as AI spend grows. The ones that don't will lose them.
 
-The good news: most of the discipline is DIY-able for solo and small-team operators using the patterns in this post and in [the prompt caching deep dive](/blog/infra/anthropic-prompt-caching-real-numbers). The professional layer exists for the scale and regulatory contexts that need it.
+The good news: most of the discipline is DIY-able for solo and small-team operators using the patterns in this post and in [the prompt caching deep dive](/blog/infra/anthropic-prompt-caching-real-numbers/). The professional layer exists for the scale and regulatory contexts that need it.
 
 Either way — start now. AI bills double faster than cloud bills did.
 
 ## Related reading
 
-- **[Anthropic Prompt Caching: Real Numbers From 330 Production Calls](/blog/infra/anthropic-prompt-caching-real-numbers)** — the data behind the optimization claims here
-- **[How I Run 3 Production AI SaaS on $5/Month of Hosting](/blog/stack/production-stack-2026)** — what LLM FinOps discipline looks like at the bootstrapped end
-- **[Claude Code Review 2026 — From Zero Code to 3 Live SaaS](/blog/tools/claude-code-review)** — the Anthropic Max plan as a FinOps move
-- **[Portkey vs Helicone vs LiteLLM vs OpenRouter](/blog/infra/portkey-vs-helicone-vs-litellm-vs-openrouter)** *(coming soon)* — the gateway/observability landscape
-- **[batchwise.ai/ai](https://batchwise.ai/ai)** — the advisory practice for mid-market Indian companies needing this done professionally
+**The FinOps frameworks and mechanics:**
+
+- **[The FinOps Foundation Framework: A Practitioner's Walkthrough](/blog/finops/finops-foundation-framework-2026/)** — the reference architecture this discipline is built on (phases, capabilities, 2026 updates)
+- **[FinOps vs ITFM vs ITAM: Why You Eventually Need All Three](/blog/finops/finops-vs-itfm-vs-itam-2026/)** — where LLM FinOps sits relative to the adjacent cost disciplines
+- **[Why LLM Gateway Attribution Is Harder Than Cloud FinOps Ever Was](/blog/finops/llm-gateway-attribution-harder-than-cloud-finops/)** — the attribution layer that's the hardest part of the discipline
+- **[AI Cost Allocation: Models That Work in Indian Production](/blog/finops/ai-cost-allocation-india-2026/)** — showback vs chargeback, dimensions, tag enforcement
+
+**The Indian regulatory + tax layer:**
+
+- **[AI Systems Review: A 6-Domain Framework You Can Run Internally](/blog/finops/ai-systems-review-framework-india-2026/)** — the operational + governance review framework
+- **[AI Tax Recovery for Indian CFOs: The 5-Domain Framework](/blog/finops/ai-tax-recovery-framework-india-2026/)** — GST ITC, Section 195, RCM, capex/opex, transfer pricing
+- **[AI / Cloud FinOps Providers in India: A Practitioner's Take](/blog/finops/ai-cloud-finops-providers-india-2026/)** — who fits what at the provider-selection layer
+
+**The optimization data + stack:**
+
+- **[Anthropic Prompt Caching: Real Numbers From 330 Production Calls](/blog/infra/anthropic-prompt-caching-real-numbers/)** — the data behind the optimization claims here
+- **[How I Run 3 Production AI SaaS on $5/Month of Hosting](/blog/stack/production-stack-2026/)** — what LLM FinOps discipline looks like at the bootstrapped end
+- **[Portkey vs Helicone vs LiteLLM vs OpenRouter](/blog/infra/portkey-vs-helicone-vs-litellm-vs-openrouter/)** — the gateway/observability landscape
+- **[rikuq services](/services)** — the advisory practice for mid-market Indian companies needing this done professionally
 
 ---
 

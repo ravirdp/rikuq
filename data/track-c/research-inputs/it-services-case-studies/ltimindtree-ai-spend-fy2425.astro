@@ -1,0 +1,147 @@
+---
+export const prerender = true;
+import CommercialLayout from '../../../layouts/CommercialLayout.astro';
+
+const title = 'Methodology Demonstration — LTIMindtree AI/Cloud Spend FY 2024-25';
+const description = 'Applying the BatchWise AI Systems Review + Tax Optimisation methodology to LTIMindtree publicly disclosed FY 2024-25 financials. No engagement with LTIMindtree.';
+const lede = 'This page applies the BatchWise AI Systems Review and AI Spend & Tax Optimisation methodology to LTIMindtree Limited publicly disclosed FY 2024-25 financial data. LTIMindtree is the post-merger combined entity (LTI + Mindtree, merger completed November 2022) and a subsidiary of the Larsen & Toubro conglomerate — a structurally interesting reference for entities navigating integration-period spend rationalisation. BatchWise has no engagement with LTIMindtree; this page makes no claim of delivered work.';
+const canonicalPath = '/ai/case-studies/ltimindtree-ai-spend-fy2425/';
+
+const jsonLdBlocks = [
+  {
+    '@context': 'https://schema.org',
+    '@type': 'Article',
+    headline: title,
+    description,
+    author: {
+      '@type': 'Person',
+      name: 'Ravi Patel',
+      jobTitle: 'Founder, Editor-in-charge',
+      url: 'https://rikuq.com',
+      image: 'https://batchwise.ai/avatars/ravi.webp',
+      sameAs: ['https://rikuq.com', 'https://www.linkedin.com/in/ravirdp/', 'https://github.com/ravirdp', 'https://x.com/ravirdp', 'https://batchwise.ai/editorial-team/'],
+    },
+    publisher: { '@type': 'Organization', name: 'BatchWise', url: 'https://batchwise.ai/' },
+    creator: { '@type': 'Organization', name: 'BatchWise', url: 'https://batchwise.ai/' },
+    url: 'https://batchwise.ai/ai/case-studies/ltimindtree-ai-spend-fy2425/',
+    datePublished: '2026-05-22',
+    dateModified: '2026-05-22',
+    inLanguage: 'en-IN',
+    isBasedOn: [
+      { '@type': 'CreativeWork', name: 'LTIMindtree Integrated Annual Report 2024-25', url: 'https://www.ltimindtree.com/annual-report-html/' },
+      { '@type': 'CreativeWork', name: 'LTIMindtree Q4 FY25 Press Release', url: 'https://www.ltimindtree.com/news-event/ltimindtree-revenue-up-7-inr-q4fy25/' },
+    ],
+  },
+];
+
+const faqs = [
+  {
+    q: 'Has BatchWise been engaged by LTIMindtree?',
+    a: 'No. This is an independent analysis of publicly disclosed financial data from LTIMindtree Limited\'s FY 2024-25 reporting cycle. BatchWise has no engagement with LTIMindtree and makes no claim of delivered work.',
+  },
+  {
+    q: 'Why LTIMindtree as a methodology demonstration target?',
+    a: 'Three reasons. (1) LTIMindtree is a post-merger combined entity (LTI + Mindtree, merger completed November 2022) — the integration-period spend rationalisation story is structurally interesting and applies to entities going through M&A integration where vendor consolidation is part of integration synergy capture. (2) LTIMindtree is a subsidiary of the Larsen & Toubro conglomerate — a different parent-subsidiary cost-allocation structure than the pure-standalone peers (Infosys, TCS, HCLTech). (3) Strategic Partnership Agreements with all three hyperscalers (AWS, GCP, Microsoft) creates an interesting tension between portfolio negotiation leverage and consolidation discipline.',
+  },
+  {
+    q: 'How is LTIMindtree different from larger peers for this methodology?',
+    a: 'Two structural differences. (1) Post-merger entity — vendor and contract overlap from LTI + Mindtree pre-merger legacies persists for years; the FY25 reporting cycle is the third post-merger year so consolidation should be largely complete, but pockets of overlap remain. The methodology applied to LTIMindtree would specifically surface integration-residual vendor overlap. (2) L&T parent context — cross-entity AI cost allocation between LTIMindtree and other L&T group entities (L&T Technology Services, L&T itself for the engineering/infra work) is a real transfer pricing matter not present in pure-standalone IT services peers.',
+  },
+  {
+    q: 'What did LTIMindtree publicly disclose about AI in FY 2024-25?',
+    a: 'AI-led deal wins were the dominant narrative driving the $6 billion FY25 order inflow (+6% YoY). Key disclosures: (a) Strategic Partnership Agreement with Google announced — agentic AI cloud transformation; (b) Microsoft credentials expanded with 10 specialisations including AI app development on Azure; (c) ai-led deal wins drove robust order inflow; (d) 700+ client base supports diversified AI deployment. Specific AI revenue, AI capex, AI-specific spend not separately disclosed.',
+  },
+  {
+    q: 'What does the analysis NOT show?',
+    a: 'Same categories as Infosys / TCS / HCLTech demonstrations — specific AI vendor spend; AI revenue contribution; integration-residual vendor overlap quantification; L&T group cross-entity cost allocation methodology; RCM and Section 195 TDS specifics; internal controls evidence. These require client cooperation.',
+  },
+];
+---
+
+<CommercialLayout title={title} description={description} lede={lede} canonicalPath={canonicalPath} jsonLdBlocks={jsonLdBlocks} faqs={faqs}>
+  <p class="meta-byline">By <a href="https://rikuq.com" rel="author">Ravi Patel</a> — Founder, BatchWise. Published 22 May 2026. Methodology demonstration on public data; refreshes when LTIMindtree publishes FY 2025-26 results.</p>
+
+  <div class="callout callout--important">
+    <p><strong>Disclosure discipline.</strong> Methodology demonstration on publicly disclosed financial data from LTIMindtree Limited\'s FY 2024-25 reporting cycle. BatchWise has no engagement with LTIMindtree. No claim of delivered work. ASCI Code + Consumer Protection Act 2019 substantiation-compliant.</p>
+  </div>
+
+  <h2>Headline financial markers (FY 2024-25, publicly disclosed)</h2>
+
+  <table class="data">
+    <thead><tr><th>Marker</th><th>FY 2024-25 value</th><th>Source</th></tr></thead>
+    <tbody>
+      <tr><td>Total revenue</td><td>₹38,008 crore / ~$4.49 billion (+7.0% YoY INR; +5% constant currency)</td><td>Q4 FY25 press release</td></tr>
+      <tr><td>EBIT margin</td><td>14.5%</td><td>Q4 FY25 press release</td></tr>
+      <tr><td>Order inflow FY25</td><td>$6 billion (+6% YoY)</td><td>Q4 FY25 press release</td></tr>
+      <tr><td>Client base</td><td>700+ digital transformation clients</td><td>Integrated Annual Report 2024-25</td></tr>
+      <tr><td>Hyperscaler Strategic Partnership Agreements</td><td>All three: AWS, GCP, Microsoft Azure</td><td>FY25 press releases + AR 2024-25</td></tr>
+      <tr><td>Google partnership — Agentic AI cloud transformation</td><td>Announced FY25</td><td>FY25 press release</td></tr>
+      <tr><td>Microsoft specialisations</td><td>10 (added/retained, including AI app development + analytics on Azure)</td><td>FY25 press release</td></tr>
+      <tr><td>Post-merger context</td><td>Third post-merger reporting year (LTI + Mindtree merger Nov 2022)</td><td>Public M&A history</td></tr>
+      <tr><td>Listings</td><td>BSE/NSE only (not US-listed)</td><td>Public</td></tr>
+      <tr><td>AI revenue disclosure</td><td><strong>Not disclosed separately</strong></td><td>Management commentary FY25</td></tr>
+    </tbody>
+  </table>
+
+  <h2>Methodology application — LTIMindtree-specific angles</h2>
+
+  <h3>Post-merger integration residue (Domains 1 + 2)</h3>
+
+  <p>LTI + Mindtree pre-merger had largely overlapping hyperscaler partnerships, foundation model strategy, and ML tooling. Three post-merger years later, the consolidation should be largely complete but pockets of vendor + contract overlap typically persist — particularly in: (a) duplicate hyperscaler reserved-capacity commitments that pre-date the merger and were structured around individual entity volumes, (b) ML platform tooling (one of LTI vs Mindtree teams adopted the other\'s tooling but pockets retained legacy), (c) AI vendor SOWs signed by individual BUs in either pre-merger entity that didn\'t get rolled into the post-merger MSA. A methodology engagement at LTIMindtree would specifically surface integration-residual overlap — different from greenfield vendor consolidation analysis at pure-standalone peers.</p>
+
+  <h3>L&T group cross-entity cost allocation (Domain 6)</h3>
+
+  <p>LTIMindtree is a subsidiary of Larsen & Toubro Limited. Cross-entity AI cost allocation between LTIMindtree and L&T parent / sister entities (L&T Technology Services in engineering services; L&T itself for AI in infrastructure / construction operations) is a transfer pricing matter under Section 92 IT Act. Shared AI / cloud spend at the L&T group level allocated to LTIMindtree must satisfy arm\'s-length under OECD TP Guidelines Chapter VII. The methodology applies — public data does not enable quantification, but the framework is what an LTIMindtree CFO needs.</p>
+
+  <h3>Hyperscaler SPA depth (Domains 2 + 3)</h3>
+
+  <p>LTIMindtree\'s Strategic Partnership Agreements with all three hyperscalers (AWS, GCP, Azure) create both opportunity and complexity. Opportunity: portfolio negotiation leverage at scale; flexibility to route workloads to the lowest-cost-per-workload hyperscaler. Complexity: managing commitments and reserved-capacity discounts across three providers; risk of allocating spend in ways that fail to maximise any individual provider\'s tier-volume discount. A real engagement would quantify the trade-off between portfolio flexibility (multi-cloud) and concentration leverage (single-vendor commitments).</p>
+
+  <h3>AI Spend &amp; Tax overlay</h3>
+
+  <ul>
+    <li><strong>GST RCM</strong> on foreign AI/cloud spend — standard 18% IGST under Section 5(3) IGST Act; reconciliation against GSTR-3B Table 3.1(d) for past 24 months</li>
+    <li><strong>Section 195 TDS</strong> post EL 2.0 abolition (1 August 2024) — dual-regime reconciliation for FY 2024-25</li>
+    <li><strong>Cross-entity transfer pricing</strong> within L&T group — particularly relevant given the parent + sister-entity structure</li>
+    <li><strong>Post-merger transfer pricing</strong> — LTIMindtree itself has subsidiary structure across geographies; intra-group AI cost allocation persists from pre-merger periods and needs documentation review</li>
+  </ul>
+
+  <h2>What a peer CFO would draw from this</h2>
+
+  <ol>
+    <li><strong>Post-merger spend rationalisation has a long tail.</strong> Three years post-merger and integration-residual vendor overlap typically persists. If your entity is mid-integration or recently emerged from an M&A, scope the AI spend rationalisation specifically as part of integration synergy capture rather than as a standalone exercise.</li>
+    <li><strong>Subsidiary of a conglomerate parent creates structural TP complexity.</strong> Cross-entity cost allocation within a group is Big-4-managed at large scale, but the principles apply at any scale. If your entity is part of a larger group, scope cost allocation upstream into the engagement.</li>
+    <li><strong>Multi-hyperscaler strategy is deliberate at LTIMindtree scale but accidental at smaller scale.</strong> The portfolio-vs-concentration trade-off at $4-5B revenue is different from at $0.5B revenue. Methodology framework applies; conclusions differ.</li>
+  </ol>
+
+  <h2>How a real engagement differs</h2>
+
+  <p>Same as the Infosys, TCS, HCLTech demonstrations — the methodology demonstration on public data shows framework + direction; a real engagement would surface integration-residual vendor overlap, L&T group cross-entity allocation quantification, multi-hyperscaler portfolio optimisation arithmetic, and quantified RCM + TDS recovery roadmaps. Internal data access required.</p>
+
+  <h2>For peer CFOs evaluating BatchWise AI</h2>
+
+  <ul>
+    <li><a href="/ai/methodology/ai-systems-review-india/">AI Systems Review methodology</a></li>
+    <li><a href="/ai/methodology/ai-spend-tax-optimisation-india/">AI Spend &amp; Tax Optimisation methodology</a></li>
+    <li><a href="/consult/?service=ai-systems-review">Schedule a discovery call</a></li>
+  </ul>
+
+  <h2>Sources</h2>
+  <ul>
+    <li><a href="https://www.ltimindtree.com/annual-report-html/">LTIMindtree — Integrated Annual Report 2024-25</a></li>
+    <li><a href="https://www.ltimindtree.com/news-event/ltimindtree-revenue-up-7-inr-q4fy25/">LTIMindtree FY25 Q4 Press Release</a></li>
+    <li>LTIMindtree quarterly earnings call transcripts FY 2024-25</li>
+    <li>LTIMindtree + Google Cloud Strategic Partnership announcement (FY25)</li>
+  </ul>
+</CommercialLayout>
+
+<style>
+  .meta-byline { font-size: 0.875rem; color: var(--color-muted); margin: 0 0 2rem; padding: 0.75rem 1rem; background: color-mix(in srgb, var(--color-accent) 4%, transparent); border-left: 3px solid var(--color-accent); border-radius: 0 6px 6px 0; }
+  .meta-byline a { color: var(--color-accent); text-decoration: underline; }
+  .callout { padding: 1rem 1.25rem; border-radius: 6px; margin: 1.5rem 0; }
+  .callout--important { background: color-mix(in srgb, #B45309 6%, transparent); border-left: 4px solid #B45309; }
+  .callout p { margin: 0; font-size: 0.9375rem; }
+  table.data { width: 100%; border-collapse: collapse; margin: 1rem 0 1.5rem; font-size: 0.9375rem; }
+  table.data th { background: var(--color-accent); color: #fff; text-align: left; padding: 0.625rem 0.875rem; font-weight: 600; }
+  table.data td { padding: 0.625rem 0.875rem; border-bottom: 1px solid var(--color-border); vertical-align: top; }
+</style>
