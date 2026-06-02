@@ -271,3 +271,30 @@ or per-publication data hook from the 500-cell audit.
 Follow-up: if no reply by ~2026-06-04, send one polite nudge to the press
 contacts (brands often go quiet; press worth one chase). Log any pickup +
 DR in docs/backlink-tracker.md.
+
+## 2026-06-02 — X reply batch (20, posted) + HN hits
+
+### X / Twitter — 20 contribution-first replies POSTED 2026-06-02
+Built to grow following. Across 6 buckets (AI coding tools, LLM FinOps,
+GEO, AI infra, solo-founder, Indian ecosystem). Harvested via CiC (20
+tweets, 500-50k follower band, 6-12h fresh). Replies drafted in casual
+X voice (no em dashes, lowercase, fragments), contribution-first with
+soft data drops/plug only where natural. All 20 posted by Ravi.
+
+Highest-visibility plays: @timsoulo (51k, Ahrefs AI-search thread, only
+3 replies — audit data corroborated), @BharukaShraddha (32k, agent
+reliability — gateway experience), @Gavel_on_X (audit answered his
+closing Q on who wins AI citations).
+
+### HN reactive PR — 2 drafted (NOT yet posted)
+| Thread | Fit | Status |
+|---|---|---|
+| Ask HN: Tokenmaxxing vs Token Optimization (id=48345691) | LLM FinOps + Prism — reply drafted, links what-is-llm-finops | ⏳ draft ready |
+| Ask HN: agentic war stories in prod (id=48342441) | Prism/gateway — reply drafted, links gateway-attribution | ⏳ draft ready |
+| Ask HN: does your site show up in ChatGPT (id=48349193) | SKIP — poster building competitor "Agentable" (AI-readiness scanner) | competitive intel only |
+
+Reddit reactive PR BLOCKED this session: the .json trick got the IP
+soft-blocked after the Prism-prospecting query burst (403 on all sub
+endpoints). WebFetch can't reach reddit either. Fix = official Reddit
+API (praw + OAuth app, ~2 min setup) OR Claude-in-Chrome logged-in
+browser. Both portable across sessions.
