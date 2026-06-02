@@ -1,0 +1,35 @@
+{
+  "ticker": "NFLX",
+  "text_length": 308381,
+  "word_count_approx": 51397,
+  "counts": {
+    "ai_terms_total": 15,
+    "vague_phrases": 0,
+    "revenue_matches": 0,
+    "capex_matches": 0,
+    "forward_capex_matches": 0,
+    "ai_risk_matches": 1,
+    "segment_matches": 0
+  },
+  "named_products": [],
+  "dqs": {
+    "specific_ai_revenue": 0,
+    "ai_capex": 0,
+    "segment_breakdown": 0,
+    "named_products": 0,
+    "forward_capex_guidance": 0,
+    "risk_factors": 2,
+    "generic_penalty": 0,
+    "total": 2
+  },
+  "tier": "Opaque",
+  "talk_show_ratio": 7.5,
+  "samples": {
+    "revenue": [],
+    "capex": [],
+    "forward_capex": [],
+    "ai_risk": [
+      "liability for copyright infringement"
+    ]
+  }
+}

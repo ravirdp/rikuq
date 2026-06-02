@@ -1,0 +1,52 @@
+{
+  "ticker": "MA",
+  "text_length": 478216,
+  "word_count_approx": 79703,
+  "counts": {
+    "ai_terms_total": 69,
+    "vague_phrases": 3,
+    "revenue_matches": 0,
+    "capex_matches": 0,
+    "forward_capex_matches": 0,
+    "ai_risk_matches": 0,
+    "segment_matches": 0
+  },
+  "named_products": [],
+  "dqs": {
+    "specific_ai_revenue": 0,
+    "ai_capex": 0,
+    "segment_breakdown": 0,
+    "named_products": 0,
+    "forward_capex_guidance": 0,
+    "risk_factors": 0,
+    "generic_penalty": -3,
+    "total": -3,
+    "total_verified": -1,
+    "original": -3
+  },
+  "tier": "Misleading",
+  "talk_show_ratio": 90,
+  "samples": {
+    "revenue": [],
+    "capex": [],
+    "forward_capex": [],
+    "ai_risk": []
+  },
+  "tier_verified": "Misleading",
+  "verification_note": "Verified, adjusted from -3 to -1. Generic penalty was too aggressive on only 3 vague matches.",
+  "verified_at": "2026-05-27",
+  "earnings": {
+    "transcript_word_count": 11186,
+    "ai_mentions": 45,
+    "ai_mentions_per_1k_words": 4.02,
+    "per_term": {
+      "\\bAI\\b": 12,
+      "\\bgenerative AI\\b": 2,
+      "\\bLLMs?\\b": 1,
+      "\\bagentic\\b": 8,
+      "\\bagent(?:s|ic workflows?)?\\b": 22
+    }
+  },
+  "talk_show_ratio_10k_placeholder": 90,
+  "talk_show_ratio_normalized": 8.046
+}

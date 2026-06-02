@@ -1,0 +1,203 @@
+---
+title: "The 2026 AI Spend Disclosure Audit: 46 Companies Graded"
+description: "We scored 46 public companies on how well they actually disclose AI spend in filings. Only 2 cleared a 'Solid' bar. Apple and Amazon disclose nothing specific."
+pubDate: 2026-06-03
+updatedDate: 2026-06-03
+category: finops
+tags:
+  - ai-spend
+  - disclosure
+  - public-companies
+  - finops
+  - research
+  - report
+author: Ravi
+heroImage: /illustrations/covers/ai-spend-disclosure-audit-2026.jpg
+ogImage: /illustrations/covers/ai-spend-disclosure-audit-2026.jpg
+draft: false
+affiliateDisclosure: false
+citareDisclosure: true
+faqs:
+  - question: "What is the Disclosure Quality Score (DQS)?"
+    answer: "DQS is a 0-20 scale we built to grade how specifically a public company discloses its AI economics in SEC filings. It awards points for a specific AI revenue figure (5), AI capex disclosure (3), a distinct AI operating segment (5), named AI products with adoption metrics (2 each, capped at 4), forward AI capex guidance (3), and AI-specific risk factors (2). It penalizes generic 'AI is important' filler that ties to no number (-1 each, capped at -3). The score is computed from the actual 10-K text, not from press releases or earnings-call hype."
+  - question: "Which companies disclose AI spend best?"
+    answer: "In our 46-company audit, only Snowflake and Meta cleared the 'Solid' tier (11 points each). No company reached 'Exemplar' (16+). Snowflake scores well on named products (Cortex) plus an AI revenue figure and capex; Meta scores on a specific AI revenue figure plus its disclosed forward AI capex of $115-135 billion for 2026 — one of the only specific forward-capex numbers in the entire sample. After those two, a cluster of seven companies (Tesla, Oracle, Microsoft, HubSpot, Alphabet, Bank of America, Asana) tie at 7 points in the 'Vague' tier."
+  - question: "Which companies disclose AI spend worst?"
+    answer: "Six companies landed in the 'Misleading' tier (negative DQS) — heavy generic AI mentions with essentially zero specific disclosure: CrowdStrike (-3), Verint (-3), Box (-2), Visa (-1), Mastercard (-1), and GitLab (-1). A further 27 companies, including Apple and Amazon, score exactly 0 ('Opaque') — they mention AI but disclose no specific revenue, capex, segment, or adoption metric. The single most ironic finding: the AI-security sector (CrowdStrike, SentinelOne) scores lowest of any sector, despite selling AI as a core product."
+  - question: "Why does AI spend disclosure matter for investors?"
+    answer: "Because AI is now a material driver of both revenue and capex at most large-cap tech companies, but the disclosure hasn't caught up to the spend. When a company tells earnings-call listeners that AI is transformative but its 10-K contains no specific AI revenue, capex, or segment figure, investors can't actually evaluate the return on that AI investment. The gap between AI talk (qualitative, in earnings calls) and AI show (quantitative, in filings) is where mispricing lives. As AI capex scales into the hundreds of billions across the sector, the companies that disclose specifically will be easier to underwrite than the ones that don't."
+  - question: "How often will this audit be updated?"
+    answer: "Quarterly. AI disclosure is changing fast as the spend scales and as auditors and regulators sharpen their expectations. We re-run the DQS audit each quarter to track which companies improve their disclosure and which keep hyping AI externally while disclosing nothing in filings. The methodology stays constant so the scores are comparable across quarters."
+relatedPosts:
+  - what-is-llm-finops
+  - ai-software-capex-vs-opex-india-2026
+  - llm-gateway-attribution-harder-than-cloud-finops
+---
+
+Public companies talk about AI constantly. On earnings calls it's the word that won't stop — transformative, foundational, the biggest opportunity in a generation. Then you open the 10-K, the document where they're legally obligated to be specific, and the AI economics largely vanish. No segment revenue. No capex line. No adoption metric you can underwrite.
+
+We wanted to measure that gap. So we built a Disclosure Quality Score (DQS), applied it to the actual SEC filing text of 46 public companies across nine sectors, and graded each on how specifically it discloses its AI economics. Not how much it talks about AI — how much it actually *shows*.
+
+The results are worse than we expected. Only **2 of 46** companies cleared a "Solid" disclosure bar. **Zero** reached "Exemplar." **27** — including Apple and Amazon — disclose so little specific AI information they score exactly zero. And the sector that discloses the *least* about its own AI is, with some irony, the one that sells AI-powered security.
+
+This is the first edition of an audit we'll re-run every quarter.
+
+## TL;DR
+
+| Finding | Number |
+|---|---|
+| Companies audited | 46 |
+| Scored "Exemplar" (16-20) | **0** |
+| Scored "Solid" (11-15) | **2** (Snowflake, Meta) |
+| Scored "Vague" (6-10) | 11 |
+| Scored "Opaque" (0-5) | 27 |
+| Scored "Misleading" (negative) | 6 |
+| Apple's DQS | **0** |
+| Amazon's DQS | **0** |
+| Worst score | **-3** (CrowdStrike, Verint) |
+| Lowest-scoring sector | **AI-security** (avg -0.5) |
+
+## What we measured — the Disclosure Quality Score
+
+DQS is a 0-20 scale built from the actual 10-K text. It rewards specificity and penalizes filler:
+
+| Criterion | Points | What earns it |
+|---|---|---|
+| Specific AI revenue figure | 5 | A revenue/ARR number tied to a named AI product or segment |
+| AI capex figure | 3 | A capex line tied to AI (data center, GPU, AI R&D) |
+| Distinct AI operating segment | 5 | AI reported as its own reportable segment |
+| Named AI products + adoption metrics | 2 each (cap 4) | "X seats," "Y users" on a named AI product |
+| Forward AI capex guidance | 3 | A specific dollar figure for planned AI investment |
+| AI-specific risk factors | 2 | Real AI risks (model deprecation, vendor concentration), not boilerplate |
+| Generic "AI is important" filler | -1 each (cap -3) | Vague AI mentions that tie to no number |
+
+**Tiers:** Exemplar (16-20), Solid (11-15), Vague (6-10), Opaque (0-5), Misleading (below 0).
+
+Every score below is computed from the company's most recent 10-K, then manually verified against the filing to confirm the matched figures are genuine (not, say, a generic "data center" mention miscounted as AI capex). The point isn't to embarrass anyone — it's to make AI disclosure measurable and comparable, the same way credit ratings made creditworthiness comparable.
+
+## The distribution is the story
+
+Before naming names, look at the shape of the result:
+
+- **0 companies** disclose AI well enough to be called Exemplar.
+- **2 companies** (4%) clear the Solid bar.
+- **27 companies** (59%) score exactly 0 — they mention AI but disclose nothing specific enough to score a single point net of penalties.
+- **6 companies** (13%) score negative — heavy generic AI language with essentially zero substance.
+
+For a technology that every one of these companies describes as central to its future, that's a remarkable disclosure vacuum. The market is pricing in an AI transformation it largely cannot see the financials of.
+
+## The top: Snowflake and Meta (the only two)
+
+**Snowflake — DQS 11 (Solid).** Snowflake earns its top placement by naming its AI product (Cortex / Snowflake Cortex, mentioned repeatedly), attaching an AI revenue figure to the AI Data Cloud, disclosing AI-context capex, and enumerating real AI-specific risk factors. It still takes the full -3 generic-mention penalty (there's marketing filler too), but the substance underneath is real.
+
+**Meta — DQS 11 (Solid).** Meta is the most important disclosure in the entire sample, because it's one of the only companies that put a specific *forward* AI capex number in front of investors: **$115-135 billion for 2026**. That single disclosure does more for investor underwriting than a hundred "AI is foundational" sentences. Meta also discloses a specific AI revenue contribution and real AI risk factors. It's not perfect — no distinct AI segment, some filler — but it shows the number that matters.
+
+After these two, there's a cliff. The next tier down — Tesla, Oracle, Microsoft, HubSpot, Alphabet, Bank of America, Asana, all tied at 7 — discloses *a* revenue figure and sometimes capex, but stops short of segment-level breakdown, forward guidance, or adoption metrics. Call it the "we'll say AI made us money but not how much, where, or what we're spending on it" tier.
+
+## The bottom: named and graded
+
+Six companies score negative — the "Misleading" tier, where generic AI language dominates and specific disclosure is essentially absent:
+
+| Company | DQS | The pattern |
+|---|---|---|
+| **CrowdStrike** | -3 | Sells AI-native security; discloses no specific AI revenue, capex, or segment. Pure generic mentions. |
+| **Verint** | -3 | Heavy "AI-powered" positioning, near-zero filing substance. |
+| **Box** | -2 | "Box AI" in the pitch, not in the numbers. |
+| **Visa** | -1 | Constant AI framing on the payments narrative, no specific AI economics disclosed. |
+| **Mastercard** | -1 | Same as Visa — AI hype, no AI numbers. |
+| **GitLab** | -1 | Names Duo, but the disclosure stops at the name. |
+
+And then the 27 companies scoring exactly **0** — the "Opaque" tier — which includes two of the most valuable companies on earth:
+
+- **Apple (0).** Massive AI positioning at every keynote; the 10-K discloses no specific AI revenue, capex, segment, or adoption metric that nets a point.
+- **Amazon (0).** One of the largest AI infrastructure spenders in the world (AWS, Bedrock, Trainium, Anthropic stake), and the filing-level specific AI disclosure nets zero.
+
+These two aren't "Misleading" — they're not loading up on generic AI filler. They're simply *silent* at the specific level. For companies of their scale and AI exposure, silence is its own kind of disclosure failure.
+
+## The sector heatmap — where the irony lives
+
+Averaging DQS by sector surfaces two patterns nobody talks about:
+
+| Sector | Avg DQS | Read |
+|---|---|---|
+| Auto | 7.0 | n=1 (Tesla); not representative |
+| Big tech | 5.5 | Meta drags it up; Apple + Amazon drag it down |
+| Cloud infra | 3.6 | Snowflake leads; long tail at 2 |
+| AI-native | 3.3 | Even pure-plays disclose vaguely |
+| Consumer | 3.0 | Disney/Walmart lead a weak field |
+| SaaS | 2.6 | Asana/HubSpot lead; Box negative |
+| **Finance** | **1.1** | Banks + payment giants hype AI, disclose almost nothing |
+| Enterprise AI | 1.0 | Wide split (UiPath 5, Verint -3) |
+| **AI-security** | **-0.5** | **Sells AI; discloses the least of any sector** |
+
+**The AI-security finding is the punchline.** CrowdStrike (-3) and SentinelOne (2) are companies whose entire market positioning is "AI-powered." They are, on average, the *worst* disclosers of AI economics in the sample. The thing they sell hardest is the thing they document least.
+
+**Finance is the second story.** Eight of the largest banks and payment networks — JPMorgan, Bank of America, Citi, Wells Fargo, Morgan Stanley, American Express, Visa, Mastercard — average 1.1, with Visa and Mastercard actually negative. These are institutions with enormous AI deployments and the most sophisticated disclosure machinery on the planet. The low scores aren't an accident of capability; they're a choice about specificity.
+
+## The Talk-Show ratio: hype per unit of disclosure
+
+DQS measures what companies *show* in filings. But the gap we set out to measure is between show and *talk* — the AI hype on earnings calls. So we computed a companion metric:
+
+```
+talk_show_ratio = AI mentions per earnings call / disclosure quality score
+```
+
+A high ratio means a company talks about AI constantly while disclosing little — maximum hype per unit of substance. A low ratio means disclosure roughly keeps pace with the narrative.
+
+We ran the most recent earnings-call transcript for 15 of the most-watched names in the sample through the same AI-term counter we used on the 10-Ks (so "talk" and "show" are measured with an identical vocabulary). The counts are deterministic, not estimated. Here's the gap.
+
+**The worst offenders — talk a lot, show little:**
+
+| Company | AI mentions on the call | DQS (disclosure) | The gap |
+|---|---|---|---|
+| **CrowdStrike** | 153 | -3 | Maximum hype, negative disclosure |
+| **Amazon** | 125 | 0 | $43.2B of Q1 capex "primarily AWS + generative AI" on the call; zero specific AI disclosure in the filing |
+| **ServiceNow** | **178** (most of anyone) | 4 | Talks AI more than any company we measured; discloses at a quarter of Snowflake's level |
+| **NVIDIA** | 165 | 6 | The company selling the AI picks and shovels; mid-tier on disclosing its own |
+| **Oracle** | 159 | 7 | Heavy AI-cloud narrative, thin filing specifics |
+
+**The most honest — disclosure keeps pace with the talk:**
+
+| Company | AI mentions on the call | DQS (disclosure) | The read |
+|---|---|---|---|
+| **Snowflake** | 140 | 11 | High talk, highest disclosure — substance backs the narrative |
+| **Cloudflare** | 99 | 8 | Restrained talk, real disclosure |
+| **Meta** | 120 | 8 | Backs the talk with the $115-135B forward capex number |
+| **Adobe** | 112 | 8 | Proportionate |
+| **Palantir** | **71** (fewest) | 6 | The counterintuitive one — "the AI company" mentions AI *least* and discloses more than it talks |
+
+Three things jump out. **Amazon** is the starkest single gap: management told the call that Q1 capex was $43.2 billion, "primarily allocated to AWS and generative AI expansion" — a number that, if it appeared with that AI attribution in the 10-K, would have scored. It doesn't, so Amazon's filing DQS is 0 while the call is wall-to-wall AI. **ServiceNow** mentions AI more than any company in the set (178 times) on a DQS of 4 — the purest hype-per-disclosure profile. And **Palantir**, the company most synonymous with "AI" in the public imagination, actually mentions it the *fewest* times (71) and discloses more than it hypes — the opposite of its reputation.
+
+The pattern holds: the companies that *talk* about AI the most are, with the exception of Snowflake, not the companies that *show* the most. The narrative and the disclosure have come apart.
+
+## What good AI disclosure actually looks like
+
+Three things separate the top two from the field. If you run investor relations or sit on an audit committee, these are the bar:
+
+1. **A specific forward number.** Meta's "$115-135 billion in 2026 AI capex" is the gold standard — it lets an analyst model the investment and the expected return. A range is fine. A number is the point.
+2. **A named product tied to a revenue figure.** Snowflake's Cortex disclosure works because the product name connects to an actual revenue contribution, not a vibe.
+3. **Real risk factors, not boilerplate.** "AI may not perform as expected" is filler. "Our AI features depend on third-party foundation models that may be deprecated or repriced" is disclosure. The specific version tells investors what actually threatens the AI economics.
+
+## Why this matters
+
+AI is the largest capital reallocation in the technology sector's history, and the disclosure hasn't caught up to the spend. When a company tells the market AI is transformative but its filing contains no AI revenue, no AI capex, and no AI segment, investors are underwriting a number they cannot see.
+
+That gap is where mispricing lives. As sector AI capex scales into the hundreds of billions, the companies that disclose specifically — Meta's forward number, Snowflake's product-tied revenue — will be materially easier to underwrite than the 33 companies that score 0 or below. Disclosure quality is about to become a real input to AI-era valuation, and right now almost nobody clears the bar.
+
+It also matters because disclosure norms move when someone measures them. The first credit ratings were crude; they still changed how companies borrowed. A public, quarterly, comparable AI Disclosure Quality Score is a small push in the same direction: make the specificity measurable, and specificity tends to follow.
+
+## Methodology, limits, and the next edition
+
+**What we did:** pulled each company's most recent 10-K from SEC EDGAR, ran a keyword-and-pattern analysis for the seven DQS criteria, then manually verified the top and bottom of the table against the actual filing text to confirm the matched figures are genuine.
+
+**Limits worth stating plainly:** DQS rewards *specific, filed* disclosure. A company could disclose well in an investor deck or a 10-Q and still score low here if the 10-K is thin — though in practice the 10-K is where this disclosure is supposed to live. Keyword matching can miss a figure phrased unusually; that's exactly why we hand-verify the extremes. And the sample (46 companies across 9 sectors) is curated for representativeness, not exhaustive.
+
+**The next edition:** we re-run this every quarter with the same methodology, so the scores are comparable over time. The interesting signal won't be the absolute scores — it'll be the *movement*: which companies improve their disclosure as AI capex scales, and which keep hyping AI externally while their filings stay silent.
+
+If you want the full per-company scored dataset, the DQS breakdown for any company in the sample, or to be notified when the Q3 edition drops, [Citare](https://citare.ai) is where this research lives. We track AI visibility and disclosure across the companies and the surfaces that shape how the AI economy is actually understood.
+
+## What's next
+
+- [What is LLM FinOps?](/blog/finops/what-is-llm-finops) — the discipline of treating AI spend as a managed cost, which is the internal version of what these filings disclose externally
+- [AI Software Capex vs Opex in India](/blog/finops/ai-software-capex-vs-opex-india-2026) — how AI spend gets classified on the books, the accounting layer beneath disclosure
+- [Why LLM Gateway Attribution Is Harder Than Cloud FinOps](/blog/finops/llm-gateway-attribution-harder-than-cloud-finops) — why even companies that want to disclose AI economics struggle to attribute the spend

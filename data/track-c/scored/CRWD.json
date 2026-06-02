@@ -1,0 +1,52 @@
+{
+  "ticker": "CRWD",
+  "text_length": 553872,
+  "word_count_approx": 92312,
+  "counts": {
+    "ai_terms_total": 148,
+    "vague_phrases": 12,
+    "revenue_matches": 0,
+    "capex_matches": 0,
+    "forward_capex_matches": 0,
+    "ai_risk_matches": 0,
+    "segment_matches": 0
+  },
+  "named_products": [],
+  "dqs": {
+    "specific_ai_revenue": 0,
+    "ai_capex": 0,
+    "segment_breakdown": 0,
+    "named_products": 0,
+    "forward_capex_guidance": 0,
+    "risk_factors": 0,
+    "generic_penalty": -3,
+    "total": -3,
+    "total_verified": -3,
+    "original": -3
+  },
+  "tier": "Misleading",
+  "talk_show_ratio": 306,
+  "samples": {
+    "revenue": [],
+    "capex": [],
+    "forward_capex": [],
+    "ai_risk": []
+  },
+  "tier_verified": "Misleading",
+  "verification_note": "Verified. 148 AI mentions, 12 vague phrases, zero specific disclosure. \"AI-powered\" everywhere.",
+  "verified_at": "2026-05-27",
+  "earnings": {
+    "transcript_word_count": 10376,
+    "ai_mentions": 153,
+    "ai_mentions_per_1k_words": 14.75,
+    "per_term": {
+      "\\bAI\\b": 102,
+      "\\bartificial intelligence\\b": 1,
+      "\\bLLMs?\\b": 11,
+      "\\bagentic\\b": 17,
+      "\\bagent(?:s|ic workflows?)?\\b": 22
+    }
+  },
+  "talk_show_ratio_10k_placeholder": 306,
+  "talk_show_ratio_normalized": 29.491
+}

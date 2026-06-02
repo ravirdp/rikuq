@@ -1,0 +1,38 @@
+{
+  "ticker": "PATH",
+  "text_length": 483064,
+  "word_count_approx": 80511,
+  "counts": {
+    "ai_terms_total": 159,
+    "vague_phrases": 5,
+    "revenue_matches": 2,
+    "capex_matches": 1,
+    "forward_capex_matches": 0,
+    "ai_risk_matches": 0,
+    "segment_matches": 0
+  },
+  "named_products": [],
+  "dqs": {
+    "specific_ai_revenue": 5,
+    "ai_capex": 3,
+    "segment_breakdown": 0,
+    "named_products": 0,
+    "forward_capex_guidance": 0,
+    "risk_factors": 0,
+    "generic_penalty": -3,
+    "total": 5
+  },
+  "tier": "Opaque",
+  "talk_show_ratio": 31.8,
+  "samples": {
+    "revenue": [
+      "AI artificial intelligence ANAF Agen ia Na ional de Administrare Fiscal API application programming interface ARR",
+      "AI Limited PIPL Personal Information Protection Law (China) Prior Period ARR ARR"
+    ],
+    "capex": [
+      "AI technologies in compliance with evolving legal and regulatory requirements; future investments in our business, our anticipated capital expenditures"
+    ],
+    "forward_capex": [],
+    "ai_risk": []
+  }
+}

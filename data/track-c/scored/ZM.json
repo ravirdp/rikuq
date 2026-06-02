@@ -1,0 +1,37 @@
+{
+  "ticker": "ZM",
+  "text_length": 482325,
+  "word_count_approx": 80388,
+  "counts": {
+    "ai_terms_total": 154,
+    "vague_phrases": 7,
+    "revenue_matches": 3,
+    "capex_matches": 0,
+    "forward_capex_matches": 0,
+    "ai_risk_matches": 0,
+    "segment_matches": 0
+  },
+  "named_products": [],
+  "dqs": {
+    "specific_ai_revenue": 5,
+    "ai_capex": 0,
+    "segment_breakdown": 0,
+    "named_products": 0,
+    "forward_capex_guidance": 0,
+    "risk_factors": 0,
+    "generic_penalty": -3,
+    "total": 2
+  },
+  "tier": "Opaque",
+  "talk_show_ratio": 77,
+  "samples": {
+    "revenue": [
+      "AI-powered interview intelligence and hiring automation, for all-cash purchase consideration of $ 98",
+      "AI features at no additional cost, as we believe they will ultimately enhance user satisfaction, improve customer retention, and drive revenue",
+      "AI features, fail to engage, retain, and increase our base of customers, or do not perform as expected, we may fail to generate sufficient revenue"
+    ],
+    "capex": [],
+    "forward_capex": [],
+    "ai_risk": []
+  }
+}

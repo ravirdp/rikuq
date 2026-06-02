@@ -1,0 +1,38 @@
+{
+  "ticker": "TEAM",
+  "text_length": 417783,
+  "word_count_approx": 69631,
+  "counts": {
+    "ai_terms_total": 85,
+    "vague_phrases": 5,
+    "revenue_matches": 1,
+    "capex_matches": 2,
+    "forward_capex_matches": 0,
+    "ai_risk_matches": 0,
+    "segment_matches": 0
+  },
+  "named_products": [],
+  "dqs": {
+    "specific_ai_revenue": 5,
+    "ai_capex": 3,
+    "segment_breakdown": 0,
+    "named_products": 0,
+    "forward_capex_guidance": 0,
+    "risk_factors": 0,
+    "generic_penalty": -3,
+    "total": 5
+  },
+  "tier": "Opaque",
+  "talk_show_ratio": 17,
+  "samples": {
+    "revenue": [
+      "AI tools at no or low cost to the majority of our Cloud customers may further increase these hosting costs without corresponding revenue"
+    ],
+    "capex": [
+      "capital expenditures related to the operations and expansion of our business; our focus on our Cloud offerings and customer migrations to our Cloud platform; 29 the success of our AI offerings and our",
+      "AI solutions, Atlassian Government Cloud and Atlassian Isolated Cloud, investments and expenses, customers, sales and marketing, seasonality, intellectual property, Atlassian Marketplace, Cloud and Da"
+    ],
+    "forward_capex": [],
+    "ai_risk": []
+  }
+}

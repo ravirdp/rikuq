@@ -1,0 +1,11 @@
+{
+  "ticker": "AMZN",
+  "cik": "1018724",
+  "accession": "0001018724-26-000004",
+  "filingDate": "2026-02-06",
+  "primaryDoc": "amzn-20251231.htm",
+  "docUrl": "https://www.sec.gov/Archives/edgar/data/1018724/000101872426000004/amzn-20251231.htm",
+  "htmlLength": 1968342,
+  "textLength": 311525,
+  "fetchedAt": "2026-05-27T11:20:05.821Z"
+}

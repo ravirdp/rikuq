@@ -1,0 +1,39 @@
+{
+  "ticker": "SOUN",
+  "text_length": 635199,
+  "word_count_approx": 105867,
+  "counts": {
+    "ai_terms_total": 318,
+    "vague_phrases": 14,
+    "revenue_matches": 5,
+    "capex_matches": 0,
+    "forward_capex_matches": 0,
+    "ai_risk_matches": 0,
+    "segment_matches": 0
+  },
+  "named_products": [],
+  "dqs": {
+    "specific_ai_revenue": 5,
+    "ai_capex": 0,
+    "segment_breakdown": 0,
+    "named_products": 0,
+    "forward_capex_guidance": 0,
+    "risk_factors": 0,
+    "generic_penalty": -3,
+    "total": 2
+  },
+  "tier": "Opaque",
+  "talk_show_ratio": 159,
+  "samples": {
+    "revenue": [
+      "AI and other technology solutions to the restaurant industry, for total purchase consideration of $15",
+      "AI and other technology solutions to the restaurant industry, for total purchase consideration of $ 15",
+      "AI agent orchestration platform brings new capabilities into the vehicle, enabling multiple agents to carr",
+      "AI to make their product better; they can also generate incremental recurring revenue",
+      "AI agent orchestration platform brings new capabilities into the vehicle, enabling multiple agents to carr"
+    ],
+    "capex": [],
+    "forward_capex": [],
+    "ai_risk": []
+  }
+}

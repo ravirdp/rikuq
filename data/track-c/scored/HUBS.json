@@ -1,0 +1,64 @@
+{
+  "ticker": "HUBS",
+  "text_length": 456838,
+  "word_count_approx": 76140,
+  "counts": {
+    "ai_terms_total": 173,
+    "vague_phrases": 19,
+    "revenue_matches": 3,
+    "capex_matches": 1,
+    "forward_capex_matches": 0,
+    "ai_risk_matches": 1,
+    "segment_matches": 0
+  },
+  "named_products": [
+    {
+      "product": "Breeze",
+      "mentions": 11
+    }
+  ],
+  "dqs": {
+    "specific_ai_revenue": 5,
+    "ai_capex": 3,
+    "segment_breakdown": 0,
+    "named_products": 2,
+    "forward_capex_guidance": 0,
+    "risk_factors": 2,
+    "generic_penalty": -3,
+    "total": 9,
+    "total_verified": 7,
+    "original": 9
+  },
+  "tier": "Vague",
+  "talk_show_ratio": 20,
+  "samples": {
+    "revenue": [
+      "AI capabilities, and educational resources, but also to build their own business by offering new services and shifting their revenue",
+      "AI, Dashworks, and XFunnel are wholly-owned subsidiaries whose total assets and total revenue",
+      "AI, Dashworks, and XFunnel are wholly owned subsidiaries of the Company whose total assets and total revenue"
+    ],
+    "capex": [
+      "AI and machine learning, customer service and support, data center"
+    ],
+    "forward_capex": [],
+    "ai_risk": [
+      "liability for copyright infringement"
+    ]
+  },
+  "tier_verified": "Vague",
+  "verification_note": "Verified down from 9. Revenue match was false positive (about AI subsidiaries via M&A, not AI revenue). Breeze naming holds. Real DQS: named products(4) + risk(2) + 1 weak capex = 7.",
+  "verified_at": "2026-05-27",
+  "earnings": {
+    "transcript_word_count": 8785,
+    "ai_mentions": 180,
+    "ai_mentions_per_1k_words": 20.49,
+    "per_term": {
+      "\\bAI\\b": 61,
+      "\\bLLMs?\\b": 2,
+      "\\bagentic\\b": 9,
+      "\\bagent(?:s|ic workflows?)?\\b": 108
+    }
+  },
+  "talk_show_ratio_10k_placeholder": 19.22222222222222,
+  "talk_show_ratio_normalized": 2.277
+}

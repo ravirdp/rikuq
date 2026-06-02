@@ -1,0 +1,59 @@
+{
+  "ticker": "CRM",
+  "text_length": 437687,
+  "word_count_approx": 72948,
+  "counts": {
+    "ai_terms_total": 144,
+    "vague_phrases": 10,
+    "revenue_matches": 9,
+    "capex_matches": 0,
+    "forward_capex_matches": 0,
+    "ai_risk_matches": 1,
+    "segment_matches": 0
+  },
+  "named_products": [
+    {
+      "product": "Agentforce",
+      "mentions": 82
+    }
+  ],
+  "dqs": {
+    "specific_ai_revenue": 5,
+    "ai_capex": 0,
+    "segment_breakdown": 0,
+    "named_products": 2,
+    "forward_capex_guidance": 0,
+    "risk_factors": 2,
+    "generic_penalty": -3,
+    "total": 6
+  },
+  "tier": "Vague",
+  "talk_show_ratio": 24,
+  "samples": {
+    "revenue": [
+      "AI-powered enterprise cloud data management platform, for approximately $9",
+      "Agentforce Sales $ 9,028 23 % $ 8,322",
+      "Agentforce 360 Platform, Slack and Other (2) 8,882 22 7,247 21 23 Agentforce Marketing and Agentforce Commerce 5,428 14 5,281 15 3 Agentforce Integration and Agentforce Analytics 6,232 16 5,775 16 8 T",
+      "Agentforce 360 Platform, Slack and Other revenue for the year ended January 31, 2026 includes $388 million",
+      "Agentforce Sales $ 9,028 $ 8,322 $ 7,580"
+    ],
+    "capex": [],
+    "forward_capex": [],
+    "ai_risk": [
+      "liability for monetary damages arising from copyright infringement"
+    ]
+  },
+  "earnings": {
+    "transcript_word_count": 14351,
+    "ai_mentions": 144,
+    "ai_mentions_per_1k_words": 10.03,
+    "per_term": {
+      "\\bAI\\b": 32,
+      "\\bcopilot\\b": 1,
+      "\\bagentic\\b": 42,
+      "\\bagent(?:s|ic workflows?)?\\b": 69
+    }
+  },
+  "talk_show_ratio_10k_placeholder": 24,
+  "talk_show_ratio_normalized": 1.672
+}

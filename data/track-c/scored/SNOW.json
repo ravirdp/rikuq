@@ -1,0 +1,69 @@
+{
+  "ticker": "SNOW",
+  "text_length": 589764,
+  "word_count_approx": 98294,
+  "counts": {
+    "ai_terms_total": 207,
+    "vague_phrases": 9,
+    "revenue_matches": 3,
+    "capex_matches": 2,
+    "forward_capex_matches": 0,
+    "ai_risk_matches": 1,
+    "segment_matches": 0
+  },
+  "named_products": [
+    {
+      "product": "Cortex",
+      "mentions": 9
+    },
+    {
+      "product": "Snowflake Cortex",
+      "mentions": 5
+    }
+  ],
+  "dqs": {
+    "specific_ai_revenue": 5,
+    "ai_capex": 3,
+    "segment_breakdown": 0,
+    "named_products": 4,
+    "forward_capex_guidance": 0,
+    "risk_factors": 2,
+    "generic_penalty": -3,
+    "total": 11,
+    "total_verified": 11,
+    "original": 11
+  },
+  "tier": "Solid",
+  "talk_show_ratio": 12.73,
+  "samples": {
+    "revenue": [
+      "AI Data Cloud, for $ 76",
+      "AI Technology), and unstable macroeconomic conditions, our ability to accurately forecast our future results of operations, including revenue",
+      "AI inference, certain support costs and costs of expanding our business internationally, are incurred in advance of generating revenue"
+    ],
+    "capex": [
+      "capital expenditures, and our estimates regarding our capital requirements; the costs and success of our sales and marketing efforts, and our ability to promote our brand; our growth strategies for, a",
+      "AI Technology), and our customers adoption and use of such features; our ability to achieve or sustain our profitability; future investments in our business, our anticipated capital expenditures"
+    ],
+    "forward_capex": [],
+    "ai_risk": [
+      "risk AI systems; and South Korea s AI Basic Act, the country s first major AI legislation"
+    ]
+  },
+  "tier_verified": "Solid",
+  "verification_note": "Verified. Cortex naming + AI Data Cloud revenue figure confirmed. Capex match is generic (not AI-specific dollar amount); ties Meta for top.",
+  "verified_at": "2026-05-27",
+  "earnings": {
+    "transcript_word_count": 8696,
+    "ai_mentions": 140,
+    "ai_mentions_per_1k_words": 16.1,
+    "per_term": {
+      "\\bAI\\b": 90,
+      "\\bmachine learning\\b": 1,
+      "\\bagentic\\b": 13,
+      "\\bagent(?:s|ic workflows?)?\\b": 36
+    }
+  },
+  "talk_show_ratio_10k_placeholder": 12.73,
+  "talk_show_ratio_normalized": 1.464
+}

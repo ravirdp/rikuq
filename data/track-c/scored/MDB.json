@@ -1,0 +1,37 @@
+{
+  "ticker": "MDB",
+  "text_length": 491490,
+  "word_count_approx": 81915,
+  "counts": {
+    "ai_terms_total": 160,
+    "vague_phrases": 11,
+    "revenue_matches": 3,
+    "capex_matches": 0,
+    "forward_capex_matches": 0,
+    "ai_risk_matches": 0,
+    "segment_matches": 0
+  },
+  "named_products": [],
+  "dqs": {
+    "specific_ai_revenue": 5,
+    "ai_capex": 0,
+    "segment_breakdown": 0,
+    "named_products": 0,
+    "forward_capex_guidance": 0,
+    "risk_factors": 0,
+    "generic_penalty": -3,
+    "total": 2
+  },
+  "tier": "Opaque",
+  "talk_show_ratio": 80,
+  "samples": {
+    "revenue": [
+      "AI acquisition of $2",
+      "AI acquisition of $ 1",
+      "AI \"hallucinations\" a critical barr"
+    ],
+    "capex": [],
+    "forward_capex": [],
+    "ai_risk": []
+  }
+}

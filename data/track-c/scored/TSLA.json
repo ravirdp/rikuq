@@ -1,0 +1,44 @@
+{
+  "ticker": "TSLA",
+  "text_length": 428939,
+  "word_count_approx": 71490,
+  "counts": {
+    "ai_terms_total": 60,
+    "vague_phrases": 5,
+    "revenue_matches": 2,
+    "capex_matches": 2,
+    "forward_capex_matches": 0,
+    "ai_risk_matches": 0,
+    "segment_matches": 0
+  },
+  "named_products": [
+    {
+      "product": "Cortex",
+      "mentions": 2
+    }
+  ],
+  "dqs": {
+    "specific_ai_revenue": 5,
+    "ai_capex": 3,
+    "segment_breakdown": 0,
+    "named_products": 2,
+    "forward_capex_guidance": 0,
+    "risk_factors": 0,
+    "generic_penalty": -3,
+    "total": 7
+  },
+  "tier": "Vague",
+  "talk_show_ratio": 8.571428571428571,
+  "samples": {
+    "revenue": [
+      "AI and other programs as we continue to expand our product roadmap and technologies and an increase in stock-based compensation of $500 million",
+      "AI, software and fleet-based profits for further revenue"
+    ],
+    "capex": [
+      "capital expenditures to be in excess of $20 billion in 2026, driven by our AI initiatives, including investments in compute infrastructure and data centers, the expansion and ramp of our manufacturing",
+      "Capital Expenditure Trends in this Annual Report on Form 10-K, we currently expect our capital expenditures to exceed $20 billion in 2026 driven by our AI"
+    ],
+    "forward_capex": [],
+    "ai_risk": []
+  }
+}

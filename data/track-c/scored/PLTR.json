@@ -1,0 +1,59 @@
+{
+  "ticker": "PLTR",
+  "text_length": 561417,
+  "word_count_approx": 93570,
+  "counts": {
+    "ai_terms_total": 109,
+    "vague_phrases": 4,
+    "revenue_matches": 2,
+    "capex_matches": 0,
+    "forward_capex_matches": 0,
+    "ai_risk_matches": 0,
+    "segment_matches": 0
+  },
+  "named_products": [
+    {
+      "product": "AIP",
+      "mentions": 22
+    },
+    {
+      "product": "Artificial Intelligence Platform",
+      "mentions": 2
+    }
+  ],
+  "dqs": {
+    "specific_ai_revenue": 5,
+    "ai_capex": 0,
+    "segment_breakdown": 0,
+    "named_products": 4,
+    "forward_capex_guidance": 0,
+    "risk_factors": 0,
+    "generic_penalty": -3,
+    "total": 6
+  },
+  "tier": "Vague",
+  "talk_show_ratio": 11.83,
+  "samples": {
+    "revenue": [
+      "AI-powered agents and automations, an arr",
+      "AI-powered agents and automations, an arr"
+    ],
+    "capex": [],
+    "forward_capex": [],
+    "ai_risk": []
+  },
+  "earnings": {
+    "transcript_word_count": 7755,
+    "ai_mentions": 71,
+    "ai_mentions_per_1k_words": 9.16,
+    "per_term": {
+      "\\bAI\\b": 47,
+      "\\bartificial intelligence\\b": 1,
+      "\\bLLMs?\\b": 1,
+      "\\bagentic\\b": 4,
+      "\\bagent(?:s|ic workflows?)?\\b": 18
+    }
+  },
+  "talk_show_ratio_10k_placeholder": 18.166666666666668,
+  "talk_show_ratio_normalized": 1.526
+}

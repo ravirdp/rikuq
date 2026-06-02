@@ -1,0 +1,55 @@
+{
+  "ticker": "NOW",
+  "text_length": 371005,
+  "word_count_approx": 61834,
+  "counts": {
+    "ai_terms_total": 147,
+    "vague_phrases": 17,
+    "revenue_matches": 1,
+    "capex_matches": 0,
+    "forward_capex_matches": 0,
+    "ai_risk_matches": 0,
+    "segment_matches": 0
+  },
+  "named_products": [
+    {
+      "product": "Now Assist",
+      "mentions": 22
+    }
+  ],
+  "dqs": {
+    "specific_ai_revenue": 5,
+    "ai_capex": 0,
+    "segment_breakdown": 0,
+    "named_products": 2,
+    "forward_capex_guidance": 0,
+    "risk_factors": 0,
+    "generic_penalty": -3,
+    "total": 4
+  },
+  "tier": "Opaque",
+  "talk_show_ratio": 44.5,
+  "samples": {
+    "revenue": [
+      "AI-powered, composable Configure, Price, Quote ( CPQ ) solution for total purchase consideration of $ 506 million"
+    ],
+    "capex": [],
+    "forward_capex": [],
+    "ai_risk": []
+  },
+  "earnings": {
+    "transcript_word_count": 12803,
+    "ai_mentions": 178,
+    "ai_mentions_per_1k_words": 13.9,
+    "per_term": {
+      "\\bAI\\b": 138,
+      "\\blarge language models?\\b": 1,
+      "\\bLLMs?\\b": 1,
+      "\\bfoundation models?\\b": 2,
+      "\\bagentic\\b": 8,
+      "\\bagent(?:s|ic workflows?)?\\b": 28
+    }
+  },
+  "talk_show_ratio_10k_placeholder": 36.75,
+  "talk_show_ratio_normalized": 3.476
+}

@@ -1,0 +1,35 @@
+{
+  "ticker": "C",
+  "text_length": 1501983,
+  "word_count_approx": 250331,
+  "counts": {
+    "ai_terms_total": 44,
+    "vague_phrases": 2,
+    "revenue_matches": 0,
+    "capex_matches": 0,
+    "forward_capex_matches": 0,
+    "ai_risk_matches": 1,
+    "segment_matches": 0
+  },
+  "named_products": [],
+  "dqs": {
+    "specific_ai_revenue": 0,
+    "ai_capex": 0,
+    "segment_breakdown": 0,
+    "named_products": 0,
+    "forward_capex_guidance": 0,
+    "risk_factors": 2,
+    "generic_penalty": -2,
+    "total": 0
+  },
+  "tier": "Opaque",
+  "talk_show_ratio": 88,
+  "samples": {
+    "revenue": [],
+    "capex": [],
+    "forward_capex": [],
+    "ai_risk": [
+      "risks arising from their development and training methods, including potential inclusion of unauthorized material in the training data"
+    ]
+  }
+}

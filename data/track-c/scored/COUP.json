@@ -1,0 +1,33 @@
+{
+  "ticker": "COUP",
+  "text_length": 451981,
+  "word_count_approx": 75330,
+  "counts": {
+    "ai_terms_total": 7,
+    "vague_phrases": 0,
+    "revenue_matches": 0,
+    "capex_matches": 0,
+    "forward_capex_matches": 0,
+    "ai_risk_matches": 0,
+    "segment_matches": 0
+  },
+  "named_products": [],
+  "dqs": {
+    "specific_ai_revenue": 0,
+    "ai_capex": 0,
+    "segment_breakdown": 0,
+    "named_products": 0,
+    "forward_capex_guidance": 0,
+    "risk_factors": 0,
+    "generic_penalty": 0,
+    "total": 0
+  },
+  "tier": "Opaque",
+  "talk_show_ratio": 14,
+  "samples": {
+    "revenue": [],
+    "capex": [],
+    "forward_capex": [],
+    "ai_risk": []
+  }
+}

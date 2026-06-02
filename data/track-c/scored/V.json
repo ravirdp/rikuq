@@ -1,0 +1,40 @@
+{
+  "ticker": "V",
+  "text_length": 458950,
+  "word_count_approx": 76492,
+  "counts": {
+    "ai_terms_total": 78,
+    "vague_phrases": 10,
+    "revenue_matches": 0,
+    "capex_matches": 0,
+    "forward_capex_matches": 0,
+    "ai_risk_matches": 1,
+    "segment_matches": 0
+  },
+  "named_products": [],
+  "dqs": {
+    "specific_ai_revenue": 0,
+    "ai_capex": 0,
+    "segment_breakdown": 0,
+    "named_products": 0,
+    "forward_capex_guidance": 0,
+    "risk_factors": 2,
+    "generic_penalty": -3,
+    "total": -1,
+    "total_verified": -1,
+    "original": -1
+  },
+  "tier": "Misleading",
+  "talk_show_ratio": 156,
+  "samples": {
+    "revenue": [],
+    "capex": [],
+    "forward_capex": [],
+    "ai_risk": [
+      "risks include those related to intellectual property considerations, the collection and use of personal data, third party risks, technical limitations of algorithms and the accuracy of training data"
+    ]
+  },
+  "tier_verified": "Misleading",
+  "verification_note": "Verified. Risk sample matched was generic (algorithms / training data) not AI-specific. Score stands.",
+  "verified_at": "2026-05-27"
+}

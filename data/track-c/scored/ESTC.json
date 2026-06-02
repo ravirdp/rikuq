@@ -1,0 +1,35 @@
+{
+  "ticker": "ESTC",
+  "text_length": 461461,
+  "word_count_approx": 76910,
+  "counts": {
+    "ai_terms_total": 137,
+    "vague_phrases": 6,
+    "revenue_matches": 1,
+    "capex_matches": 0,
+    "forward_capex_matches": 0,
+    "ai_risk_matches": 0,
+    "segment_matches": 0
+  },
+  "named_products": [],
+  "dqs": {
+    "specific_ai_revenue": 5,
+    "ai_capex": 0,
+    "segment_breakdown": 0,
+    "named_products": 0,
+    "forward_capex_guidance": 0,
+    "risk_factors": 0,
+    "generic_penalty": -3,
+    "total": 2
+  },
+  "tier": "Opaque",
+  "talk_show_ratio": 68.5,
+  "samples": {
+    "revenue": [
+      "AI ); our future financial performance, including our expectations regarding our revenue, cost of revenue"
+    ],
+    "capex": [],
+    "forward_capex": [],
+    "ai_risk": []
+  }
+}

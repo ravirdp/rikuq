@@ -1,0 +1,51 @@
+{
+  "ticker": "ORCL",
+  "text_length": 454167,
+  "word_count_approx": 75695,
+  "counts": {
+    "ai_terms_total": 66,
+    "vague_phrases": 1,
+    "revenue_matches": 1,
+    "capex_matches": 1,
+    "forward_capex_matches": 0,
+    "ai_risk_matches": 0,
+    "segment_matches": 0
+  },
+  "named_products": [],
+  "dqs": {
+    "specific_ai_revenue": 5,
+    "ai_capex": 3,
+    "segment_breakdown": 0,
+    "named_products": 0,
+    "forward_capex_guidance": 0,
+    "risk_factors": 0,
+    "generic_penalty": -1,
+    "total": 7
+  },
+  "tier": "Vague",
+  "talk_show_ratio": 22.71,
+  "samples": {
+    "revenue": [
+      "AI products may not operate as anticipated, which could adversely affect our reputation, revenue"
+    ],
+    "capex": [
+      "AI advancements, products, product enhancements, technological advances, data center"
+    ],
+    "forward_capex": [],
+    "ai_risk": []
+  },
+  "earnings": {
+    "transcript_word_count": 8352,
+    "ai_mentions": 159,
+    "ai_mentions_per_1k_words": 19.04,
+    "per_term": {
+      "\\bAI\\b": 113,
+      "\\blarge language models?\\b": 1,
+      "\\bLLMs?\\b": 3,
+      "\\bagentic\\b": 3,
+      "\\bagent(?:s|ic workflows?)?\\b": 39
+    }
+  },
+  "talk_show_ratio_10k_placeholder": 9.428571428571429,
+  "talk_show_ratio_normalized": 2.72
+}

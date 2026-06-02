@@ -30,3 +30,7 @@ Thumbs.db
 # SQLite WAL sidecars (the .db file itself IS committed — see data/content-ops.db)
 *.db-wal
 *.db-shm
+
+# Track C earnings transcripts — copyrighted source text, kept local only.
+# Derived scores (counts, ratios) are committed; raw transcript text is not.
+data/track-c/transcripts/*.txt
