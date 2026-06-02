@@ -25,7 +25,7 @@ if (!apiKey) {
   process.exit(1);
 }
 
-const article = await loadArticle(slug);
+const article = await loadArticle(slug, { platform: 'devto', platformName: 'Dev.to' });
 
 // Dev.to caps tags at 4 and requires alphanumeric (no dashes in tag names).
 const tags = article.tags
@@ -33,8 +33,7 @@ const tags = article.tags
   .map((t) => t.replace(/[^a-z0-9]/gi, '').toLowerCase())
   .filter(Boolean);
 
-const intro = article.republishIntro.replace('{platform}', 'Dev.to');
-const bodyMarkdown = `${intro}${article.body}`;
+const bodyMarkdown = `${article.republishIntro}${article.body}`;
 
 const payload = {
   article: {
