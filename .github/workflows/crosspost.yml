@@ -8,8 +8,10 @@ name: Auto-crosspost 3 days after publish
 # - Skips articles where `crossposted: true` is set in frontmatter (manual
 #   opt-out for things we publish on rikuq but don't want elsewhere).
 # - Continues per-platform if one fails (so a Dev.to rate-limit doesn't kill
-#   the whole batch). Hashnode was removed from the auto-platforms list in
-#   May 2026 — paid API only, we publish to Hashnode manually if at all.
+#   the whole batch). Dev.to + Hashnode both run; each is canonical-safe
+#   (canonical/originalArticleURL points back to rikuq). Hashnode re-enabled
+#   2026-06-03 — its publishPost API is free with a PAT; the step no-ops if
+#   the HASHNODE_* secrets are absent.
 #
 # Manual trigger also available via workflow_dispatch with a slug input.
 
@@ -105,4 +107,33 @@ jobs:
           done
           if [ "$failed" -gt 0 ]; then
             echo "::warning::$failed slug(s) failed; review logs."
+          fi
+
+      - name: Crosspost to Hashnode
+        if: steps.pick.outputs.slugs != ''
+        env:
+          HASHNODE_PAT: ${{ secrets.HASHNODE_PAT }}
+          HASHNODE_PUBLICATION_ID: ${{ secrets.HASHNODE_PUBLICATION_ID }}
+        run: |
+          # Re-enabled 2026-06-03: Hashnode's publishPost GraphQL API is free
+          # with a Personal Access Token (the earlier "paid API only" note was
+          # incorrect). canonical/originalArticleURL points back to rikuq, so
+          # this mirror is canonical-safe — same guarantee as the Dev.to step.
+          # Per-slug `|| true` so one failure doesn't abort the batch.
+          if [ -z "${HASHNODE_PAT:-}" ] || [ -z "${HASHNODE_PUBLICATION_ID:-}" ]; then
+            echo "::warning::Hashnode secrets not set — skipping Hashnode crosspost."
+            exit 0
+          fi
+          failed=0
+          for slug in ${{ steps.pick.outputs.slugs }}; do
+            echo "::group::Hashnode $slug"
+            if ! npm run crosspost:hashnode -- "$slug"; then
+              echo "::warning::Hashnode crosspost failed for $slug — continuing batch"
+              failed=$((failed + 1))
+            fi
+            echo "::endgroup::"
+            sleep 20
+          done
+          if [ "$failed" -gt 0 ]; then
+            echo "::warning::$failed Hashnode slug(s) failed; review logs."
           fi
