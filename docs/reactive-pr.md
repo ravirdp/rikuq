@@ -298,3 +298,20 @@ soft-blocked after the Prism-prospecting query burst (403 on all sub
 endpoints). WebFetch can't reach reddit either. Fix = official Reddit
 API (praw + OAuth app, ~2 min setup) OR Claude-in-Chrome logged-in
 browser. Both portable across sessions.
+
+## 2026-06-03 — Distribution channel expansion (post-X)
+
+Decision: expand beyond X to LinkedIn + HN + Hashnode + IH + (Lobsters parked).
+All four flagship-driven. UTM-tagged via scripts/utm.mjs except HN (clean URL —
+HN strips params + audience dislikes them).
+
+| Channel | Status | Notes |
+|---|---|---|
+| **LinkedIn** | ✅ POSTED | Track C disclosure audit, investor/finance angle. Post (not article) for reach. UTM utm_source=linkedin. |
+| **HN** | ⏳ throttled | Submit "Only 2 of 46 big tech 10-Ks clearly disclose their AI spending" + clean URL + first-comment (method framing). Hit "posting too fast" — retry tomorrow AM ET. RISK: new-account submissions auto-killed by anti-blogspam filter; comment first to build ~5 karma (post the 2 drafted HN reactive replies) before submitting. |
+| **Hashnode** | ⏳ cron wired | Re-enabled in .github/workflows/crosspost.yml (commit dba3750). publishPost API is FREE w/ PAT — earlier "paid API only" note was wrong. Needs GitHub secrets HASHNODE_PAT + HASHNODE_PUBLICATION_ID. Step no-ops without them (safe). Once set, Day-3 cron mirrors automatically (canonical-safe). |
+| **Indie Hackers** | 🔨 earning access | New accounts CANNOT post links until mods notice authentic-comment pattern OR pay IH Plus. Decided: earn via comments (NOT pay). 4 evergreen-thread comment drafts written (distribution / multi-product / content-strategy / attribution themes) — NO links (links from new acct = flag risk). NEXT: do it via CiC — surface top IH posts to comment on. |
+| **Lobsters** | 🅿️ parked | Invite-only; no application. "When offered" channel — land HN traction first, invites follow visibility. Don't cold-chase. |
+
+Ready-to-paste content (LinkedIn post, HN title+URL+first-comment, IH 4 comments,
+IH building-in-public post) is in the 2026-06-03 session transcript.
