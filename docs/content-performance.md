@@ -90,3 +90,22 @@ Update the Dev.to snapshot weekly (Mondays). Watch:
 - Does the finops cluster break >25 views as it ages? (validates the wedge bet)
 - Does Medium drive measurable rikuq traffic? (check GA4 utm_source=medium)
 - Which top-5 Medium posts get publication pickup (BP / LUC)?
+
+---
+
+## Medium crosspost log — top 5 (2026-06-02)
+
+Import-from-URL recipe (auto-canonical) + Medium-native bullet tables +
+UTM'd related-reading + subscriber-notify OFF. 4 of 5 live:
+
+| # | Post | Medium URL | Status |
+|---|---|---|---|
+| 1 | Portkey vs Helicone vs LiteLLM vs OpenRouter | (recon gold-standard) | ✅ live |
+| 2 | Claude Code Review 2026 | medium.com/@ravirdp/claude-code-review-2026-from-zero-code-to-3-live-saas-796963709089 | ✅ live |
+| 3 | What is LLM FinOps? | medium.com/@ravirdp/what-is-llm-finops-the-missing-discipline-for-ai-era-companies-3bdc72032a71 | ✅ live |
+| 4 | Claude Code Hooks vs Skills | medium.com/@ravirdp/claude-code-hooks-vs-skills-when-to-use-which-77a72e5eb436 | ✅ live |
+| 5 | Indian AI Search Audit | (Prompt B pending — 5 tables) | ⏳ |
+
+Confirmed flow: canonical auto-sets to rikuq, cover auto-imports, code
+spans survive, tables DROP/flatten (rebuild as bullet lists), subtitle +
+tags manual. ~4 min/post.
