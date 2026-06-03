@@ -1,0 +1,124 @@
+---
+title: "The 'Steal Your Competitor's SEO With AI' Trick, Tested"
+description: "A viral tweet says you can steal any competitor's SEO strategy in 5 minutes with AI and their sitemap. I ran it on a real rival. Here's what it actually misses."
+pubDate: 2026-06-03
+updatedDate: 2026-06-03
+category: geo
+tags:
+  - seo
+  - ai-slop-tested
+  - competitor-research
+  - sitemap
+  - geo
+  - tested
+author: Ravi
+draft: false
+affiliateDisclosure: false
+faqs:
+  - question: "Can you really analyze a competitor's SEO from their sitemap?"
+    answer: "You can analyze what they published — the URL structure, topic folders, and any programmatic page templates. You cannot see what ranks, what gets traffic, what earns backlinks, or what has search demand. A sitemap is a table of contents, not a performance report."
+  - question: "Is feeding a sitemap into ChatGPT or Claude useful for SEO?"
+    answer: "For small sites, it gives you a quick topic map. For large sites it breaks: a 4,900-URL sitemap blows past what the model can faithfully read, so it summarizes a fraction and you can't tell which. And it has zero ranking or traffic signal to reason over, so its 'content gaps' are guesses."
+  - question: "What does real competitor SEO research need?"
+    answer: "Real traffic and keyword data from a rank tracker (Ahrefs, Semrush) layered on top of the URL list: which pages actually pull organic traffic, which keywords drive it, and which terms they rank for that you don't. The sitemap is the free part. The part that tells you strategy costs money."
+---
+
+This is the first post in a series I'm calling **AI Slop, Tested**. Twitter and LinkedIn are flooded with "I automated [hard thing] with AI, one click, 5 minutes, here's the exact workflow 👇" threads. Most of them are screenshots of a process that technically runs and produces *something*, dressed up as a result.
+
+So I'm going to actually run them. On real targets. With receipts. Then tell you what's true, what's hype, and whether the 5 minutes buys you anything.
+
+First up, the one that's been all over my feed:
+
+> How to STEAL your competitor's SEO strategy with AI in 5 minutes. Step 1: find their sitemap. Step 2-3: download 3-5 sitemaps. Step 4: upload everything into ChatGPT/Claude. Step 5: build a 6-month SEO roadmap.
+
+I ran the full workflow on a real competitor of mine. Here's what happened.
+
+## I ran it for real
+
+My target: **helicone.ai** — a legitimate rival in the LLM observability / gateway space I write about. I followed the tweet's steps exactly.
+
+**Step 1-2 worked.** `helicone.ai/robots.txt` lists the sitemap. `sitemap.xml` is a clean index pointing to `sitemap-0.xml`. No friction. The tweet is right that this part is trivial and public.
+
+**Step 3 — download the URLs.** The sitemap has **4,946 URLs**. Right away, that's a problem the tweet doesn't mention, but hold that thought.
+
+**Step 4 — cluster the topics.** Bucketing the URLs by their top path (the exact thing the "analyze these sitemaps" prompt does) gives you this:
+
+| Path | URLs | Share |
+|---|---|---|
+| `/comparison/` | 3,459 | 70% |
+| `/llm-cost/` | 1,124 | 23% |
+| `/blog/` | 117 | 2% |
+| `/model/`, `/stats/`, `/changelog/`, other | 246 | 5% |
+
+**Step 5 — the AI roadmap.** Feed that to ChatGPT and it confidently tells you: *"Helicone dominates two huge content clusters — model comparisons and LLM cost. To compete, build out your own comparison and cost-calculator content at scale."*
+
+Sounds like strategy. It's a mirage. Here's why.
+
+## What the sitemap can't see
+
+### 1. 93% of those pages are programmatic filler
+
+The tweet's method counts all 4,946 URLs as "content." But look at what's actually in the two big buckets.
+
+The `/comparison/` pages are auto-generated from a template — every model crossed with every other model. How do I know? Because the set includes pages like:
+
+```
+/comparison/claude-2-on-anthropic-vs-claude-2-on-anthropic
+```
+
+That's Claude 2 compared **against itself**. There are **25 of these exact self-vs-self pages** in the sitemap — a model matched with an identical copy of itself. No human wrote those. It's a `for` loop that forgot a `!=` check.
+
+The `/llm-cost/` pages are the same idea: one templated price page per provider/model, e.g. `/llm-cost/provider/anthropic/model/claude%203%20opus`. Useful as a reference table, but it's a database dump, not a content strategy.
+
+Strip the programmatic stuff and helicone's actual *written* content is **117 blog posts** — not 4,946. The tweet's method inflated their footprint by ~40x and called it "domination."
+
+### 2. Published ≠ ranking ≠ traffic ≠ demand
+
+Here's the core lie. A sitemap tells you what a site *published*. It says nothing about what *works*. Those 3,459 comparison pages? Google may have indexed 200 of them and ignored the rest. They might pull 50,000 visits a month or near zero. **The sitemap cannot tell you, and neither can the AI reading it.**
+
+Programmatic comparison pages are exactly the kind of thin, templated content (a real one I checked was 382 words of mostly boilerplate) that Google's recent updates have been *demoting*. So the tweet's "build comparison content at scale" advice could be telling you to copy the part of their strategy that's actively bleeding out. You'd never know, because you're reasoning over a list of URLs with no performance data attached.
+
+### 3. The AI can't even read it
+
+A 4,946-URL sitemap is roughly 300KB of text. Paste that into ChatGPT and you blow past the window it can faithfully reason over. It won't error — it'll just *silently* analyze the first chunk and summarize that, and you have no idea which 80% it dropped. (I learned this the hard way on a different project: hand a model a long list and ask it to count, and it'll hand you a confident number that's wrong. Same failure here.)
+
+### 4. None of the things that ARE strategy
+
+Here's everything the "5-minute" method is structurally blind to:
+
+- **Traffic** — which pages get visits
+- **Rankings** — what position they hold, for what
+- **Keywords** — the actual search terms driving the traffic
+- **Search volume** — whether anyone searches the topics at all
+- **Backlinks** — what's earning authority
+- **Recency** — what they shipped last month vs. abandoned in 2023
+- **Conversions** — which content actually drives signups
+
+That list *is* SEO strategy. The sitemap has none of it.
+
+## The part the tweet quietly skips
+
+Notice the workflow is "free." That's the tell. The free input (a public sitemap) is the worthless half. The half that actually tells you a competitor's strategy — real traffic and keyword data — costs money. A rank tracker like Ahrefs or Semrush, with API access, is what turns a URL list into intelligence.
+
+The honest version of the workflow looks like this:
+
+1. **Sitemap → structure only.** Use it to see their folder architecture and spot programmatic plays. That's a legitimate 5-minute use.
+2. **Rank tool → what actually works.** Pull their top pages *by organic traffic*, the keywords driving each, and the terms they rank for that you don't. That's the strategy.
+3. **Then, and only then, the AI roadmap** — built on real demand and difficulty numbers, not vibes from a slug list.
+
+> Even on my own young, low-traffic site, Google Search Console shows me per-page data a sitemap never could: my Portkey-vs-Helicone comparison sits at 51 impressions / position 8.5, my LLM FinOps explainer at 28 / position 5.1, and my Claude Code review at 30 impressions but a buried position 20.9. Three pages, three completely different stories — invisible in a sitemap, obvious in five minutes of real data.
+
+## Verdict
+
+| | |
+|---|---|
+| **The claim** | "Steal your competitor's full SEO strategy in 5 minutes with AI + their sitemap." |
+| **What's true** | Sitemaps are public and easy to pull. AI can cluster URLs into a topic map fast. Genuinely useful for understanding site *structure*. |
+| **What's hype** | A URL list is not a strategy. It can't see traffic, rankings, demand, or backlinks. It inflates programmatic filler into "domination" and the AI confidently over-reads a list it can't even fully ingest. |
+| **The catch** | The free part is the useless part. The part that reveals strategy costs money. |
+| **Rating** | **3/10.** A fine first step mislabeled as the whole job. |
+| **Actually useful for** | Mapping a competitor's content *structure* and catching their programmatic SEO plays. Nothing past that. |
+
+The 5 minutes is real. The "strategy" isn't. You end up with a prettier version of "here's everything they ever published," which is not the same as "here's what's making them money."
+
+Next in the series: I'll take another viral one-click AI workflow and put it on the stand. If you've seen one that smells like slop, send it my way and I'll test it.
