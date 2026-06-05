@@ -2,16 +2,28 @@
 
 # Briefs
 
-Total: 35
+Total: 47
 
 | ID | Status | Kind | Title | Slug | Created |
 |---|---|---|---|---|---|
+| 47 | published | new | Gemini 3.5 Flash & "Thinking" Tiers: Deciphering the New $200/mo AI Infrastructure Tax | `gemini-thinking-levels-pricing-analysis` | 2026-06-05 |
+| 46 | published | refresh | Section 195 TDS on Foreign AI Vendors: Complete India Guide | `section-195-tds-foreign-ai-vendors-india-2026` | 2026-05-28 |
+| 45 | published | refresh | AI Cost Allocation: Models That Work in Indian Production | `ai-cost-allocation-india-2026` | 2026-05-28 |
+| 44 | published | refresh | AI Vendor Consolidation in 2026: When to Cut, When to Hold | `ai-vendor-consolidation-2026` | 2026-05-28 |
+| 43 | published | refresh | The FinOps Foundation Framework: A Practitioners Walkthrough | `finops-foundation-framework-2026` | 2026-05-28 |
+| 42 | published | refresh | AI Tax Recovery for Indian CFOs: The 5-Domain Framework | `ai-tax-recovery-framework-india-2026` | 2026-05-28 |
+| 41 | published | refresh | AI Systems Review: A 6-Domain Framework You Can Run Internally | `ai-systems-review-framework-india-2026` | 2026-05-28 |
+| 40 | published | refresh | Section 195 vs Equalisation Levy: Foreign AI Vendor TDS | `section-195-vs-equalisation-levy-foreign-ai-vendors-2026` | 2026-05-28 |
+| 39 | published | refresh | AI Software Capex vs Opex in India: The Ind AS 38 Test | `ai-software-capex-vs-opex-india-2026` | 2026-05-28 |
+| 38 | published | refresh | FinOps vs ITFM vs ITAM: Why You Eventually Need All Three | `finops-vs-itfm-vs-itam-2026` | 2026-05-28 |
+| 37 | published | refresh | AI / Cloud FinOps Providers in India: A Practitioners Take | `ai-cloud-finops-providers-india-2026` | 2026-05-28 |
+| 36 | published | new | Why LLM Gateway Attribution Is Harder Than Cloud FinOps Ever Was | `llm-gateway-attribution-harder-than-cloud-finops` | 2026-05-28 |
 | 31 | approved | new | Consumer AI Subscription Economics: Who is Actually Winning | `consumer-ai-subscription-economics-2026` | 2026-05-27 |
 | 32 | approved | new | AI Startup Burn-Rate Disclosures: Who Runs Out of Money First | `ai-startup-burn-rate-disclosures-2026` | 2026-05-27 |
 | 33 | approved | new | Government AI Procurement Data Audit: Where Public AI Money Goes | `government-ai-procurement-audit-2026` | 2026-05-27 |
 | 34 | approved | new | AI Talent Compensation 2026: What It Actually Costs to Hire AI Engineers | `ai-talent-compensation-tracking-2026` | 2026-05-27 |
 | 35 | approved | new | The AI Infrastructure Leasing Market: Who Controls the Wholesale GPU Supply | `ai-infrastructure-leasing-market-2026` | 2026-05-27 |
-| 23 | approved | new | The 2026 AI Spend Disclosure Audit: What Public Companies Say vs Show | `ai-spend-disclosure-audit-2026` | 2026-05-27 |
+| 23 | published | new | The 2026 AI Spend Disclosure Audit: What Public Companies Say vs Show | `ai-spend-disclosure-audit-2026` | 2026-05-27 |
 | 24 | approved | new | Indian IT Services AI Spend Audit: TCS, Infosys, Wipro, HCL, TechM | `indian-it-services-ai-spend-audit-2026` | 2026-05-27 |
 | 25 | approved | new | The Anthropic + OpenAI + xAI Revenue Tracker (v0.1, Q2 2026) | `ai-lab-revenue-tracker-q2-2026` | 2026-05-27 |
 | 26 | approved | new | The 2026 AI Spend vs AI Revenue Index: Who is Profitable on AI? | `ai-spend-vs-revenue-index-2026` | 2026-05-27 |
@@ -19,7 +31,7 @@ Total: 35
 | 28 | approved | new | The Hyperscaler-to-Customer AI Spend Reconciliation | `hyperscaler-ai-spend-reconciliation-2026` | 2026-05-27 |
 | 29 | approved | new | The Stock-Market-Implied AI Value Index: Did Wall Street Reward AI Investment? | `ai-stock-market-implied-value-index-2026` | 2026-05-27 |
 | 30 | approved | new | The Sector AI Spend Heatmap: Where the Money Actually Goes by Industry | `sector-ai-spend-heatmap-2026` | 2026-05-27 |
-| 22 | approved | new | The Indian AI Search Audit: 500 Queries, 25 Brands, 777 Citations | `indian-ai-search-audit-may-2026` | 2026-05-26 |
+| 22 | published | new | The Indian AI Search Audit: 500 Queries, 25 Brands, 777 Citations | `indian-ai-search-audit-may-2026` | 2026-05-26 |
 | 19 | published | new | Best MCP Servers for Claude Code in 2026 (Honest Picks) | `best-mcp-servers-claude-code-2026` | 2026-05-25 |
 | 20 | published | new | Claude Code Hooks vs Skills: When to Use Which | `claude-code-hooks-vs-skills-when-to-use` | 2026-05-25 |
 | 21 | published | new | AI Search Visibility Tools: Honest Comparison From a Builder | `ai-search-visibility-tools-honest-comparison` | 2026-05-25 |

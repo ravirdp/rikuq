@@ -6,6 +6,7 @@ Empty until Citare connector lands (v0.3.0).
 
 | Slug | Primary KW | Cited / Checked (14d) |
 |---|---|---|
+| `gemini-thinking-levels-pricing-analysis` | gemini thinking levels | 0 / 0 |
 | `geo-aeo-aio-sge-glossary-2026` | geo aeo aio sge | 0 / 0 |
 | `best-mcp-servers-claude-code-2026` | claude-code-mcp | 0 / 0 |
 | `ai-search-visibility-tools-honest-comparison` | ai-search-visibility-tool | 0 / 0 |
